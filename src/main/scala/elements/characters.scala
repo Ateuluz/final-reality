@@ -2,7 +2,6 @@ package elements
 
 /** Define the basic traits of a character
  *
- *
  * @param name    The name of the character
  * @param hp      The health points
  * @param defense The resistance to damage
