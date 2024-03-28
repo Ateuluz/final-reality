@@ -55,7 +55,16 @@ class Warrior (
                 val defense: Int,
                 val weight: Int,
                 var weapon: Weapon = null
-              ) extends NonMagicalCharacter() with SwordBearer with AxeBearer with BowBearer;
+              ) extends NonMagicalCharacter() with SwordBearer with AxeBearer with BowBearer{
+  def this(
+            name: String,
+            hp: Int,
+            defense: Int,
+            weight: Int,
+          ) = {
+    this(name, hp, defense, weight, null)
+  }
+}
 
 class Ninja (
               val name: String,
@@ -63,7 +72,16 @@ class Ninja (
               val defense: Int,
               val weight: Int,
               var weapon: Weapon = null
-            ) extends NonMagicalCharacter() with SwordBearer with BowBearer with WandUser;
+            ) extends NonMagicalCharacter() with SwordBearer with BowBearer with WandUser {
+  def this(
+            name: String,
+            hp: Int,
+            defense: Int,
+            weight: Int,
+          ) = {
+    this(name, hp, defense, weight, null)
+  }
+}
 
 class BlackMage (
                   val name: String,
@@ -71,7 +89,16 @@ class BlackMage (
                   val defense: Int,
                   val weight: Int,
                   var weapon: Weapon = null
-                ) extends MagicalCharacter() with SwordBearer with WandUser with StaffUser;
+                ) extends MagicalCharacter() with SwordBearer with WandUser with StaffUser {
+  def this(
+            name: String,
+            hp: Int,
+            defense: Int,
+            weight: Int,
+          ) = {
+    this(name, hp, defense, weight, null)
+  }
+}
 
 class WhiteMage (
                   val name: String,
@@ -79,4 +106,13 @@ class WhiteMage (
                   val defense: Int,
                   val weight: Int,
                   var weapon: Weapon = null
-                ) extends MagicalCharacter() with BowBearer with WandUser with StaffUser;
+                ) extends MagicalCharacter() with BowBearer with WandUser with StaffUser {
+  def this(
+            name: String,
+            hp: Int,
+            defense: Int,
+            weight: Int,
+          ) = {
+    this(name, hp, defense, weight, null)
+  }
+}
