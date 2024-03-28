@@ -26,13 +26,19 @@ trait MagicalCharacter extends Character {
   val magic: Boolean = true;
 }
 
+trait SwordBearer extends Character
+trait AxeBearer extends Character
+trait BowBearer extends Character
+trait WandUser extends Character
+trait StaffUser extends Character
+
 class Paladin (
                 val name: String,
                 var hp: Int,
                 val defense: Int,
                 val weight: Int,
                 var weapon: Weapon = null
-              ) extends NonMagicalCharacter() {
+              ) extends NonMagicalCharacter() with SwordBearer with AxeBearer {
   def this(
             name: String,
             hp: Int,
@@ -49,7 +55,7 @@ class Warrior (
                 val defense: Int,
                 val weight: Int,
                 var weapon: Weapon = null
-              ) extends NonMagicalCharacter();
+              ) extends NonMagicalCharacter() with SwordBearer with AxeBearer with BowBearer;
 
 class Ninja (
               val name: String,
@@ -57,15 +63,15 @@ class Ninja (
               val defense: Int,
               val weight: Int,
               var weapon: Weapon = null
-            ) extends NonMagicalCharacter();
+            ) extends NonMagicalCharacter() with SwordBearer with BowBearer with WandUser;
 
-class DarkMage (
-                 val name: String,
-                 var hp: Int,
-                 val defense: Int,
-                 val weight: Int,
-                 var weapon: Weapon = null
-               ) extends MagicalCharacter();
+class BlackMage (
+                  val name: String,
+                  var hp: Int,
+                  val defense: Int,
+                  val weight: Int,
+                  var weapon: Weapon = null
+                ) extends MagicalCharacter() with SwordBearer with WandUser with StaffUser;
 
 class WhiteMage (
                   val name: String,
@@ -73,4 +79,4 @@ class WhiteMage (
                   val defense: Int,
                   val weight: Int,
                   var weapon: Weapon = null
-                ) extends MagicalCharacter();
+                ) extends MagicalCharacter() with BowBearer with WandUser with StaffUser;

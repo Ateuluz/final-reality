@@ -35,7 +35,7 @@ class Sword(
              val name: String,
              val attack: Int,
              val weight: Int,
-             var owner: Character,
+             var owner: SwordBearer,
            ) extends NonMagicalWeapon {
 
   def this(name: String, attack: Int, weight: Int) = {
@@ -54,7 +54,7 @@ class Axe(
            val name: String,
            val attack: Int,
            val weight: Int,
-           var owner: Character,
+           var owner: AxeBearer,
          ) extends NonMagicalWeapon {
 
   def this(name: String, attack: Int, weight: Int) = {
@@ -73,7 +73,7 @@ class Bow(
            val name: String,
            val attack: Int,
            val weight: Int,
-           var owner: Character,
+           var owner: BowBearer,
          ) extends NonMagicalWeapon {
 
   def this(name: String, attack: Int, weight: Int) = {
@@ -94,7 +94,7 @@ class Wand (
              val attack: Int,
              val weight: Int,
              val magicAttack: Int,
-             var owner: Character,
+             var owner: WandUser,
            ) extends MagicalWeapon {
 
   def this(name: String, attack: Int, weight: Int, magicAttack: Int) = {
@@ -115,7 +115,7 @@ class Staff (
              val attack: Int,
              val weight: Int,
              val magicAttack: Int,
-             var owner: Character,
+             var owner: StaffUser,
            ) extends MagicalWeapon {
 
   def this(name: String, attack: Int, weight: Int, magicAttack: Int) = {
