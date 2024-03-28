@@ -22,7 +22,6 @@ class PaladinTest extends munit.FunSuite{
   test("???") {
     val expected = ???
   }
-
 }
 
 class WarriorTest extends munit.FunSuite{
