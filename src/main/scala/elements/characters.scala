@@ -26,12 +26,44 @@ trait MagicalCharacter extends Character {
   val magic: Boolean = true;
 }
 
-class Paladin extends NonMagicalCharacter();
+class Paladin (
+                val name: String,
+                var hp: Int,
+                val defense: Int,
+                val weight: Int,
+                var weapon: Weapon = null
+              ) extends NonMagicalCharacter() {
 
-class Warrior extends NonMagicalCharacter();
+}
 
-class Ninja extends NonMagicalCharacter();
+class Warrior (
+                val name: String,
+                var hp: Int,
+                val defense: Int,
+                val weight: Int,
+                var weapon: Weapon = null
+              ) extends NonMagicalCharacter();
 
-class DarkMage extends MagicalCharacter();
+class Ninja (
+              val name: String,
+              var hp: Int,
+              val defense: Int,
+              val weight: Int,
+              var weapon: Weapon = null
+            ) extends NonMagicalCharacter();
 
-class WhiteMage extends MagicalCharacter();
+class DarkMage (
+                 val name: String,
+                 var hp: Int,
+                 val defense: Int,
+                 val weight: Int,
+                 var weapon: Weapon = null
+               ) extends MagicalCharacter();
+
+class WhiteMage (
+                  val name: String,
+                  var hp: Int,
+                  val defense: Int,
+                  val weight: Int,
+                  var weapon: Weapon = null
+                ) extends MagicalCharacter();
