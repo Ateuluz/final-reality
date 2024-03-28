@@ -33,7 +33,14 @@ class Paladin (
                 val weight: Int,
                 var weapon: Weapon = null
               ) extends NonMagicalCharacter() {
-
+  def this(
+            name: String,
+            hp: Int,
+            defense: Int,
+            weight: Int,
+          ) = {
+    this(name, hp, defense, weight, null)
+  }
 }
 
 class Warrior (

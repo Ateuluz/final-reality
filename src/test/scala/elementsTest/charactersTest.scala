@@ -5,6 +5,7 @@ import elements.Warrior
 import elements.Ninja
 import elements.WhiteMage
 import elements.DarkMage
+import elements.Weapon
 
 //import org.junit.*
 //import org.junit.Assert.*
@@ -15,8 +16,8 @@ class PaladinTest extends munit.FunSuite{
 
   override def beforeEach(context: BeforeEach): Unit = {
     //super.beforeEach(context)
-    tstSbjt1 = new Paladin()
-    tstSbjt2 = new Paladin()
+    tstSbjt1 = new Paladin("John", 80, 20, 5)
+    tstSbjt2 = new Paladin("Doe", 200, 10, 25)
   }
 
   test("???") {
