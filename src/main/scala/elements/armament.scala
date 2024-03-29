@@ -29,14 +29,15 @@ trait NonMagicalWeapon extends Weapon
  * @param name   The name of the Sword
  * @param attack The attack value
  * @param weight The Sword's weight
- * @param owner  The Sword's owner
+ * @param _owner The Sword's owner
  */
 class Sword(
              val name: String,
              val attack: Int,
              val weight: Int,
-             var owner: SwordBearer,
+             var _owner: SwordBearer
            ) extends NonMagicalWeapon {
+  override var owner: Character = _owner
 
   def this(name: String, attack: Int, weight: Int) = {
     this(name, attack, weight, null)
@@ -48,14 +49,15 @@ class Sword(
  * @param name   The name of the Sword
  * @param attack The attack value
  * @param weight The Sword's weight
- * @param owner  The Sword's owner
+ * @param _owner The Sword's owner
  */
 class Axe(
            val name: String,
            val attack: Int,
            val weight: Int,
-           var owner: AxeBearer,
+           var _owner: SwordBearer
          ) extends NonMagicalWeapon {
+  override var owner: Character = _owner
 
   def this(name: String, attack: Int, weight: Int) = {
     this(name, attack, weight, null)
@@ -73,8 +75,9 @@ class Bow(
            val name: String,
            val attack: Int,
            val weight: Int,
-           var owner: BowBearer,
+           var _owner: SwordBearer
          ) extends NonMagicalWeapon {
+  override var owner: Character = _owner
 
   def this(name: String, attack: Int, weight: Int) = {
     this(name, attack, weight, null)
@@ -87,15 +90,16 @@ class Bow(
  * @param attack      The attack value
  * @param weight      The Sword's weight
  * @param magicAttack The magic attack value
- * @param owner       The Sword's owner
+ * @param _owner      The Sword's owner
  */
 class Wand (
              val name: String,
              val attack: Int,
              val weight: Int,
              val magicAttack: Int,
-             var owner: WandUser,
+             var _owner: WandUser,
            ) extends MagicalWeapon {
+  override var owner: Character = _owner
 
   def this(name: String, attack: Int, weight: Int, magicAttack: Int) = {
     this(name, attack, weight, magicAttack, null)
@@ -108,15 +112,16 @@ class Wand (
  * @param attack      The attack value
  * @param weight      The Sword's weight
  * @param magicAttack The magic attack value
- * @param owner       The Sword's owner
+ * @param _owner      The Sword's owner
  */
 class Staff (
              val name: String,
              val attack: Int,
              val weight: Int,
              val magicAttack: Int,
-             var owner: StaffUser,
+             var _owner: StaffUser,
            ) extends MagicalWeapon {
+  override var owner: Character = _owner
 
   def this(name: String, attack: Int, weight: Int, magicAttack: Int) = {
     this(name, attack, weight, magicAttack, null)
