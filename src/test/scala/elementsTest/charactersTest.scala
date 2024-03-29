@@ -1,6 +1,6 @@
 package elementsTest
 
-import elements.{BlackMage, Ninja, Paladin, Sword, SwordBearer, Wand, WandUser, Warrior, Weapon, WhiteMage}
+import elements.{AxeBearer, BlackMage, BowBearer, Ninja, Paladin, StaffUser, Sword, SwordBearer, Wand, WandUser, Warrior, Weapon, WhiteMage}
 
 class PaladinTest extends munit.FunSuite{
   var tstSbjt1: Paladin = _
@@ -12,6 +12,14 @@ class PaladinTest extends munit.FunSuite{
     tstObjt1 = new Sword("Excal", 10, 20, tstSbjt2)
     tstSbjt1 = new Paladin("John", 80, 20, 5)
     tstSbjt2 = new Paladin("Doe", 200, 10, 25, tstObjt1)
+  }
+
+  test("Weapon User") {
+    assertEquals(tstSbjt1.isInstanceOf[SwordBearer],true,"Should be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[AxeBearer],true,"Should be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[BowBearer],false,"Shouldn't be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[WandUser],false,"Shouldn't be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[StaffUser],false,"Shouldn't be allowed")
   }
 
   test("Weapon Ownership") {
@@ -37,6 +45,14 @@ class WarriorTest extends munit.FunSuite{
     tstSbjt2 = new Warrior("Doe", 200, 10, 25, tstObjt1)
   }
 
+  test("Weapon User") {
+    assertEquals(tstSbjt1.isInstanceOf[SwordBearer],true,"Should be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[AxeBearer],true,"Should be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[BowBearer],true,"Should be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[WandUser],false,"Shouldn't be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[StaffUser],false,"Shouldn't be allowed")
+  }
+
   test("Weapon Ownership") {
     val expected: Sword = tstObjt1
     assertEquals(tstSbjt2.weapon,expected,"Weapon should be the given")
@@ -60,6 +76,14 @@ class NinjaTest extends munit.FunSuite{
     tstSbjt2 = new Ninja("Doe", 200, 10, 25, tstObjt1)
   }
 
+  test("Weapon User") {
+    assertEquals(tstSbjt1.isInstanceOf[SwordBearer],true,"Should be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[AxeBearer],false,"Shouldn't be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[BowBearer],true,"Should be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[WandUser],true,"Should be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[StaffUser],false,"Shouldn't be allowed")
+  }
+
   test("Weapon Ownership") {
     val expected: Sword = tstObjt1
     assertEquals(tstSbjt2.weapon,expected,"Weapon should be the given")
@@ -81,6 +105,14 @@ class BlackMageTest extends munit.FunSuite{
     tstObjt1 = new Sword("Excal", 10, 20, tstSbjt2)
     tstSbjt1 = new BlackMage("John", 80, 20, 5)
     tstSbjt2 = new BlackMage("Doe", 200, 10, 25, tstObjt1)
+  }
+
+  test("Weapon User") {
+    assertEquals(tstSbjt1.isInstanceOf[SwordBearer],true,"Should be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[AxeBearer],false,"Shouldn't be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[BowBearer],false,"Shouldn't be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[WandUser],true,"Should be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[StaffUser],true,"Should be allowed")
   }
 
   test("Weapon Ownership") {
@@ -108,7 +140,10 @@ class WhiteMageTest extends munit.FunSuite{
 
   test("Weapon User") {
     assertEquals(tstSbjt1.isInstanceOf[SwordBearer],false,"Shouldn't be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[AxeBearer],false,"Shouldn't be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[BowBearer],true,"Should be allowed")
     assertEquals(tstSbjt1.isInstanceOf[WandUser],true,"Should be allowed")
+    assertEquals(tstSbjt1.isInstanceOf[StaffUser],true,"Should be allowed")
   }
 
   test("Weapon Ownership") {
