@@ -28,6 +28,9 @@ trait NonMagicalCharacter extends Character {
 
 trait MagicalCharacter extends Character {
   val magic: Boolean = true;
+  var mana: Int
+
+  require(mana >= 0, "Negative Mana not allowed")
 }
 
 trait SwordBearer extends Character
@@ -93,6 +96,7 @@ class BlackMage (
                   var hp: Int,
                   val defense: Int,
                   val weight: Int,
+                  var mana: Int,
                   var weapon: Weapon = null
                 ) extends MagicalCharacter() with SwordBearer with WandUser with StaffUser {
   def this(
@@ -100,8 +104,9 @@ class BlackMage (
             hp: Int,
             defense: Int,
             weight: Int,
+            mana: Int
           ) = {
-    this(name, hp, defense, weight, null)
+    this(name, hp, defense, weight, mana, null)
   }
 }
 
@@ -110,6 +115,7 @@ class WhiteMage (
                   var hp: Int,
                   val defense: Int,
                   val weight: Int,
+                  var mana: Int,
                   var weapon: Weapon = null
                 ) extends MagicalCharacter() with BowBearer with WandUser with StaffUser {
   def this(
@@ -117,7 +123,8 @@ class WhiteMage (
             hp: Int,
             defense: Int,
             weight: Int,
+            mana: Int,
           ) = {
-    this(name, hp, defense, weight, null)
+    this(name, hp, defense, weight, mana, null)
   }
 }

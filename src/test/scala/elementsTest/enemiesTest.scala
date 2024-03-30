@@ -43,7 +43,7 @@ class EnemyTest extends munit.FunSuite {
     }
     assertEquals(allowNegativeHP,false,"Negative HP shouldn't be allowed")
     assertEquals(allowNegativeDefense,false,"Negative Defense shouldn't be allowed")
-    assertEquals(allowNegativeAttack,false,"Negative Attack shouldn't be allowed")
+    assertEquals(allowNegativeAttack,false,"Negative or zero Attack shouldn't be allowed")
     assertEquals(allowNegativeWeight,false,"Negative or zero Weight shouldn't be allowed") // Speed related
   }
 }

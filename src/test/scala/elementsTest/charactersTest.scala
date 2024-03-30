@@ -12,13 +12,14 @@ class CharacterTest extends munit.FunSuite{
     //super.beforeEach(context)
     tstObjt1 = new Sword("Excal", 10, 20, tstSbjt1)
     tstSbjt1 = new Paladin("John", 80, 20, 5, tstObjt1)
-    tstSbjt2 = new WhiteMage("Doe", 200, 10, 25)
+    tstSbjt2 = new WhiteMage("Doe", 200, 10, 25, 150)
   }
 
   test("Limited Variable Ranges") {
     var allowNegativeHP: Boolean = false
     var allowNegativeDefense: Boolean = false
     var allowNegativeWeight: Boolean = false
+    var allowNegativeMana: Boolean = false
     try {
       tstSbjt3 = new Warrior("Joe", -1, 1, 1)
       allowNegativeHP = true
@@ -37,9 +38,16 @@ class CharacterTest extends munit.FunSuite{
     } catch {
       case _: java.lang.IllegalArgumentException =>
     }
+    try {
+      tstSbjt2 = new WhiteMage("Joe", 1, 1, 1, -1)
+      allowNegativeMana = true
+    } catch {
+      case _: java.lang.IllegalArgumentException =>
+    }
     assertEquals(allowNegativeHP,false,"Negative HP shouldn't be allowed")
     assertEquals(allowNegativeDefense,false,"Negative Defense shouldn't be allowed")
     assertEquals(allowNegativeWeight,false,"Negative or zero Weight shouldn't be allowed") // Speed related
+    assertEquals(allowNegativeMana,false,"Negative Mana shouldn't be allowed")
   }
 }
 
@@ -144,8 +152,8 @@ class BlackMageTest extends munit.FunSuite{
   override def beforeEach(context: BeforeEach): Unit = {
     //super.beforeEach(context)
     tstObjt1 = new Sword("Excal", 10, 20, tstSbjt2)
-    tstSbjt1 = new BlackMage("John", 80, 20, 5)
-    tstSbjt2 = new BlackMage("Doe", 200, 10, 25, tstObjt1)
+    tstSbjt1 = new BlackMage("John", 80, 20, 5, 100)
+    tstSbjt2 = new BlackMage("Doe", 200, 10, 25, 200, tstObjt1)
   }
 
   test("Weapon User") {
@@ -175,8 +183,8 @@ class WhiteMageTest extends munit.FunSuite{
   override def beforeEach(context: BeforeEach): Unit = {
     //super.beforeEach(context)
     tstObjt1 = new Wand("Excal", 10, 20, 10, tstSbjt2)
-    tstSbjt1 = new WhiteMage("John", 80, 20, 5)
-    tstSbjt2 = new WhiteMage("Doe", 200, 10, 25, tstObjt1)
+    tstSbjt1 = new WhiteMage("John", 80, 20, 5, 50)
+    tstSbjt2 = new WhiteMage("Doe", 200, 10, 25, 150, tstObjt1)
   }
 
   test("Weapon User") {
