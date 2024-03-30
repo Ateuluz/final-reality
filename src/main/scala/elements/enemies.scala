@@ -11,7 +11,7 @@ package elements
 class Enemy(val name: String, var hp: Int, val defense: Int, val attack: Int, val weight: Int) {
   require(hp >= 0, "Negative HP not allowed")
   require(defense >= 0, "Negative Defense not allowed")
-  require(attack > 0,  "Negative or zero Attack not allowed")
-  require(weight > 0,  "Negative or zero Weight not allowed")
+  require(attack > 0, "Negative or zero Attack not allowed")
+  require(weight > 0, "Negative or zero Weight not allowed")
 
 }
