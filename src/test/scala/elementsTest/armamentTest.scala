@@ -2,6 +2,43 @@ package elementsTest
 
 import elements.{Axe, Bow, Staff, Sword, Wand}
 
+class WeaponTest extends munit.FunSuite{
+  var tstSbjt1: Sword = _
+  var tstSbjt2: Staff = _
+
+  override def beforeEach(context: BeforeEach): Unit = {
+    tstSbjt1 = new Sword("Excal", 5, 10)
+    tstSbjt2 = new Staff("Claym", 20, 30, 25)
+  }
+
+  test("Limited Variable Ranges") {
+    var allowNegativeHP: Boolean = false
+    var allowNegativeWeight: Boolean = false
+    var allowNegativeMagicAttack: Boolean = false
+    try {
+      tstSbjt1 = new Sword("Excal", -1, 1)
+      allowNegativeHP = true
+    } catch {
+      case _: java.lang.IllegalArgumentException => false
+    }
+    try {
+      tstSbjt1 = new Sword("Excal", 1, -1)
+      allowNegativeWeight = true
+    } catch {
+      case _: java.lang.IllegalArgumentException => false
+    }
+    try {
+      tstSbjt2 = new Staff("Claym", 1, 1, -1)
+      allowNegativeMagicAttack = true
+    } catch {
+      case _: java.lang.IllegalArgumentException => false
+    }
+    assertEquals(allowNegativeHP,false,"Negative HP shouldn't be allowed")
+    assertEquals(allowNegativeWeight,false,"Negative or zero Weight shouldn't be allowed") // Speed related
+    assertEquals(allowNegativeMagicAttack,false,"Negative MagicAttack shouldn't be allowed")
+  }
+}
+
 class SwordTest extends munit.FunSuite() {
   var tstSbjt1: Sword = _
   var tstSbjt2: Sword = _
