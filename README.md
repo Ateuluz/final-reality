@@ -13,6 +13,7 @@ serve as an educational tool, teaching foundational programming concepts.
 - [Classes and constructors](#classes-and-constructors)
     - [Characters](#characters)
     - [Weapons](#weapons)
+    - [Enemies](#enemies)
 
 # Classes and constructors
 
@@ -84,6 +85,26 @@ The weapons are:
 - Magical Weapons:
   - Wand
   - Staff
+
+A weapon can be equipped by up to one character at a time. It can be exchanged douring said characters turn.
+
+## Enemies
+
+Enemies are character-like instances, they are what characters have to fight against in order to win a game. Since they are simpler in terms of complexity, their constructor class is written with no traits extending it. All parameters, attributes and methods will be placed there until more information about them is given.
+Enemies are instances of the class Enemy which garants all subinstances have:
+
+- A name.
+- An amount of life points (HP).
+- An attack value.
+- A defense stat.
+- A weight value.
+
+Out of this stats, they are required to have:
+
+- HP greater than or equal to 0.
+- Defense greater than or equal to 0.
+- Attack greater than 0.
+- Weight value greater than 0.
 
 ## License
 
