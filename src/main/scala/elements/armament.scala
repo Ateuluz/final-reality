@@ -9,6 +9,8 @@ trait Weapon {
   val weight: Int
   var owner: Character
 
+  require(attack >= 0, "Negative or zero Attack not allowed")
+  require(weight >= 0, "Negative or zero Weight not allowed")
 }
 
 /**
@@ -17,6 +19,8 @@ trait Weapon {
  */
 trait MagicalWeapon extends Weapon {
   val magicAttack: Int
+
+  require(magicAttack >= 0, "Negative or zero MagicAttack not allowed")
 }
 
 /**
