@@ -14,7 +14,7 @@ trait Character {
   var hp: Int;
   val defense: Int;
   val weight: Int;
-  val magic: Boolean;
+  //val magic: Boolean;
   var weapon: Weapon;
 
   require(hp >= 0, "Negative HP not allowed")
@@ -23,11 +23,11 @@ trait Character {
 }
 
 trait NonMagicalCharacter extends Character {
-  val magic: Boolean = false;
+  //val magic: Boolean = false;
 }
 
 trait MagicalCharacter extends Character {
-  val magic: Boolean = true;
+  //val magic: Boolean = true;
   var mana: Int
 
   require(mana >= 0, "Negative Mana not allowed")
