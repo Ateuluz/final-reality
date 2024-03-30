@@ -39,6 +39,8 @@ class Paladin (
                 val weight: Int,
                 var weapon: Weapon = null
               ) extends NonMagicalCharacter() with SwordBearer with AxeBearer {
+
+  this.valueCorrection()
   def this(
             name: String,
             hp: Int,
@@ -46,6 +48,13 @@ class Paladin (
             weight: Int,
           ) = {
     this(name, hp, defense, weight, null)
+  }
+
+  private def valueCorrection(): Unit = {
+    if (this.hp < 0) this.hp = 0
+    if (this.defense < 0) {
+      override val this.defense = 0
+    }
   }
 }
 

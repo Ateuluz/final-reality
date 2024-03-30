@@ -5,6 +5,7 @@ import elements.{AxeBearer, BlackMage, BowBearer, Ninja, Paladin, StaffUser, Swo
 class PaladinTest extends munit.FunSuite{
   var tstSbjt1: Paladin = _
   var tstSbjt2: Paladin = _
+  var tstSbjt3: Paladin = _
   var tstObjt1: Sword   = _
 
   override def beforeEach(context: BeforeEach): Unit = {
@@ -30,6 +31,28 @@ class PaladinTest extends munit.FunSuite{
   test("Null Weapon Ownership") {
     val expected: Weapon = null
     assertEquals(tstSbjt1.weapon,expected,"Weapon should be null")
+  }
+
+  //Yet to implement
+  test("Limited Variable Ranges") {
+    var allowNegativeHP: Boolean = false
+    var allowNegativeDefense: Boolean = false
+    var allowNegativeWeight: Boolean = false
+    try {
+      tstSbjt3 = new Paladin("Joe", -1, 0, 0)
+      allowNegativeHP = true
+    }
+    try {
+      tstSbjt3 = new Paladin("Joe", 0, -1, 0)
+      allowNegativeHP = true
+    }
+    try {
+      tstSbjt3 = new Paladin("Joe", 0, 0, -1)
+      allowNegativeHP = true
+    }
+    assertEquals(allowNegativeHP,false,"Negative HP not allowed")
+    assertEquals(allowNegativeDefense,false,"Negative Defense not allowed")
+    assertEquals(allowNegativeWeight,false,"Negative Weight not allowed") // Speed related
   }
 }
 
@@ -65,8 +88,8 @@ class WarriorTest extends munit.FunSuite{
 }
 
 class NinjaTest extends munit.FunSuite{
-  var tstSbjt1: Ninja = _
-  var tstSbjt2: Ninja = _
+  var tstSbjt1: Ninja   = _
+  var tstSbjt2: Ninja   = _
   var tstObjt1: Sword   = _
 
   override def beforeEach(context: BeforeEach): Unit = {
@@ -98,7 +121,7 @@ class NinjaTest extends munit.FunSuite{
 class BlackMageTest extends munit.FunSuite{
   var tstSbjt1: BlackMage = _
   var tstSbjt2: BlackMage = _
-  var tstObjt1: Sword   = _
+  var tstObjt1: Sword     = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     //super.beforeEach(context)
@@ -129,7 +152,7 @@ class BlackMageTest extends munit.FunSuite{
 class WhiteMageTest extends munit.FunSuite{
   var tstSbjt1: WhiteMage = _
   var tstSbjt2: WhiteMage = _
-  var tstObjt1: Wand   = _
+  var tstObjt1: Wand      = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     //super.beforeEach(context)
