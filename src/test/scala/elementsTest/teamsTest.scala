@@ -42,7 +42,7 @@ class EnemiesTest extends munit.FunSuite{
     assertEquals(actual,expected,"No more than 5 characters allowed")
   }
 
-  test("Adding Characters") {
+  test("Adding Enemies") {
     assertEquals(tstSbjt1.characters(0), null, "Party should be initiated without characters")
     tstSbjt1.addEnemy(tstSbjt3)
     assertEquals(tstSbjt1.characters(0), tstSbjt3, "Party should be initiated without characters")
