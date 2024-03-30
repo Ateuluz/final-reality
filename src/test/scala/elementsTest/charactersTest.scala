@@ -2,6 +2,47 @@ package elementsTest
 
 import elements.{AxeBearer, BlackMage, BowBearer, Ninja, Paladin, StaffUser, Sword, SwordBearer, Wand, WandUser, Warrior, Weapon, WhiteMage}
 
+class CharacterTest extends munit.FunSuite{
+  var tstSbjt1: Paladin   = _
+  var tstSbjt2: WhiteMage = _
+  var tstSbjt3: Warrior   = _
+  var tstObjt1: Sword     = _
+
+  override def beforeEach(context: BeforeEach): Unit = {
+    //super.beforeEach(context)
+    tstObjt1 = new Sword("Excal", 10, 20, tstSbjt1)
+    tstSbjt1 = new Paladin("John", 80, 20, 5, tstObjt1)
+    tstSbjt2 = new WhiteMage("Doe", 200, 10, 25)
+  }
+
+  test("Limited Variable Ranges") {
+    var allowNegativeHP: Boolean = false
+    var allowNegativeDefense: Boolean = false
+    var allowNegativeWeight: Boolean = false
+    try {
+      tstSbjt3 = new Warrior("Joe", -1, 1, 1)
+      allowNegativeHP = true
+    } catch {
+      case _: java.lang.IllegalArgumentException => false
+    }
+    try {
+      tstSbjt3 = new Warrior("Joe", 1, -1, 1)
+      allowNegativeDefense = true
+    } catch {
+      case _: java.lang.IllegalArgumentException => false
+    }
+    try {
+      tstSbjt3 = new Warrior("Joe", 1, 1, -1)
+      allowNegativeWeight = true
+    } catch {
+      case _: java.lang.IllegalArgumentException => false
+    }
+    assertEquals(allowNegativeHP,false,"Negative HP shouldn't be allowed")
+    assertEquals(allowNegativeDefense,false,"Negative Defense shouldn't be allowed")
+    assertEquals(allowNegativeWeight,false,"Negative or zero Weight shouldn't be allowed") // Speed related
+  }
+}
+
 class PaladinTest extends munit.FunSuite{
   var tstSbjt1: Paladin = _
   var tstSbjt2: Paladin = _
@@ -9,7 +50,6 @@ class PaladinTest extends munit.FunSuite{
   var tstObjt1: Sword   = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    //super.beforeEach(context)
     tstObjt1 = new Sword("Excal", 10, 20, tstSbjt2)
     tstSbjt1 = new Paladin("John", 80, 20, 5)
     tstSbjt2 = new Paladin("Doe", 200, 10, 25, tstObjt1)
@@ -31,33 +71,6 @@ class PaladinTest extends munit.FunSuite{
   test("Null Weapon Ownership") {
     val expected: Weapon = null
     assertEquals(tstSbjt1.weapon,expected,"Weapon should be null")
-  }
-
-  test("Limited Variable Ranges") {
-    var allowNegativeHP: Boolean = false
-    var allowNegativeDefense: Boolean = false
-    var allowNegativeWeight: Boolean = false
-    try {
-      tstSbjt3 = new Paladin("Joe", -1, 1, 1)
-      allowNegativeHP = true
-    } catch {
-      case _: java.lang.IllegalArgumentException => false
-    }
-    try {
-      tstSbjt3 = new Paladin("Joe", 1, -1, 1)
-      allowNegativeDefense = true
-    } catch {
-      case _: java.lang.IllegalArgumentException => false
-    }
-    try {
-      tstSbjt3 = new Paladin("Joe", 1, 1, -1)
-      allowNegativeWeight = true
-    } catch {
-      case _: java.lang.IllegalArgumentException => false
-    }
-    assertEquals(allowNegativeHP,false,"Negative HP shouldn't be allowed")
-    assertEquals(allowNegativeDefense,false,"Negative Defense shouldn't be allowed")
-    assertEquals(allowNegativeWeight,false,"Negative or zero Weight shouldn't be allowed") // Speed related
   }
 }
 
