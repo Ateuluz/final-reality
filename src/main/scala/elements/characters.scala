@@ -16,6 +16,10 @@ trait Character {
   val weight: Int;
   val magic: Boolean;
   var weapon: Weapon;
+
+  require(hp >= 0, "Negative HP not allowed")
+  require(defense >= 0, "Negative Defense not allowed")
+  require(weight > 0,  "Negative or zero Weight not allowed")
 }
 
 trait NonMagicalCharacter extends Character {
@@ -40,7 +44,6 @@ class Paladin (
                 var weapon: Weapon = null
               ) extends NonMagicalCharacter() with SwordBearer with AxeBearer {
 
-  this.valueCorrection()
   def this(
             name: String,
             hp: Int,
@@ -48,13 +51,6 @@ class Paladin (
             weight: Int,
           ) = {
     this(name, hp, defense, weight, null)
-  }
-
-  private def valueCorrection(): Unit = {
-    if (this.hp < 0) this.hp = 0
-    if (this.defense < 0) {
-      override val this.defense = 0
-    }
   }
 }
 

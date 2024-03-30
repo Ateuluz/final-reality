@@ -33,26 +33,31 @@ class PaladinTest extends munit.FunSuite{
     assertEquals(tstSbjt1.weapon,expected,"Weapon should be null")
   }
 
-  //Yet to implement
   test("Limited Variable Ranges") {
     var allowNegativeHP: Boolean = false
     var allowNegativeDefense: Boolean = false
     var allowNegativeWeight: Boolean = false
     try {
-      tstSbjt3 = new Paladin("Joe", -1, 0, 0)
+      tstSbjt3 = new Paladin("Joe", -1, 1, 1)
       allowNegativeHP = true
+    } catch {
+      case _: java.lang.IllegalArgumentException => false
     }
     try {
-      tstSbjt3 = new Paladin("Joe", 0, -1, 0)
-      allowNegativeHP = true
+      tstSbjt3 = new Paladin("Joe", 1, -1, 1)
+      allowNegativeDefense = true
+    } catch {
+      case _: java.lang.IllegalArgumentException => false
     }
     try {
-      tstSbjt3 = new Paladin("Joe", 0, 0, -1)
-      allowNegativeHP = true
+      tstSbjt3 = new Paladin("Joe", 1, 1, -1)
+      allowNegativeWeight = true
+    } catch {
+      case _: java.lang.IllegalArgumentException => false
     }
-    assertEquals(allowNegativeHP,false,"Negative HP not allowed")
-    assertEquals(allowNegativeDefense,false,"Negative Defense not allowed")
-    assertEquals(allowNegativeWeight,false,"Negative Weight not allowed") // Speed related
+    assertEquals(allowNegativeHP,false,"Negative HP shouldn't be allowed")
+    assertEquals(allowNegativeDefense,false,"Negative Defense shouldn't be allowed")
+    assertEquals(allowNegativeWeight,false,"Negative or zero Weight shouldn't be allowed") // Speed related
   }
 }
 
