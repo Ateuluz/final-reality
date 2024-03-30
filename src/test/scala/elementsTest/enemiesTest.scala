@@ -12,7 +12,38 @@ class EnemyTest extends munit.FunSuite {
     tstSbjt2 = new Enemy("Ross", 120, 15, 15, 60)
   }
 
-  test("???") {
-    val expected = ???
+  test("Limited Variable Ranges") {
+    var allowNegativeHP: Boolean = false
+    var allowNegativeDefense: Boolean = false
+    var allowNegativeAttack: Boolean = false
+    var allowNegativeWeight: Boolean = false
+    try {
+      tstSbjt1 = new Enemy("Joe", -1, 1, 1, 1)
+      allowNegativeHP = true
+    } catch {
+      case _: java.lang.IllegalArgumentException => false
+    }
+    try {
+      tstSbjt2 = new Enemy("Joe", 1, -1, 1, 1)
+      allowNegativeDefense = true
+    } catch {
+      case _: java.lang.IllegalArgumentException => false
+    }
+    try {
+      tstSbjt2 = new Enemy("Joe", 1, -1, 1, 1)
+      allowNegativeAttack = true
+    } catch {
+      case _: java.lang.IllegalArgumentException => false
+    }
+    try {
+      tstSbjt1 = new Enemy("Joe", 1, 1, 1, -1)
+      allowNegativeWeight = true
+    } catch {
+      case _: java.lang.IllegalArgumentException => false
+    }
+    assertEquals(allowNegativeHP,false,"Negative HP shouldn't be allowed")
+    assertEquals(allowNegativeDefense,false,"Negative Defense shouldn't be allowed")
+    assertEquals(allowNegativeAttack,false,"Negative Attack shouldn't be allowed")
+    assertEquals(allowNegativeWeight,false,"Negative or zero Weight shouldn't be allowed") // Speed related
   }
 }

@@ -9,5 +9,5 @@ package elements
  * @param weight  The weight of the enemy
  */
 class Enemy(val name: String, var hp: Int, val defense: Int, val attack: Int, val weight: Int) {
-  ???
+
 }
