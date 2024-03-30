@@ -21,25 +21,25 @@ class EnemyTest extends munit.FunSuite {
       tstSbjt1 = new Enemy("Joe", -1, 1, 1, 1)
       allowNegativeHP = true
     } catch {
-      case _: java.lang.IllegalArgumentException => false
+      case _: java.lang.IllegalArgumentException =>
     }
     try {
       tstSbjt2 = new Enemy("Joe", 1, -1, 1, 1)
       allowNegativeDefense = true
     } catch {
-      case _: java.lang.IllegalArgumentException => false
+      case _: java.lang.IllegalArgumentException =>
     }
     try {
       tstSbjt2 = new Enemy("Joe", 1, -1, 1, 1)
       allowNegativeAttack = true
     } catch {
-      case _: java.lang.IllegalArgumentException => false
+      case _: java.lang.IllegalArgumentException =>
     }
     try {
       tstSbjt1 = new Enemy("Joe", 1, 1, 1, -1)
       allowNegativeWeight = true
     } catch {
-      case _: java.lang.IllegalArgumentException => false
+      case _: java.lang.IllegalArgumentException =>
     }
     assertEquals(allowNegativeHP,false,"Negative HP shouldn't be allowed")
     assertEquals(allowNegativeDefense,false,"Negative Defense shouldn't be allowed")

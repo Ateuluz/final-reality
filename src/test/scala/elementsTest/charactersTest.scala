@@ -23,19 +23,19 @@ class CharacterTest extends munit.FunSuite{
       tstSbjt3 = new Warrior("Joe", -1, 1, 1)
       allowNegativeHP = true
     } catch {
-      case _: java.lang.IllegalArgumentException => false
+      case _: java.lang.IllegalArgumentException =>
     }
     try {
       tstSbjt3 = new Warrior("Joe", 1, -1, 1)
       allowNegativeDefense = true
     } catch {
-      case _: java.lang.IllegalArgumentException => false
+      case _: java.lang.IllegalArgumentException =>
     }
     try {
       tstSbjt3 = new Warrior("Joe", 1, 1, -1)
       allowNegativeWeight = true
     } catch {
-      case _: java.lang.IllegalArgumentException => false
+      case _: java.lang.IllegalArgumentException =>
     }
     assertEquals(allowNegativeHP,false,"Negative HP shouldn't be allowed")
     assertEquals(allowNegativeDefense,false,"Negative Defense shouldn't be allowed")
