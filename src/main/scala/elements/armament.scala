@@ -73,7 +73,7 @@ class Axe(
  * @param name   The name of the Sword
  * @param attack The attack value
  * @param weight The Sword's weight
- * @param owner  The Sword's owner
+ * @param _owner  The Sword's owner
  */
 class Bow(
            val name: String,

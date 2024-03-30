@@ -12,6 +12,7 @@ serve as an educational tool, teaching foundational programming concepts.
 
 - [Classes and constructors](#classes-and-constructors)
     - [Characters](#characters)
+    - [Weapons](#weapons)
 
 # Classes and constructors
 
@@ -35,7 +36,7 @@ Out of this stats, they are required to have:
 
 Aditionally, there's magical characters who have an aditional stat:
 
-- Mana (mana points), which controls their ability to use magic and is required to be greater than or equan to 0.
+- Mana (mana points), which controls their ability to use magic and is required to be greater than or equal to 0.
 
 At last, there's traits that define what character can use what [weapons](#weapons) they can use being quite self explainatory, which are as follows:
 
@@ -55,7 +56,36 @@ The characters and their respective weapons are:
   - White Mage (WandUser, StaffUser, BowBearer)
   - Black Mage (WandUser, StaffUser, SwordBearer)
 
-# License
+## Weapons
+
+Weapons are a crusial part of the game as they can be equipped and used in combat. Their functionality is to give the [characters](#characters) the capacity to damage their opponents.
+Weapons are instances of the trait Weapon which garants all subinstances have:
+
+- A name.
+- An attack value.
+- A weight value.
+- An owner.
+
+Out of this stats, they are required to have:
+
+- Attack greater than or equal to 0.
+- Weight value greater than or equal to 0.
+
+Aditionally, there's magical weapons who have an aditional stat:
+
+- Magic Attack, which controls their ability to use spells and is required to be greater than or equal to 0.
+
+The weapons are:
+
+- Common Weapons:
+  - Sword
+  - Axe
+  - Bow
+- Magical Weapons:
+  - Wand
+  - Staff
+
+## License
 
 This project is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
