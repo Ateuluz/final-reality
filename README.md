@@ -14,6 +14,7 @@ serve as an educational tool, teaching foundational programming concepts.
     - [Characters](#characters)
     - [Weapons](#weapons)
     - [Enemies](#enemies)
+    - [Teams](#teams)
 
 # Classes and constructors
 
@@ -105,6 +106,23 @@ Out of this stats, they are required to have:
 - Defense greater than or equal to 0.
 - Attack greater than 0.
 - Weight value greater than 0.
+
+## Teams
+
+Both characters and Enemies are organized in teams. Each team has a specified capacity for members.
+The teams are represented as Array instances and its length is decided uppon creation. The teams are:
+
+- Party (Exactly 3 Character instances)
+- Enemies (Up to 5 Enemy instances)
+
+### Adding/Removing Members from Teams
+
+When a new member tries to join a full team, it will just not be allowed and nothing will happen.
+Yet to implement a way to remove members.
+
+### Knowledge of defeat
+
+A team is required to know if it is defeated or not, the way it is implemented here is by checking if there is any alive member left on the team. By alive its understood as having HP greater than 0.
 
 ## License
 
