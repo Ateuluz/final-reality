@@ -1,16 +1,18 @@
 package elementsTest
 
-import elements.{Enemies, Enemy, Paladin, Party}
+import elements.{Enemies, Enemy, Paladin, Party, Warrior}
 
 class PartyTest extends munit.FunSuite{
   var tstSbjt1: Party   = _
   var tstSbjt2: Party   = _
   var tstSbjt3: Paladin = _
+  var tstSbjt4: Warrior = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     tstSbjt1 = new Party
     tstSbjt2 = new Party
     tstSbjt3 = new Paladin("Joe", 10, 20, 30)
+    tstSbjt4 = new Warrior("Doe", 0, 10, 20)
   }
 
   test("Party size") {
@@ -22,6 +24,19 @@ class PartyTest extends munit.FunSuite{
     assertEquals(tstSbjt1.characters(0), null, "Party should be initiated without characters")
     tstSbjt1.addCharacter(tstSbjt3)
     assertEquals(tstSbjt1.characters(0), tstSbjt3, "Party should be initiated without characters")
+  }
+
+  test("Knowing Defeat") {
+    tstSbjt1.addCharacter(tstSbjt4)
+    tstSbjt1.addCharacter(tstSbjt4)
+    tstSbjt1.addCharacter(tstSbjt4)
+    tstSbjt2.addCharacter(tstSbjt3)
+    tstSbjt2.addCharacter(tstSbjt3)
+    tstSbjt2.addCharacter(tstSbjt3)
+    val expected1 = true
+    val expected2 = false
+    assertEquals(tstSbjt1.isDefeated,expected1,"Should be defeated")
+    assertEquals(tstSbjt2.isDefeated,expected2,"Shouldn't be defeated")
   }
 }
 

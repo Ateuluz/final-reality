@@ -12,6 +12,10 @@ class Party {
       this.characters(2) = character
     }
   }
+
+  def isDefeated: Boolean = {
+    (this.characters(0).hp == 0) && (this.characters(1).hp == 0) && (this.characters(2).hp == 0)
+  }
 }
 
 class Enemies(quantity: Int) {
