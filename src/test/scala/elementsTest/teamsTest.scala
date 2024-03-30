@@ -21,7 +21,8 @@ class EnemiesTest extends munit.FunSuite{
   var tstSbjt2: Enemies = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    tstSbjt1 = new Enemies
+    tstSbjt1 = new Enemies(5)
+    tstSbjt2 = new Enemies(3)
   }
 
   test("Enemy party size") {

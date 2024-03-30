@@ -1,5 +1,9 @@
 package elements
 
-class Party
+class Party {
+  val characters: Array[Character] = Array.ofDim(3)
+}
 
-class Enemies
+class Enemies(quantity: Int) {
+  val characters: Array[Character] = Array.ofDim(quantity)
+}
