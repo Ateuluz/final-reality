@@ -59,7 +59,7 @@ class Axe(
            val name: String,
            val attack: Int,
            val weight: Int,
-           var _owner: SwordBearer
+           var _owner: AxeBearer
          ) extends NonMagicalWeapon {
   override var owner: Character = _owner
 
@@ -79,7 +79,7 @@ class Bow(
            val name: String,
            val attack: Int,
            val weight: Int,
-           var _owner: SwordBearer
+           var _owner: BowBearer
          ) extends NonMagicalWeapon {
   override var owner: Character = _owner
 
