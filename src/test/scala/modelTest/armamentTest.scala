@@ -1,6 +1,6 @@
-package elementsTest
+package modelTest
 
-import elements.{Axe, Bow, Staff, Sword, Wand}
+import model.armament.{Axe, Bow, Staff, Sword, Wand}
 
 class WeaponTest extends munit.FunSuite{
   var tstSbjt1: Sword = _

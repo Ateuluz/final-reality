@@ -1,6 +1,7 @@
-package elementsTest
+package modelTest
 
-import elements.{AxeBearer, BlackMage, BowBearer, Ninja, Paladin, StaffUser, Sword, SwordBearer, Wand, WandUser, Warrior, Weapon, WhiteMage}
+import model.characters.{AxeBearer, BlackMage, BowBearer, Ninja, Paladin, StaffUser, SwordBearer, WandUser, Warrior, WhiteMage}
+import model.armament.{Sword, Wand, Weapon}
 
 class CharacterTest extends munit.FunSuite{
   var tstSbjt1: Paladin   = _

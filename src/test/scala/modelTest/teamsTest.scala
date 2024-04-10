@@ -1,6 +1,9 @@
-package elementsTest
+package modelTest
 
-import elements.{Enemies, Enemy, Paladin, Party, Warrior}
+import model.characters.{Paladin, Warrior}
+import model.teams.{Enemies, Party}
+import model.enemies.Enemy
+
 
 class PartyTest extends munit.FunSuite{
   var tstSbjt1: Party   = _
