@@ -49,9 +49,9 @@ class SwordTest extends munit.FunSuite() {
     tstSbjt2 = new Sword("Claym", 20, 30)
   }
 
-  test("???") {
-    val expected = ???
-  }
+  //test("???") {
+  //  val expected = ???
+  //}
 }
 
 class AxeTest extends munit.FunSuite() {
@@ -64,9 +64,9 @@ class AxeTest extends munit.FunSuite() {
     tstSbjt2 = new Axe("Claym", 20, 30)
   }
 
-  test("???") {
-    val expected = ???
-  }
+  //test("???") {
+  //  val expected = ???
+  //}
 }
 
 class BowTest extends munit.FunSuite() {
@@ -79,9 +79,9 @@ class BowTest extends munit.FunSuite() {
     tstSbjt2 = new Bow("Claym", 20, 30)
   }
 
-  test("???") {
-    val expected = ???
-  }
+  //test("???") {
+  //  val expected = ???
+  //}
 }
 
 class WandTest extends munit.FunSuite() {
@@ -94,9 +94,9 @@ class WandTest extends munit.FunSuite() {
     tstSbjt2 = new Wand("Claym", 20, 30, 10)
   }
 
-  test("???") {
-    val expected = ???
-  }
+  //test("???") {
+  //  val expected = ???
+  //}
 }
 
 class StaffTest extends munit.FunSuite() {
@@ -109,9 +109,9 @@ class StaffTest extends munit.FunSuite() {
     tstSbjt2 = new Staff("Claym", 20, 30, 10)
   }
 
-  test("???") {
-    val expected = ???
-  }
+  //test("???") {
+  //  val expected = ???
+  //}
 }
 
 
