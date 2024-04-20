@@ -1,8 +1,9 @@
-package modelTest
+package modelTest.turnSchedulerTest
 
 import model.armament.{Bow, Sword, Wand}
 import model.characters.{Ninja, Paladin, WhiteMage}
 import model.enemies.Enemy
+import model.turnScheduler.TurnScheduler
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -17,26 +18,26 @@ class TurnSchedulerTest extends munit.FunSuite {
   var en1:   Enemy         = _
   var en2:   Enemy         = _
   override def beforeEach(context: BeforeEach): Unit = {
-    TrSch: TurnScheduler = new TurnScheduler()
-    ch1:   Paladin       = new Paladin("A", 100, 100, 100, wp1)
-    ch2:   WhiteMage     = new WhiteMage("B", 50, 50, 50, 100, wp2)
-    ch3:   Ninja         = new Ninja("C", 20, 20, 20, wp3)
-    wp1:   Sword         = new Sword("S", 100, 100, ch1)
-    wp2:   Wand          = new Wand("W", 50, 50, 50, ch2)
-    wp3:   Bow           = new Bow("X", 20, 20, ch3)
-    en1:   Enemy         = new Enemy("E1", 10, 10, 10, 10)
-    en2:   Enemy         = new Enemy("E1", 5, 5, 5, 5)
+    TrSch = new TurnScheduler
+    ch1   = new Paladin("A", 100, 100, 100, wp1)
+    ch2   = new WhiteMage("B", 50, 50, 50, 100, wp2)
+    ch3   = new Ninja("C", 20, 20, 20, wp3)
+    wp1   = new Sword("S", 100, 100, ch1)
+    wp2   = new Wand("W", 50, 50, 50, ch2)
+    wp3   = new Bow("X", 20, 20, ch3)
+    en1   = new Enemy("E1", 10, 10, 10, 10)
+    en2   = new Enemy("E1", 5, 5, 5, 5)
   }
 
   test("Add Character") {
-    val expected = ArrayBuffer(ch1)// define expected value
-    val actual = TrSch.getCharacters()// define actual value
-      assertEquals(expected, actual, "Character Not Added - Explanation")
+    val expected = ArrayBuffer[Any](ch1)// define expected value
+    val actual = TrSch.getCharacters// define actual value
+    assertEquals(expected, actual, "Character Not Added - Explanation")
   }
 
   test("Remove Character") {
-    val expected = ArrayBuffer(ch2)// define expected value
-    val actual = TrSch.getCharacters()// define actual value
+    val expected = ArrayBuffer[Any](ch2)// define expected value
+    val actual = TrSch.getCharacters// define actual value
       assertEquals(expected, actual, "Character Not Removed - Explanation")
   }
 
