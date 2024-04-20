@@ -29,6 +29,18 @@ class TurnSchedulerTest extends munit.FunSuite {
     en2   = new Enemy("E1", 5, 5, 5, 5)
   }
 
+  test("Has Characters") {
+    val expected = ArrayBuffer[Any]()// define expected value
+    val actual = TrSch.characters// define actual value
+    assertEquals(expected, actual, "Characters Not Defined - Explanation")
+  }
+
+  test("Has ActionBars") {
+    val expected = ArrayBuffer[Int]()// define expected value
+    val actual = TrSch.actionBars// define actual value
+    assertEquals(expected, actual, "Characters Not Defined - Explanation")
+  }
+
   test("Add Character") {
     TrSch.addCharacter(ch1)
     val expected = ArrayBuffer[Any](ch1)// define expected value
