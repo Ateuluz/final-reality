@@ -13,7 +13,12 @@ class TurnScheduler {
     this.characters
   }
 
+  def getActionBars: ArrayBuffer[Int] = {
+    this.actionBars
+  }
+
   def addCharacter(character:Any): Unit = {
     this.characters.addOne(character)
+    this.actionBars.addOne(0)
   }
 }
