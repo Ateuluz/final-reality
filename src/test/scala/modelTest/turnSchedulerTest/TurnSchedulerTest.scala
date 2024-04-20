@@ -30,6 +30,7 @@ class TurnSchedulerTest extends munit.FunSuite {
   }
 
   test("Add Character") {
+    TrSch.addCharacter(ch1)
     val expected = ArrayBuffer[Any](ch1)// define expected value
     val actual = TrSch.getCharacters// define actual value
     assertEquals(expected, actual, "Character Not Added - Explanation")
