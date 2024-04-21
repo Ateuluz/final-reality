@@ -37,7 +37,7 @@ class TurnSchedulerTest extends munit.FunSuite {
 
   test("Has ActionBars") {
     val expected = ArrayBuffer[Int]()// define expected value
-    val actual = TrSch.actionBars// define actual value
+    val actual = TrSch.getActionBars// define actual value
     assertEquals(expected, actual, "Characters Not Defined - Explanation")
   }
 
@@ -52,15 +52,28 @@ class TurnSchedulerTest extends munit.FunSuite {
 
   test("Get Single Action Bar") {
     TrSch.addCharacter(ch1)
-    val expected = 0// define expected value
-    val actual = TrSch.getActionBar(ch1)// define actual value
-    assertEquals(expected, actual, "Character Not Added - Explanation")
+    val expected1 = 0// define expected value
+    val actual1 = TrSch.getActionBar(ch1)// define actual value
+    assertEquals(expected1, actual1, "Character Not Added - Explanation")
+
+    val expected2 = -1// define expected value
+    val actual2 = TrSch.getActionBar(ch2)// define actual value
+    assertEquals(expected2, actual2, "Character Not Added - Explanation")
   }
 
   test("Calculate Max Action Bar") {
-    val expected = 150// define expected value
-    val actual = TrSch.getActionBarMax(ch1)// define actual value
-      assertEquals(expected, actual, "Max Action Bar Calculation Incorrect - Explanation")
+    val expected1 = 150// define expected value
+    val actual1 = TrSch.getActionBarMax(ch1)// define actual value
+      assertEquals(expected1, actual1, "Max Action Bar Calculation Incorrect - Explanation")
+    val expected2 = 10// define expected value
+    val actual2 = TrSch.getActionBarMax(en1)// define actual value
+      assertEquals(expected2, actual2, "Max Action Bar Calculation Incorrect - Explanation")
+
+    val exception = intercept[IllegalArgumentException] {
+      TrSch.getActionBarMax(wp1)
+    }
+    assert(exception.isInstanceOf[IllegalArgumentException])
+    assert(exception.getMessage == "Invalid class")
   }
 
   test("Track Action Bars") {
@@ -83,6 +96,7 @@ class TurnSchedulerTest extends munit.FunSuite {
     TrSch.addCharacter(ch1)
     TrSch.raiseActionBars(999)
     TrSch.reset(TrSch.getCharacters(0))
+    TrSch.reset(ch2)
     val expected = 0// define expected value
     val actual = TrSch.getActionBars(0)// define actual value
       assertEquals(expected, actual, "Action Bar Reset Failed - Explanation")
@@ -90,16 +104,24 @@ class TurnSchedulerTest extends munit.FunSuite {
 
   test("Check Action Bar Full") {
     TrSch.addCharacter(ch1)
-    TrSch.raiseActionBars(TrSch.getActionBarMax(ch1))
-    val expected = true// define expected value
-    val actual = TrSch.isFull(TrSch.getCharacters(0))// define actual value
-      assertEquals(expected, actual, "Action Bar Not Full - Explanation")
+    TrSch.addCharacter(ch2)
+    TrSch.raiseActionBars(TrSch.getActionBarMax(ch2))
+    val expected1 = false// define expected value
+    val actual1 = TrSch.isFull(TrSch.getCharacters(0))// define actual value
+      assertEquals(expected1, actual1, "Action Bar Full - Explanation")
+    val expected2 = true// define expected value
+    val actual2 = TrSch.isFull(TrSch.getCharacters(1))// define actual value
+      assertEquals(expected2, actual2, "Action Bar Not Full - Explanation")
+    val expected3 = false// define expected value
+    val actual3 = TrSch.isFull(ch3)// define actual value
+      assertEquals(expected3, actual3, "Action Bar Exists - Explanation")
   }
 
   test("Return Characters with Full Bars, Ordered Descending by Surplus") {
     TrSch.addCharacter(ch1)
     TrSch.addCharacter(ch2)
     TrSch.addCharacter(ch3)
+    TrSch.raiseActionBars(TrSch.getActionBarMax(ch1)-1)
     val expected = ArrayBuffer[Any](ch3, ch2)// define expected value
     val actual   = TrSch.getCharactersFull// define actual value
       assertEquals(expected, actual, "Incorrect Characters Returned - Explanation")

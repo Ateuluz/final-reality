@@ -105,7 +105,7 @@ class TurnScheduler {
     if (characterIndex != -1) {
       this.actionBars(characterIndex) = 0
     } else {
-      println("Character not found in this.characters")
+      println(s"Character not found in this.characters : reset $character")
     }
   }
 
