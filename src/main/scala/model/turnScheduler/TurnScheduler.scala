@@ -21,4 +21,12 @@ class TurnScheduler {
     this.characters.addOne(character)
     this.actionBars.addOne(0)
   }
+
+  def removeCharacter(character: Any): Any = {
+    val idx: Int = this.characters.indexOf(character)
+    if (idx >= 0) {
+      this.characters.remove(idx)
+      this.actionBars.remove(idx)
+    }
+  }
 }
