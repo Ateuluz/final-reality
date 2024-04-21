@@ -99,7 +99,14 @@ class TurnScheduler {
    * @param character
    * @return action bar at/over max
    */
-  def isFull(character: Any): Boolean = {}
+  def isFull(character: Any): Boolean = {
+    val characterIndex = this.characters.indexOf(character)
+    if (characterIndex != -1) {
+      this.actionBars(characterIndex) >= this.getActionBarMax(character)
+    } else {
+      false
+    }
+  }
 
   /**
    * Get descending array of all characters with action bar at/over max
