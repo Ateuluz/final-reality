@@ -2,6 +2,15 @@ package model.characters
 
 import model.armament.Weapon
 
+/**
+ *
+ * @param name    Name given to the mage
+ * @param hp      Health points
+ * @param defense Defense value
+ * @param weight  Weight of the mage
+ * @param mana    Mana capacity
+ * @param weapon  Weapon equipped
+ */
 class WhiteMage (
                   val name: String,
                   var hp: Int,
