@@ -41,41 +41,44 @@ class TurnSchedulerTest extends munit.FunSuite {
     assertEquals(expected, actual, "Characters Not Defined - Explanation")
   }
 
-  test("Add Character") {
+  test("Add and Remove Characters") {
     TrSch.addCharacter(ch1)
-    val expected = ArrayBuffer[Any](ch1)// define expected value
-    val actual = TrSch.getCharacters// define actual value
-    assertEquals(expected, actual, "Character Not Added - Explanation")
-  }
-
-  test("Remove Character") {
+    TrSch.addCharacter(ch2)
+    TrSch.removeCharacter(ch1)
     val expected = ArrayBuffer[Any](ch2)// define expected value
     val actual = TrSch.getCharacters// define actual value
-      assertEquals(expected, actual, "Character Not Removed - Explanation")
+      assertEquals(expected, actual, "Character Not Added - Explanation")
   }
 
   test("Calculate Max Action Bar") {
-    val expected = // define expected value
-    val actual = TrSch.getMax()// define actual value
+    val expected = 150// define expected value
+    val actual = TrSch.getMax(ch1)// define actual value
       assertEquals(expected, actual, "Max Action Bar Calculation Incorrect - Explanation")
   }
 
   test("Track Action Bars") {
-    val expected = // define expected value
-    val actual = TrSch.getAll()// define actual value
+    TrSch.addCharacter(ch1)
+    val expected = ArrayBuffer[Int](0)// define expected value
+    val actual = TrSch.getActionBars// define actual value
       assertEquals(expected, actual, "Action Bars Tracking Incorrect - Explanation")
   }
 
-  test("Reset Action Bar") {
-    val expected = // define expected value
-    val actual = TrSch.reset(ch1)// define actual value
-      assertEquals(expected, actual, "Action Bar Reset Failed - Explanation")
+  test("Raise All Action Bars") {
+    TrSch.addCharacter(ch1)
+    TrSch.addCharacter(ch2)
+    TrSch.raiseActionBars
+    val expected = ArrayBuffer[Int](10, 10)// define expected value
+    val actual = TrSch.getActionBars// define actual value
+      assertEquals(expected, actual, "Action Bars Not Raised Successfully - Explanation")
   }
 
-  test("Raise All Action Bars") {
-    val expected = // define expected value
-    val actual = TrSch.raise()// define actual value
-      assertEquals(expected, actual, "Action Bars Not Raised Successfully - Explanation")
+  test("Reset Action Bar") {
+    TrSch.addCharacter(ch1)
+    TrSch.raiseActionBars
+    TrSch.reset(TrSch.getCharacters(0))
+    val expected = 0// define expected value
+    val actual = TrSch.getActionBars(0)// define actual value
+      assertEquals(expected, actual, "Action Bar Reset Failed - Explanation")
   }
 
   test("Check Action Bar Full") {
