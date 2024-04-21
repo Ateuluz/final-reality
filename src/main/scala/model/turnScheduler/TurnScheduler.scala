@@ -85,7 +85,14 @@ class TurnScheduler {
    * Reset a character's action bar
    * @param character
    */
-  def reset(character: Any): Unit = {}
+  def reset(character: Any): Unit = {
+    val characterIndex = this.characters.indexOf(character)
+    if (characterIndex != -1) {
+      this.actionBars(characterIndex) = 0
+    } else {
+      println("Character not found in this.characters")
+    }
+  }
 
   /**
    * Return if a character is ready to take action
