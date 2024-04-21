@@ -1,6 +1,6 @@
 package modelTest.armamentTest
 
-import bow.Bow
+import model.armament.bow.Bow
 import model.armament.axe.Axe
 import model.armament.staff.Staff
 import model.armament.sword.Sword
