@@ -50,6 +50,13 @@ class TurnSchedulerTest extends munit.FunSuite {
       assertEquals(expected, actual, "Character Not Added - Explanation")
   }
 
+  test("Get Single Action Bar") {
+    TrSch.addCharacter(ch1)
+    val expected = 0// define expected value
+    val actual = TrSch.getActionBar(ch1)// define actual value
+    assertEquals(expected, actual, "Character Not Added - Explanation")
+  }
+
   test("Calculate Max Action Bar") {
     val expected = 150// define expected value
     val actual = TrSch.getActionBarMax(ch1)// define actual value

@@ -35,6 +35,20 @@ class TurnScheduler {
   }
 
   /**
+   * Get the action bar of a single character if stored else -1
+   * @param character
+   * @return action bar
+   */
+  def getActionBar(character: Any): Int = {
+    val characterIndex = this.characters.indexOf(character)
+    if (characterIndex != -1) {
+      this.actionBars(characterIndex)
+    } else {
+      -1
+    }
+  }
+
+  /**
    * Add a character and assign it an actionbar
    * @param character
    */
@@ -68,6 +82,7 @@ class TurnScheduler {
       case char: Enemy => char.weight
 
       case _ => throw new IllegalArgumentException("Invalid class")
+      //Perhaps 0, might change
     }
   }
 
@@ -112,7 +127,18 @@ class TurnScheduler {
    * Get descending array of all characters with action bar at/over max
    * @return characters ready to take action
    */
-  def getCharactersFull: ArrayBuffer[Any] = {}
+  def getCharactersFull: ArrayBuffer[Any] = {
+    val auxArr: ArrayBuffer[Any] = ArrayBuffer[Any]()
+    for (char <- this.characters) {
+      if (this.getActionBarMax(char) <= this.getActionBar(char)) {
+        auxArr.addOne(char)
+      }
+    }
+    def aux(char: Any): Int = {
+      this.getActionBarMax(char) - this.getActionBar(char)
+    }
+    auxArr.sortBy(aux)
+  }
 
   /**
    * Get character to whom the current turn belongs to
