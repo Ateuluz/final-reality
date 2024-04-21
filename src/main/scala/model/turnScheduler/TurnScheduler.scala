@@ -57,10 +57,19 @@ class TurnScheduler {
 
   /**
    * Return action bar max value of a given character
+   * Should there be a decimal max, it'll return the ceil
    * @param character
    * @return character's max action bar value
    */
-  def getActionBarMax(character: Any): Int = {}
+  def getActionBarMax(character: Any): Int = {
+    character match {
+      case char: Character => (char.weight.toFloat + char.weapon.weight.toFloat / 2).ceil.toInt
+
+      case char: Enemy => char.weight
+
+      case _ => throw new IllegalArgumentException("Invalid class")
+    }
+  }
 
   /**
    * Raise all action bars by a constant k
