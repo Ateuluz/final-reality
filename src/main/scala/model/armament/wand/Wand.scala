@@ -1,6 +1,7 @@
-package model.armament
+package model.armament.wand
 
-import model.characters.{StaffUser, Character}
+import model.armament.MagicalWeapon
+import model.characters.{Character, WandUser}
 
 /**
  *
@@ -10,13 +11,13 @@ import model.characters.{StaffUser, Character}
  * @param magicAttack The magic attack value
  * @param _owner      The Sword's owner
  */
-class Staff (
-              val name: String,
-              val attack: Int,
-              val weight: Int,
-              val magicAttack: Int,
-              var _owner: StaffUser,
-            ) extends MagicalWeapon {
+class Wand (
+             val name: String,
+             val attack: Int,
+             val weight: Int,
+             val magicAttack: Int,
+             var _owner: WandUser,
+           ) extends MagicalWeapon {
   override var owner: Character = _owner
 
   def this(name: String, attack: Int, weight: Int, magicAttack: Int) = {

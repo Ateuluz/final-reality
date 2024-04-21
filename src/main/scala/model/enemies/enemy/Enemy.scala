@@ -1,4 +1,4 @@
-package model.enemies
+package model.enemies.enemy
 
 /** Define the basic traits of an enemy
  *

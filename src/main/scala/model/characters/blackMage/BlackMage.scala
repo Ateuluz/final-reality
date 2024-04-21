@@ -1,6 +1,7 @@
-package model.characters
+package model.characters.blackMage
 
 import model.armament.Weapon
+import model.characters.{MagicalCharacter, StaffUser, SwordBearer, WandUser}
 
 class BlackMage (
                   val name: String,

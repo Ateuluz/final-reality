@@ -1,8 +1,10 @@
-package modelTest
+package modelTest.teamsTest
 
-import model.characters.{Paladin, Warrior}
-import model.teams.{Enemies, Party}
-import model.enemies.Enemy
+import model.characters.paladin.Paladin
+import model.characters.warrior.Warrior
+import model.enemies.enemy.Enemy
+import model.teams.enemies.Enemies
+import model.teams.party.Party
 
 
 class PartyTest extends munit.FunSuite{

@@ -1,5 +1,6 @@
-package model.armament
+package bow
 
+import model.armament.NonMagicalWeapon
 import model.characters.{BowBearer, Character}
 
 /**

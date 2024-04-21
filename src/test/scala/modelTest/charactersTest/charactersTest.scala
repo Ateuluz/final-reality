@@ -1,7 +1,14 @@
-package modelTest
+package modelTest.charactersTest
 
-import model.characters.{AxeBearer, BlackMage, BowBearer, Ninja, Paladin, StaffUser, SwordBearer, WandUser, Warrior, WhiteMage}
-import model.armament.{Sword, Wand, Weapon}
+import model.armament.Weapon
+import model.armament.sword.Sword
+import model.armament.wand.Wand
+import model.characters._
+import model.characters.blackMage.BlackMage
+import model.characters.ninja.Ninja
+import model.characters.paladin.Paladin
+import model.characters.warrior.Warrior
+import model.characters.whiteMage.WhiteMage
 
 class CharacterTest extends munit.FunSuite{
   var tstSbjt1: Paladin   = _

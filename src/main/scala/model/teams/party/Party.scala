@@ -1,4 +1,4 @@
-package model.teams
+package model.teams.party
 
 import model.characters.Character
 

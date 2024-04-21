@@ -1,8 +1,12 @@
 package modelTest.turnSchedulerTest
 
-import model.armament.{Bow, Sword, Wand}
-import model.characters.{Ninja, Paladin, WhiteMage}
-import model.enemies.Enemy
+import bow.Bow
+import model.armament.sword.Sword
+import model.armament.wand.Wand
+import model.characters.ninja.Ninja
+import model.characters.paladin.Paladin
+import model.characters.whiteMage.WhiteMage
+import model.enemies.enemy.Enemy
 import model.turnScheduler.TurnScheduler
 
 import scala.collection.mutable.ArrayBuffer

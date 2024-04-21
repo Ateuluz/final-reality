@@ -1,6 +1,7 @@
-package model.characters
+package model.characters.warrior
 
 import model.armament.Weapon
+import model.characters.{AxeBearer, BowBearer, NonMagicalCharacter, SwordBearer}
 
 class Warrior (
                 val name: String,
