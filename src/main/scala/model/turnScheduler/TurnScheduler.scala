@@ -75,13 +75,17 @@ class TurnScheduler {
    * Raise all action bars by a constant k
    * @param k constant
    */
-  def raiseActionBars(k: Int): Uint = {}
+  def raiseActionBars(k: Int): Unit = {
+    for (i <- this.actionBars.indices) {
+      this.actionBars(i) += k
+    }
+  }
 
   /**
    * Reset a character's action bar
    * @param character
    */
-  def reset(character: Any): Uint = {}
+  def reset(character: Any): Unit = {}
 
   /**
    * Return if a character is ready to take action
