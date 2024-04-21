@@ -36,7 +36,7 @@ class TurnScheduler {
 
   /**
    * Get the action bar of a single character if stored else -1
-   * @param character
+   * @param character Who's action bar we want
    * @return action bar
    */
   def getActionBar(character: Any): Int = {
@@ -50,7 +50,7 @@ class TurnScheduler {
 
   /**
    * Add a character and assign it an actionbar
-   * @param character
+   * @param character New character to store
    */
   def addCharacter(character:Any): Unit = {
     this.characters.addOne(character)
@@ -59,7 +59,7 @@ class TurnScheduler {
 
   /**
    * Removes a character and its action bar
-   * @param character
+   * @param character Character to be removed along with action bar
    */
   def removeCharacter(character: Any): Unit = {
     val idx: Int = this.characters.indexOf(character)
@@ -72,12 +72,12 @@ class TurnScheduler {
   /**
    * Return action bar max value of a given character
    * Should there be a decimal max, it'll return the ceil
-   * @param character
+   * @param character Who's max action bar value we want
    * @return character's max action bar value
    */
   def getActionBarMax(character: Any): Int = {
     character match {
-      case char: Character => (char.weight.toFloat + char.weapon.weight.toFloat / 2).ceil.toInt
+      case char: Character => char.weight + (char.weapon.weight.toFloat / 2).ceil.toInt
 
       case char: Enemy => char.weight
 
@@ -98,7 +98,7 @@ class TurnScheduler {
 
   /**
    * Reset a character's action bar
-   * @param character
+   * @param character Who's action bar we want to be reset
    */
   def reset(character: Any): Unit = {
     val characterIndex = this.characters.indexOf(character)
@@ -111,7 +111,7 @@ class TurnScheduler {
 
   /**
    * Return if a character is ready to take action
-   * @param character
+   * @param character The character to evaluate
    * @return action bar at/over max
    */
   def isFull(character: Any): Boolean = {
