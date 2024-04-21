@@ -52,7 +52,7 @@ class TurnSchedulerTest extends munit.FunSuite {
 
   test("Calculate Max Action Bar") {
     val expected = 150// define expected value
-    val actual = TrSch.getMax(ch1)// define actual value
+    val actual = TrSch.getActionBarMax(ch1)// define actual value
       assertEquals(expected, actual, "Max Action Bar Calculation Incorrect - Explanation")
   }
 
@@ -83,7 +83,7 @@ class TurnSchedulerTest extends munit.FunSuite {
 
   test("Check Action Bar Full") {
     TrSch.addCharacter(ch1)
-    TrSch.raiseActionBars(TrSch.getMax(ch1))
+    TrSch.raiseActionBars(TrSch.getActionBarMax(ch1))
     val expected = true// define expected value
     val actual = TrSch.isFull(TrSch.getCharacters(0))// define actual value
       assertEquals(expected, actual, "Action Bar Not Full - Explanation")
@@ -94,16 +94,16 @@ class TurnSchedulerTest extends munit.FunSuite {
     TrSch.addCharacter(ch2)
     TrSch.addCharacter(ch3)
     val expected = ArrayBuffer[Any](ch3, ch2)// define expected value
-    val actual = TrSch.getCharactersFull// define actual value
+    val actual   = TrSch.getCharactersFull// define actual value
       assertEquals(expected, actual, "Incorrect Characters Returned - Explanation")
   }
 
   test("Designate Turn") {
     TrSch.addCharacter(ch1)
     TrSch.addCharacter(ch2)
-    TrSch.raiseActionBars(TrSch.getMax(ch1))
-    val expected = ch2// define expected value
-    val actual = TrSch.getAtTurn// define actual value
+    TrSch.raiseActionBars(TrSch.getActionBarMax(ch1))
+    val expected: Any = ch2// define expected value
+    val actual:   Any = TrSch.getAtTurn// define actual value
       assertEquals(expected, actual, "Turn Not Designated - Explanation")
   }
 

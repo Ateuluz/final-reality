@@ -60,5 +60,36 @@ class TurnScheduler {
    * @param character
    * @return character's max action bar value
    */
-  def getMax(character: Any): Int = {}
+  def getActionBarMax(character: Any): Int = {}
+
+  /**
+   * Raise all action bars by a constant k
+   * @param k constant
+   */
+  def raiseActionBars(k: Int): Uint = {}
+
+  /**
+   * Reset a character's action bar
+   * @param character
+   */
+  def reset(character: Any): Uint = {}
+
+  /**
+   * Return if a character is ready to take action
+   * @param character
+   * @return action bar at/over max
+   */
+  def isFull(character: Any): Boolean = {}
+
+  /**
+   * Get descending array of all characters with action bar at/over max
+   * @return characters ready to take action
+   */
+  def getCharactersFull: ArrayBuffer[Any] = {}
+
+  /**
+   * Get character to whom the current turn belongs to
+   * @return character to take current turn
+   */
+  def getAtTurn: Any = {}
 }
