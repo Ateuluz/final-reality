@@ -66,7 +66,7 @@ class TurnSchedulerTest extends munit.FunSuite {
   test("Raise All Action Bars") {
     TrSch.addCharacter(ch1)
     TrSch.addCharacter(ch2)
-    TrSch.raiseActionBars
+    TrSch.raiseActionBars(10)
     val expected = ArrayBuffer[Int](10, 10)// define expected value
     val actual = TrSch.getActionBars// define actual value
       assertEquals(expected, actual, "Action Bars Not Raised Successfully - Explanation")
@@ -74,7 +74,7 @@ class TurnSchedulerTest extends munit.FunSuite {
 
   test("Reset Action Bar") {
     TrSch.addCharacter(ch1)
-    TrSch.raiseActionBars
+    TrSch.raiseActionBars(999)
     TrSch.reset(TrSch.getCharacters(0))
     val expected = 0// define expected value
     val actual = TrSch.getActionBars(0)// define actual value
@@ -82,20 +82,28 @@ class TurnSchedulerTest extends munit.FunSuite {
   }
 
   test("Check Action Bar Full") {
+    TrSch.addCharacter(ch1)
+    TrSch.raiseActionBars(TrSch.getMax(ch1))
     val expected = true// define expected value
-    val actual = TrSch.isFull(ch1)// define actual value
+    val actual = TrSch.isFull(TrSch.getCharacters(0))// define actual value
       assertEquals(expected, actual, "Action Bar Not Full - Explanation")
   }
 
   test("Return Characters with Full Bars, Ordered Descending by Surplus") {
-    val expected = ArrayBuffer(ch1, ch3)// define expected value
-    val actual = TrSch.getFull()// define actual value
+    TrSch.addCharacter(ch1)
+    TrSch.addCharacter(ch2)
+    TrSch.addCharacter(ch3)
+    val expected = ArrayBuffer[Any](ch3, ch2)// define expected value
+    val actual = TrSch.getCharactersFull// define actual value
       assertEquals(expected, actual, "Incorrect Characters Returned - Explanation")
   }
 
   test("Designate Turn") {
-    val expected = ch1// define expected value
-    val actual = TrSch.getTurn()// define actual value
+    TrSch.addCharacter(ch1)
+    TrSch.addCharacter(ch2)
+    TrSch.raiseActionBars(TrSch.getMax(ch1))
+    val expected = ch2// define expected value
+    val actual = TrSch.getAtTurn// define actual value
       assertEquals(expected, actual, "Turn Not Designated - Explanation")
   }
 
