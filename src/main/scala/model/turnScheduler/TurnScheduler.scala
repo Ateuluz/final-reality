@@ -144,5 +144,7 @@ class TurnScheduler {
    * Get character to whom the current turn belongs to
    * @return character to take current turn
    */
-  def getAtTurn: Any = {}
+  def getAtTurn: Any = {
+    getCharactersFull(0)
+  }
 }
