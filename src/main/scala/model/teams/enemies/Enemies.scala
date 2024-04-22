@@ -1,6 +1,6 @@
 package model.teams.enemies
 
-import model.enemies.enemy.Enemy
+import model.entities.enemies.enemy.Enemy
 
 class Enemies (quantity: Int) {
   val characters: Array[Enemy] = Array.ofDim[Enemy](quantity)

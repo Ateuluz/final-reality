@@ -2,8 +2,8 @@ package modelTest.charactersTest.whiteMageTest
 
 import model.armament.Weapon
 import model.armament.wand.Wand
-import model.characters.{AxeBearer, BowBearer, StaffUser, SwordBearer, WandUser}
-import model.characters.whiteMage.WhiteMage
+import model.entities.characters.{AxeBearer, BowBearer, StaffUser, SwordBearer, WandUser}
+import model.entities.characters.whiteMage.WhiteMage
 
 class WhiteMageTest extends munit.FunSuite{
   var tstSbjt1: WhiteMage = _

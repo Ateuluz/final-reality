@@ -1,7 +1,7 @@
-package model.characters.blackMage
+package model.entities.characters.blackMage
 
 import model.armament.Weapon
-import model.characters.{MagicalCharacter, StaffUser, SwordBearer, WandUser}
+import model.entities.characters.{MagicalCharacter, StaffUser, SwordBearer, WandUser}
 
 class BlackMage (
                   val name: String,

@@ -1,16 +1,15 @@
-package model.characters.paladin
+package model.entities.characters.warrior
 
 import model.armament.Weapon
-import model.characters.{AxeBearer, NonMagicalCharacter, SwordBearer}
+import model.entities.characters.{AxeBearer, BowBearer, NonMagicalCharacter, SwordBearer}
 
-class Paladin (
+class Warrior (
                 val name: String,
                 var hp: Int,
                 val defense: Int,
                 val weight: Int,
                 var weapon: Weapon
-              ) extends NonMagicalCharacter() with SwordBearer with AxeBearer {
-
+              ) extends NonMagicalCharacter() with SwordBearer with AxeBearer with BowBearer{
   def this(
             name: String,
             hp: Int,

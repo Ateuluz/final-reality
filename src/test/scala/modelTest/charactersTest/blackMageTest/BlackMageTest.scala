@@ -2,8 +2,8 @@ package modelTest.charactersTest.blackMageTest
 
 import model.armament.Weapon
 import model.armament.sword.Sword
-import model.characters.{AxeBearer, BowBearer, StaffUser, SwordBearer, WandUser}
-import model.characters.blackMage.BlackMage
+import model.entities.characters.{AxeBearer, BowBearer, StaffUser, SwordBearer, WandUser}
+import model.entities.characters.blackMage.BlackMage
 
 class BlackMageTest extends munit.FunSuite{
   var wp1: Sword     = _

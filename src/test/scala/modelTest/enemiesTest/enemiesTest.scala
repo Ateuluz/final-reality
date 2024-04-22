@@ -1,6 +1,6 @@
 package modelTest.enemiesTest
 
-import model.enemies.enemy.Enemy
+import model.entities.enemies.enemy.Enemy
 
 class EnemyTest extends munit.FunSuite {
   var tstSbjt1: Enemy = _

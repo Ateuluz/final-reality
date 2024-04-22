@@ -1,7 +1,7 @@
 package model.armament.wand
 
 import model.armament.MagicalWeapon
-import model.characters.{Character, WandUser}
+import model.entities.characters.{Character, WandUser}
 
 /**
  *

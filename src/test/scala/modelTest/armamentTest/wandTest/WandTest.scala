@@ -1,8 +1,8 @@
 package modelTest.armamentTest.wandTest
 
 import model.armament.wand.Wand
-import model.characters.WandUser
-import model.characters.whiteMage.WhiteMage
+import model.entities.characters.WandUser
+import model.entities.characters.whiteMage.WhiteMage
 
 class WandTest extends munit.FunSuite() {
   var ch1: WandUser = _

@@ -3,10 +3,10 @@ package modelTest.turnSchedulerTest
 import model.armament.bow.Bow
 import model.armament.sword.Sword
 import model.armament.wand.Wand
-import model.characters.ninja.Ninja
-import model.characters.paladin.Paladin
-import model.characters.whiteMage.WhiteMage
-import model.enemies.enemy.Enemy
+import model.entities.characters.ninja.Ninja
+import model.entities.characters.paladin.Paladin
+import model.entities.characters.whiteMage.WhiteMage
+import model.entities.enemies.enemy.Enemy
 import model.turnScheduler.TurnScheduler
 
 import scala.collection.mutable.ArrayBuffer

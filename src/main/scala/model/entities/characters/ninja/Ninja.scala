@@ -1,7 +1,7 @@
-package model.characters.ninja
+package model.entities.characters.ninja
 
 import model.armament.Weapon
-import model.characters.{BowBearer, NonMagicalCharacter, SwordBearer, WandUser}
+import model.entities.characters.{BowBearer, NonMagicalCharacter, SwordBearer, WandUser}
 
 class Ninja (
               val name: String,

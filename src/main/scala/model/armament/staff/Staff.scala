@@ -1,7 +1,7 @@
 package model.armament.staff
 
 import model.armament.MagicalWeapon
-import model.characters.{Character, StaffUser}
+import model.entities.characters.{Character, StaffUser}
 
 /**
  *

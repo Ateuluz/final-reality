@@ -1,7 +1,7 @@
-package model.characters.whiteMage
+package model.entities.characters.whiteMage
 
 import model.armament.Weapon
-import model.characters.{BowBearer, MagicalCharacter, StaffUser, WandUser}
+import model.entities.characters.{BowBearer, MagicalCharacter, StaffUser, WandUser}
 
 /**
  *

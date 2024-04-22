@@ -1,8 +1,8 @@
 package modelTest.armamentTest.bowTest
 
 import model.armament.bow.Bow
-import model.characters.BowBearer
-import model.characters.ninja.Ninja
+import model.entities.characters.BowBearer
+import model.entities.characters.ninja.Ninja
 
 class BowTest extends munit.FunSuite() {
   var ch1: BowBearer = _

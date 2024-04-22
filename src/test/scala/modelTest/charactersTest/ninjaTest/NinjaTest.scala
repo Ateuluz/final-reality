@@ -2,8 +2,8 @@ package modelTest.charactersTest.ninjaTest
 
 import model.armament.Weapon
 import model.armament.sword.Sword
-import model.characters.{AxeBearer, BowBearer, StaffUser, SwordBearer, WandUser}
-import model.characters.ninja.Ninja
+import model.entities.characters.{AxeBearer, BowBearer, StaffUser, SwordBearer, WandUser}
+import model.entities.characters.ninja.Ninja
 
 class NinjaTest extends munit.FunSuite{
   var tstSbjt1: Ninja   = _

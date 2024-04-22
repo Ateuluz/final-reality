@@ -1,7 +1,7 @@
 package model.armament.sword
 
 import model.armament.NonMagicalWeapon
-import model.characters.{Character, SwordBearer}
+import model.entities.characters.{Character, SwordBearer}
 
 /**
  *

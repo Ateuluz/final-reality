@@ -1,8 +1,8 @@
 package modelTest.armamentTest.axeTest
 
 import model.armament.axe.Axe
-import model.characters.AxeBearer
-import model.characters.paladin.Paladin
+import model.entities.characters.AxeBearer
+import model.entities.characters.paladin.Paladin
 
 class AxeTest extends munit.FunSuite() {
   var ch1: AxeBearer = _

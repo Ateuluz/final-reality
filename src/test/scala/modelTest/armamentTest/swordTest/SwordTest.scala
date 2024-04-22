@@ -1,8 +1,8 @@
 package modelTest.armamentTest.swordTest
 
 import model.armament.sword.Sword
-import model.characters.SwordBearer
-import model.characters.warrior.Warrior
+import model.entities.characters.SwordBearer
+import model.entities.characters.warrior.Warrior
 
 class SwordTest extends munit.FunSuite() {
   var ch1: SwordBearer = _

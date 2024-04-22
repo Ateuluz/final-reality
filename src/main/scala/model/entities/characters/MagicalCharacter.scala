@@ -1,4 +1,4 @@
-package model.characters
+package model.entities.characters
 
 trait MagicalCharacter {
   var mana: Int

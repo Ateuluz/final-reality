@@ -1,8 +1,8 @@
 package modelTest.armamentTest.staffTest
 
 import model.armament.staff.Staff
-import model.characters.StaffUser
-import model.characters.blackMage.BlackMage
+import model.entities.characters.StaffUser
+import model.entities.characters.blackMage.BlackMage
 
 class StaffTest extends munit.FunSuite() {
   var ch1: StaffUser = _

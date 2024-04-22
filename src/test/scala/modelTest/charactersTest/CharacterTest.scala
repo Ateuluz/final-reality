@@ -1,14 +1,9 @@
 package modelTest.charactersTest
 
-import model.armament.Weapon
 import model.armament.sword.Sword
-import model.armament.wand.Wand
-import model.characters._
-import model.characters.blackMage.BlackMage
-import model.characters.ninja.Ninja
-import model.characters.paladin.Paladin
-import model.characters.warrior.Warrior
-import model.characters.whiteMage.WhiteMage
+import model.entities.characters.paladin.Paladin
+import model.entities.characters.warrior.Warrior
+import model.entities.characters.whiteMage.WhiteMage
 
 class CharacterTest extends munit.FunSuite{
   var tstSbjt1: Paladin   = _

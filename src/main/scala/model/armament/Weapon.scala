@@ -1,6 +1,6 @@
 package model.armament
 
-import model.characters.Character
+import model.entities.characters.Character
 
 trait Weapon {
   val name: String

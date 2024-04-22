@@ -1,8 +1,8 @@
 package modelTest.teamsTest
 
-import model.characters.paladin.Paladin
-import model.characters.warrior.Warrior
-import model.enemies.enemy.Enemy
+import model.entities.characters.paladin.Paladin
+import model.entities.characters.warrior.Warrior
+import model.entities.enemies.enemy.Enemy
 import model.teams.enemies.Enemies
 import model.teams.party.Party
 

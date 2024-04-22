@@ -1,6 +1,7 @@
-package model.characters
+package model.entities.characters
 
 import model.armament.Weapon
+import model.entities.Entity
 
 /** Define the basic traits of a character
  *
@@ -11,7 +12,7 @@ import model.armament.Weapon
  * @param magic   The capacity to cast magic
  * @param weapon  The slot for equipping a weapon
  */
-trait Character {
+trait Character extends Entity {
   val name: String;
   var hp: Int;
   val defense: Int;

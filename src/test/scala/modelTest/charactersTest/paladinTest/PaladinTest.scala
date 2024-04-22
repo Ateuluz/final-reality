@@ -2,8 +2,8 @@ package modelTest.charactersTest.paladinTest
 
 import model.armament.Weapon
 import model.armament.sword.Sword
-import model.characters.{AxeBearer, BowBearer, StaffUser, SwordBearer, WandUser}
-import model.characters.paladin.Paladin
+import model.entities.characters.{AxeBearer, BowBearer, StaffUser, SwordBearer, WandUser}
+import model.entities.characters.paladin.Paladin
 
 class PaladinTest extends munit.FunSuite{
   var tstSbjt1: Paladin = _

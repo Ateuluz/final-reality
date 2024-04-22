@@ -1,6 +1,6 @@
 package model.teams.party
 
-import model.characters.Character
+import model.entities.characters.Character
 
 class Party {
   private val characters: Array[Character] = Array.ofDim[Character](3)
