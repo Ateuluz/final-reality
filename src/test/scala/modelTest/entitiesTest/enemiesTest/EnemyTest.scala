@@ -1,4 +1,4 @@
-package modelTest.enemiesTest
+package modelTest.entitiesTest.enemiesTest
 
 import model.entities.enemies.enemy.Enemy
 
