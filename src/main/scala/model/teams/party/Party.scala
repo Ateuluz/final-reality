@@ -10,7 +10,7 @@ class Party {
   }
 
   def addCharacter(character: Character): Unit = {
-    for (slot <- 0 until this.characters.length){
+    for (slot <- this.characters.indices){
       if (this.characters(slot) == null) {
         this.characters(slot) = character
         return
