@@ -3,7 +3,11 @@ package model.teams.party
 import model.characters.Character
 
 class Party {
-  val characters: Array[Character] = Array.ofDim[Character](3)
+  private val characters: Array[Character] = Array.ofDim[Character](3)
+
+  def getCharacters: Array[Character] = {
+    this.characters
+  }
 
   def addCharacter(character: Character): Unit = {
     for (slot <- 0 until this.characters.length){

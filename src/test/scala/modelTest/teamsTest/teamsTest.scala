@@ -8,63 +8,63 @@ import model.teams.party.Party
 
 
 class PartyTest extends munit.FunSuite{
-  var tstSbjt1: Party   = _
-  var tstSbjt2: Party   = _
-  var tstSbjt3: Paladin = _
-  var tstSbjt4: Warrior = _
+  var p1: Party   = _
+  var p2: Party   = _
+  var ch1: Paladin = _
+  var ch2: Warrior = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    tstSbjt1 = new Party
-    tstSbjt2 = new Party
-    tstSbjt3 = new Paladin("Joe", 10, 20, 30)
-    tstSbjt4 = new Warrior("Doe", 0, 10, 20)
+    p1 = new Party
+    p2 = new Party
+    ch1 = new Paladin("Joe", 10, 20, 30)
+    ch2 = new Warrior("Doe", 0, 10, 20)
   }
 
   test("Party size") {
     val expected = 3
-    assertEquals(tstSbjt1.characters.length,expected,"The number of characters allowed should be 3")
+    assertEquals(p1.getCharacters.length,expected,"The number of characters allowed should be 3")
   }
 
   test("Adding Characters") {
-    assertEquals(tstSbjt1.characters(0), null, "Party should be initiated without characters")
-    tstSbjt1.addCharacter(tstSbjt3)
-    assertEquals(tstSbjt1.characters(0), tstSbjt3, "Party should be initiated without characters")
+    assertEquals(p1.getCharacters(0), null, "Party should be initiated without characters")
+    p1.addCharacter(ch1)
+    assertEquals(p1.getCharacters(0), ch1, "Party should be initiated without characters")
   }
 
   test("Knowing Defeat") {
-    tstSbjt1.addCharacter(tstSbjt4)
-    tstSbjt1.addCharacter(tstSbjt4)
-    tstSbjt1.addCharacter(tstSbjt4)
-    tstSbjt2.addCharacter(tstSbjt3)
-    tstSbjt2.addCharacter(tstSbjt3)
-    tstSbjt2.addCharacter(tstSbjt3)
+    p1.addCharacter(ch2)
+    p1.addCharacter(ch2)
+    p1.addCharacter(ch2)
+    p2.addCharacter(ch1)
+    p2.addCharacter(ch1)
+    p2.addCharacter(ch1)
     val expected1 = true
     val expected2 = false
-    assertEquals(tstSbjt1.isDefeated,expected1,"Should be defeated")
-    assertEquals(tstSbjt2.isDefeated,expected2,"Shouldn't be defeated")
+    assertEquals(p1.isDefeated,expected1,"Should be defeated")
+    assertEquals(p2.isDefeated,expected2,"Shouldn't be defeated")
   }
 }
 
 class EnemiesTest extends munit.FunSuite{
-  var tstSbjt1: Enemies = _
-  var tstSbjt2: Enemies = _
-  var tstSbjt3: Enemy   = _
+  var p1: Enemies = _
+  var p2: Enemies = _
+  var ch1: Enemy   = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    tstSbjt1 = new Enemies(5)
-    tstSbjt2 = new Enemies(3)
-    tstSbjt3 = new Enemy("Joe", 10, 20, 30, 40)
+    p1 = new Enemies(5)
+    p2 = new Enemies(3)
+    ch1 = new Enemy("Joe", 10, 20, 30, 40)
   }
 
   test("Enemy party size") {
     val expected = true
-    val actual   = tstSbjt1.characters.length <= 5
+    val actual   = p1.characters.length <= 5
     assertEquals(actual,expected,"No more than 5 characters allowed")
   }
 
   test("Adding Enemies") {
-    assertEquals(tstSbjt1.characters(0), null, "Party should be initiated without characters")
-    tstSbjt1.addEnemy(tstSbjt3)
-    assertEquals(tstSbjt1.characters(0), tstSbjt3, "Party should be initiated without characters")
+    assertEquals(p1.characters(0), null, "Party should be initiated without characters")
+    p1.addEnemy(ch1)
+    assertEquals(p1.characters(0), ch1, "Party should be initiated without characters")
   }
 }
