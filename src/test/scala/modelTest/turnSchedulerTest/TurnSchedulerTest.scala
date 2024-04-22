@@ -1,6 +1,6 @@
 package modelTest.turnSchedulerTest
 
-import bow.Bow
+import model.armament.bow.Bow
 import model.armament.sword.Sword
 import model.armament.wand.Wand
 import model.characters.ninja.Ninja
