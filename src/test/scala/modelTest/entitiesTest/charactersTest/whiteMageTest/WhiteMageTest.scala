@@ -1,4 +1,4 @@
-package modelTest.charactersTest.whiteMageTest
+package modelTest.entitiesTest.charactersTest.whiteMageTest
 
 import model.armament.Weapon
 import model.armament.wand.Wand

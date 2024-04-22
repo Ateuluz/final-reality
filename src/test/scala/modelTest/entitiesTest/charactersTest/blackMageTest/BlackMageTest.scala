@@ -1,4 +1,4 @@
-package modelTest.charactersTest.blackMageTest
+package modelTest.entitiesTest.charactersTest.blackMageTest
 
 import model.armament.Weapon
 import model.armament.sword.Sword

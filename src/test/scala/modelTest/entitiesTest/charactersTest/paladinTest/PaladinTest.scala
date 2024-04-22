@@ -1,4 +1,4 @@
-package modelTest.charactersTest.paladinTest
+package modelTest.entitiesTest.charactersTest.paladinTest
 
 import model.armament.Weapon
 import model.armament.sword.Sword
