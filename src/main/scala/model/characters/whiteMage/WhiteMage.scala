@@ -18,7 +18,7 @@ class WhiteMage (
                   val defense: Int,
                   val weight: Int,
                   var mana: Int,
-                  var weapon: Weapon = null
+                  var weapon: Weapon
                 ) extends MagicalCharacter() with BowBearer with WandUser with StaffUser {
   def this(
             name: String,

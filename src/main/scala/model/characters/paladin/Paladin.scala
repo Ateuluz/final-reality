@@ -8,7 +8,7 @@ class Paladin (
                 var hp: Int,
                 val defense: Int,
                 val weight: Int,
-                var weapon: Weapon = null
+                var weapon: Weapon
               ) extends NonMagicalCharacter() with SwordBearer with AxeBearer {
 
   def this(
