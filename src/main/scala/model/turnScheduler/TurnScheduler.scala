@@ -12,11 +12,11 @@ class TurnScheduler {
   /**
    * Store characters
    */
-  val characters: ArrayBuffer[Any] = new ArrayBuffer[Any]()
+  private val characters: ArrayBuffer[Any] = new ArrayBuffer[Any]()
   /**
    * Store action bars
    */
-  val actionBars: ArrayBuffer[Int] = new ArrayBuffer[Int]()
+  private val actionBars: ArrayBuffer[Int] = new ArrayBuffer[Int]()
 
   /**
    * Get all stored characters
