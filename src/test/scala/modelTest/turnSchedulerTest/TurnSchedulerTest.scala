@@ -3,6 +3,7 @@ package modelTest.turnSchedulerTest
 import model.armament.bow.Bow
 import model.armament.sword.Sword
 import model.armament.wand.Wand
+import model.entities.IEntity
 import model.entities.characters.ninja.Ninja
 import model.entities.characters.paladin.Paladin
 import model.entities.characters.whiteMage.WhiteMage
@@ -23,18 +24,21 @@ class TurnSchedulerTest extends munit.FunSuite {
   var en2:   Enemy         = _
   override def beforeEach(context: BeforeEach): Unit = {
     TrSch = new TurnScheduler
-    ch1   = new Paladin("A", 100, 100, 100, wp1)
-    ch2   = new WhiteMage("B", 50, 50, 50, 100, wp2)
-    ch3   = new Ninja("C", 20, 20, 20, wp3)
-    wp1   = new Sword("S", 100, 100, ch1)
-    wp2   = new Wand("W", 50, 50, 50, ch2)
-    wp3   = new Bow("X", 20, 20, ch3)
+    ch1   = new Paladin("A", 100, 100, 100)
+    ch2   = new WhiteMage("B", 50, 50, 50, 100)
+    ch3   = new Ninja("C", 20, 20, 20)
+    wp1   = new Sword("S", 100, 100)
+    wp2   = new Wand("W", 50, 50, 50)
+    wp3   = new Bow("X", 20, 20)
     en1   = new Enemy("E1", 10, 10, 10, 10)
-    en2   = new Enemy("E1", 5, 5, 5, 5)
+    en2   = new Enemy("E2", 5, 5, 5, 5)
+    ch1.setWeapon(wp1)
+    ch2.setWeapon(wp2)
+    ch3.setWeapon(wp3)
   }
 
   test("Has Characters") {
-    val expected = ArrayBuffer[Any]()// define expected value
+    val expected = ArrayBuffer[IEntity]()// define expected value
     val actual = TrSch.getCharacters// define actual value
     assertEquals(expected, actual, "Characters Not Defined - Explanation")
   }
@@ -49,7 +53,7 @@ class TurnSchedulerTest extends munit.FunSuite {
     TrSch.addCharacter(ch1)
     TrSch.addCharacter(ch2)
     TrSch.removeCharacter(ch1)
-    val expected = ArrayBuffer[Any](ch2)// define expected value
+    val expected = ArrayBuffer[IEntity](ch2)// define expected value
     val actual = TrSch.getCharacters// define actual value
       assertEquals(expected, actual, "Character Not Added - Explanation")
   }
@@ -73,11 +77,12 @@ class TurnSchedulerTest extends munit.FunSuite {
     val actual2 = TrSch.getActionBarMax(en1)// define actual value
       assertEquals(expected2, actual2, "Max Action Bar Calculation Incorrect - Explanation")
 
-    val exception = intercept[IllegalArgumentException] {
-      TrSch.getActionBarMax(wp1)
-    }
-    assert(exception.isInstanceOf[IllegalArgumentException])
-    assert(exception.getMessage == "Invalid class")
+    //val exception = intercept[IllegalArgumentException] {
+    //  TrSch.getActionBarMax(wp1)
+    //}
+    //assert(exception.isInstanceOf[IllegalArgumentException])
+    //assert(exception.getMessage == "Invalid class")
+    /*Now type of argument is defined*/
   }
 
   test("Track Action Bars") {
@@ -126,7 +131,7 @@ class TurnSchedulerTest extends munit.FunSuite {
     TrSch.addCharacter(ch2)
     TrSch.addCharacter(ch3)
     TrSch.raiseActionBars(TrSch.getActionBarMax(ch1)-1)
-    val expected = ArrayBuffer[Any](ch3, ch2)// define expected value
+    val expected = ArrayBuffer[IEntity](ch3, ch2)// define expected value
     val actual   = TrSch.getCharactersFull// define actual value
       assertEquals(expected, actual, "Incorrect Characters Returned - Explanation")
   }

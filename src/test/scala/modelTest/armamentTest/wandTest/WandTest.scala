@@ -1,7 +1,7 @@
 package modelTest.armamentTest.wandTest
 
 import model.armament.wand.Wand
-import model.entities.characters.IWandUser
+import model.entities.characters.{ICharacter, IWandUser}
 import model.entities.characters.whiteMage.WhiteMage
 
 class WandTest extends munit.FunSuite() {
@@ -11,17 +11,21 @@ class WandTest extends munit.FunSuite() {
 
   override def beforeEach(context: BeforeEach): Unit = {
     //super.beforeEach(context)
-    ch1 = new WhiteMage("A", 10, 10, 10, 10, wp1)
-    wp1 = new Wand("B", 5, 10, 5, ch1)
+    ch1 = new WhiteMage("A", 10, 10, 10, 10)
+    wp1 = new Wand("B", 5, 10, 5)
+    ch1.setWeapon(wp1)
     wp2 = new Wand("C", 20, 30, 10)
   }
 
   test("Owner Check") {
     val expected1 = ch1
-    val actual1   = wp1.owner
-    assertEquals(actual1,expected1)
-    val expected2: IWandUser = null
-    val actual2             = wp2.owner
-    assertEquals(actual2,expected2)
+    val actual1 = wp1.getOwner
+    actual1 match {
+      case Some(actual: ICharacter) => assertEquals(actual, expected1)
+      case _ => fail("The returned instance is not an IAxeBearer")
+    }
+    val expected2 = true
+    val actual2 = wp2.getOwner.isEmpty
+    assertEquals(actual2,expected2,"The returned instance is not empty")
   }
 }

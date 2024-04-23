@@ -1,37 +1,41 @@
 package modelTest.entitiesTest.charactersTest.paladinTest
 
-import model.armament.AWeapon
+import model.armament.IWeapon
 import model.armament.sword.Sword
 import model.entities.characters.{IAxeBearer, IBowBearer, IStaffUser, ISwordBearer, IWandUser}
 import model.entities.characters.paladin.Paladin
 
 class PaladinTest extends munit.FunSuite{
-  var tstSbjt1: Paladin = _
-  var tstSbjt2: Paladin = _
-  var tstSbjt3: Paladin = _
-  var tstObjt1: Sword   = _
+  var ch1: Paladin = _
+  var ch2: Paladin = _
+  var wp1: Sword   = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    tstObjt1 = new Sword("Excal", 10, 20, tstSbjt2)
-    tstSbjt1 = new Paladin("John", 80, 20, 5)
-    tstSbjt2 = new Paladin("Doe", 200, 10, 25, tstObjt1)
+    wp1 = new Sword("Excal", 10, 20)
+    ch1 = new Paladin("John", 80, 20, 5)
+    ch2 = new Paladin("Doe", 200, 10, 25)
+    ch2.setWeapon(wp1)
   }
 
   test("Weapon User") {
-    assertEquals(tstSbjt1.isInstanceOf[ISwordBearer],true,"Should be allowed")
-    assertEquals(tstSbjt1.isInstanceOf[IAxeBearer],true,"Should be allowed")
-    assertEquals(tstSbjt1.isInstanceOf[IBowBearer],false,"Shouldn't be allowed")
-    assertEquals(tstSbjt1.isInstanceOf[IWandUser],false,"Shouldn't be allowed")
-    assertEquals(tstSbjt1.isInstanceOf[IStaffUser],false,"Shouldn't be allowed")
+    assertEquals(ch1.isInstanceOf[ISwordBearer],true,"Should be allowed")
+    assertEquals(ch1.isInstanceOf[IAxeBearer],true,"Should be allowed")
+    assertEquals(ch1.isInstanceOf[IBowBearer],false,"Shouldn't be allowed")
+    assertEquals(ch1.isInstanceOf[IWandUser],false,"Shouldn't be allowed")
+    assertEquals(ch1.isInstanceOf[IStaffUser],false,"Shouldn't be allowed")
   }
 
   test("Weapon Ownership") {
-    val expected: Sword = tstObjt1
-    assertEquals(tstSbjt2.weapon,expected,"Weapon should be the given")
+    val expected: Sword = wp1
+    val actual = ch2.getWeapon
+    actual match {
+      case Some(actual: IWeapon) => assertEquals(actual, expected)
+      case _ => fail("Weapon should be the given")
+    }
   }
 
   test("Null Weapon Ownership") {
-    val expected: AWeapon = null
-    assertEquals(tstSbjt1.weapon,expected,"Weapon should be null")
+    val expected = None
+    assertEquals(ch1.getWeapon,expected,"Weapon should be null")
   }
 }
