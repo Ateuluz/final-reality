@@ -18,9 +18,5 @@ class Enemy(
              attack: Int,
              weight: Int
            ) extends AEnemy(name,hp,defense,attack,weight) {
-  require(hp >= 0, "Negative HP not allowed")
-  require(defense >= 0, "Negative Defense not allowed")
-  require(attack > 0, "Negative or zero Attack not allowed")
-  require(weight > 0, "Negative or zero Weight not allowed")
 
 }
