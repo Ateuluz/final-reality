@@ -84,7 +84,7 @@ class TurnScheduler extends ITurnScheduler {
           case _ => 0
         }
 
-      case char: Enemy => char.weight
+      case char: Enemy => char.getWeight
 
       case _ => throw new IllegalArgumentException("Invalid class")
       //Perhaps 0, might change

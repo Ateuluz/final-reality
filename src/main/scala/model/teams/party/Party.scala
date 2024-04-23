@@ -19,6 +19,6 @@ class Party {
   }
 
   def isDefeated: Boolean = {
-    (this.characters(0).hp == 0) && (this.characters(1).hp == 0) && (this.characters(2).hp == 0)
+    (this.characters(0).getHp == 0) && (this.characters(1).getHp == 0) && (this.characters(2).getHp == 0)
   }
 }
