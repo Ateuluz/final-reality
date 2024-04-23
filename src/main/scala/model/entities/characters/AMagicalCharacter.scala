@@ -8,7 +8,7 @@ abstract class AMagicalCharacter(
                                   mana: Int
                                 ) extends ACharacter(name,hp,defense,weight)
                                     with IMagicalCharacter {
-  private var _mana: Int = mana
+  private var _mana: Int = constrainMana(mana)
   override def getMana: Int = _mana
   override def setMana(mana: Int): Unit = {
     _mana = constrainMana(mana)
