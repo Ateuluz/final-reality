@@ -1,5 +1,6 @@
 package model.turnScheduler
 
+import model.entities.IEntity
 import model.entities.characters.ICharacter
 import model.entities.enemies.enemy.Enemy
 
@@ -8,11 +9,11 @@ import scala.collection.mutable.ArrayBuffer
 /**
  * Class in charge of managing turns
  */
-class TurnScheduler {
+class TurnScheduler extends ITurnScheduler {
   /**
    * Store characters
    */
-  private val characters: ArrayBuffer[Any] = new ArrayBuffer[Any]()
+  private val characters: ArrayBuffer[IEntity] = new ArrayBuffer[IEntity]()
   /**
    * Store action bars
    */
@@ -22,7 +23,7 @@ class TurnScheduler {
    * Get all stored characters
    * @return listed characters
    */
-  def getCharacters: ArrayBuffer[Any] = {
+  override def getCharacters: ArrayBuffer[IEntity] = {
     this.characters
   }
 
@@ -30,7 +31,7 @@ class TurnScheduler {
    * Get all stored action bars
    * @return listed action bars
    */
-  def getActionBars: ArrayBuffer[Int] = {
+  override def getActionBars: ArrayBuffer[Int] = {
     this.actionBars
   }
 
@@ -39,7 +40,7 @@ class TurnScheduler {
    * @param character Who's action bar we want
    * @return action bar
    */
-  def getActionBar(character: Any): Int = {
+  override def getActionBar(character: IEntity): Int = {
     val characterIndex = this.characters.indexOf(character)
     if (characterIndex != -1) {
       this.actionBars(characterIndex)
@@ -52,7 +53,7 @@ class TurnScheduler {
    * Add a character and assign it an actionbar
    * @param character New character to store
    */
-  def addCharacter(character:Any): Unit = {
+  override def addCharacter(character:IEntity): Unit = {
     this.characters.addOne(character)
     this.actionBars.addOne(0)
   }
@@ -61,7 +62,7 @@ class TurnScheduler {
    * Removes a character and its action bar
    * @param character Character to be removed along with action bar
    */
-  def removeCharacter(character: Any): Unit = {
+  override def removeCharacter(character: IEntity): Unit = {
     val idx: Int = this.characters.indexOf(character)
     if (idx >= 0) {
       this.characters.remove(idx)
@@ -75,9 +76,13 @@ class TurnScheduler {
    * @param character Who's max action bar value we want
    * @return character's max action bar value
    */
-  def getActionBarMax(character: Any): Int = {
+  override def getActionBarMax(character: IEntity): Int = {
     character match {
-      case char: ICharacter => char.weight + (char.weapon.weight.toFloat / 2).ceil.toInt
+      case char: ICharacter =>
+        char.getWeapon match {
+          case Some(weapon) => char.getWeight + (weapon.getWeight.toFloat / 2).ceil.toInt
+          case _ => 0
+        }
 
       case char: Enemy => char.weight
 
@@ -90,7 +95,7 @@ class TurnScheduler {
    * Raise all action bars by a constant k
    * @param k constant
    */
-  def raiseActionBars(k: Int): Unit = {
+  override def raiseActionBars(k: Int): Unit = {
     for (i <- this.actionBars.indices) {
       this.actionBars(i) += k
     }
@@ -100,7 +105,7 @@ class TurnScheduler {
    * Reset a character's action bar
    * @param character Who's action bar we want to be reset
    */
-  def reset(character: Any): Unit = {
+  override def reset(character: IEntity): Unit = {
     val characterIndex = this.characters.indexOf(character)
     if (characterIndex != -1) {
       this.actionBars(characterIndex) = 0
@@ -114,7 +119,7 @@ class TurnScheduler {
    * @param character The character to evaluate
    * @return action bar at/over max
    */
-  def isFull(character: Any): Boolean = {
+  override def isFull(character: IEntity): Boolean = {
     val characterIndex = this.characters.indexOf(character)
     if (characterIndex != -1) {
       this.actionBars(characterIndex) >= this.getActionBarMax(character)
@@ -127,24 +132,24 @@ class TurnScheduler {
    * Get descending array of all characters with action bar at/over max
    * @return characters ready to take action
    */
-  def getCharactersFull: ArrayBuffer[Any] = {
-    val auxArr: ArrayBuffer[Any] = ArrayBuffer[Any]()
+  override def getCharactersFull: ArrayBuffer[IEntity] = {
+    val auxArr: ArrayBuffer[IEntity] = ArrayBuffer[IEntity]()
     for (char <- this.characters) {
       if (this.getActionBarMax(char) <= this.getActionBar(char)) {
         auxArr.addOne(char)
       }
     }
-    def aux(char: Any): Int = {
+    def auxFun(char: IEntity): Int = {
       this.getActionBarMax(char) - this.getActionBar(char)
     }
-    auxArr.sortBy(aux)
+    auxArr.sortBy(auxFun)
   }
 
   /**
    * Get character to whom the current turn belongs to
    * @return character to take current turn
    */
-  def getAtTurn: Any = {
+  override def getAtTurn: IEntity = {
     getCharactersFull(0)
   }
 }
