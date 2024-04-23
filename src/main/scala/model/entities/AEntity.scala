@@ -1,25 +1,47 @@
 package model.entities
 
 abstract class AEntity (
-                       private val name: String,
-                       private var hp: Int,
-                       private val defense: Int,
-                       private val weight: Int,
+                         name:String,
+                         hp:Int,
+                         defense:Int,
+                         weight:Int
                        ) extends Entity {
+  private val _name: String = name
+  private var _hp: Int = constrainHp(hp)
+  private val _defense: Int = constrainDefense(defense)
+  private val _weight: Int = constrainWeight(weight)
 
-  protected val foo: String
-
-  def getName: String = {
-    this.name
+  override def getName: String = {
+    _name
   }
-  def getHp: Int = {
-    this.hp
+  override def getHp: Int = {
+    _hp
   }
-  def getDefense: Int = {
-    this.defense
+  override def setHp(hp: Int): Unit = {
+    _hp = constrainHp(hp)
   }
-  def getWeight: Int = {
-    this.weight
+  override def constrainHp(hp: Int): Int = {
+    hp match {
+      case n if n < 0 => 0
+      case _ => hp
+    }
   }
-
+  override def getDefense: Int = {
+    _defense
+  }
+  override def constrainDefense(defense: Int): Int = {
+    defense match {
+      case n if n < 0 => 0
+      case _ => defense
+    }
+  }
+  override def getWeight: Int = {
+    _weight
+  }
+  override def constrainWeight(weight: Int): Int = {
+    weight match {
+      case n if n <= 0 => 1
+      case _ => weight
+    }
+  }
 }
