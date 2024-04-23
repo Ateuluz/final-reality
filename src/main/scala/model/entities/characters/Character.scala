@@ -1,5 +1,8 @@
 package model.entities.characters
 
-class Character {
+import model.armament.Weapon
 
+trait Character {
+  def setWeapon(wp: Weapon): Unit
+  def getWeapon: Weapon
 }

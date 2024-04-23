@@ -9,21 +9,26 @@ import model.entities.{AEntity, Entity}
  * @param hp      The health points
  * @param defense The resistance to damage
  * @param weight  The weight of the character
- * @param magic   The capacity to cast magic
  * @param weapon  The slot for equipping a weapon
  */
-abstract class Character(
-                        name:String,
-                        hp:Int,
-                        defense:Int,
-                        weight:Int
-                        ) extends AEntity(name, hp, defense, weight) {
-  val name: String;
-  var hp: Int;
-  val defense: Int;
-  val weight: Int;
-  //val magic: Boolean;
-  var weapon: Weapon;
+abstract class ACharacter(
+                           name: String,
+                           hp: Int,
+                           defense: Int,
+                           weight: Int,
+                           weapon: Weapon
+                        ) extends AEntity(name, hp, defense, weight)
+                            with Character {
+  private var _weapon = weapon
+  override def getWeapon: Weapon = _weapon
+  override def setWeapon(wp: Weapon): Unit = {
+    wp match {
+      case w if w.owner == null =>
+        _weapon = wp
+        wp.owner = this
+      case _ =>
+    }
+  }
 
   require(hp >= 0, "Negative HP not allowed")
   require(defense >= 0, "Negative Defense not allowed")
