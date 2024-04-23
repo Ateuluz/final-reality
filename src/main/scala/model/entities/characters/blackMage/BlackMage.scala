@@ -1,23 +1,22 @@
 package model.entities.characters.blackMage
 
-import model.armament.Weapon
-import model.entities.characters.{MagicalCharacter, StaffUser, SwordBearer, WandUser}
+import model.entities.characters.{AMagicalCharacter, IStaffUser, ISwordBearer, IWandUser}
 
+/**
+ *
+ * @param name    Name given to the mage
+ * @param hp      Health points
+ * @param defense Defense value
+ * @param weight  Weight of the mage
+ * @param mana    Mana capacity
+ */
 class BlackMage (
-                  val name: String,
-                  var hp: Int,
-                  val defense: Int,
-                  val weight: Int,
-                  var mana: Int,
-                  var weapon: Weapon
-                ) extends MagicalCharacter() with SwordBearer with WandUser with StaffUser {
-  def this(
-            name: String,
-            hp: Int,
-            defense: Int,
-            weight: Int,
-            mana: Int
-          ) = {
-    this(name, hp, defense, weight, mana, null)
-  }
+                  name: String,
+                  hp: Int,
+                  defense: Int,
+                  weight: Int,
+                  mana: Int
+                ) extends AMagicalCharacter(name,hp,defense,weight,mana)
+                    with ISwordBearer with IWandUser with IStaffUser {
+
 }

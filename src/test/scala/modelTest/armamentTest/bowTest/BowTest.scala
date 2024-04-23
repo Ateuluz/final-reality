@@ -1,11 +1,11 @@
 package modelTest.armamentTest.bowTest
 
 import model.armament.bow.Bow
-import model.entities.characters.BowBearer
+import model.entities.characters.IBowBearer
 import model.entities.characters.ninja.Ninja
 
 class BowTest extends munit.FunSuite() {
-  var ch1: BowBearer = _
+  var ch1: IBowBearer = _
   var wp1: Bow = _
   var wp2: Bow = _
 
@@ -20,7 +20,7 @@ class BowTest extends munit.FunSuite() {
     val expected1 = ch1
     val actual1   = wp1.owner
       assertEquals(actual1,expected1)
-    val expected2: BowBearer = null
+    val expected2: IBowBearer = null
     val actual2              = wp2.owner
       assertEquals(actual2,expected2)
   }

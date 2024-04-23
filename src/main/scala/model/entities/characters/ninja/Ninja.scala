@@ -1,21 +1,20 @@
 package model.entities.characters.ninja
 
-import model.armament.Weapon
-import model.entities.characters.{BowBearer, NonMagicalCharacter, SwordBearer, WandUser}
+import model.entities.characters.{ACharacter, IBowBearer, ISwordBearer, IWandUser}
 
+/**
+ *
+ * @param name    Name given to the mage
+ * @param hp      Health points
+ * @param defense Defense value
+ * @param weight  Weight of the mage
+ */
 class Ninja (
-              val name: String,
-              var hp: Int,
-              val defense: Int,
-              val weight: Int,
-              var weapon: Weapon
-            ) extends NonMagicalCharacter() with SwordBearer with BowBearer with WandUser {
-  def this(
-            name: String,
-            hp: Int,
-            defense: Int,
-            weight: Int,
-          ) = {
-    this(name, hp, defense, weight, null)
-  }
+              name: String,
+              hp: Int,
+              defense: Int,
+              weight: Int
+            ) extends ACharacter(name,hp,defense,weight)
+                with ISwordBearer with IBowBearer with IWandUser {
+
 }

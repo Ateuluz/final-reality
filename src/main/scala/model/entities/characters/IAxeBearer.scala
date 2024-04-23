@@ -1,5 +1,5 @@
 package model.entities.characters
 
-trait WandUser extends Character {
+trait IAxeBearer extends ICharacter {
 
 }

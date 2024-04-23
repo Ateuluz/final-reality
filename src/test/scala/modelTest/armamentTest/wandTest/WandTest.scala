@@ -1,11 +1,11 @@
 package modelTest.armamentTest.wandTest
 
 import model.armament.wand.Wand
-import model.entities.characters.WandUser
+import model.entities.characters.IWandUser
 import model.entities.characters.whiteMage.WhiteMage
 
 class WandTest extends munit.FunSuite() {
-  var ch1: WandUser = _
+  var ch1: IWandUser = _
   var wp1: Wand = _
   var wp2: Wand = _
 
@@ -20,7 +20,7 @@ class WandTest extends munit.FunSuite() {
     val expected1 = ch1
     val actual1   = wp1.owner
     assertEquals(actual1,expected1)
-    val expected2: WandUser = null
+    val expected2: IWandUser = null
     val actual2             = wp2.owner
     assertEquals(actual2,expected2)
   }

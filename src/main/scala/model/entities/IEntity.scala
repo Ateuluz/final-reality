@@ -1,6 +1,6 @@
 package model.entities
 
-trait Entity {
+trait IEntity {
   def getName: String
   def getHp: Int
   def setHp(hp: Int): Unit

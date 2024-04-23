@@ -1,11 +1,11 @@
 package modelTest.armamentTest.staffTest
 
 import model.armament.staff.Staff
-import model.entities.characters.StaffUser
+import model.entities.characters.IStaffUser
 import model.entities.characters.blackMage.BlackMage
 
 class StaffTest extends munit.FunSuite() {
-  var ch1: StaffUser = _
+  var ch1: IStaffUser = _
   var wp1: Staff = _
   var wp2: Staff = _
 
@@ -20,7 +20,7 @@ class StaffTest extends munit.FunSuite() {
     val expected1 = ch1
     val actual1   = wp1.owner
       assertEquals(actual1,expected1)
-    val expected2: StaffUser = null
+    val expected2: IStaffUser = null
     val actual2              = wp2.owner
       assertEquals(actual2,expected2)
   }

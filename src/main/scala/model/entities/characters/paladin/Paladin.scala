@@ -1,22 +1,20 @@
 package model.entities.characters.paladin
 
-import model.armament.Weapon
-import model.entities.characters.{AxeBearer, NonMagicalCharacter, SwordBearer}
+import model.entities.characters.{ACharacter, IAxeBearer, ISwordBearer}
 
+/**
+ *
+ * @param name    Name given to the mage
+ * @param hp      Health points
+ * @param defense Defense value
+ * @param weight  Weight of the mage
+ */
 class Paladin (
-                val name: String,
-                var hp: Int,
-                val defense: Int,
-                val weight: Int,
-                var weapon: Weapon
-              ) extends NonMagicalCharacter() with SwordBearer with AxeBearer {
+                name: String,
+                hp: Int,
+                defense: Int,
+                weight: Int
+              ) extends ACharacter(name,hp,defense,weight)
+                  with ISwordBearer with IAxeBearer {
 
-  def this(
-            name: String,
-            hp: Int,
-            defense: Int,
-            weight: Int,
-          ) = {
-    this(name, hp, defense, weight, null)
-  }
 }

@@ -5,7 +5,7 @@ abstract class AEntity (
                          hp:Int,
                          defense:Int,
                          weight:Int
-                       ) extends Entity {
+                       ) extends IEntity {
   private val _name: String = name
   private var _hp: Int = constrainHp(hp)
   private val _defense: Int = constrainDefense(defense)

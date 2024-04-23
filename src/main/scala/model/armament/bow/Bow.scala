@@ -1,24 +1,25 @@
 package model.armament.bow
 
-import model.armament.NonMagicalWeapon
-import model.entities.characters.{BowBearer, Character}
+import model.armament.AWeapon
+import model.entities.characters.{IBowBearer, ICharacter}
 
 /**
  *
  * @param name   The name of the Sword
  * @param attack The attack value
  * @param weight The Sword's weight
- * @param _owner  The Sword's owner
  */
 class Bow(
-           val name: String,
-           val attack: Int,
-           val weight: Int,
-           var _owner: BowBearer
-         ) extends NonMagicalWeapon {
-  override var owner: Character = _owner
-
-  def this(name: String, attack: Int, weight: Int) = {
-    this(name, attack, weight, null)
+           name: String,
+           attack: Int,
+           weight: Int,
+         ) extends AWeapon(name,attack,weight) {
+  override def setOwner(owner: ICharacter): Unit = {
+    owner match {
+      case bowBearer: IBowBearer =>
+        super.setOwner(bowBearer)
+      case _ =>
+        println("Cannot set owner. Entity is not a BowBearer.")
+    }
   }
 }

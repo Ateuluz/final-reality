@@ -1,8 +1,8 @@
 package modelTest.entitiesTest.charactersTest.blackMageTest
 
-import model.armament.Weapon
+import model.armament.AWeapon
 import model.armament.sword.Sword
-import model.entities.characters.{AxeBearer, BowBearer, StaffUser, SwordBearer, WandUser}
+import model.entities.characters.{IAxeBearer, IBowBearer, IStaffUser, ISwordBearer, IWandUser}
 import model.entities.characters.blackMage.BlackMage
 
 class BlackMageTest extends munit.FunSuite{
@@ -18,11 +18,11 @@ class BlackMageTest extends munit.FunSuite{
   }
 
   test("Weapon User") {
-    assertEquals(ch1.isInstanceOf[SwordBearer],true,"Should be allowed")
-    assertEquals(ch2.isInstanceOf[AxeBearer],false,"Shouldn't be allowed")
-    assertEquals(ch1.isInstanceOf[BowBearer],false,"Shouldn't be allowed")
-    assertEquals(ch2.isInstanceOf[WandUser],true,"Should be allowed")
-    assertEquals(ch1.isInstanceOf[StaffUser],true,"Should be allowed")
+    assertEquals(ch1.isInstanceOf[ISwordBearer],true,"Should be allowed")
+    assertEquals(ch2.isInstanceOf[IAxeBearer],false,"Shouldn't be allowed")
+    assertEquals(ch1.isInstanceOf[IBowBearer],false,"Shouldn't be allowed")
+    assertEquals(ch2.isInstanceOf[IWandUser],true,"Should be allowed")
+    assertEquals(ch1.isInstanceOf[IStaffUser],true,"Should be allowed")
   }
 
   test("Weapon Ownership") {
@@ -32,7 +32,7 @@ class BlackMageTest extends munit.FunSuite{
   }
 
   test("Null Weapon Ownership") {
-    val expected: Weapon = null
+    val expected: AWeapon = null
     assertEquals(ch1.weapon,expected,"Weapon should be null")
   }
 }

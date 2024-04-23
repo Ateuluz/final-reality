@@ -1,7 +1,6 @@
 package model.entities.characters.whiteMage
 
-import model.armament.Weapon
-import model.entities.characters.{BowBearer, MagicalCharacter, StaffUser, WandUser}
+import model.entities.characters.{AMagicalCharacter, IBowBearer, IStaffUser, IWandUser}
 
 /**
  *
@@ -10,23 +9,14 @@ import model.entities.characters.{BowBearer, MagicalCharacter, StaffUser, WandUs
  * @param defense Defense value
  * @param weight  Weight of the mage
  * @param mana    Mana capacity
- * @param weapon  Weapon equipped
  */
 class WhiteMage (
-                  val name: String,
-                  var hp: Int,
-                  val defense: Int,
-                  val weight: Int,
-                  var mana: Int,
-                  var weapon: Weapon
-                ) extends MagicalCharacter() with BowBearer with WandUser with StaffUser {
-  def this(
-            name: String,
-            hp: Int,
-            defense: Int,
-            weight: Int,
-            mana: Int,
-          ) = {
-    this(name, hp, defense, weight, mana, null)
-  }
+                  name: String,
+                  hp: Int,
+                  defense: Int,
+                  weight: Int,
+                  mana: Int
+                ) extends AMagicalCharacter(name,hp,defense,weight,mana)
+                    with IBowBearer with IWandUser with IStaffUser {
+
 }

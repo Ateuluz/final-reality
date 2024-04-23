@@ -1,11 +1,11 @@
 package modelTest.armamentTest.axeTest
 
 import model.armament.axe.Axe
-import model.entities.characters.AxeBearer
+import model.entities.characters.IAxeBearer
 import model.entities.characters.paladin.Paladin
 
 class AxeTest extends munit.FunSuite() {
-  var ch1: AxeBearer = _
+  var ch1: IAxeBearer = _
   var wp1: Axe = _
   var wp2: Axe = _
 
@@ -20,7 +20,7 @@ class AxeTest extends munit.FunSuite() {
     val expected1 = ch1
     val actual1   = wp1.owner
       assertEquals(actual1,expected1)
-    val expected2: AxeBearer = null
+    val expected2: IAxeBearer = null
     val actual2              = wp2.owner
       assertEquals(actual2,expected2)
   }

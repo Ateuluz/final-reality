@@ -1,7 +1,7 @@
 package model.armament.staff
 
-import model.armament.MagicalWeapon
-import model.entities.characters.{Character, StaffUser}
+import model.armament.AMagicalWeapon
+import model.entities.characters.{ICharacter, IStaffUser}
 
 /**
  *
@@ -9,18 +9,19 @@ import model.entities.characters.{Character, StaffUser}
  * @param attack      The attack value
  * @param weight      The Sword's weight
  * @param magicAttack The magic attack value
- * @param _owner      The Sword's owner
  */
 class Staff (
-              val name: String,
-              val attack: Int,
-              val weight: Int,
-              val magicAttack: Int,
-              var _owner: StaffUser,
-            ) extends MagicalWeapon {
-  override var owner: Character = _owner
-
-  def this(name: String, attack: Int, weight: Int, magicAttack: Int) = {
-    this(name, attack, weight, magicAttack, null)
+              name: String,
+              attack: Int,
+              weight: Int,
+              magicAttack: Int,
+            ) extends AMagicalWeapon(name,attack,weight,magicAttack) {
+  override def setOwner(owner: ICharacter): Unit = {
+    owner match {
+      case staffUser: IStaffUser =>
+        super.setOwner(staffUser)
+      case _ =>
+        println("Cannot set owner. Entity is not a StaffUser.")
+    }
   }
 }

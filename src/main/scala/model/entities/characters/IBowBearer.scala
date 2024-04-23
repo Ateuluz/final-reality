@@ -1,5 +1,5 @@
 package model.entities.characters
 
-trait BowBearer extends Character {
+trait IBowBearer extends ICharacter {
 
 }

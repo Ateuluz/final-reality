@@ -1,5 +1,5 @@
 package model.entities.characters
 
-trait StaffUser extends Character {
+trait IStaffUser extends ICharacter {
 
 }

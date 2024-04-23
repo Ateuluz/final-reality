@@ -1,6 +1,6 @@
 package model.turnScheduler
 
-import model.entities.characters.Character
+import model.entities.characters.ICharacter
 import model.entities.enemies.enemy.Enemy
 
 import scala.collection.mutable.ArrayBuffer
@@ -77,7 +77,7 @@ class TurnScheduler {
    */
   def getActionBarMax(character: Any): Int = {
     character match {
-      case char: Character => char.weight + (char.weapon.weight.toFloat / 2).ceil.toInt
+      case char: ICharacter => char.weight + (char.weapon.weight.toFloat / 2).ceil.toInt
 
       case char: Enemy => char.weight
 

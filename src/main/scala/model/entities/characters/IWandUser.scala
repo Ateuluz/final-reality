@@ -1,5 +1,5 @@
 package model.entities.characters
 
-trait SwordBearer extends Character {
+trait IWandUser extends ICharacter {
 
 }

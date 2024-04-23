@@ -1,24 +1,25 @@
 package model.armament.axe
 
-import model.armament.NonMagicalWeapon
-import model.entities.characters.{AxeBearer, Character}
+import model.armament.AWeapon
+import model.entities.characters.{IAxeBearer, ICharacter}
 
 /**
  *
  * @param name   The name of the Sword
  * @param attack The attack value
  * @param weight The Sword's weight
- * @param _owner The Sword's owner
  */
 class Axe(
-           val name: String,
-           val attack: Int,
-           val weight: Int,
-           var _owner: AxeBearer
-         ) extends NonMagicalWeapon {
-  override var owner: Character = _owner
-
-  def this(name: String, attack: Int, weight: Int) = {
-    this(name, attack, weight, null)
+           name: String,
+           attack: Int,
+           weight: Int,
+         ) extends AWeapon(name,attack,weight) {
+  override def setOwner(owner: ICharacter): Unit = {
+    owner match {
+      case axeBearer: IAxeBearer =>
+        super.setOwner(axeBearer)
+      case _ =>
+        println("Cannot set owner. Entity is not an AxeBearer.")
+    }
   }
 }
