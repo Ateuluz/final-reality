@@ -13,7 +13,7 @@ class WandTest extends munit.FunSuite() {
     //super.beforeEach(context)
     ch1 = new WhiteMage("A", 10, 10, 10, 10)
     wp1 = new Wand("B", 5, 10, 5)
-    ch1.setWeapon(wp1)
+    ch1.requestBindWeapon(wp1)
     wp2 = new Wand("C", 20, 30, 10)
   }
 
@@ -21,8 +21,8 @@ class WandTest extends munit.FunSuite() {
     val expected1 = ch1
     val actual1 = wp1.getOwner
     actual1 match {
-      case Some(actual: ICharacter) => assertEquals(actual, expected1)
-      case _ => fail("The returned instance is not an IAxeBearer")
+      case Some(actual: IWandUser) => assertEquals(actual, expected1)
+      case _ => fail("The returned instance is not a WandUser")
     }
     val expected2 = true
     val actual2 = wp2.getOwner.isEmpty

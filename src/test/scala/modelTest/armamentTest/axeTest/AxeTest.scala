@@ -13,7 +13,7 @@ class AxeTest extends munit.FunSuite() {
     //super.beforeEach(context)
     ch1 = new Paladin("A", 10, 10, 10)
     wp1 = new Axe("B", 5, 10)
-    ch1.setWeapon(wp1)
+    ch1.requestBindWeapon(wp1)
     wp2 = new Axe("C", 20, 30)
   }
 

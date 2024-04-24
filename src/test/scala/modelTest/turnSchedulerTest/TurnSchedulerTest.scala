@@ -6,6 +6,7 @@ import model.armament.wand.Wand
 import model.entities.IEntity
 import model.entities.characters.ninja.Ninja
 import model.entities.characters.paladin.Paladin
+import model.entities.characters.warrior.Warrior
 import model.entities.characters.whiteMage.WhiteMage
 import model.entities.enemies.enemy.Enemy
 import model.turnScheduler.TurnScheduler
@@ -17,6 +18,7 @@ class TurnSchedulerTest extends munit.FunSuite {
   var ch1:   Paladin       = _
   var ch2:   WhiteMage     = _
   var ch3:   Ninja         = _
+  var ch4:   Warrior       = _
   var wp1:   Sword         = _
   var wp2:   Wand          = _
   var wp3:   Bow           = _
@@ -27,6 +29,7 @@ class TurnSchedulerTest extends munit.FunSuite {
     ch1   = new Paladin("A", 100, 100, 100)
     ch2   = new WhiteMage("B", 50, 50, 50, 100)
     ch3   = new Ninja("C", 20, 20, 20)
+    ch4   = new Warrior("D", 200, 200, 200)
     wp1   = new Sword("S", 100, 100)
     wp2   = new Wand("W", 50, 50, 50)
     wp3   = new Bow("X", 20, 20)
@@ -145,4 +148,10 @@ class TurnSchedulerTest extends munit.FunSuite {
       assertEquals(expected, actual, "Turn Not Designated - Explanation")
   }
 
+  test("Max Bar 0 for Empty Weapon") {
+    TrSch.addCharacter(ch4)
+    val expected: Int = 0// define expected value
+    val actual:   Int = TrSch.getActionBarMax(ch4)// define actual value
+      assertEquals(expected, actual, "Should Have 0 as Max Action Bar")
+  }
 }

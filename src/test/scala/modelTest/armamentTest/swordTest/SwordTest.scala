@@ -13,7 +13,7 @@ class SwordTest extends munit.FunSuite() {
     //super.beforeEach(context)
     ch1 = new Warrior("A", 10, 10, 10)
     wp1 = new Sword("B", 5, 10)
-    ch1.setWeapon(wp1)
+    ch1.requestBindWeapon(wp1)
     wp2 = new Sword("C", 20, 30)
   }
 

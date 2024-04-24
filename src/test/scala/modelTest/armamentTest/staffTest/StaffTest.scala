@@ -13,7 +13,7 @@ class StaffTest extends munit.FunSuite() {
     //super.beforeEach(context)
     ch1 = new BlackMage("A", 10, 10, 10, 10)
     wp1 = new Staff("B", 5, 10, 5)
-    ch1.setWeapon(wp1)
+    ch1.requestBindWeapon(wp1)
     wp2 = new Staff("C", 20, 30, 10)
   }
 

@@ -19,38 +19,49 @@ class CharacterTest extends munit.FunSuite{
     ch2 = new WhiteMage("Doe", 200, 10, 25, 150)
   }
 
-  test("Limited Variable Ranges") {
-    var allowNegativeHP: Boolean = false
-    var allowNegativeDefense: Boolean = false
-    var allowNegativeWeight: Boolean = false
-    var allowNegativeMana: Boolean = false
-    try {
-      ch3 = new Warrior("Joe", -1, 1, 1)
-      allowNegativeHP = true
-    } catch {
-      case _: java.lang.IllegalArgumentException =>
-    }
-    try {
-      ch3 = new Warrior("Joe", 1, -1, 1)
-      allowNegativeDefense = true
-    } catch {
-      case _: java.lang.IllegalArgumentException =>
-    }
-    try {
-      ch3 = new Warrior("Joe", 1, 1, -1)
-      allowNegativeWeight = true
-    } catch {
-      case _: java.lang.IllegalArgumentException =>
-    }
-    try {
-      ch2 = new WhiteMage("Joe", 1, 1, 1, -1)
-      allowNegativeMana = true
-    } catch {
-      case _: java.lang.IllegalArgumentException =>
-    }
-    assertEquals(allowNegativeHP,false,"Negative HP shouldn't be allowed")
-    assertEquals(allowNegativeDefense,false,"Negative Defense shouldn't be allowed")
-    assertEquals(allowNegativeWeight,false,"Negative or zero Weight shouldn't be allowed") // Speed related
-    assertEquals(allowNegativeMana,false,"Negative Mana shouldn't be allowed")
+  //test("Limited Variable Ranges") {
+  //  var allowNegativeHP: Boolean = false
+  //  var allowNegativeDefense: Boolean = false
+  //  var allowNegativeWeight: Boolean = false
+  //  var allowNegativeMana: Boolean = false
+  //  try {
+  //    ch3 = new Warrior("Joe", -1, 1, 1)
+  //    allowNegativeHP = true
+  //  } catch {
+  //    case _: java.lang.IllegalArgumentException =>
+  //  }
+  //  try {
+  //    ch3 = new Warrior("Joe", 1, -1, 1)
+  //    allowNegativeDefense = true
+  //  } catch {
+  //    case _: java.lang.IllegalArgumentException =>
+  //  }
+  //  try {
+  //    ch3 = new Warrior("Joe", 1, 1, -1)
+  //    allowNegativeWeight = true
+  //  } catch {
+  //    case _: java.lang.IllegalArgumentException =>
+  //  }
+  //  try {
+  //    ch2 = new WhiteMage("Joe", 1, 1, 1, -1)
+  //    allowNegativeMana = true
+  //  } catch {
+  //    case _: java.lang.IllegalArgumentException =>
+  //  }
+  //  assertEquals(allowNegativeHP,false,"Negative HP shouldn't be allowed")
+  //  assertEquals(allowNegativeDefense,false,"Negative Defense shouldn't be allowed")
+  //  assertEquals(allowNegativeWeight,false,"Negative or zero Weight shouldn't be allowed") // Speed related
+  //  assertEquals(allowNegativeMana,false,"Negative Mana shouldn't be allowed")
+  //}
+
+  test("Out of Range Attributes set to Arbitrary") {
+    ch3 = new Warrior("Joe", -1, 1, 1)
+    assertEquals(ch3.getHp,0)
+    ch3 = new Warrior("Joe", 1, -1, 1)
+    assertEquals(ch3.getDefense,0)
+    ch3 = new Warrior("Joe", 1, 1, -1)
+    assertEquals(ch3.getWeight,1)
+    ch2 = new WhiteMage("Joe", 1, 1, 1, -1)
+    assertEquals(ch2.getMana,0)
   }
 }
