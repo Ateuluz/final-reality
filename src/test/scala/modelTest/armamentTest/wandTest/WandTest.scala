@@ -1,11 +1,13 @@
 package modelTest.armamentTest.wandTest
 
 import model.armament.wand.Wand
+import model.entities.characters.warrior.Warrior
 import model.entities.characters.{ICharacter, IWandUser}
 import model.entities.characters.whiteMage.WhiteMage
 
 class WandTest extends munit.FunSuite() {
   var ch1: IWandUser = _
+  var ch2: Warrior = _
   var wp1: Wand = _
   var wp2: Wand = _
 
@@ -27,5 +29,11 @@ class WandTest extends munit.FunSuite() {
     val expected2 = true
     val actual2 = wp2.getOwner.isEmpty
     assertEquals(actual2,expected2,"The returned instance is not empty")
+  }
+
+  test("Non User cannot Equip") {
+    ch2 = new Warrior("X", 2, 2, 2)
+    ch2.requestBindWeapon(wp2)
+    assertEquals(wp2.getOwner,None)
   }
 }

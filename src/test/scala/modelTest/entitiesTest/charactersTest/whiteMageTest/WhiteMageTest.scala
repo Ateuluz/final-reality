@@ -15,7 +15,7 @@ class WhiteMageTest extends munit.FunSuite{
     wp1 = new Wand("Excal", 10, 20, 10)
     ch1 = new WhiteMage("John", 80, 20, 5, 50)
     ch2 = new WhiteMage("Doe", 200, 10, 25, 150)
-    ch2.setWeapon(wp1)
+    ch2.requestBindWeapon(wp1)
   }
 
   test("Weapon User") {

@@ -3,9 +3,11 @@ package modelTest.armamentTest.staffTest
 import model.armament.staff.Staff
 import model.entities.characters.{ICharacter, IStaffUser}
 import model.entities.characters.blackMage.BlackMage
+import model.entities.characters.warrior.Warrior
 
 class StaffTest extends munit.FunSuite() {
   var ch1: IStaffUser = _
+  var ch2: Warrior = _
   var wp1: Staff = _
   var wp2: Staff = _
 
@@ -27,5 +29,11 @@ class StaffTest extends munit.FunSuite() {
     val expected2 = true
     val actual2 = wp2.getOwner.isEmpty
     assertEquals(actual2,expected2,"The returned instance is not empty")
+  }
+
+  test("Non User cannot Equip") {
+    ch2 = new Warrior("X", 2, 2, 2)
+    ch2.requestBindWeapon(wp2)
+    assertEquals(wp2.getOwner,None)
   }
 }

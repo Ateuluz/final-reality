@@ -47,4 +47,8 @@ class WeaponTest extends munit.FunSuite{
     wp2 = new Staff("Joe", 1, 1, -1)
     assertEquals(wp2.getMagicAttack,0)
   }
+
+  test("Has Name") {
+    assertEquals(wp1.getName,"A")
+  }
 }
