@@ -20,7 +20,7 @@ abstract class AEntity (
   override def setHp(hp: Int): Unit = {
     _hp = constrainHp(hp)
   }
-  override def constrainHp(hp: Int): Int = {
+  override protected def constrainHp(hp: Int): Int = {
     hp match {
       case n if n < 0 => 0
       case _ => hp
@@ -29,7 +29,7 @@ abstract class AEntity (
   override def getDefense: Int = {
     _defense
   }
-  override def constrainDefense(defense: Int): Int = {
+  override protected def constrainDefense(defense: Int): Int = {
     defense match {
       case n if n < 0 => 0
       case _ => defense
@@ -38,10 +38,21 @@ abstract class AEntity (
   override def getWeight: Int = {
     _weight
   }
-  override def constrainWeight(weight: Int): Int = {
+  override protected def constrainWeight(weight: Int): Int = {
     weight match {
       case n if n <= 0 => 1
       case _ => weight
     }
+  }
+  override protected def defend(attack: Int): Int = {
+    val dmg = constrainDamage(attack - _defense)
+    _hp -= dmg
+    dmg
+  }
+  override protected def constrainDamage(damage: Int): Int =
+    damage match {
+      case dmg if dmg > _hp => _hp
+      case dmg if dmg > 0 => dmg
+      case _ => 0
   }
 }
