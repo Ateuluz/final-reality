@@ -1,6 +1,5 @@
 package modelTest.entitiesTest
 
-import model.armament.sword
 import model.armament.sword.Sword
 import model.entities.characters.paladin.Paladin
 
