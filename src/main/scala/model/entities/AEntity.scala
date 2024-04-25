@@ -1,5 +1,7 @@
 package model.entities
 
+import exceptions.Require
+
 abstract class AEntity (
                          name:String,
                          hp:Int,
@@ -10,6 +12,9 @@ abstract class AEntity (
   private var _hp: Int = constrainHp(hp)
   private val _defense: Int = constrainDefense(defense)
   private val _weight: Int = constrainWeight(weight)
+  Require.Stat(hp, "HealthPoints") atLeast 0
+  Require.Stat(defense, "Defense") atLeast 0
+  Require.Stat(weight, "Weight") atLeast 1
 
   override def getName: String = {
     _name
@@ -40,7 +45,7 @@ abstract class AEntity (
   }
   override protected def constrainWeight(weight: Int): Int = {
     weight match {
-      case n if n <= 0 => 1
+      case n if n < 1 => 1
       case _ => weight
     }
   }

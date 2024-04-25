@@ -1,5 +1,6 @@
 package model.armament
 
+import exceptions.Require
 import model.entities.characters.ICharacter
 
 abstract class AWeapon (
@@ -11,6 +12,8 @@ abstract class AWeapon (
   private val _attack: Int = constrainAttack(attack)
   private val _weight: Int = constrainWeight(weight)
   private var _owner: Option[ICharacter] = None
+  Require.Stat(attack, "Attack") atLeast 1
+  Require.Stat(weight, "Weight") atLeast 0
 
   override def getName: String = _name
   override def getAttack: Int = _attack

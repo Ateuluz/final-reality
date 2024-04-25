@@ -1,5 +1,7 @@
 package model.armament
 
+import exceptions.Require
+
 abstract class AMagicalWeapon(
                               name: String,
                               attack: Int,
@@ -8,6 +10,7 @@ abstract class AMagicalWeapon(
                             ) extends AWeapon(name,attack,weight)
                                 with IMagicalWeapon {
   private val _magicAttack: Int = constrainMagicAttack(magicAttack)
+  Require.Stat(magicAttack, "MagicAttack") atLeast 1
   override def getMagicAttack: Int = _magicAttack
   override def constrainMagicAttack(magicAttack: Int): Int =
     magicAttack match {

@@ -1,5 +1,6 @@
 package model.entities.enemies
 
+import exceptions.Require
 import model.entities.{AEntity, IEntity}
 
 abstract class AEnemy (
@@ -11,6 +12,7 @@ abstract class AEnemy (
                       ) extends AEntity(name,hp,defense,weight)
                           with IEnemy {
   private val _attack: Int = constrainAttack(attack)
+  Require.Stat(attack, "Attack") atLeast 1
   override def getAttack: Int = _attack
   override def constrainAttack(attack: Int): Int = {
     attack match {
