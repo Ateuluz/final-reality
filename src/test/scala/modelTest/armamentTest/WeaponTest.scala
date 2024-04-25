@@ -41,11 +41,11 @@ class WeaponTest extends munit.FunSuite{
 
   test("Out of Range Attributes set to Arbitrary") {
     wp1 = new Sword("Joe", -1, 1)
-    assertEquals(wp1.getAttack,0)
+    assertEquals(wp1.getAttack,1)
     wp1 = new Sword("Joe", 1, -1)
     assertEquals(wp1.getWeight,0)
     wp2 = new Staff("Joe", 1, 1, -1)
-    assertEquals(wp2.getMagicAttack,0)
+    assertEquals(wp2.getMagicAttack,1)
   }
 
   test("Has Name") {

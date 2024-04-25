@@ -18,7 +18,7 @@ abstract class AWeapon (
   override def getOwner: Option[ICharacter] = _owner
   override def constrainAttack(attack: Int): Int =
     attack match {
-      case n if n < 0 => 0
+      case n if n < 1 => 1
       case _ => attack
     }
   override def constrainWeight(weight: Int): Int =

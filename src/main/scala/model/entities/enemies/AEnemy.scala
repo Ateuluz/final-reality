@@ -14,7 +14,7 @@ abstract class AEnemy (
   override def getAttack: Int = _attack
   override def constrainAttack(attack: Int): Int = {
     attack match {
-      case n if n <= 0 => 1
+      case n if n < 1 => 1
       case _ => attack
     }
   }

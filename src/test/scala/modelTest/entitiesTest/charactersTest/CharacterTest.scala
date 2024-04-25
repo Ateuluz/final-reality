@@ -81,4 +81,10 @@ class CharacterTest extends munit.FunSuite{
       case _ => fail("The returned instance is not the intended Weapon")
     }
   }
+
+  test("Can't Attack Without Weapon") {
+    val expected = ch1.getHp
+    ch2.attack(ch1)
+    assertEquals(ch1.getHp,expected)
+  }
 }

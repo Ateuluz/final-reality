@@ -11,7 +11,7 @@ abstract class AMagicalWeapon(
   override def getMagicAttack: Int = _magicAttack
   override def constrainMagicAttack(magicAttack: Int): Int =
     magicAttack match {
-      case n if n < 0 => 0
+      case n if n < 1 => 1
       case _ => magicAttack
     }
 }
