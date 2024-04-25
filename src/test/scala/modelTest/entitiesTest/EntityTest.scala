@@ -2,10 +2,12 @@ package modelTest.entitiesTest
 
 import model.armament.sword.Sword
 import model.entities.characters.paladin.Paladin
+import model.entities.enemies.enemy.Enemy
 
 class EntityTest extends munit.FunSuite {
   var ch1: Paladin = _
   var ch2: Paladin = _
+  var en1: Enemy   = _
   var wp1: Sword   = _
   var wp2: Sword   = _
   override def beforeEach(context: BeforeEach): Unit = {
@@ -13,6 +15,7 @@ class EntityTest extends munit.FunSuite {
     ch2 = new Paladin("B", 2, 2, 2)
     wp1 = new Sword("C", 1, 1)
     wp2 = new Sword("D", 3, 3)
+    en1 = new Enemy("E", 2, 2, 3, 2)
     ch1.requestBindWeapon(wp1)
     ch2.requestBindWeapon(wp2)
   }
@@ -31,5 +34,7 @@ class EntityTest extends munit.FunSuite {
     assertEquals(ch2.getHp, 2)
     ch2.attack(ch1)
     assertEquals(ch1.getHp, 0)
+    en1.attack(en1)
+    assertEquals(en1.getHp, 1)
   }
 }
