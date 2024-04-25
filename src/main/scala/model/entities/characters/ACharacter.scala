@@ -1,7 +1,7 @@
 package model.entities.characters
 
 import model.armament.IWeapon
-import model.entities.AEntity
+import model.entities.{AEntity, IEntity}
 
 /** Define the basic traits of a character
  *
@@ -36,5 +36,15 @@ abstract class ACharacter(
       case w if w.getOwner.isEmpty => w.setOwner(this)
       case _ =>
     }
+  }
+
+  override def attack(objective: IEntity): Int = {
+    val atk = _weapon match {
+      case Some(weapon) => weapon.getAttack
+      case None =>
+        println(s"${this.getClass} $name has no weapon equipped!")
+        0
+    }
+    objective.defend(atk)
   }
 }
