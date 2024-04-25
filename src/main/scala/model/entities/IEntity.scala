@@ -10,6 +10,6 @@ trait IEntity {
   def getWeight: Int
   protected def constrainWeight(hp: Int): Int
   def attack(objective: IEntity): Int
-  protected def defend(attack: Int): Int
+  def defend(attack: Int): Int
   protected def constrainDamage(damage: Int): Int
 }

@@ -44,7 +44,7 @@ abstract class AEntity (
       case _ => weight
     }
   }
-  override protected def defend(attack: Int): Int = {
+  override def defend(attack: Int): Int = {
     val dmg = constrainDamage(attack - _defense)
     _hp -= dmg
     dmg
