@@ -19,12 +19,12 @@ abstract class AWeapon (
   override def getAttack: Int = _attack
   override def getWeight: Int = _weight
   override def getOwner: Option[ICharacter] = _owner
-  override def constrainAttack(attack: Int): Int =
+  private def constrainAttack(attack: Int): Int =
     attack match {
       case n if n < 1 => 1
       case _ => attack
     }
-  override def constrainWeight(weight: Int): Int =
+  private def constrainWeight(weight: Int): Int =
     weight match {
       case n if n < 0 => 0
       case _ => weight

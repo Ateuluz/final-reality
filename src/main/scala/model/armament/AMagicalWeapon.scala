@@ -12,7 +12,7 @@ abstract class AMagicalWeapon(
   private val _magicAttack: Int = constrainMagicAttack(magicAttack)
   Require.Stat(magicAttack, "MagicAttack") atLeast 1
   override def getMagicAttack: Int = _magicAttack
-  override def constrainMagicAttack(magicAttack: Int): Int =
+  private def constrainMagicAttack(magicAttack: Int): Int =
     magicAttack match {
       case n if n < 1 => 1
       case _ => magicAttack

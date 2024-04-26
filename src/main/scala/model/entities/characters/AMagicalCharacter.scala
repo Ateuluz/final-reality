@@ -16,7 +16,7 @@ abstract class AMagicalCharacter(
   override def setMana(mana: Int): Unit = {
     _mana = constrainMana(mana)
   }
-  override def constrainMana(mana: Int): Int = {
+  private def constrainMana(mana: Int): Int = {
     mana match {
       case n if n < 1 => 1
       case _ => mana

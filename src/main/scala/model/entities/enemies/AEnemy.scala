@@ -14,7 +14,7 @@ abstract class AEnemy (
   private val _attack: Int = constrainAttack(attack)
   Require.Stat(attack, "Attack") atLeast 1
   override def getAttack: Int = _attack
-  override def constrainAttack(attack: Int): Int = {
+  private def constrainAttack(attack: Int): Int = {
     attack match {
       case n if n < 1 => 1
       case _ => attack
