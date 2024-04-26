@@ -22,9 +22,6 @@ abstract class AEntity (
   override def getHp: Int = {
     _hp
   }
-  override def setHp(hp: Int): Unit = {
-    _hp = constrainHp(hp)
-  }
   private def constrainHp(hp: Int): Int = {
     hp match {
       case n if n < 0 => 0

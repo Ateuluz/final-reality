@@ -31,11 +31,6 @@ class EntityTest extends munit.FunSuite {
     assertEquals(ch1.getDefense,1)
   }
 
-  test("Can Alter Hp") {
-    ch1.setHp(2)
-    assertEquals(ch1.getHp,2)
-  }
-
   test("Attack, Defend and NonNegative Health") {
     ch1.attack(ch2)
     assertEquals(ch2.getHp, 2)
