@@ -16,30 +16,22 @@ abstract class AEntity (
   Require.Stat(defense, "Defense") atLeast 0
   Require.Stat(weight, "Weight") atLeast 1
 
-  override def getName: String = {
-    _name
-  }
-  override def getHp: Int = {
-    _hp
-  }
+  override def getName: String = _name
+  override def getHp: Int = _hp
   private def constrainHp(hp: Int): Int = {
     hp match {
       case n if n < 0 => 0
       case _ => hp
     }
   }
-  override def getDefense: Int = {
-    _defense
-  }
+  override def getDefense: Int = _defense
   private def constrainDefense(defense: Int): Int = {
     defense match {
       case n if n < 0 => 0
       case _ => defense
     }
   }
-  override def getWeight: Int = {
-    _weight
-  }
+  override def getWeight: Int = _weight
   private def constrainWeight(weight: Int): Int = {
     weight match {
       case n if n < 1 => 1
