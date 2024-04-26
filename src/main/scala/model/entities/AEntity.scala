@@ -12,7 +12,7 @@ abstract class AEntity (
   private var _hp: Int = constrainHp(hp)
   private val _defense: Int = constrainDefense(defense)
   private val _weight: Int = constrainWeight(weight)
-  Require.Stat(hp, "HealthPoints") atLeast 0
+  Require.Stat(hp, "HP") atLeast 0
   Require.Stat(defense, "Defense") atLeast 0
   Require.Stat(weight, "Weight") atLeast 1
 

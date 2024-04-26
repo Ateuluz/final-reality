@@ -1,5 +1,6 @@
 package modelTest.entitiesTest.charactersTest
 
+import exceptions.InvalidStatException
 import model.armament.IWeapon
 import model.armament.sword.Sword
 import model.entities.characters.paladin.Paladin
@@ -12,6 +13,9 @@ class CharacterTest extends munit.FunSuite{
   var ch3: Warrior   = _
   var wp1: Sword     = _
   var wp2: Sword     = _
+  var name: String   = _
+  var threshold: Int = _
+  var value: Int     = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     //super.beforeEach(context)
@@ -57,15 +61,15 @@ class CharacterTest extends munit.FunSuite{
   //  assertEquals(allowNegativeMana,false,"Negative Mana shouldn't be allowed")
   //}
 
-  test("Out of Range Attributes set to Arbitrary") {
-    ch3 = new Warrior("Joe", -1, 1, 1)
-    assertEquals(ch3.getHp,0)
-    ch3 = new Warrior("Joe", 1, -1, 1)
-    assertEquals(ch3.getDefense,0)
-    ch3 = new Warrior("Joe", 1, 1, -1)
-    assertEquals(ch3.getWeight,1)
-    ch2 = new WhiteMage("Joe", 1, 1, 1, -1)
-    assertEquals(ch2.getMana,0)
+  test("Limited Variable Ranges") {
+    this.name = "Mana"
+    this.threshold = 0
+    this.value = -1
+    interceptMessage[InvalidStatException](
+      s"An invalid stat was found -- ${this.name} should be at least ${this.threshold} but was ${this.value}"
+    ) {
+      ch2 = new WhiteMage("Joe", 1, 1, 1, -1)
+    }
   }
 
   test("Cannot Assign Owned Weapon") {
