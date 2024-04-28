@@ -19,7 +19,7 @@ abstract class ACharacter(
                             with ICharacter {
   private var _weapon: Option[IWeapon] = None
   override def getWeapon: Option[IWeapon] = _weapon
-  override def setWeapon(wp: IWeapon): Unit = {
+  override protected[model] def setWeapon(wp: IWeapon): Unit = {
     this.unsetWeapon()
     _weapon = Some(wp)
   }

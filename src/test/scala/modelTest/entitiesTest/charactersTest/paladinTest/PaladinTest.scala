@@ -14,7 +14,7 @@ class PaladinTest extends munit.FunSuite{
     wp1 = new Sword("Excal", 10, 20)
     ch1 = new Paladin("John", 80, 20, 5)
     ch2 = new Paladin("Doe", 200, 10, 25)
-    ch2.setWeapon(wp1)
+    ch2.requestBindWeapon(wp1)
   }
 
   test("Weapon User") {
