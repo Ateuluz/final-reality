@@ -15,7 +15,7 @@ class BlackMageTest extends munit.FunSuite{
     wp1 = new Sword("C", 10, 20)
     ch1 = new BlackMage("A", 80, 20, 5, 100)
     ch2 = new BlackMage("B", 200, 10, 25, 200)
-    ch2.requestBindWeapon(wp1)
+    ch2.equip(wp1)
   }
 
   test("Weapon User") {

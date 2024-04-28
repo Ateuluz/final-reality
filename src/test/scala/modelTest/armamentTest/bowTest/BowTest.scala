@@ -15,7 +15,7 @@ class BowTest extends munit.FunSuite() {
     //super.beforeEach(context)
     ch1 = new Ninja("A", 10, 10, 10)
     wp1 = new Bow("B", 5, 10)
-    ch1.requestBindWeapon(wp1)
+    ch1.equip(wp1)
     wp2 = new Bow("C", 20, 30)
   }
 
@@ -36,7 +36,7 @@ class BowTest extends munit.FunSuite() {
 
   test("Non User cannot Equip") {
     ch2 = new Paladin("X", 2, 2, 2)
-    ch2.requestBindWeapon(wp2)
+    ch2.equip(wp2)
     assertEquals(wp2.getOwner,None)
   }
 }

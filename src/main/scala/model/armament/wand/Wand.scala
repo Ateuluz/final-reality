@@ -16,12 +16,10 @@ class Wand (
              weight: Int,
              magicAttack: Int,
            ) extends AMagicalWeapon(name,attack,weight,magicAttack) {
-  override def setOwner(owner: ICharacter): Unit = {
-    owner match {
-      case wandUser: IWandUser =>
-        super.setOwner(wandUser)
-      case _ =>
-        println("Cannot set owner. Entity is not a WandUser.")
+  override protected[model] def canBeEquippedBy(character: ICharacter): Boolean = {
+    character match {
+      case _: IWandUser => getOwner.isEmpty
+      case _ => false
     }
   }
 }

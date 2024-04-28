@@ -7,6 +7,7 @@ trait IWeapon {
   def getAttack: Int
   def getWeight: Int
   def getOwner: Option[ICharacter]
+  protected[model] def canBeEquippedBy(character: ICharacter): Boolean
   protected[model] def setOwner(owner: ICharacter): Unit
-  def unsetOwner(): Unit
+  protected[model] def unsetOwner(): Unit
 }

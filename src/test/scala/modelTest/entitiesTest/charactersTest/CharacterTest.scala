@@ -21,7 +21,7 @@ class CharacterTest extends munit.FunSuite{
     //super.beforeEach(context)
     wp1 = new Sword("Excal", 10, 20)
     ch1 = new Paladin("John", 80, 20, 5)
-    ch1.requestBindWeapon(wp1)
+    ch1.equip(wp1)
     ch2 = new WhiteMage("Doe", 200, 10, 25, 150)
     wp2 = new Sword("Nex", 20, 200)
   }
@@ -73,12 +73,12 @@ class CharacterTest extends munit.FunSuite{
   }
 
   test("Cannot Assign Owned Weapon") {
-    ch2.requestBindWeapon(wp1)
+    ch2.equip(wp1)
     assertEquals(ch2.getWeapon,None)
   }
 
   test("Swap Weapon") {
-    ch1.requestBindWeapon(wp2)
+    ch1.equip(wp2)
     assertEquals(wp1.getOwner,None)
     ch1.getWeapon match {
       case Some(actual: IWeapon) => assertEquals(actual, wp2)

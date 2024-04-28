@@ -30,14 +30,14 @@ abstract class AWeapon (
       case _ => weight
     }
   override protected[model] def setOwner(owner: ICharacter): Unit = {
-    _owner match {
-      case Some(char) => char.unsetWeapon()
+    /*_owner match {
+      case Some(char) => char.unEquip()
       case _ =>
-    }
+    }*/ // Case if owner override is possible
     _owner = Some(owner)
-    owner.setWeapon(this)
+    /*owner.setWeapon(this)*/ // Already handled in characters
   }
-  override def unsetOwner(): Unit = {
+  protected[model] override def unsetOwner(): Unit = {
     _owner = None
   }
 }

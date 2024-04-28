@@ -20,8 +20,8 @@ class EntityTest extends munit.FunSuite {
     wp1 = new Sword("C", 1, 1)
     wp2 = new Sword("D", 3, 3)
     en1 = new Enemy("E", 2, 2, 3, 2)
-    ch1.requestBindWeapon(wp1)
-    ch2.requestBindWeapon(wp2)
+    ch1.equip(wp1)
+    ch2.equip(wp2)
   }
 
   test("Have Name") {

@@ -15,7 +15,7 @@ class AxeTest extends munit.FunSuite() {
     //super.beforeEach(context)
     ch1 = new Paladin("A", 10, 10, 10)
     wp1 = new Axe("B", 5, 10)
-    ch1.requestBindWeapon(wp1)
+    ch1.equip(wp1)
     wp2 = new Axe("C", 20, 30)
   }
 
@@ -33,7 +33,7 @@ class AxeTest extends munit.FunSuite() {
 
   test("Non User cannot Equip") {
     ch2 = new WhiteMage("X", 2, 2, 2, 2)
-    ch2.requestBindWeapon(wp2)
+    ch2.equip(wp2)
     assertEquals(wp2.getOwner,None)
   }
 }

@@ -14,12 +14,10 @@ class Bow(
            attack: Int,
            weight: Int,
          ) extends AWeapon(name,attack,weight) {
-  override def setOwner(owner: ICharacter): Unit = {
-    owner match {
-      case bowBearer: IBowBearer =>
-        super.setOwner(bowBearer)
-      case _ =>
-        println("Cannot set owner. Entity is not a BowBearer.")
+  override protected[model] def canBeEquippedBy(character: ICharacter): Boolean = {
+    character match {
+      case _: IBowBearer => getOwner.isEmpty
+      case _ => false
     }
   }
 }

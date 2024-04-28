@@ -35,9 +35,9 @@ class TurnSchedulerTest extends munit.FunSuite {
     wp3   = new Bow("X", 20, 20)
     en1   = new Enemy("E1", 10, 10, 10, 10)
     en2   = new Enemy("E2", 5, 5, 5, 5)
-    ch1.requestBindWeapon(wp1)
-    ch2.requestBindWeapon(wp2)
-    ch3.requestBindWeapon(wp3)
+    ch1.equip(wp1)
+    ch2.equip(wp2)
+    ch3.equip(wp3)
   }
 
   test("Has Characters") {

@@ -19,11 +19,7 @@ abstract class ACharacter(
                             with ICharacter {
   private var _weapon: Option[IWeapon] = None
   override def getWeapon: Option[IWeapon] = _weapon
-  override protected[model] def setWeapon(wp: IWeapon): Unit = {
-    this.unsetWeapon()
-    _weapon = Some(wp)
-  }
-  override def unsetWeapon(): Unit = {
+  override def unEquip(): Unit = {
     _weapon match {
       case Some(wp) =>
         wp.unsetOwner()
@@ -31,9 +27,12 @@ abstract class ACharacter(
       case None =>
     }
   }
-  override def requestBindWeapon(wp: IWeapon): Unit = {
+  override def equip(wp: IWeapon): Unit = {
     wp match {
-      case w if w.getOwner.isEmpty => w.setOwner(this)
+      case w if w.canBeEquippedBy(this) =>
+        w.setOwner(this)
+        this.unEquip()
+        _weapon = Some(w)
       case _ =>
     }
   }
