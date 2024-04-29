@@ -124,10 +124,10 @@ Out of these stats, they are required to have:
 ## Teams
 
 Both characters and Enemies are organized in teams. Each team has a specified capacity for members.
-The teams are represented as ArrayBuffer instances and their length is decided upon creation. The teams are:
+The teams are represented as ArrayBuffer instances with their maximum and minimum lengths decided upon creation. The teams are:
 
-- Party (Exactly 3 Character instances)
-- Enemies (Up to 5 Enemy instances, at least 1)
+- Party (Exactly 3 ICharacter instances)
+- Enemies (Up to 5 IEnemy instances, at least 1)
 
 ### Adding/Removing Members from Teams
 
