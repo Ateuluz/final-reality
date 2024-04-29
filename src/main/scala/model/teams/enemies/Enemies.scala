@@ -1,16 +1,9 @@
 package model.teams.enemies
 
-import model.entities.enemies.enemy.Enemy
+import model.entities.enemies.IEnemy
+import model.teams.ATeam
 
-class Enemies (quantity: Int) {
-  val characters: Array[Enemy] = Array.ofDim[Enemy](quantity)
-
-  def addEnemy(enemy: Enemy): Unit = {
-    for (slot <- this.characters.indices){
-      if (this.characters(slot) == null) {
-        this.characters(slot) = enemy
-        return
-      }
-    }
-  }
+class Enemies (
+                members: Seq[IEnemy]
+              ) extends ATeam (1,5,members) {
 }

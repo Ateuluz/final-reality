@@ -8,7 +8,7 @@ import scala.collection.mutable.ArrayBuffer
 abstract class ATeam(
                       min: Int,
                       max: Int,
-                      initialMembers: IEntity*
+                      initialMembers: Seq[IEntity]
                     ) extends ITeam {
   private val _members = ArrayBuffer(initialMembers: _*)
   private val _minimumMembers = min
@@ -16,8 +16,10 @@ abstract class ATeam(
   Require.Stat(
     _members.length,
     "initialMembers"
-  ) in (min to max)
-
+  ) in (
+    _minimumMembers
+      to _maximumMembers
+    )
   /** A method to know if a team is defeated
    *
    * A team is considered defeated if all
