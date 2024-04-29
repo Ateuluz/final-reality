@@ -4,6 +4,6 @@ import model.entities.characters.ICharacter
 import model.teams.ATeam
 
 class Party (
-              members: Seq[ICharacter]
+              members: ICharacter*
             ) extends ATeam (3,3,members) {
 }
