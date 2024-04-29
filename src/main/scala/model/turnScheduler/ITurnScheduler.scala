@@ -1,8 +1,6 @@
 package model.turnScheduler
 
 import model.entities.IEntity
-import model.entities.characters.ICharacter
-import model.entities.enemies.enemy.Enemy
 
 import scala.collection.mutable.ArrayBuffer
 
