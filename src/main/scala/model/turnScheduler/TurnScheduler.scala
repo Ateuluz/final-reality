@@ -13,18 +13,18 @@ class TurnScheduler extends ITurnScheduler {
   /**
    * Store characters
    */
-  private val characters: ArrayBuffer[IEntity] = new ArrayBuffer[IEntity]()
+  private val _characters: ArrayBuffer[IEntity] = new ArrayBuffer[IEntity]()
   /**
    * Store action bars
    */
-  private val actionBars: ArrayBuffer[Int] = new ArrayBuffer[Int]()
+  private val _actionBars: ArrayBuffer[Int] = new ArrayBuffer[Int]()
 
   /**
    * Get all stored characters
    * @return listed characters
    */
   override def getCharacters: ArrayBuffer[IEntity] = {
-    this.characters
+    _characters
   }
 
   /**
@@ -32,7 +32,7 @@ class TurnScheduler extends ITurnScheduler {
    * @return listed action bars
    */
   override def getActionBars: ArrayBuffer[Int] = {
-    this.actionBars
+    _actionBars
   }
 
   /**
@@ -41,9 +41,9 @@ class TurnScheduler extends ITurnScheduler {
    * @return action bar
    */
   override def getActionBar(character: IEntity): Int = {
-    val characterIndex = this.characters.indexOf(character)
+    val characterIndex = _characters.indexOf(character)
     if (characterIndex != -1) {
-      this.actionBars(characterIndex)
+      _actionBars(characterIndex)
     } else {
       -1
     }
@@ -54,8 +54,8 @@ class TurnScheduler extends ITurnScheduler {
    * @param character New character to store
    */
   override def addCharacter(character:IEntity): Unit = {
-    this.characters.addOne(character)
-    this.actionBars.addOne(0)
+    _characters.addOne(character)
+    _actionBars.addOne(0)
   }
 
   /**
@@ -63,10 +63,10 @@ class TurnScheduler extends ITurnScheduler {
    * @param character Character to be removed along with action bar
    */
   override def removeCharacter(character: IEntity): Unit = {
-    val idx: Int = this.characters.indexOf(character)
+    val idx: Int = _characters.indexOf(character)
     if (idx >= 0) {
-      this.characters.remove(idx)
-      this.actionBars.remove(idx)
+      _characters.remove(idx)
+      _actionBars.remove(idx)
     }
   }
 
@@ -93,8 +93,8 @@ class TurnScheduler extends ITurnScheduler {
    * @param k constant
    */
   override def raiseActionBars(k: Int): Unit = {
-    for (i <- this.actionBars.indices) {
-      this.actionBars(i) += k
+    for (i <- _actionBars.indices) {
+      _actionBars(i) += k
     }
   }
 
@@ -103,9 +103,9 @@ class TurnScheduler extends ITurnScheduler {
    * @param character Who's action bar we want to be reset
    */
   override def reset(character: IEntity): Unit = {
-    val characterIndex = this.characters.indexOf(character)
+    val characterIndex = _characters.indexOf(character)
     if (characterIndex != -1) {
-      this.actionBars(characterIndex) = 0
+      _actionBars(characterIndex) = 0
     } else {
       println(s"Character not found in this.characters : reset $character")
     }
@@ -117,9 +117,9 @@ class TurnScheduler extends ITurnScheduler {
    * @return action bar at/over max
    */
   override def isFull(character: IEntity): Boolean = {
-    val characterIndex = this.characters.indexOf(character)
+    val characterIndex = _characters.indexOf(character)
     if (characterIndex != -1) {
-      this.actionBars(characterIndex) >= this.getActionBarMax(character)
+      _actionBars(characterIndex) >= this.getActionBarMax(character)
     } else {
       false
     }
@@ -131,7 +131,7 @@ class TurnScheduler extends ITurnScheduler {
    */
   override def getCharactersFull: ArrayBuffer[IEntity] = {
     val auxArr: ArrayBuffer[IEntity] = ArrayBuffer[IEntity]()
-    for (char <- this.characters) {
+    for (char <- _characters) {
       if (this.getActionBarMax(char) <= this.getActionBar(char)) {
         auxArr.addOne(char)
       }
