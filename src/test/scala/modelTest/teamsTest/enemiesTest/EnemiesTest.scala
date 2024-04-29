@@ -1,28 +1,28 @@
 package modelTest.teamsTest.enemiesTest
 
+import model.entities.IEntity
 import model.entities.enemies.enemy.Enemy
 import model.teams.enemies.Enemies
 
-class EnemiesTest extends munit.FunSuite{
-  var p1: Enemies = _
-  var p2: Enemies = _
-  var ch1: Enemy   = _
+import scala.collection.mutable.ArrayBuffer
 
+class EnemiesTest extends munit.FunSuite {
+  var team1: Enemies = _
+  var en1: Enemy = _
+  var en2: Enemy = _
+  var en3: Enemy = _
+  var en4: Enemy = _
   override def beforeEach(context: BeforeEach): Unit = {
-    p1 = new Enemies(5)
-    p2 = new Enemies(3)
-    ch1 = new Enemy("Joe", 10, 20, 30, 40)
+    en1 = new Enemy("A", 1, 1, 1, 1)
+    en2 = new Enemy("B", 1, 1, 1, 1)
+    en3 = new Enemy("C", 1, 1, 1, 1)
+    en4 = new Enemy("X", 3, 3, 3, 3)
   }
 
-  test("Enemy party size") {
-    val expected = true
-    val actual   = p1.characters.length <= 5
-    assertEquals(actual,expected,"No more than 5 characters allowed")
-  }
-
-  test("Adding Enemies") {
-    assertEquals(p1.characters(0), null, "Party should be initiated without characters")
-    p1.addEnemy(ch1)
-    assertEquals(p1.characters(0), ch1, "Party should be initiated without characters")
+  test("Can Add Members") {
+    team1 = new Enemies(en1, en2)
+    val expected = ArrayBuffer[IEntity](en1,en2,en3)
+    team1.addMember(en3)
+    assertEquals(team1.getMembers, expected)
   }
 }

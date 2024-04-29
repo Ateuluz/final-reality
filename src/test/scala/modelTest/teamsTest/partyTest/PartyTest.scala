@@ -1,7 +1,6 @@
 package modelTest.teamsTest.partyTest
 
 import model.entities.characters.paladin.Paladin
-import model.entities.characters.warrior.Warrior
 import model.teams.party.Party
 
 class PartyTest extends munit.FunSuite {
