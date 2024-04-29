@@ -4,40 +4,23 @@ import model.entities.characters.paladin.Paladin
 import model.entities.characters.warrior.Warrior
 import model.teams.party.Party
 
-class PartyTest extends munit.FunSuite{
-  var p1: Party   = _
-  var p2: Party   = _
+class PartyTest extends munit.FunSuite {
+  var team1: Party = _
   var ch1: Paladin = _
-  var ch2: Warrior = _
-
+  var ch2: Paladin = _
+  var ch3: Paladin = _
+  var ch4: Paladin = _
   override def beforeEach(context: BeforeEach): Unit = {
-    p1 = new Party
-    p2 = new Party
-    ch1 = new Paladin("Joe", 10, 20, 30)
-    ch2 = new Warrior("Doe", 0, 10, 20)
+    ch1 = new Paladin("A", 1, 1, 1)
+    ch2 = new Paladin("B", 1, 1, 1)
+    ch3 = new Paladin("C", 1, 1, 1)
+    ch4 = new Paladin("X", 3, 3, 3)
   }
 
-  test("Party size") {
-    val expected = 3
-    assertEquals(p1.getCharacters.length,expected,"The number of characters allowed should be 3")
-  }
-
-  test("Adding Characters") {
-    assertEquals(p1.getCharacters(0), null, "Party should be initiated without characters")
-    p1.addCharacter(ch1)
-    assertEquals(p1.getCharacters(0), ch1, "Party should be initiated without characters")
-  }
-
-  test("Knowing Defeat") {
-    p1.addCharacter(ch2)
-    p1.addCharacter(ch2)
-    p1.addCharacter(ch2)
-    p2.addCharacter(ch1)
-    p2.addCharacter(ch1)
-    p2.addCharacter(ch1)
-    val expected1 = true
-    val expected2 = false
-    assertEquals(p1.isDefeated,expected1,"Should be defeated")
-    assertEquals(p2.isDefeated,expected2,"Shouldn't be defeated")
+  test("Cannot Add Members") {
+    team1 = new Party(ch1, ch2, ch3)
+    val expected = team1.getMembers
+    team1.addMember(ch4)
+    assertEquals(team1.getMembers, expected)
   }
 }
