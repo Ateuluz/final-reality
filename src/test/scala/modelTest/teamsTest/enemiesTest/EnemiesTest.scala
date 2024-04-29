@@ -11,12 +11,10 @@ class EnemiesTest extends munit.FunSuite {
   var en1: Enemy = _
   var en2: Enemy = _
   var en3: Enemy = _
-  var en4: Enemy = _
   override def beforeEach(context: BeforeEach): Unit = {
     en1 = new Enemy("A", 1, 1, 1, 1)
     en2 = new Enemy("B", 1, 1, 1, 1)
     en3 = new Enemy("C", 1, 1, 1, 1)
-    en4 = new Enemy("X", 3, 3, 3, 3)
   }
 
   test("Can Add Members") {
