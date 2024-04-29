@@ -23,4 +23,11 @@ class EnemiesTest extends munit.FunSuite {
     team1.addMember(en3)
     assertEquals(team1.getMembers, expected)
   }
+
+  test("Can Remove Members") {
+    team1 = new Enemies(en1, en2)
+    val expected = ArrayBuffer[IEntity](en2)
+    team1.changeMember(en1, None)
+    assertEquals(team1.getMembers, expected)
+  }
 }

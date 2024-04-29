@@ -44,4 +44,17 @@ abstract class ATeam(
       case _ => println("Members are full")
     }
   }
+  override def changeMember(
+                             oldMember: IEntity,
+                             newMember: Option[IEntity]
+                           ): Unit = {
+    newMember match {
+      case Some(member) =>
+        _members -= oldMember
+        this.addMember(member)
+      case None =>
+        if (_members.length > _minimumMembers)
+          _members -= oldMember
+    }
+  }
 }

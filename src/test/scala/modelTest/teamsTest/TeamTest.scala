@@ -45,4 +45,17 @@ class TeamTest extends munit.FunSuite {
     ch4.attack(ch3)
     assertEquals(team1.isDefeated, true)
   }
+
+  test("Can Replace Member") {
+    team1 = new Party(ch1, ch2, ch3)
+    team1.changeMember(ch1, Some(ch4))
+    assertEquals(team1.getMembers, ArrayBuffer[IEntity](ch2,ch3,ch4))
+  }
+
+  test("Limit Removal") {
+    team1 = new Party(ch1, ch2, ch3)
+    val expected = team1.getMembers
+    team1.changeMember(ch1, None)
+    assertEquals(team1.getMembers, expected, s">> ${team1.getMembers}")
+  }
 }

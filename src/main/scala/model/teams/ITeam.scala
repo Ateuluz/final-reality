@@ -8,4 +8,5 @@ trait ITeam {
   def addMember(member: IEntity): Unit
   def getMembers: ArrayBuffer[IEntity]
   def isDefeated: Boolean
+  def changeMember(oldMember: IEntity, newMember: Option[IEntity]): Unit
 }
