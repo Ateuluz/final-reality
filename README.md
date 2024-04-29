@@ -132,11 +132,14 @@ The teams are represented as ArrayBuffer instances and their length is decided u
 ### Adding/Removing Members from Teams
 
 When a new member tries to join a full team, it will just not be allowed and nothing will happen.
-Yet to implement a way to remove members.
+Changing a member of a team is always possible.
+Removing a character is achieved with the change method, passing Nothing as the newMember parameter.
+If removing the character would leave the team with less than minimum members, nothing happens.
 
 ### Knowledge of defeat
 
-A team is required to know if it is defeated or not, the way it is implemented here is by checking if there is any alive member left on the team. Alive is defined as having HP greater than 0.
+A team is required to know if it is defeated or not, the way it is implemented here is by checking if there is any alive member left on the team. 
+Alive is defined as having HP greater than 0.
 
 ## Turn Scheduler
 
@@ -164,8 +167,10 @@ When all entities are done with the turns for the round, all action bars are rai
 ### Storage
 
 Entities are stored in an ArrayBuffer, same for their action bars, which are respective in terms of index.
+
 Adding an entity will append it to the last element of the characters ArrayBuffer, creating a new action bar starting
 at zero appended to the last element of the action bars ArrayBuffer.
+
 Removing a character works by finding the index and removing the elements there from characters array and bars array.
 
 ## License
