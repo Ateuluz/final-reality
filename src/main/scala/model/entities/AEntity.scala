@@ -25,24 +25,40 @@ abstract class AEntity (
     }
   }
   override def getDefense: Int = _defense
+  override def getWeight: Int = _weight
+  override def defend(attack: Int): Int = {
+    val dmg = constrainDamage(attack - _defense)
+    _hp -= dmg
+    dmg
+  }
+
+  /**
+   *
+   * @param defense The original defense value
+   * @return The final valid defense value
+   */
   private def constrainDefense(defense: Int): Int = {
     defense match {
       case n if n < 0 => 0
       case _ => defense
     }
   }
-  override def getWeight: Int = _weight
+  /**
+   *
+   * @param weight The original weight value
+   * @return The final valid weight value
+   */
   private def constrainWeight(weight: Int): Int = {
     weight match {
       case n if n < 1 => 1
       case _ => weight
     }
   }
-  override def defend(attack: Int): Int = {
-    val dmg = constrainDamage(attack - _defense)
-    _hp -= dmg
-    dmg
-  }
+  /**
+   *
+   * @param damage The intended attack damage
+   * @return The real damage to be dealt
+   */
   private def constrainDamage(damage: Int): Int =
     damage match {
       case dmg if dmg > _hp => _hp
