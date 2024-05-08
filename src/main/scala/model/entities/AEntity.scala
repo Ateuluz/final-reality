@@ -2,6 +2,13 @@ package model.entities
 
 import exceptions.Require
 
+/**
+ *
+ * @param name    The name of the entity
+ * @param hp      The health points
+ * @param defense The resistance to damage
+ * @param weight  The weight of the entity
+ */
 abstract class AEntity (
                          name:String,
                          hp:Int,
@@ -16,22 +23,52 @@ abstract class AEntity (
   Require.Stat(defense, "Defense") atLeast 0
   Require.Stat(weight, "Weight") atLeast 1
 
+  /**
+   *
+   *  @return The name of the entity
+   */
   override def getName: String = _name
+
+  /**
+   *
+   *  @return The hp of the entity
+   */
   override def getHp: Int = _hp
-  private def constrainHp(hp: Int): Int = {
-    hp match {
-      case n if n < 0 => 0
-      case _ => hp
-    }
-  }
+
+  /**
+   *
+   *  @return The defense of the entity
+   */
   override def getDefense: Int = _defense
+
+  /**
+   *
+   *  @return The weight of the entity
+   */
   override def getWeight: Int = _weight
+
+  /**
+   *
+   * @param attack The incoming attack value
+   *  @return The damage that got past the defenders defense
+   */
   override def defend(attack: Int): Int = {
     val dmg = constrainDamage(attack - _defense)
     _hp -= dmg
     dmg
   }
 
+  /**
+   *
+   * @param hp The original hp value
+   * @return The final valid hp value
+   */
+  private def constrainHp(hp: Int): Int = {
+    hp match {
+      case n if n < 0 => 0
+      case _ => hp
+    }
+  }
   /**
    *
    * @param defense The original defense value

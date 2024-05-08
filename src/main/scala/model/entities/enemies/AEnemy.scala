@@ -13,9 +13,21 @@ abstract class AEnemy (
                           with IEnemy {
   private val _attack: Int = constrainAttack(attack)
   Require.Stat(attack, "Attack") atLeast 1
+
+  /**
+   *
+   *  @return The attack stat of this entity
+   */
   override def getAttack: Int = _attack
+
+  /**
+   *
+   * @param objective is the one to attack
+   *  @return the damage dealt, should we want to use it
+   */
   override def attack(objective: IEntity): Int =
     objective.defend(_attack)
+
   /**
    *
    * @param attack The original attack value

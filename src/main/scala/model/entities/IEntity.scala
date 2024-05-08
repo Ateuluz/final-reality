@@ -1,5 +1,8 @@
 package model.entities
 
+/**
+ * Trait representing an entity and its methods
+ */
 trait IEntity {
   /**
    *

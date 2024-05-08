@@ -18,7 +18,16 @@ abstract class ACharacter(
                         ) extends AEntity(name, hp, defense, weight)
                             with ICharacter {
   private var _weapon: Option[IWeapon] = None
+
+  /**
+   *
+   *  @return The weapon the character holds, if any
+   */
   override def getWeapon: Option[IWeapon] = _weapon
+
+  /**
+   * We un equip the weapon off the character should it hold one
+   */
   override def unEquip(): Unit = {
     _weapon match {
       case Some(wp) =>
@@ -27,6 +36,11 @@ abstract class ACharacter(
       case None =>
     }
   }
+
+  /**
+   *
+   * @param wp The weapon to equip
+   */
   override def equip(wp: IWeapon): Unit = {
     wp match {
       case w if w.canBeEquippedBy(this) =>
@@ -37,6 +51,11 @@ abstract class ACharacter(
     }
   }
 
+  /**
+   *
+   * @param objective is the one to attack
+   *  @return the damage dealt, should we want to use it
+   */
   override def attack(objective: IEntity): Int = {
     val atk = _weapon match {
       case Some(weapon) => weapon.getAttack
