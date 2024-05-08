@@ -38,6 +38,8 @@ Out of these stats, they are required to have:
 - Defense value greater than or equal to 0.
 - Weight value greater than 0.
 
+For the purpose of this game implementation, entities can both attack and defend, with th methods returning final damage dealt for if later needed.
+
 ## Characters
 
 Characters all share the common root interface ICharacter that extends IEntity, which grants all sub instances have:
