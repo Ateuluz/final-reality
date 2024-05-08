@@ -3,6 +3,14 @@ package model.entities.enemies
 import exceptions.Require
 import model.entities.{AEntity, IEntity}
 
+/**
+ *
+ * @param name    The name of the entity
+ * @param hp      The health points
+ * @param defense The resistance to damage
+ * @param attack  The attack power
+ * @param weight  The weight of the entity
+ */
 abstract class AEnemy (
                         name: String,
                         hp: Int,
