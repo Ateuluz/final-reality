@@ -2,7 +2,7 @@ package model.entities.characters.warrior
 
 import model.entities.characters.{ACharacter, IAxeBearer, IBowBearer, ISwordBearer}
 
-/**
+/** Creating instance of Warrior
  *
  * @param name    Name given to the mage
  * @param hp      Health points

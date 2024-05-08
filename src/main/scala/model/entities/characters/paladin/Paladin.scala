@@ -2,7 +2,7 @@ package model.entities.characters.paladin
 
 import model.entities.characters.{ACharacter, IAxeBearer, ISwordBearer}
 
-/**
+/** Creating instance of Paladin
  *
  * @param name    Name given to the mage
  * @param hp      Health points

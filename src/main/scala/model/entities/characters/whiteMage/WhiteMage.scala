@@ -2,7 +2,7 @@ package model.entities.characters.whiteMage
 
 import model.entities.characters.{AMagicalCharacter, IBowBearer, IStaffUser, IWandUser}
 
-/**
+/** Creating instance of WhiteMage
  *
  * @param name    Name given to the mage
  * @param hp      Health points
