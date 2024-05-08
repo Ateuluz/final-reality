@@ -1,7 +1,8 @@
 package model.entities.characters
 
 /**
- * Representation of a character capable of using an Axe
+ * Representation of a character capable of using an Axewq
+ *
  */
 trait IAxeBearer extends ICharacter {
 
