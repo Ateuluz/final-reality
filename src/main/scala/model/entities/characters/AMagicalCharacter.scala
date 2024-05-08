@@ -2,6 +2,14 @@ package model.entities.characters
 
 import exceptions.Require
 
+/**
+ *
+ * @param name    The name of the character
+ * @param hp      The health points
+ * @param defense The resistance to damage
+ * @param weight  The weight of the character
+ * @param mana    The mana of the character
+ */
 abstract class AMagicalCharacter(
                                   name: String,
                                   hp: Int,
