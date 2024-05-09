@@ -36,7 +36,14 @@ class TurnScheduler extends ITurnScheduler {
   }
 
   /**
+   * Defined public, since we might want to use a certain
+   * game mode in which we raise the action bar in such
+   * a way all characters attack once for every time the
+   * boss attacks or other options.
+   * Might replace later
+   *
    * Get the action bar of a single character if stored else -1
+   *
    * @param character Who's action bar we want
    * @return action bar
    */
@@ -71,6 +78,12 @@ class TurnScheduler extends ITurnScheduler {
   }
 
   /**
+   * Defined public, since we might want to use a certain
+   * game mode in which we raise the action bar in such
+   * a way all characters attack once for every time the
+   * boss attacks or other options.
+   * Might replace later
+   *
    * Return action bar max value of a given character
    * Should there be a decimal max, it'll return the ceil
    * @param character Who's max action bar value we want
@@ -89,6 +102,9 @@ class TurnScheduler extends ITurnScheduler {
   }
 
   /**
+   * Public while no game implementation is
+   * specified.
+   *
    * Raise all action bars by a constant k
    * @param k constant
    */
@@ -99,6 +115,9 @@ class TurnScheduler extends ITurnScheduler {
   }
 
   /**
+   * Public while no game implementation is
+   * specified.
+   *
    * Reset a character's action bar
    * @param character Who's action bar we want to be reset
    */
@@ -116,13 +135,10 @@ class TurnScheduler extends ITurnScheduler {
    * @param character The character to evaluate
    * @return action bar at/over max
    */
-  override def isFull(character: IEntity): Boolean = {
+  private def isFull(character: IEntity): Boolean = {
     val characterIndex = _characters.indexOf(character)
-    if (characterIndex != -1) {
-      _actionBars(characterIndex) >= this.getActionBarMax(character)
-    } else {
-      false
-    }
+    // We are sure character has index for this is a private method
+    _actionBars(characterIndex) >= this.getActionBarMax(character)
   }
 
   /**
@@ -132,15 +148,17 @@ class TurnScheduler extends ITurnScheduler {
   override def getCharactersFull: ArrayBuffer[IEntity] = {
     val auxArr: ArrayBuffer[IEntity] = ArrayBuffer[IEntity]()
     for (char <- _characters) {
-      if (this.getActionBarMax(char) <= this.getActionBar(char)) {
-        auxArr.addOne(char)
-      }
+      // if (this.getActionBarMax(char) <= this.getActionBar(char)) {
+      //   auxArr.addOne(char)
+      // }
+      if (isFull(char)) auxArr.addOne(char)
     }
     def auxFun(char: IEntity): Int = {
       this.getActionBarMax(char) - this.getActionBar(char)
     }
     auxArr.sortBy(auxFun)
   }
+
 
   /**
    * Get character to whom the current turn belongs to

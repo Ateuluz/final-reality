@@ -114,20 +114,20 @@ class TurnSchedulerTest extends munit.FunSuite {
       assertEquals(expected, actual, "Action Bar Reset Failed - Explanation")
   }
 
-  test("Check Action Bar Full") {
-    TrSch.addCharacter(ch1)
-    TrSch.addCharacter(ch2)
-    TrSch.raiseActionBars(TrSch.getActionBarMax(ch2))
-    val expected1 = false// define expected value
-    val actual1 = TrSch.isFull(TrSch.getCharacters(0))// define actual value
-      assertEquals(expected1, actual1, "Action Bar Full - Explanation")
-    val expected2 = true// define expected value
-    val actual2 = TrSch.isFull(TrSch.getCharacters(1))// define actual value
-      assertEquals(expected2, actual2, "Action Bar Not Full - Explanation")
-    val expected3 = false// define expected value
-    val actual3 = TrSch.isFull(ch3)// define actual value
-      assertEquals(expected3, actual3, "Action Bar Exists - Explanation")
-  }
+  //test("Check Action Bar Full") {
+  //  TrSch.addCharacter(ch1)
+  //  TrSch.addCharacter(ch2)
+  //  TrSch.raiseActionBars(TrSch.getActionBarMax(ch2))
+  //  val expected1 = false// define expected value
+  //  val actual1 = TrSch.isFull(TrSch.getCharacters(0))// define actual value
+  //    assertEquals(expected1, actual1, "Action Bar Full - Explanation")
+  //  val expected2 = true// define expected value
+  //  val actual2 = TrSch.isFull(TrSch.getCharacters(1))// define actual value
+  //    assertEquals(expected2, actual2, "Action Bar Not Full - Explanation")
+  //  val expected3 = false// define expected value
+  //  val actual3 = TrSch.isFull(ch3)// define actual value
+  //    assertEquals(expected3, actual3, "Action Bar Exists - Explanation")
+  //}
 
   test("Return Characters with Full Bars, Ordered Descending by Surplus") {
     TrSch.addCharacter(ch1)
