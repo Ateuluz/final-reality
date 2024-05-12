@@ -20,7 +20,18 @@ abstract class AMagicalCharacter(
                                     with IMagicalCharacter {
   private var _mana: Int = constrainMana(mana)
   Require.Stat(mana, "Mana") atLeast 0
+
+  /**
+   *
+   *  @return The mana the magical character has left
+   */
   override def getMana: Int = _mana
+
+  /**
+   * Public while mana mechanics not disclosed.
+   *
+   * @param mana The mana we want the character to have
+   */
   override def setMana(mana: Int): Unit = {
     _mana = constrainMana(mana)
   }
