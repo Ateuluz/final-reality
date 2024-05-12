@@ -16,6 +16,11 @@ class Wand (
              weight: Int,
              magicAttack: Int,
            ) extends AMagicalWeapon(name,attack,weight,magicAttack) {
+  /**
+   *
+   * @param character the character we intend to equip the weapon to
+   *  @return Boolean representing if the character can equip it
+   */
   override protected[model] def canBeEquippedBy(character: ICharacter): Boolean = {
     character match {
       case _: IWandUser => getOwner.isEmpty

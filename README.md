@@ -175,6 +175,14 @@ at zero appended to the last element of the action bars ArrayBuffer.
 
 Removing a character works by finding the index and removing the elements there from characters array and bars array.
 
+# Disclaimer
+
+For the creation of the constructors, require methods of the exceptions package were used without directly setting the
+values, they are used only for checking valid values for stats as if they were returning a Unit type value.
+
+This will be changed when enough information on the mechanics of the game are disclosed, which will be linked to deletion of
+some constraining methods previously defined (if any).
+
 ## License
 
 This project is licensed under the
