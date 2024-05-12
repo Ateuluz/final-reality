@@ -21,6 +21,7 @@ class TurnScheduler extends ITurnScheduler {
 
   /**
    * Get all stored characters
+   *
    * @return listed characters
    */
   override def getCharacters: ArrayBuffer[IEntity] = {
@@ -29,6 +30,7 @@ class TurnScheduler extends ITurnScheduler {
 
   /**
    * Get all stored action bars
+   *
    * @return listed action bars
    */
   override def getActionBars: ArrayBuffer[Int] = {
@@ -58,15 +60,17 @@ class TurnScheduler extends ITurnScheduler {
 
   /**
    * Add a character and assign it an actionbar
+   *
    * @param character New character to store
    */
-  override def addCharacter(character:IEntity): Unit = {
+  override def addCharacter(character: IEntity): Unit = {
     _characters.addOne(character)
     _actionBars.addOne(0)
   }
 
   /**
    * Removes a character and its action bar
+   *
    * @param character Character to be removed along with action bar
    */
   override def removeCharacter(character: IEntity): Unit = {
@@ -86,6 +90,7 @@ class TurnScheduler extends ITurnScheduler {
    *
    * Return action bar max value of a given character
    * Should there be a decimal max, it'll return the ceil
+   *
    * @param character Who's max action bar value we want
    * @return character's max action bar value
    */
@@ -106,6 +111,7 @@ class TurnScheduler extends ITurnScheduler {
    * specified.
    *
    * Raise all action bars by a constant k
+   *
    * @param k constant
    */
   override def raiseActionBars(k: Int): Unit = {
@@ -119,6 +125,7 @@ class TurnScheduler extends ITurnScheduler {
    * specified.
    *
    * Reset a character's action bar
+   *
    * @param character Who's action bar we want to be reset
    */
   override def reset(character: IEntity): Unit = {
@@ -132,6 +139,7 @@ class TurnScheduler extends ITurnScheduler {
 
   /**
    * Return if a character is ready to take action
+   *
    * @param character The character to evaluate
    * @return action bar at/over max
    */
@@ -143,6 +151,7 @@ class TurnScheduler extends ITurnScheduler {
 
   /**
    * Get descending array of all characters with action bar at/over max
+   *
    * @return characters ready to take action
    */
   override def getCharactersFull: ArrayBuffer[IEntity] = {
@@ -153,15 +162,18 @@ class TurnScheduler extends ITurnScheduler {
       // }
       if (isFull(char)) auxArr.addOne(char)
     }
+
     def auxFun(char: IEntity): Int = {
       this.getActionBarMax(char) - this.getActionBar(char)
     }
+
     auxArr.sortBy(auxFun)
   }
 
 
   /**
    * Get character to whom the current turn belongs to
+   *
    * @return character to take current turn
    */
   override def getAtTurn: IEntity = {
