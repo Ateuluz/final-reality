@@ -1,7 +1,12 @@
 package model.armament
 
-import exceptions.Require
+import exceptions.{InvalidHolderException, Require}
 import model.entities.characters.ICharacter
+import model.entities.characters.blackMage.BlackMage
+import model.entities.characters.ninja.Ninja
+import model.entities.characters.paladin.Paladin
+import model.entities.characters.warrior.Warrior
+import model.entities.characters.whiteMage.WhiteMage
 
 /**
  *
@@ -85,5 +90,45 @@ abstract class AWeapon (
    */
   override protected[model] def unsetOwner(): Unit = {
     _owner = None
+  }
+
+  /**
+   *
+   * @param paladin The character to equip the weapon with
+   */
+  override def equipTo(paladin: Paladin): Unit = {
+    throw new InvalidHolderException("Paladin character cannot equip this type of weapon.")
+  }
+
+  /**
+   *
+   * @param warrior The character to equip the weapon with
+   */
+  override def equipTo(warrior: Warrior): Unit = {
+    throw new InvalidHolderException("Warrior character cannot equip this type of weapon.")
+  }
+
+  /**
+   *
+   * @param ninja The character to equip the weapon with
+   */
+  override def equipTo(ninja: Ninja): Unit = {
+    throw new InvalidHolderException("Ninja character cannot equip this type of weapon.")
+  }
+
+  /**
+   *
+   * @param whiteMage The character to equip the weapon with
+   */
+  override def equipTo(whiteMage: WhiteMage): Unit = {
+    throw new InvalidHolderException("WhiteMage character cannot equip this type of weapon.")
+  }
+
+  /**
+   *
+   * @param blackMage The character to equip the weapon with
+   */
+  override def equipTo(blackMage: BlackMage): Unit = {
+    throw new InvalidHolderException("BlackMage character cannot equip this type of weapon.")
   }
 }
