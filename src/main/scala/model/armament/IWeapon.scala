@@ -1,6 +1,11 @@
 package model.armament
 
 import model.entities.characters.ICharacter
+import model.entities.characters.blackMage.BlackMage
+import model.entities.characters.ninja.Ninja
+import model.entities.characters.paladin.Paladin
+import model.entities.characters.warrior.Warrior
+import model.entities.characters.whiteMage.WhiteMage
 
 /**
  * Trait defining a weapons methods
@@ -23,6 +28,7 @@ trait IWeapon {
    * @return weapons weight
    */
   def getWeight: Int
+
   /**
    *
    * @return weapons owner if any else None
@@ -46,4 +52,34 @@ trait IWeapon {
    * Set the owner of the weapon back to None
    */
   protected[model] def unsetOwner(): Unit
+
+  /**
+   * Equip this weapon to a Paladin
+   * Exception by default
+   */
+  def equipTo(paladin: Paladin): Unit
+
+  /**
+   * Equip this weapon to a Warrior
+   * Exception by default
+   */
+  def equipTo(warrior: Warrior): Unit
+
+  /**
+   * Equip this weapon to a Ninja
+   * Exception by default
+   */
+  def equipTo(ninja: Ninja): Unit
+
+  /**
+   * Equip this weapon to a WhiteMage
+   * Exception by default
+   */
+  def equipTo(whiteMage: WhiteMage): Unit
+
+  /**
+   * Equip this weapon to a BlackMage
+   * Exception by default
+   */
+  def equipTo(blackMage: BlackMage): Unit
 }
