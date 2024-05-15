@@ -39,20 +39,6 @@ abstract class ACharacter(
 
   /**
    *
-   * @param wp The weapon to equip
-   */
-  override def equip(wp: IWeapon): Unit = {
-    wp match {
-      case w if w.canBeEquippedBy(this) =>
-        w.setOwner(this)
-        this.unEquip()
-        _weapon = Some(w)
-      case _ =>
-    }
-  }
-
-  /**
-   *
    * @param objective is the one to attack
    *  @return the damage dealt, should we want to use it
    */
