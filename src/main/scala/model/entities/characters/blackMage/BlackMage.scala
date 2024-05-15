@@ -20,6 +20,11 @@ class BlackMage (
                 ) extends AMagicalCharacter(name,hp,defense,weight,mana)
                     with ISwordBearer with IWandUser with IStaffUser {
 
-  override def equip(wp: IWeapon): Unit =
-    wp.equipToBlackMage(this)
+  override def equip(wp: IWeapon): Unit = {
+    if (wp.getOwner.isEmpty) {
+      unEquip()
+      wp.equipToBlackMage(this)
+      setWeapon(wp)
+    }
+  }
 }
