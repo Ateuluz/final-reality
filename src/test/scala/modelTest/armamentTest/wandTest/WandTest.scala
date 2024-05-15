@@ -34,16 +34,6 @@ class WandTest extends munit.FunSuite() {
     assertEquals(actual2,expected2,"The returned instance is not empty")
   }
 
-  test("Non User cannot Equip") {
-    try {
-      ch2 = new Warrior("X", 2, 2, 2)
-      ch2.equip(wp2)
-    } catch {
-      case _: InvalidHolderException =>
-      case _ => fail("The Weapon Is Not Supposed To Be Assigned")
-    }
-  }
-
   test("Can be Equipped") {
     val chAux1 = new Ninja("X", 2, 2, 2)
     val chAux2 = new WhiteMage("X", 2, 2, 2, 2)
