@@ -1,5 +1,6 @@
 package model.entities.characters.warrior
 
+import model.armament.IWeapon
 import model.entities.characters.{ACharacter, IAxeBearer, IBowBearer, ISwordBearer}
 
 /** Creating instance of Warrior
@@ -15,6 +16,8 @@ class Warrior (
                 defense: Int,
                 weight: Int
               ) extends ACharacter(name,hp,defense,weight)
-                  with ISwordBearer with IAxeBearer with IBowBearer{
+                  with ISwordBearer with IAxeBearer with IBowBearer {
 
+  override def equip(wp: IWeapon): Unit =
+    wp.equipToWarrior(this)
 }
