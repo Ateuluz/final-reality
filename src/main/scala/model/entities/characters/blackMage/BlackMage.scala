@@ -1,5 +1,6 @@
 package model.entities.characters.blackMage
 
+import model.armament.IWeapon
 import model.entities.characters.{AMagicalCharacter, IStaffUser, ISwordBearer, IWandUser}
 
 /** Creating instance of BlackMage
@@ -19,4 +20,6 @@ class BlackMage (
                 ) extends AMagicalCharacter(name,hp,defense,weight,mana)
                     with ISwordBearer with IWandUser with IStaffUser {
 
+  override def equip(wp: IWeapon): Unit =
+    wp.equipToBlackMage(this)
 }
