@@ -1,9 +1,12 @@
 package modelTest.armamentTest.bowTest
 
+import exceptions.InvalidHolderException
 import model.armament.bow.Bow
 import model.entities.characters.{IBowBearer, ICharacter}
 import model.entities.characters.ninja.Ninja
 import model.entities.characters.paladin.Paladin
+import model.entities.characters.warrior.Warrior
+import model.entities.characters.whiteMage.WhiteMage
 
 class BowTest extends munit.FunSuite() {
   var ch1: IBowBearer = _
@@ -35,8 +38,29 @@ class BowTest extends munit.FunSuite() {
   }
 
   test("Non User cannot Equip") {
-    ch2 = new Paladin("X", 2, 2, 2)
-    ch2.equip(wp2)
-    assertEquals(wp2.getOwner,None)
+    try {
+      ch2 = new Paladin("X", 2, 2, 2)
+      ch2.equip(wp2)
+    } catch {
+      case _: InvalidHolderException =>
+      case _ => fail("The Weapon Is Not Supposed To Be Assigned")
+    }
+  }
+
+  test("Can be Equipped") {
+    val chAux2 = new Ninja("X", 2, 2, 2)
+    val chAux4 = new Warrior("X", 2, 2, 2)
+    val chAux5 = new WhiteMage("X", 2, 2, 2, 2)
+    val wpAux = new Bow("X", 2, 2)
+    try {
+      chAux2.equip(wpAux)
+      chAux2.unEquip()
+      chAux4.equip(wpAux)
+      chAux4.unEquip()
+      chAux5.equip(wpAux)
+      chAux5.unEquip()
+    } catch {
+      case _: InvalidHolderException => fail("Weapon Is Supposed To Be Assigned to All")
+    }
   }
 }
