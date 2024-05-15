@@ -96,7 +96,7 @@ abstract class AWeapon (
    *
    * @param paladin The character to equip the weapon with
    */
-  override def equipTo(paladin: Paladin): Unit = {
+  override def equipToPaladin(paladin: Paladin): Unit = {
     throw new InvalidHolderException("Paladin character cannot equip this type of weapon.")
   }
 
@@ -104,7 +104,7 @@ abstract class AWeapon (
    *
    * @param warrior The character to equip the weapon with
    */
-  override def equipTo(warrior: Warrior): Unit = {
+  override def equipToWarrior(warrior: Warrior): Unit = {
     throw new InvalidHolderException("Warrior character cannot equip this type of weapon.")
   }
 
@@ -112,7 +112,7 @@ abstract class AWeapon (
    *
    * @param ninja The character to equip the weapon with
    */
-  override def equipTo(ninja: Ninja): Unit = {
+  override def equipToNinja(ninja: Ninja): Unit = {
     throw new InvalidHolderException("Ninja character cannot equip this type of weapon.")
   }
 
@@ -120,7 +120,7 @@ abstract class AWeapon (
    *
    * @param whiteMage The character to equip the weapon with
    */
-  override def equipTo(whiteMage: WhiteMage): Unit = {
+  override def equipToWhiteMage(whiteMage: WhiteMage): Unit = {
     throw new InvalidHolderException("WhiteMage character cannot equip this type of weapon.")
   }
 
@@ -128,7 +128,7 @@ abstract class AWeapon (
    *
    * @param blackMage The character to equip the weapon with
    */
-  override def equipTo(blackMage: BlackMage): Unit = {
+  override def equipToBlackMage(blackMage: BlackMage): Unit = {
     throw new InvalidHolderException("BlackMage character cannot equip this type of weapon.")
   }
 }
