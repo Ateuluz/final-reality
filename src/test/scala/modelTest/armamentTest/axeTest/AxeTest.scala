@@ -1,8 +1,10 @@
 package modelTest.armamentTest.axeTest
 
+import exceptions.InvalidHolderException
 import model.armament.axe.Axe
 import model.entities.characters.{IAxeBearer, ICharacter}
 import model.entities.characters.paladin.Paladin
+import model.entities.characters.warrior.Warrior
 import model.entities.characters.whiteMage.WhiteMage
 
 class AxeTest extends munit.FunSuite() {
@@ -32,8 +34,26 @@ class AxeTest extends munit.FunSuite() {
   }
 
   test("Non User cannot Equip") {
-    ch2 = new WhiteMage("X", 2, 2, 2, 2)
-    ch2.equip(wp2)
-    assertEquals(wp2.getOwner,None)
+    try {
+      ch2 = new WhiteMage("X", 2, 2, 2, 2)
+      ch2.equip(wp2)
+    } catch {
+      case _: InvalidHolderException =>
+      case _ => fail("The Weapon Is Not Supposed To Be Assigned")
+    }
+  }
+
+  test("Can be Equipped") {
+    val chAux1 = new Paladin("X", 2, 2, 2)
+    val chAux4 = new Warrior("X", 2, 2, 2)
+    val wpAux = new Axe("X", 2, 2)
+    try {
+      chAux1.equip(wpAux)
+      chAux1.unEquip()
+      chAux4.equip(wpAux)
+      chAux4.unEquip()
+    } catch {
+      case _: InvalidHolderException => fail("Weapon Is Supposed To Be Assigned to All")
+    }
   }
 }
