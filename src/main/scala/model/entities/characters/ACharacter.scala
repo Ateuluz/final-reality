@@ -26,14 +26,18 @@ abstract class ACharacter(
   override def getWeapon: Option[IWeapon] = _weapon
 
   /**
+   *
+   * @param weapon The weapon to equip
+   */
+  override protected def setWeapon(weapon: IWeapon): Unit = _weapon = Some(weapon)
+
+  /**
    * We un equip the weapon off the character should it hold one
    */
   override def unEquip(): Unit = {
-    _weapon match {
-      case Some(wp) =>
-        wp.unsetOwner()
-        _weapon = None
-      case None =>
+    if (this._weapon.isDefined) {
+      _weapon.get.unsetOwner()
+      _weapon = None
     }
   }
 
@@ -43,12 +47,11 @@ abstract class ACharacter(
    *  @return the damage dealt, should we want to use it
    */
   override def attack(objective: IEntity): Int = {
-    val atk = _weapon match {
-      case Some(weapon) => weapon.getAttack
-      case None =>
-        println(s"${this.getClass} $name has no weapon equipped!")
-        0
+    if (_weapon.isDefined)
+      objective.defend(_weapon.get.getAttack)
+    else {
+      println(s"${this.getClass} $name has no weapon equipped!")
+      objective.defend(0)
     }
-    objective.defend(atk)
   }
 }
