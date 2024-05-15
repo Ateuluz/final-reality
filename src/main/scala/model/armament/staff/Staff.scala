@@ -18,17 +18,6 @@ class Staff (
               weight: Int,
               magicAttack: Int,
             ) extends AMagicalWeapon(name,attack,weight,magicAttack) {
-  /**
-   *
-   * @param character the character we intend to equip the weapon to
-   *  @return Boolean representing if the character can equip it
-   */
-  override protected[model] def canBeEquippedBy(character: ICharacter): Boolean = {
-    character match {
-      case _: IStaffUser => getOwner.isEmpty
-      case _ => false
-    }
-  }
 
   override def equipToBlackMage(blackMage: BlackMage): Unit =
     setOwner(blackMage)
