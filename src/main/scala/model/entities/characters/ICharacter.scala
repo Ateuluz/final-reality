@@ -23,4 +23,10 @@ trait ICharacter extends IEntity {
    * @param wp The weapon to equip
    */
   def equip(wp: IWeapon): Unit
+
+  /**
+   *
+   * @param weapon The weapon to equip
+   */
+  protected def setWeapon(weapon: IWeapon): Unit
 }
