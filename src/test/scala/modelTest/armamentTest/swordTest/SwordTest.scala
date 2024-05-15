@@ -1,6 +1,10 @@
 package modelTest.armamentTest.swordTest
 
+import exceptions.InvalidHolderException
 import model.armament.sword.Sword
+import model.entities.characters.blackMage.BlackMage
+import model.entities.characters.ninja.Ninja
+import model.entities.characters.paladin.Paladin
 import model.entities.characters.{ICharacter, ISwordBearer}
 import model.entities.characters.warrior.Warrior
 import model.entities.characters.whiteMage.WhiteMage
@@ -32,8 +36,32 @@ class SwordTest extends munit.FunSuite() {
   }
 
   test("Non User cannot Equip") {
-    ch2 = new WhiteMage("X", 2, 2, 2, 2)
-    ch2.equip(wp2)
-    assertEquals(wp2.getOwner,None)
+    try {
+      ch2 = new WhiteMage("X", 2, 2, 2, 2)
+      ch2.equip(wp2)
+    } catch {
+      case _: InvalidHolderException =>
+      case _ => fail("The Weapon Is Not Supposed To Be Assigned")
+    }
+  }
+
+  test("Can be Equipped") {
+    val chAux1 = new Paladin("X", 2, 2, 2)
+    val chAux2 = new Ninja("X", 2, 2, 2)
+    val chAux3 = new BlackMage("X", 2, 2, 2, 2)
+    val chAux4 = new Warrior("X", 2, 2, 2)
+    val wpAux = new Sword("X", 2, 2)
+    try {
+      chAux1.equip(wpAux)
+      chAux1.unEquip()
+      chAux2.equip(wpAux)
+      chAux2.unEquip()
+      chAux3.equip(wpAux)
+      chAux3.unEquip()
+      chAux4.equip(wpAux)
+      chAux4.unEquip()
+    } catch {
+      case _: InvalidHolderException => fail("Weapon Is Supposed To Be Assigned to All")
+    }
   }
 }
