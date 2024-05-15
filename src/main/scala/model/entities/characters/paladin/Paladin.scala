@@ -18,6 +18,11 @@ class Paladin (
               ) extends ACharacter(name,hp,defense,weight)
                   with ISwordBearer with IAxeBearer {
 
-  override def equip(wp: IWeapon): Unit =
-    wp.equipToPaladin(this)
+  override def equip(wp: IWeapon): Unit = {
+    if (wp.getOwner.isEmpty) {
+      unEquip()
+      wp.equipToPaladin(this)
+      setWeapon(wp)
+    }
+  }
 }
