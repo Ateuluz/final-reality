@@ -18,6 +18,11 @@ class Warrior (
               ) extends ACharacter(name,hp,defense,weight)
                   with ISwordBearer with IAxeBearer with IBowBearer {
 
-  override def equip(wp: IWeapon): Unit =
-    wp.equipToWarrior(this)
+  override def equip(wp: IWeapon): Unit = {
+    if (wp.getOwner.isEmpty) {
+      unEquip()
+      wp.equipToWarrior(this)
+      setWeapon(wp)
+    }
+  }
 }
