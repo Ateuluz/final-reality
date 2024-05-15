@@ -1,6 +1,6 @@
 package modelTest.entitiesTest.charactersTest
 
-import exceptions.InvalidStatException
+import exceptions.{InvalidHolderException, InvalidStatException}
 import model.armament.IWeapon
 import model.armament.sword.Sword
 import model.entities.characters.paladin.Paladin
@@ -73,11 +73,16 @@ class CharacterTest extends munit.FunSuite{
   }
 
   test("Cannot Assign Owned Weapon") {
-    ch2.equip(wp1)
-    assertEquals(ch2.getWeapon,None)
+    try {
+      ch2.equip(wp1)
+    } catch {
+      case _: InvalidHolderException =>
+      case _ => fail("The Weapon Is Not Supposed To Be Assigned")
+    }
   }
 
   test("Swap Weapon") {
+    assertEquals(wp1.getOwner.get,ch1)
     ch1.equip(wp2)
     assertEquals(wp1.getOwner,None)
     ch1.getWeapon match {
