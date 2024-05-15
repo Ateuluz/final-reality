@@ -1,6 +1,10 @@
 package model.armament.sword
 
 import model.armament.AWeapon
+import model.entities.characters.blackMage.BlackMage
+import model.entities.characters.ninja.Ninja
+import model.entities.characters.paladin.Paladin
+import model.entities.characters.warrior.Warrior
 import model.entities.characters.{ICharacter, ISwordBearer}
 
 /**
@@ -25,4 +29,16 @@ class Sword(
       case _ => false
     }
   }
+
+  override def equipToPaladin(paladin: Paladin): Unit =
+    setOwner(paladin)
+
+  override def equipToWarrior(warrior: Warrior): Unit =
+    setOwner(warrior)
+
+  override def equipToNinja(ninja: Ninja): Unit =
+    setOwner(ninja)
+
+  override def equipToBlackMage(blackMage: BlackMage): Unit =
+    setOwner(blackMage)
 }
