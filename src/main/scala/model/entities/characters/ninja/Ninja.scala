@@ -18,6 +18,11 @@ class Ninja (
             ) extends ACharacter(name,hp,defense,weight)
                 with ISwordBearer with IBowBearer with IWandUser {
 
-  override def equip(wp: IWeapon): Unit =
-    wp.equipToNinja(this)
+  override def equip(wp: IWeapon): Unit = {
+    if (wp.getOwner.isEmpty) {
+      unEquip()
+      wp.equipToNinja(this)
+      setWeapon(wp)
+    }
+  }
 }
