@@ -1,9 +1,11 @@
 package modelTest.armamentTest.staffTest
 
+import exceptions.InvalidHolderException
 import model.armament.staff.Staff
 import model.entities.characters.{ICharacter, IStaffUser}
 import model.entities.characters.blackMage.BlackMage
 import model.entities.characters.warrior.Warrior
+import model.entities.characters.whiteMage.WhiteMage
 
 class StaffTest extends munit.FunSuite() {
   var ch1: IStaffUser = _
@@ -31,9 +33,17 @@ class StaffTest extends munit.FunSuite() {
     assertEquals(actual2,expected2,"The returned instance is not empty")
   }
 
-  test("Non User cannot Equip") {
-    ch2 = new Warrior("X", 2, 2, 2)
-    ch2.equip(wp2)
-    assertEquals(wp2.getOwner,None)
+  test("Can be Equipped") {
+    val chAux3 = new BlackMage("X", 2, 2, 2, 2)
+    val chAux5 = new WhiteMage("X", 2, 2, 2, 2)
+    val wpAux = new Staff("X", 2, 2, 2)
+    try {
+      chAux3.equip(wpAux)
+      chAux3.unEquip()
+      chAux5.equip(wpAux)
+      chAux5.unEquip()
+    } catch {
+      case _: InvalidHolderException => fail("Weapon Is Supposed To Be Assigned to All")
+    }
   }
 }
