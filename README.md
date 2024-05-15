@@ -103,6 +103,15 @@ The weapons are:
 
 A weapon can be equipped by up to one character at a time. It can be exchanged during said characters turn for 
 some weapon without owner.
+
+Weapons cannot be equipped by characters unable to use them.
+
+When trying to assign a weapon already with an owner, nothing will happen.
+Likely to change no action to an exception raise.
+
+Double dispatch implementation for weapon assignation. All [characters](#characters) call upon
+equip method, which varies depending on the class that called upon it.
+
 > The change of weapon mechanic is under revision, for it may lead to unexpected outcomes in turn taking.
 
 ## Enemies
