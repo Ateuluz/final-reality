@@ -20,6 +20,11 @@ class WhiteMage (
                 ) extends AMagicalCharacter(name,hp,defense,weight,mana)
                     with IBowBearer with IWandUser with IStaffUser {
 
-  override def equip(wp: IWeapon): Unit =
-    wp.equipToWhiteMage(this)
+  override def equip(wp: IWeapon): Unit = {
+    if (wp.getOwner.isEmpty) {
+      unEquip()
+      wp.equipToWhiteMage(this)
+      setWeapon(wp)
+    }
+  }
 }
