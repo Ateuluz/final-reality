@@ -1,6 +1,8 @@
 package model.armament.staff
 
 import model.armament.AMagicalWeapon
+import model.entities.characters.blackMage.BlackMage
+import model.entities.characters.whiteMage.WhiteMage
 import model.entities.characters.{ICharacter, IStaffUser}
 
 /**
@@ -27,4 +29,10 @@ class Staff (
       case _ => false
     }
   }
+
+  override def equipToBlackMage(blackMage: BlackMage): Unit =
+    setOwner(blackMage)
+
+  override def equipToWhiteMage(whiteMage: WhiteMage): Unit =
+    setOwner(whiteMage)
 }
