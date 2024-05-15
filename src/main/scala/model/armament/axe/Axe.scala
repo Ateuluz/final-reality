@@ -1,6 +1,8 @@
 package model.armament.axe
 
 import model.armament.AWeapon
+import model.entities.characters.paladin.Paladin
+import model.entities.characters.warrior.Warrior
 import model.entities.characters.{IAxeBearer, ICharacter}
 
 /**
@@ -25,4 +27,10 @@ class Axe(
       case _ => false
     }
   }
+
+  override def equipToPaladin(paladin: Paladin): Unit =
+    setOwner(paladin)
+
+  override def equipToWarrior(warrior: Warrior): Unit =
+    setOwner(warrior)
 }
