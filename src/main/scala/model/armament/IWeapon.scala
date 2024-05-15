@@ -35,12 +35,12 @@ trait IWeapon {
    */
   def getOwner: Option[ICharacter]
 
-  /**
-   *
-   * @param character the character we intend to equip the weapon to
-   * @return Boolean representing if the character can equip it
-   */
-  protected[model] def canBeEquippedBy(character: ICharacter): Boolean
+//  /**
+//   *
+//   * @param character the character we intend to equip the weapon to
+//   * @return Boolean representing if the character can equip it
+//   */
+//  protected[model] def canBeEquippedBy(character: ICharacter): Boolean
 
   /**
    *
