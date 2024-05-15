@@ -57,29 +57,29 @@ trait IWeapon {
    * Equip this weapon to a Paladin
    * Exception by default
    */
-  def equipTo(paladin: Paladin): Unit
+  def equipToPaladin(paladin: Paladin): Unit
 
   /**
    * Equip this weapon to a Warrior
    * Exception by default
    */
-  def equipTo(warrior: Warrior): Unit
+  def equipToWarrior(warrior: Warrior): Unit
 
   /**
    * Equip this weapon to a Ninja
    * Exception by default
    */
-  def equipTo(ninja: Ninja): Unit
+  def equipToNinja(ninja: Ninja): Unit
 
   /**
    * Equip this weapon to a WhiteMage
    * Exception by default
    */
-  def equipTo(whiteMage: WhiteMage): Unit
+  def equipToWhiteMage(whiteMage: WhiteMage): Unit
 
   /**
    * Equip this weapon to a BlackMage
    * Exception by default
    */
-  def equipTo(blackMage: BlackMage): Unit
+  def equipToBlackMage(blackMage: BlackMage): Unit
 }
