@@ -32,12 +32,10 @@ class EntityTest extends munit.FunSuite {
   }
 
   test("Attack, Defend and NonNegative Health") {
-    ch1.attack(ch2)
-    assertEquals(ch2.getHp, 2)
-    ch2.attack(ch1)
-    assertEquals(ch1.getHp, 0)
-    en1.attack(en1)
+    ch2.attack(en1)             // Atk c->e
     assertEquals(en1.getHp, 1)
+    en1.attack(ch1)             // Atk e->c | NNegHP
+    assertEquals(ch1.getHp, 0)
   }
 
   test("Limited Variable Ranges") {
