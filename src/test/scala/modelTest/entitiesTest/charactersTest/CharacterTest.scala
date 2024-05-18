@@ -95,14 +95,32 @@ class CharacterTest extends munit.FunSuite{
   }
 
   test("Can't Attack Without Weapon") {
-    val expected = ch1.getHp
-    ch2.attack(ch1)
-    assertEquals(ch1.getHp,expected)
     interceptMessage[InvalidActionException](
       s"An invalid action was found -- Cannot get attack of Character without Weapon."
     ) {
       ch2.attack(en1)
     }
   }
+
+  test("Can't Attack Ally") {
+    interceptMessage[InvalidActionException](
+      s"An invalid action was found -- Character cannot attack this entity."
+    ) {
+      ch1.attack(ch2)
+    }
+  }
+
+  test("Can Attack Enemy") {
+    try {
+      ch1.attack(en1)
+    } catch {
+      case _: InvalidActionException => fail("The Character Is Supposed Attack")
+      case _ =>
+        assertEquals(
+          en1.getHp,
+          1,
+          "Incorrect damage assignation"
+        )
+    }
   }
 }
