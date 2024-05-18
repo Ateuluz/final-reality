@@ -1,5 +1,6 @@
 package model.entities.characters
 
+import exceptions.InvalidActionException
 import model.armament.IWeapon
 import model.entities.{AEntity, IEntity}
 
@@ -54,4 +55,13 @@ abstract class ACharacter(
       objective.defend(0)
     }
   }
+  override def attack(objective: IEntity): Int =
+    objective.defendFromCharacter(getAttack)
+
+  override def getAttack: Int = {
+    if (_weapon.isDefined) _weapon.get.getAttack
+    else throw new InvalidActionException("Cannot get attack of Character without Weapon.")
+  }
+
+  override def defendFromEnemy(attack: Int): Int = defend(attack)
 }
