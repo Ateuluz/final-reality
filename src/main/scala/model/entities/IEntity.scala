@@ -47,7 +47,8 @@ trait IEntity {
    * @param attack The incoming attack value
    * @return The damage that got past the defenders defense
    */
-  def defend(attack: Int): Int
+  protected def defend(attack: Int): Int
+
   /**
    *
    * @param attack The incoming attack value of a character
