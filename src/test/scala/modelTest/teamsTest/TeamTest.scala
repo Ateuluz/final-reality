@@ -5,6 +5,7 @@ import model.teams.party.Party
 import exceptions.InvalidStatException
 import model.armament.sword.Sword
 import model.entities.IEntity
+import model.entities.enemies.enemy.Enemy
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -15,12 +16,14 @@ class TeamTest extends munit.FunSuite {
   var ch3: Paladin = _
   var ch4: Paladin = _
   var wp1: Sword   = _
+  var en1: Enemy   = _
   override def beforeEach(context: BeforeEach): Unit = {
     ch1 = new Paladin("A", 1, 1, 1)
     ch2 = new Paladin("B", 1, 1, 1)
     ch3 = new Paladin("C", 1, 1, 1)
     ch4 = new Paladin("X", 3, 3, 3)
     wp1 = new Sword("D", 3, 3)
+    en1 = new Enemy("Y", 11, 10, 100, 10)
     ch4.equip(wp1)
   }
 
@@ -40,9 +43,9 @@ class TeamTest extends munit.FunSuite {
   test("Can be Defeated") {
     team1 = new Party(ch1, ch2, ch3)
     assertEquals(team1.isDefeated, false)
-    ch4.attack(ch1)
-    ch4.attack(ch2)
-    ch4.attack(ch3)
+    en1.attack(ch1)
+    en1.attack(ch2)
+    en1.attack(ch3)
     assertEquals(team1.isDefeated, true)
   }
 
