@@ -1,11 +1,13 @@
 package modelTest.entitiesTest.enemiesTest
 
-import exceptions.InvalidStatException
+import exceptions.{InvalidActionException, InvalidStatException}
+import model.entities.characters.ninja.Ninja
 import model.entities.enemies.enemy.Enemy
 
 class EnemyTest extends munit.FunSuite {
   var en1: Enemy = _
   var en2: Enemy = _
+  var ch1: Ninja = _
   var name: String   = _
   var threshold: Int = _
   var value: Int     = _
@@ -14,6 +16,7 @@ class EnemyTest extends munit.FunSuite {
     //super.beforeEach(context)
     en1 = new Enemy("Mike", 100, 10, 20, 50)
     en2 = new Enemy("Ross", 120, 15, 15, 60)
+    ch1 = new Ninja("X", 115, 15, 15)
   }
 
   test("Has Attack") {
@@ -77,4 +80,26 @@ class EnemyTest extends munit.FunSuite {
   //  en1 = new Enemy("Joe", 1, 1, 1, -1)
   //  assertEquals(en1.getWeight,1)
   //}
+
+  test("Can't Attack Ally") {
+    interceptMessage[InvalidActionException](
+      s"An invalid action was found -- Enemy cannot attack this entity."
+    ) {
+      en1.attack(en2)
+    }
+  }
+
+  test("Can Attack Character") {
+    try {
+      en1.attack(ch1)
+    } catch {
+      case _: InvalidActionException => fail("The Enemy Is Supposed Attack")
+      case _ =>
+        assertEquals(
+          ch1.getHp,
+          110,
+          "Incorrect damage assignation"
+        )
+    }
+  }
 }
