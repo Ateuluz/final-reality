@@ -38,7 +38,13 @@ Out of these stats, they are required to have:
 - Defense value greater than or equal to 0.
 - Weight value greater than 0.
 
-For the purpose of this game implementation, entities can both attack and defend, with th methods returning final damage dealt for if later needed.
+For the purpose of this game implementation, entities can both attack and defend, with the methods returning
+final damage dealt for if later needed.
+>For this, even though some subclasses don't have an innate attack value, they can deal damage, meaning their
+attack value is gotten from somewhere else, and it can be gotten thus a getAttack method is only reasonable.
+
+Entity subclasses cannot attack entities with a common root class, subclass to Entity, for this will throw an
+exception via pseudo double dispatch that just serves as a bypass.
 
 ## Characters
 
@@ -102,7 +108,7 @@ The weapons are:
   - Staff
 
 A weapon can be equipped by up to one character at a time. It can be exchanged during said characters turn for 
-some weapon without owner.
+some weapon without owner, and they can be unequipped.
 
 Weapons cannot be equipped by characters unable to use them.
 
@@ -135,7 +141,8 @@ Out of these stats, they are required to have:
 ## Teams
 
 Both characters and Enemies are organized in teams. Each team has a specified capacity for members.
-The teams are represented as ArrayBuffer instances with their maximum and minimum lengths decided upon creation. The teams are:
+The teams are represented as ArrayBuffer instances with their maximum and minimum lengths decided upon creation.
+The teams are:
 
 - Party (Exactly 3 ICharacter instances)
 - Enemies (Up to 5 IEnemy instances, at least 1)
@@ -189,7 +196,7 @@ Removing a character works by finding the index and removing the elements there 
 For the creation of the constructors, require methods of the exceptions package were used without directly setting the
 values, they are used only for checking valid values for stats as if they were returning a Unit type value.
 
-This will be changed when enough information on the mechanics of the game are disclosed, which will be linked to deletion of
+This will be changed when enough information on the mechanics of the game is disclosed, which will be linked to deletion of
 some constraining methods previously defined (if any).
 
 ## License
