@@ -14,6 +14,6 @@ package exceptions
  * // => InvalidHolderException: An invalid holder was found -- Paladin character cannot equip this type of weapon.
  * }}}
  *
- * @param details A descriptive message detailing the nature of the invalid stat.
+ * @param details A descriptive message detailing the nature of the invalid holder.
  */
 class InvalidHolderException(details: String) extends Exception(s"An invalid holder was found -- $details")
