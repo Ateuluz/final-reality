@@ -1,6 +1,6 @@
 package model.entities
 
-import exceptions.Require
+import exceptions.{InvalidActionException, Require}
 
 /**
  *
@@ -9,12 +9,12 @@ import exceptions.Require
  * @param defense The resistance to damage
  * @param weight  The weight of the entity
  */
-abstract class AEntity (
-                         name:String,
-                         hp:Int,
-                         defense:Int,
-                         weight:Int
-                       ) extends IEntity {
+abstract class AEntity(
+                        name: String,
+                        hp: Int,
+                        defense: Int,
+                        weight: Int
+                      ) extends IEntity {
   private val _name: String = name
   private var _hp: Int = constrainHp(hp)
   private val _defense: Int = constrainDefense(defense)
@@ -25,34 +25,34 @@ abstract class AEntity (
 
   /**
    *
-   *  @return The name of the entity
+   * @return The name of the entity
    */
   override def getName: String = _name
 
   /**
    *
-   *  @return The hp of the entity
+   * @return The hp of the entity
    */
   override def getHp: Int = _hp
 
   /**
    *
-   *  @return The defense of the entity
+   * @return The defense of the entity
    */
   override def getDefense: Int = _defense
 
   /**
    *
-   *  @return The weight of the entity
+   * @return The weight of the entity
    */
   override def getWeight: Int = _weight
 
   /**
    *
    * @param attack The incoming attack value
-   *  @return The damage that got past the defenders defense
+   * @return The damage that got past the defenders defense
    */
-  override def defend(attack: Int): Int = {
+  override protected def defend(attack: Int): Int = {
     val dmg = constrainDamage(attack - _defense)
     _hp -= dmg
     dmg
@@ -69,6 +69,7 @@ abstract class AEntity (
       case _ => hp
     }
   }
+
   /**
    *
    * @param defense The original defense value
@@ -80,6 +81,7 @@ abstract class AEntity (
       case _ => defense
     }
   }
+
   /**
    *
    * @param weight The original weight value
@@ -91,6 +93,7 @@ abstract class AEntity (
       case _ => weight
     }
   }
+
   /**
    *
    * @param damage The intended attack damage
@@ -101,5 +104,23 @@ abstract class AEntity (
       case dmg if dmg > _hp => _hp
       case dmg if dmg > 0 => dmg
       case _ => 0
+    }
+
+  /**
+   *
+   * @param attack The incoming attack value of a character
+   * @return The damage that got past the defenders defense
+   */
+  override def defendFromCharacter(attack: Int): Int = {
+    throw new InvalidActionException("Character cannot attack this entity.")
+  }
+
+  /**
+   *
+   * @param attack The incoming attack value of an enemy
+   * @return The damage that got past the defenders defense
+   */
+  override def defendFromEnemy(attack: Int): Int = {
+    throw new InvalidActionException("Enemy cannot attack this entity.")
   }
 }
