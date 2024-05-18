@@ -33,6 +33,13 @@ trait IEntity {
   def attack(objective: IEntity): Int
 
   /**
+   * Every entity partakes in a battle, so they need an attack value.
+   *
+   * @return The attack value of the entity, however it may be gotten
+   */
+  def getAttack: Int
+
+  /**
    *
    * @param attack The incoming attack value
    * @return The damage that got past the defenders defense
