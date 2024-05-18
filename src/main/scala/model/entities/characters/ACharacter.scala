@@ -47,21 +47,22 @@ abstract class ACharacter(
    * @param objective is the one to attack
    *  @return the damage dealt, should we want to use it
    */
-  override def attack(objective: IEntity): Int = {
-    if (_weapon.isDefined)
-      objective.defend(_weapon.get.getAttack)
-    else {
-      println(s"${this.getClass} $name has no weapon equipped!")
-      objective.defend(0)
-    }
-  }
   override def attack(objective: IEntity): Int =
     objective.defendFromCharacter(getAttack)
 
+  /**
+   *
+   * @return The attack value of the entity, however it may be gotten
+   */
   override def getAttack: Int = {
     if (_weapon.isDefined) _weapon.get.getAttack
     else throw new InvalidActionException("Cannot get attack of Character without Weapon.")
   }
 
+  /**
+   *
+   * @param attack The incoming attack value of an enemy
+   * @return The damage that got past the defenders defense
+   */
   override def defendFromEnemy(attack: Int): Int = defend(attack)
 }
