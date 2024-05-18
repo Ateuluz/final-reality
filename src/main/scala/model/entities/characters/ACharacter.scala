@@ -16,13 +16,13 @@ abstract class ACharacter(
                            hp: Int,
                            defense: Int,
                            weight: Int
-                        ) extends AEntity(name, hp, defense, weight)
+                         ) extends AEntity(name, hp, defense, weight)
                             with ICharacter {
   private var _weapon: Option[IWeapon] = None
 
   /**
    *
-   *  @return The weapon the character holds, if any
+   * @return The weapon the character holds, if any
    */
   override def getWeapon: Option[IWeapon] = _weapon
 
@@ -45,7 +45,7 @@ abstract class ACharacter(
   /**
    *
    * @param objective is the one to attack
-   *  @return the damage dealt, should we want to use it
+   * @return the damage dealt, should we want to use it
    */
   override def attack(objective: IEntity): Int =
     objective.defendFromCharacter(getAttack)
