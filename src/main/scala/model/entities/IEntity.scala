@@ -38,4 +38,6 @@ trait IEntity {
    * @return The damage that got past the defenders defense
    */
   def defend(attack: Int): Int
+  def defendFromCharacter(attack: Int): Int
+  def defendFromEnemy(attack: Int): Int
 }
