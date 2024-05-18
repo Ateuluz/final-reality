@@ -11,30 +11,30 @@ import model.entities.{AEntity, IEntity}
  * @param attack  The attack power
  * @param weight  The weight of the entity
  */
-abstract class AEnemy (
-                        name: String,
-                        hp: Int,
-                        defense: Int,
-                        attack: Int,
-                        weight: Int
-                      ) extends AEntity(name,hp,defense,weight)
-                          with IEnemy {
+abstract class AEnemy(
+                       name: String,
+                       hp: Int,
+                       defense: Int,
+                       attack: Int,
+                       weight: Int
+                     ) extends AEntity(name, hp, defense, weight)
+                        with IEnemy {
   private val _attack: Int = constrainAttack(attack)
   Require.Stat(attack, "Attack") atLeast 1
 
   /**
    *
-   *  @return The attack stat of this entity
+   * @return The attack stat of this entity
    */
   override def getAttack: Int = _attack
 
   /**
    *
    * @param objective is the one to attack
-   *  @return the damage dealt, should we want to use it
+   * @return the damage dealt, should we want to use it
    */
   override def attack(objective: IEntity): Int =
-    objective.defend(_attack)
+    objective.defendFromEnemy(getAttack)
 
   /**
    *
@@ -47,4 +47,11 @@ abstract class AEnemy (
       case _ => attack
     }
   }
+
+  /**
+   *
+   * @param attack The incoming attack value of a character
+   * @return The damage that got past the defenders defense
+   */
+  override def defendFromCharacter(attack: Int): Int = defend(attack)
 }
