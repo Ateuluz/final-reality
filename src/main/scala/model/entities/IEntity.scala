@@ -9,16 +9,19 @@ trait IEntity {
    * @return The name of the entity
    */
   def getName: String
+
   /**
    *
    * @return The hp of the entity
    */
   def getHp: Int
+
   /**
    *
    * @return The defense of the entity
    */
   def getDefense: Int
+
   /**
    *
    * @return The weight of the entity
@@ -51,7 +54,6 @@ trait IEntity {
    * @return The damage that got past the defenders defense
    */
   def defendFromCharacter(attack: Int): Int
-
 
   /**
    *
