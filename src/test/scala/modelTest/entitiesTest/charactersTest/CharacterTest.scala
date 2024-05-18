@@ -1,16 +1,18 @@
 package modelTest.entitiesTest.charactersTest
 
-import exceptions.{InvalidHolderException, InvalidStatException}
+import exceptions.{InvalidActionException, InvalidHolderException, InvalidStatException}
 import model.armament.IWeapon
 import model.armament.sword.Sword
 import model.entities.characters.paladin.Paladin
 import model.entities.characters.warrior.Warrior
 import model.entities.characters.whiteMage.WhiteMage
+import model.entities.enemies.enemy.Enemy
 
 class CharacterTest extends munit.FunSuite{
   var ch1: Paladin   = _
   var ch2: WhiteMage = _
   var ch3: Warrior   = _
+  var en1: Enemy     = _
   var wp1: Sword     = _
   var wp2: Sword     = _
   var name: String   = _
@@ -24,6 +26,7 @@ class CharacterTest extends munit.FunSuite{
     ch1.equip(wp1)
     ch2 = new WhiteMage("Doe", 200, 10, 25, 150)
     wp2 = new Sword("Nex", 20, 200)
+    en1 = new Enemy("X", 11, 10, 100, 10)
   }
 
   //test("Limited Variable Ranges") {
@@ -95,5 +98,11 @@ class CharacterTest extends munit.FunSuite{
     val expected = ch1.getHp
     ch2.attack(ch1)
     assertEquals(ch1.getHp,expected)
+    interceptMessage[InvalidActionException](
+      s"An invalid action was found -- Cannot get attack of Character without Weapon."
+    ) {
+      ch2.attack(en1)
+    }
+  }
   }
 }
