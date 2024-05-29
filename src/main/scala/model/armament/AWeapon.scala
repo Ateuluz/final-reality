@@ -52,6 +52,12 @@ abstract class AWeapon (
 
   /**
    *
+   *  @return Boolean representing if the weapon allows for casting
+   */
+  override def getCastCapable: Boolean = false
+
+  /**
+   *
    * @param attack The intended attack value
    * @return The final valid attack value
    */

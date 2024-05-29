@@ -1,6 +1,10 @@
 package model.entities.characters
 
-import exceptions.Require
+import exceptions.{InvalidActionException, Require}
+import model.entities.IEntity
+import model.spells.ISpell
+
+import scala.collection.mutable.ArrayBuffer
 
 /**
  *
@@ -16,14 +20,15 @@ abstract class AMagicalCharacter(
                                   defense: Int,
                                   weight: Int,
                                   mana: Int
-                                ) extends ACharacter(name,hp,defense,weight)
-                                    with IMagicalCharacter {
+                                ) extends ACharacter(name, hp, defense, weight)
+  with IMagicalCharacter {
   private var _mana: Int = constrainMana(mana)
+  private val _preparedSpells = ArrayBuffer[ISpell]()
   Require.Stat(mana, "Mana") atLeast 0
 
   /**
    *
-   *  @return The mana the magical character has left
+   * @return The mana the magical character has left
    */
   override def getMana: Int = _mana
 
@@ -35,6 +40,7 @@ abstract class AMagicalCharacter(
   override def setMana(mana: Int): Unit = {
     _mana = constrainMana(mana)
   }
+
   /**
    *
    * @param mana The original mana value
@@ -42,8 +48,48 @@ abstract class AMagicalCharacter(
    */
   private def constrainMana(mana: Int): Int = {
     mana match {
-      case n if n < 1 => 1
+      case n if n < 0 => 0
       case _ => mana
     }
+  }
+
+  /**
+   *
+   * @return Known (prepared) spells
+   */
+  override def getSpells: ArrayBuffer[ISpell] = _preparedSpells
+
+  /**
+   *
+   * @param spell The spell to add to prepared spells
+   */
+  override def addSpell(spell: ISpell): Unit =
+    _preparedSpells += spell
+
+  /**
+   *
+   * @param ID Index of spell to remove
+   */
+  override def removeSpell(ID: Int): Unit =
+    if (_preparedSpells.indices.contains(ID))
+      _preparedSpells -= _preparedSpells(ID)
+
+  /**
+   *
+   * Might make protected
+   *
+   * @param target  Whom to cast the spell on
+   * @param spellID What spell to cast
+   */
+  override def canCastSpell(target: IEntity, spellID: Int): Boolean = {
+    if (target.getHp == 0)
+      throw new InvalidActionException("Cannot target dead entity")
+    if (_mana < _preparedSpells(spellID).getConsumption)
+      throw new InvalidActionException("Not enough mana to cast this spell")
+    if (getWeapon.isEmpty)
+      throw new InvalidActionException("No Weapon equipped")
+    if (!getWeapon.get.getCastCapable)
+      throw new InvalidActionException("Weapon cannot cast")
+    true
   }
 }

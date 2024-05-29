@@ -35,6 +35,12 @@ trait IWeapon {
    */
   def getOwner: Option[ICharacter]
 
+  /**
+   *
+   * @return Boolean representing if the weapon allows for casting
+   */
+  def getCastCapable: Boolean
+
 //  /**
 //   *
 //   * @param character the character we intend to equip the weapon to

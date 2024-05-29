@@ -1,6 +1,7 @@
 package model.entities
 
-import exceptions.{InvalidActionException, Require}
+import exceptions.Require.Stat
+import exceptions.InvalidActionException
 
 /**
  *
@@ -17,11 +18,12 @@ abstract class AEntity(
                       ) extends IEntity {
   private val _name: String = name
   private var _hp: Int = constrainHp(hp)
+  private var _hpMax: Int = _hp
   private val _defense: Int = constrainDefense(defense)
   private val _weight: Int = constrainWeight(weight)
-  Require.Stat(hp, "HP") atLeast 0
-  Require.Stat(defense, "Defense") atLeast 0
-  Require.Stat(weight, "Weight") atLeast 1
+  Stat(hp, "HP") atLeast 0
+  Stat(defense, "Defense") atLeast 0
+  Stat(weight, "Weight") atLeast 1
 
   /**
    *
@@ -34,6 +36,12 @@ abstract class AEntity(
    * @return The hp of the entity
    */
   override def getHp: Int = _hp
+
+  /**
+   *
+   *  @return The max possible hp of the entity
+   */
+  override def getHpMax: Int = _hpMax
 
   /**
    *
@@ -123,4 +131,34 @@ abstract class AEntity(
   override def defendFromEnemy(attack: Int): Int = {
     throw new InvalidActionException("Enemy cannot attack this entity.")
   }
+
+  //region To add if any other classes are needed
+  /*
+  /**
+   *
+   * @param attack The incoming damage of a spell
+   *  @return The damage that got past the defense
+   */
+  override def defendFromSpell(attack: Int): Int = {
+    throw new InvalidActionException("Spell cannot attack this entity.")
+  }
+  */
+  //endregion
+
+  /**
+   *
+   * @param hpHealValue The hp to recover by the entity
+   *  @return Final heal amount
+   */
+  override def beHealed(hpHealValue: Int): Int = {
+    var dif = 0
+    _hp + hpHealValue match {
+      case _ if _hp == 0 =>             dif = 0
+      case newHp if newHp > _hpMax =>   dif = _hpMax - _hp
+      case newHp =>                     dif = newHp - _hp
+    }
+    _hp += dif
+    dif
+  }
+
 }

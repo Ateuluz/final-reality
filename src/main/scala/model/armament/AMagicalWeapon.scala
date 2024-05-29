@@ -16,8 +16,14 @@ abstract class AMagicalWeapon(
                               magicAttack: Int
                             ) extends AWeapon(name,attack,weight)
                                 with IMagicalWeapon {
-  private val _magicAttack: Int = constrainMagicAttack(magicAttack)
-  Require.Stat(magicAttack, "MagicAttack") atLeast 1
+  //private val _magicAttack: Int = constrainMagicAttack(magicAttack)// Constrain rendered useless
+  private val _magicAttack: Int = Require.Stat(magicAttack, "MagicAttack") atLeast 1
+
+  /**
+   *
+   *  @return Boolean representing if the weapon allows for casting
+   */
+  override def getCastCapable: Boolean = true
 
   /**
    *
@@ -25,7 +31,7 @@ abstract class AMagicalWeapon(
    */
   override def getMagicAttack: Int = _magicAttack
 
-  /**
+  /*/**
    *
    * @param magicAttack The intended magic attack
    * @return The final valid magick attack
@@ -34,5 +40,5 @@ abstract class AMagicalWeapon(
     magicAttack match {
       case n if n < 1 => 1
       case _ => magicAttack
-    }
+    }*/
 }

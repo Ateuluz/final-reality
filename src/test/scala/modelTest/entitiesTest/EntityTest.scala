@@ -30,6 +30,9 @@ class EntityTest extends munit.FunSuite {
   test("Have Defense") {
     assertEquals(ch1.getDefense,1)
   }
+  test("Have HP Max") {
+    assertEquals(ch1.getHpMax,1)
+  }
 
   test("Attack, Defend and NonNegative Health") {
     ch2.attack(en1)             // Atk c->e
@@ -63,5 +66,22 @@ class EntityTest extends munit.FunSuite {
     ) {
       ch1 = new Paladin("Joe", 1, 1, -1)
     }
+  }
+
+
+  test("Can Be Healed") {
+    en1.attack(ch2)
+    assertEquals(ch2.getHp,1)
+    ch2.beHealed(1)
+    assertEquals(ch2.getHp,2)
+    ch2.beHealed(1)
+    assertEquals(ch2.getHp,2)
+  }
+
+  test("Dead Cannot Be Healed") {
+    en1.attack(ch1)
+    assertEquals(ch1.getHp,0)
+    ch1.beHealed(1)
+    assertEquals(ch1.getHp,0)
   }
 }

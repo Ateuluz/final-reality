@@ -65,4 +65,11 @@ abstract class ACharacter(
    * @return The damage that got past the defenders defense
    */
   override def defendFromEnemy(attack: Int): Int = defend(attack)
+
+  /**
+   *
+   * @param attack The incoming damage of a spell
+   *  @return The damage that got past the defense
+   */
+  override def defendFromSpell(attack: Int): Int = defend(attack + getDefense/2)
 }

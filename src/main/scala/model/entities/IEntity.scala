@@ -18,6 +18,12 @@ trait IEntity {
 
   /**
    *
+   * @return The max possible hp of the entity
+   */
+  def getHpMax: Int
+
+  /**
+   *
    * @return The defense of the entity
    */
   def getDefense: Int
@@ -62,4 +68,18 @@ trait IEntity {
    * @return The damage that got past the defenders defense
    */
   def defendFromEnemy(attack: Int): Int
+
+  /**
+   *
+   * @param attack The incoming damage of a spell
+   * @return The damage that got past the defense
+   */
+  def defendFromSpell(attack: Int): Int
+
+  /**
+   *
+   * @param hpHealValue The hp to recover by the entity
+   * @return Final heal amount
+   */
+  def beHealed(hpHealValue: Int): Int
 }
