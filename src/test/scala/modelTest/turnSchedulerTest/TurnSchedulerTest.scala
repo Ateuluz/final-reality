@@ -61,6 +61,13 @@ class TurnSchedulerTest extends munit.FunSuite {
       assertEquals(expected, actual, "Character Not Added - Explanation")
   }
 
+  test("Cannot Remove Characters Not Listed") {
+    intercept[IndexOutOfBoundsException]{
+      TrSch.addCharacter(ch2)
+      TrSch.removeCharacter(ch1)
+    }
+  }
+
   test("Get Single Action Bar") {
     TrSch.addCharacter(ch1)
     val expected1 = 0// define expected value
