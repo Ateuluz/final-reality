@@ -34,12 +34,13 @@ abstract class ATeam(
    *
    * @return Boolean representing if all members are dead
    */
-  override def isDefeated: Boolean = {
+  override def isDefeated: Boolean = { // Somehow it complains when simply returning false on the spot
+    var defeated = true
     for (member <- _members){
       if (member.getHp > 0)
-          return false
+          defeated = false
     }
-    true
+    defeated
   }
 
   /**
@@ -74,7 +75,7 @@ abstract class ATeam(
       case Some(member) =>
         _members -= oldMember
         this.addMember(member)
-      case None =>
+      case _ =>
         if (_members.length > _minimumMembers)
           _members -= oldMember
     }
