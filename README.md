@@ -191,13 +191,48 @@ at zero appended to the last element of the action bars ArrayBuffer.
 
 Removing a character works by finding the index and removing the elements there from characters array and bars array.
 
+## Spells
+
+For this implementation, spells are going to be a reserved ability for Magical Characters.
+This means characters without mana will not be able to cast them, let alone enemies, so no need for tests there.
+
+Attack spells will be dealt with as normal attacks, but they will have the requirement for the caster to consume mana.
+
+The spells will only be cast if the mage casting it has enough mana, if not, exception will be raised and the spell
+won't be cast at all. Thus, cast method within spell does not need information about caster.
+
+Spells can be learned by any Magical Character, although only certain Mages will be able to cast certain Spells,
+following the fact that useless stuff can be leaned and still be useless. :)
+
+Spells can so far attack every entity, but will leave it as is for scalability reasons.
+Spells only count half of a character's and enemy's defense.
+
+### Considerations
+Casting method may later be changed to a format in which a spell implements a function, and the cast method receives
+three parameters, caster, target and spell.
+On the other hand, the spell itself could become the spell handler, so the cast method is within it, and it receives 
+the caster and target, which could open the possibilities for pattern design implementations.
+
+I like the second idea better.
+
 # Disclaimer
+
+## Constructor requirements
 
 For the creation of the constructors, require methods of the exceptions package were used without directly setting the
 values, they are used only for checking valid values for stats as if they were returning a Unit type value.
 
 This will be changed when enough information on the mechanics of the game is disclosed, which will be linked to deletion of
 some constraining methods previously defined (if any).
+
+## Cure
+
+In future implementations, enemies could also be able to be cured by themselves under specific conditions, so cure method
+will be an HP modifier method defined in IEntities.
+
+## Coverage
+
+For the version of Scala I'm using, it now has a branch coverage that I cannot go around.
 
 ## License
 
