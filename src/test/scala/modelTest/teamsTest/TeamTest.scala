@@ -2,7 +2,7 @@ package modelTest.teamsTest
 
 import model.entities.characters.paladin.Paladin
 import model.teams.party.Party
-import exceptions.InvalidStatException
+import exceptions.{InvalidHandleException, InvalidStatException}
 import model.armament.sword.Sword
 import model.entities.IEntity
 import model.entities.enemies.enemy.Enemy
@@ -56,9 +56,11 @@ class TeamTest extends munit.FunSuite {
   }
 
   test("Limit Removal") {
-    team1 = new Party(ch1, ch2, ch3)
-    val expected = team1.getMembers
-    team1.changeMember(ch1, None)
-    assertEquals(team1.getMembers, expected, s">> ${team1.getMembers}")
+    interceptMessage[InvalidHandleException](
+      "An invalid user action was found -- Cannot remove member, minimum amount reached."
+    ) {
+      team1 = new Party(ch1, ch2, ch3)
+      team1.changeMember(ch1, None)
+    }
   }
 }

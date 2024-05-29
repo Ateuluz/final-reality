@@ -1,6 +1,6 @@
 package model.teams
 
-import exceptions.Require
+import exceptions.{InvalidHandleException, Require}
 import model.entities.IEntity
 
 import scala.collection.mutable.ArrayBuffer
@@ -58,7 +58,7 @@ abstract class ATeam(
     member match {
       case member if _members.length < _maximumMembers =>
         _members.addOne(member)
-      case _ => println("Members are full")
+      case _ => throw new InvalidHandleException("Cannot add member, maximum amount reached.")
     }
   }
 
@@ -76,8 +76,9 @@ abstract class ATeam(
         _members -= oldMember
         this.addMember(member)
       case _ =>
-        if (_members.length > _minimumMembers)
-          _members -= oldMember
+        if (_members.length <= _minimumMembers)
+          throw new InvalidHandleException("Cannot remove member, minimum amount reached.")
+        _members -= oldMember
     }
   }
 }

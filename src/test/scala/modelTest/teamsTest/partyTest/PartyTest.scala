@@ -1,5 +1,6 @@
 package modelTest.teamsTest.partyTest
 
+import exceptions.InvalidHandleException
 import model.entities.characters.paladin.Paladin
 import model.teams.party.Party
 
@@ -16,10 +17,12 @@ class PartyTest extends munit.FunSuite {
     ch4 = new Paladin("X", 3, 3, 3)
   }
 
-  test("Cannot Add Members") {
-    team1 = new Party(ch1, ch2, ch3)
-    val expected = team1.getMembers
-    team1.addMember(ch4)
-    assertEquals(team1.getMembers, expected)
+  test("Cannot Surpass Limit of Members") {
+    interceptMessage[InvalidHandleException](
+      "An invalid user action was found -- Cannot add member, maximum amount reached."
+    ) {
+      team1 = new Party(ch1, ch2, ch3)
+      team1.addMember(ch4)
+    }
   }
 }
