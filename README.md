@@ -17,6 +17,7 @@ serve as an educational tool, teaching foundational programming concepts.
     - [Enemies](#enemies)
     - [Teams](#teams)
     - [Turn Scheduler](#turn-scheduler)
+    - [Spells](#spells)
 
 # Classes and constructors
 
