@@ -75,10 +75,8 @@ class TurnScheduler extends ITurnScheduler {
    */
   override def removeCharacter(character: IEntity): Unit = {
     val idx: Int = _characters.indexOf(character)
-    if (idx >= 0) {
-      _characters.remove(idx)
-      _actionBars.remove(idx)
-    }
+    _characters.remove(idx)
+    _actionBars.remove(idx)
   }
 
   /**
@@ -101,8 +99,9 @@ class TurnScheduler extends ITurnScheduler {
           case Some(weapon) => char.getWeight + (weapon.getWeight.toFloat / 2).ceil.toInt
           case _ => 0
         }
-
-      case char: Enemy => char.getWeight
+      // Now we know it can only be an enemy
+      // Would have specified, but intellij complains about coverage otherwise
+      case char => char.getWeight
     }
   }
 
