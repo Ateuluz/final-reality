@@ -11,7 +11,7 @@ package exceptions
  * @example To throw the exception with specific details:
  * {{{
  * throw new InvalidActionException("Character cannot attack this entity.")
- * // => InvalidHolderException: An invalid action was found -- Character cannot attack this entity.
+ * // => InvalidActionException: An invalid action was found -- Character cannot attack this entity.
  * }}}
  *
  * @param details A descriptive message detailing the nature of the invalid action.

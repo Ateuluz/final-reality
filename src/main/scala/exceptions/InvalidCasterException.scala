@@ -11,7 +11,7 @@ package exceptions
  * @example To throw the exception with specific details:
  * {{{
  * throw new InvalidCasterException("Spell cannot be cast.")
- * // => InvalidHolderException: An invalid spell caster was found -- Spell cannot be cast.
+ * // => InvalidCasterException: An invalid spell caster was found -- Spell cannot be cast.
  * }}}
  *
  * @param details A descriptive message detailing the nature of the invalid action.
