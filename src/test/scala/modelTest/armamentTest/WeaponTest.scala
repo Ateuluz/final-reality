@@ -130,4 +130,9 @@ class WeaponTest extends munit.FunSuite{
       case _ => fail("The Weapon Is Not Supposed To Be Assigned")
     }
   }
+
+  test("Casting Capabilities") {
+    assertEquals(wp1.getCastCapable,false)
+    assertEquals(wp2.getCastCapable,true)
+  }
 }
