@@ -1,6 +1,8 @@
 package model.entities.characters.blackMage
 
+import exceptions.InvalidActionException
 import model.armament.IWeapon
+import model.entities.IEntity
 import model.entities.characters.{AMagicalCharacter, IStaffUser, ISwordBearer, IWandUser}
 
 /** Creating instance of BlackMage
@@ -25,6 +27,24 @@ class BlackMage (
       unEquip()
       wp.equipToBlackMage(this)
       setWeapon(wp)
+    } else {
+      throw new InvalidActionException("Assigning Owned Weapon")
     }
+  }
+
+  /**
+   *
+   * If all conditions for throwing are met, the spell will be cast.
+   * If the casting throws no exceptions, mana will be discounted.
+   *
+   * @param target Whom to cast the spell on
+   * @param spellID What spell to cast
+   */
+  override def castSpell(target: IEntity, spellID: Int): Unit = {
+    canCastSpell(target, spellID)
+    getSpells(spellID).castByBlackMage(this, target)
+    setMana(
+      getMana-getSpells(spellID).getConsumption
+    )
   }
 }

@@ -1,5 +1,6 @@
 package model.entities.characters.paladin
 
+import exceptions.InvalidActionException
 import model.armament.IWeapon
 import model.entities.characters.{ACharacter, IAxeBearer, ISwordBearer}
 
@@ -23,6 +24,8 @@ class Paladin (
       unEquip()
       wp.equipToPaladin(this)
       setWeapon(wp)
+    } else {
+      throw new InvalidActionException("Assigning Owned Weapon")
     }
   }
 }

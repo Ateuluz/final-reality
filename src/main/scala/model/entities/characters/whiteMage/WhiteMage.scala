@@ -1,6 +1,8 @@
 package model.entities.characters.whiteMage
 
+import exceptions.InvalidActionException
 import model.armament.IWeapon
+import model.entities.IEntity
 import model.entities.characters.{AMagicalCharacter, IBowBearer, IStaffUser, IWandUser}
 
 /** Creating instance of WhiteMage
@@ -25,6 +27,24 @@ class WhiteMage (
       unEquip()
       wp.equipToWhiteMage(this)
       setWeapon(wp)
+    } else {
+      throw new InvalidActionException("Assigning Owned Weapon")
     }
+  }
+
+  /**
+   *
+   * If all conditions for throwing are met, the spell will be cast.
+   * If the casting throws no exceptions, mana will be discounted.
+   *
+   * @param target Whom to cast the spell on
+   * @param spellID What spell to cast
+   */
+  override def castSpell(target: IEntity, spellID: Int): Unit = {
+    canCastSpell(target, spellID) // Just a check
+    getSpells(spellID).castByWhiteMage(this, target)
+    this.setMana(
+      this.getMana - getSpells(spellID).getConsumption
+    )
   }
 }

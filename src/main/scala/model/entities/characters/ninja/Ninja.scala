@@ -1,5 +1,6 @@
 package model.entities.characters.ninja
 
+import exceptions.InvalidActionException
 import model.armament.IWeapon
 import model.entities.characters.{ACharacter, IBowBearer, ISwordBearer, IWandUser}
 
@@ -23,6 +24,8 @@ class Ninja (
       unEquip()
       wp.equipToNinja(this)
       setWeapon(wp)
+    } else {
+      throw new InvalidActionException("Assigning Owned Weapon")
     }
   }
 }
