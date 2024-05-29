@@ -1,5 +1,6 @@
 package modelTest.entitiesTest.charactersTest.whiteMageTest
 
+import exceptions.InvalidActionException
 import model.armament.IWeapon
 import model.armament.wand.Wand
 import model.entities.characters.{IAxeBearer, IBowBearer, IStaffUser, ISwordBearer, IWandUser}
@@ -38,5 +39,13 @@ class WhiteMageTest extends munit.FunSuite{
   test("Null Weapon Ownership") {
     val expected = None
     assertEquals(ch1.getWeapon,expected,"Weapon should be null")
+  }
+
+  test("Cannot Assign Owned Weapon") {
+    interceptMessage[InvalidActionException](
+      "An invalid action was found -- Assigning Owned Weapon"
+    ) {
+      ch1.equip(wp1)
+    }
   }
 }
