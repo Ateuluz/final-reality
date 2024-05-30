@@ -9,5 +9,5 @@ import model.teams.ATeam
  */
 class Enemies (
                 members: IEnemy*
-              ) extends ATeam (1,5,members) {
+              ) extends ATeam[IEnemy] (1,5,members) {
 }

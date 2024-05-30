@@ -1,6 +1,7 @@
 package modeltest.teamstest.enemiestest
 
 import model.entities.IEntity
+import model.entities.enemies.IEnemy
 import model.entities.enemies.enemy.Enemy
 import model.teams.enemies.Enemies
 
@@ -19,14 +20,14 @@ class EnemiesTest extends munit.FunSuite {
 
   test("Can Add Members") {
     team1 = new Enemies(en1, en2)
-    val expected = ArrayBuffer[IEntity](en1,en2,en3)
+    val expected = ArrayBuffer[IEnemy](en1,en2,en3)
     team1.addMember(en3)
     assertEquals(team1.getMembers, expected)
   }
 
   test("Can Remove Members") {
     team1 = new Enemies(en1, en2)
-    val expected = ArrayBuffer[IEntity](en2)
+    val expected = ArrayBuffer[IEnemy](en2)
     team1.changeMember(en1, None)
     assertEquals(team1.getMembers, expected)
   }

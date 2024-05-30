@@ -78,5 +78,9 @@ abstract class ACharacter(
    *
    * @return the weight relevant for turn taking
    */
-  override def getRelevantWeight: Int = getWeight + getWeapon.get.getWeight / 2
+  override def getRelevantWeight: Int = {
+    if (getWeapon.isEmpty)
+      throw new InvalidActionException("Character has no weapon, thus weight cannot be assigned")
+    getWeight + getWeapon.get.getWeight / 2
+  }
 }

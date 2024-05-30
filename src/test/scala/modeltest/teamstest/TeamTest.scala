@@ -6,6 +6,7 @@ import exceptions.{InvalidHandleException, InvalidStatException}
 import model.armament.sword.Sword
 import model.entities.IEntity
 import model.entities.enemies.enemy.Enemy
+import model.entities.playablecharacters.ICharacter
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -37,7 +38,7 @@ class TeamTest extends munit.FunSuite {
 
   test("Teams Have Members") {
     team1 = new Party(ch1, ch2, ch3)
-    assertEquals(team1.getMembers,ArrayBuffer[IEntity](ch1,ch2,ch3))
+    assertEquals(team1.getMembers,ArrayBuffer[ICharacter](ch1,ch2,ch3))
   }
 
   test("Can be Defeated") {
@@ -52,7 +53,7 @@ class TeamTest extends munit.FunSuite {
   test("Can Replace Member") {
     team1 = new Party(ch1, ch2, ch3)
     team1.changeMember(ch1, Some(ch4))
-    assertEquals(team1.getMembers, ArrayBuffer[IEntity](ch2,ch3,ch4))
+    assertEquals(team1.getMembers, ArrayBuffer[ICharacter](ch2,ch3,ch4))
   }
 
   test("Limit Removal") {

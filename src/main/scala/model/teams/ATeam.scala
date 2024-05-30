@@ -11,11 +11,11 @@ import scala.collection.mutable.ArrayBuffer
  * @param max The maximum amount of members
  * @param initialMembers Sequence of members to start with, within boundaries
  */
-abstract class ATeam(
+abstract class ATeam[T<:IEntity](
                       min: Int,
                       max: Int,
-                      initialMembers: Seq[IEntity]
-                    ) extends ITeam {
+                      initialMembers: Seq[T]
+                    ) extends ITeam[T] {
   private val _members = ArrayBuffer(initialMembers: _*)
   private val _minimumMembers = min
   private val _maximumMembers = max
@@ -49,14 +49,14 @@ abstract class ATeam(
    *
    *  @return All listed members
    */
-  override def getMembers: ArrayBuffer[IEntity] =
+  override def getMembers: ArrayBuffer[T] =
     _members
 
   /** Ateuluz
    *
    * @param member The member to add
    */
-  override def addMember(member: IEntity): Unit = {
+  override def addMember(member: T): Unit = {
     if (_members.length < _maximumMembers) _members.addOne(member)
     else throw new InvalidHandleException("Cannot add member, maximum amount reached.")
   }
@@ -67,8 +67,8 @@ abstract class ATeam(
    * @param newMember The member to replace
    */
   override def changeMember(
-                             oldMember: IEntity,
-                             newMember: Option[IEntity]
+                             oldMember: T,
+                             newMember: Option[T]
                            ): Unit = {
     if (newMember.isDefined) {
       _members -= oldMember

@@ -1,5 +1,6 @@
 package modeltest.turnschedulertest
 
+import exceptions.InvalidActionException
 import model.armament.bow.Bow
 import model.armament.sword.Sword
 import model.armament.wand.Wand
@@ -157,9 +158,11 @@ class TurnSchedulerTest extends munit.FunSuite {
   }
 
   test("Max Bar 0 for Empty Weapon") {
-    TrSch.addCharacter(ch4)
-    val expected: Int = 0 // define expected value
-    val actual: Int = TrSch.getActionBarMax(ch4) // define actual value
-    assertEquals(expected, actual, "Should Have 0 as Max Action Bar")
+    interceptMessage[InvalidActionException](
+      "An invalid action was found -- Character has no weapon, thus weight cannot be assigned"
+    ) {
+      TrSch.addCharacter(ch4)
+      TrSch.getActionBarMax(ch4)
+    }
   }
 }

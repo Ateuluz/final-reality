@@ -7,18 +7,18 @@ import scala.collection.mutable.ArrayBuffer
 /** Ateuluz
  * Trait representing a team and its methods
  */
-trait ITeam {
+trait ITeam[T<:IEntity] {
   /** Ateuluz
    *
    * @param member The member to add
    */
-  def addMember(member: IEntity): Unit
+  def addMember(member: T): Unit
 
   /** Ateuluz
    *
    * @return All listed members
    */
-  def getMembers: ArrayBuffer[IEntity]
+  def getMembers: ArrayBuffer[T]
 
   /** Ateuluz
    *
@@ -31,5 +31,5 @@ trait ITeam {
    * @param oldMember The member to be replaced
    * @param newMember The member to replace
    */
-  def changeMember(oldMember: IEntity, newMember: Option[IEntity]): Unit
+  def changeMember(oldMember: T, newMember: Option[T]): Unit
 }
