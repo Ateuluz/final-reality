@@ -33,6 +33,11 @@ class MagicalCharacterTest extends munit.FunSuite {
     assertEquals(ch1.getSpells,ArrayBuffer[ISpell]())
   }
 
+  test("Has Magic Attack") {
+    ch1.equip(wp1)
+    assertEquals(ch1.getMagicAttack,4)
+  }
+
   test("Learn and Forget Spells") {
     val healSpell = new Heal(1,1)
     ch1.addSpell(healSpell)

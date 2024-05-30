@@ -1,6 +1,6 @@
 package modelTest.armamentTest
 
-import exceptions.{InvalidHolderException, InvalidStatException}
+import exceptions.{InvalidActionException, InvalidHolderException, InvalidStatException}
 import model.armament.axe.Axe
 import model.armament.bow.Bow
 import model.armament.staff.Staff
@@ -134,5 +134,13 @@ class WeaponTest extends munit.FunSuite{
   test("Casting Capabilities") {
     assertEquals(wp1.getCastCapable,false)
     assertEquals(wp2.getCastCapable,true)
+  }
+
+  test("No Magic Attack for Regular Weapons") {
+    interceptMessage[InvalidActionException](
+      "An invalid action was found -- Cannot get magic attack of this weapon."
+    ) {
+      wp1.getMagicAttack
+    }
   }
 }

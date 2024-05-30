@@ -1,6 +1,6 @@
 package model.armament
 
-import exceptions.{InvalidHolderException, Require}
+import exceptions.{InvalidActionException, InvalidHolderException, Require}
 import model.entities.characters.ICharacter
 import model.entities.characters.blackMage.BlackMage
 import model.entities.characters.ninja.Ninja
@@ -37,6 +37,13 @@ abstract class AWeapon (
    *  @return weapons attack
    */
   override def getAttack: Int = _attack
+
+  /**
+   *
+   *  @return The magical attack
+   */
+  override def getMagicAttack: Int =
+    throw new InvalidActionException("Cannot get magic attack of this weapon.")
 
   /**
    *

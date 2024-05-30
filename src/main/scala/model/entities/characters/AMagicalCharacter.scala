@@ -21,7 +21,8 @@ abstract class AMagicalCharacter(
                                   weight: Int,
                                   mana: Int
                                 ) extends ACharacter(name, hp, defense, weight)
-  with IMagicalCharacter {
+                                  with IMagicalCharacter {
+
   private var _mana: Int = constrainMana(mana)
   private val _preparedSpells = ArrayBuffer[ISpell]()
   Require.Stat(mana, "Mana") atLeast 0
@@ -91,5 +92,9 @@ abstract class AMagicalCharacter(
     if (!getWeapon.get.getCastCapable)
       throw new InvalidActionException("Weapon cannot cast")
     true
+  }
+
+  override def getMagicAttack: Int = {
+    getWeapon.get.getMagicAttack
   }
 }

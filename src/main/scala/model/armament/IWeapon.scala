@@ -25,6 +25,12 @@ trait IWeapon {
 
   /**
    *
+   * @return The magical attack
+   */
+  def getMagicAttack: Int
+
+  /**
+   *
    * @return weapons weight
    */
   def getWeight: Int

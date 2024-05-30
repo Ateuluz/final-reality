@@ -23,8 +23,8 @@ class SpellsTest extends munit.FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     ch1 = new WhiteMage("X", 10, 10, 10, 10)
     ch2 = new BlackMage("X", 10, 10, 10, 10)
-    wp1 = new Wand("Y", 15, 10, 15)
-    wp2 = new Wand("Y", 12, 10, 18)
+    wp1 = new Wand("Y", 15, 10, 5)
+    wp2 = new Wand("Y", 12, 10, 5)
     ch3 = new WhiteMage("Z", 20,  2, 10, 10)
     en1 = new Enemy("Z", 20,  2, 10, 10)
     sp1 = new Heal(5, 5)
@@ -53,8 +53,8 @@ class SpellsTest extends munit.FunSuite {
     ch1.addSpell(sp3)
     ch2.addSpell(sp3)
     ch1.castSpell(en1, 0)
-    assertEquals(en1.getHp, 20 - (5 - 2 / 2)) // Defense is half for spells
+    assertEquals(en1.getHp, 20 - ((5 + 5) - (2 / 2))) // Defense is half for spells
     ch2.castSpell(en1, 0)
-    assertEquals(en1.getHp, 16 - (5 - 2 / 2)) // Defense is half for spells
+    assertEquals(en1.getHp, 11 - ((5 + 5) - (2 / 2))) // Defense is half for spells
   }
 }

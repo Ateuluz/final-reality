@@ -1,6 +1,7 @@
 package model.spells
 
 import model.entities.IEntity
+import model.entities.characters.IMagicalCharacter
 import model.entities.characters.blackMage.BlackMage
 import model.entities.characters.whiteMage.WhiteMage
 
@@ -32,4 +33,13 @@ trait ISpell {
    */
   def castByWhiteMage(caster: WhiteMage, target: IEntity): Int
 
+  /**
+   *
+   * Defined to simplify spell casting methods.
+   *
+   * @param caster The caster of the spell
+   * @param target The target of the spell
+   * @return The effect value of the spell, instant damage in most cases, hp healed in some, etc.
+   */
+  protected def cast(caster: IMagicalCharacter, target: IEntity): Int
 }

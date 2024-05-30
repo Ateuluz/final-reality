@@ -2,7 +2,7 @@ package model.spells.lightMagic.heal
 
 import exceptions.Require
 import model.entities.IEntity
-import model.entities.characters.whiteMage.WhiteMage
+import model.entities.characters.IMagicalCharacter
 import model.spells.lightMagic.ALightMagic
 
 /**
@@ -34,6 +34,6 @@ class Heal (
    * @param target The target of the spell
    *  @return The effect value of the spell, instant damage in most cases, hp healed in some, etc.
    */
-  override def castByWhiteMage(caster: WhiteMage, target: IEntity): Int =
+  override protected def cast(caster: IMagicalCharacter, target: IEntity): Int =
     target.beHealed(_hpHealValue)
 }

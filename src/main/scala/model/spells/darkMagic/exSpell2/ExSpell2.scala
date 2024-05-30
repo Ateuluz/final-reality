@@ -2,7 +2,7 @@ package model.spells.darkMagic.exSpell2
 
 import exceptions.Require
 import model.entities.IEntity
-import model.entities.characters.blackMage.BlackMage
+import model.entities.characters.IMagicalCharacter
 import model.spells.darkMagic.ADarkMagic
 
 /**
@@ -39,7 +39,7 @@ class ExSpell2(
    * @param target The target of the spell
    * @return The effect value of the spell, instant damage in most cases, hp healed in some, etc.
    */
-  override def castByBlackMage(caster: BlackMage, target: IEntity): Int = {
+  override protected def cast(caster: IMagicalCharacter, target: IEntity): Int = {
     caster.defendFromSpell(_spellAttack / 3 + caster.getDefense)
     var damage = 0
     if (caster.getHp > 0) damage = {

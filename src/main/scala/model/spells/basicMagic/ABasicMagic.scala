@@ -1,7 +1,27 @@
 package model.spells.basicMagic
 
+import model.entities.IEntity
+import model.entities.characters.blackMage.BlackMage
+import model.entities.characters.whiteMage.WhiteMage
 import model.spells.ASpell
 
 abstract class ABasicMagic extends ASpell with IBasicMagic {
 
+  /**
+   *
+   * @param caster The caster of the spell
+   * @param target The target of the spell
+   * @return The effect value of the spell, instant damage in most cases, hp healed in some, etc.
+   */
+  override def castByWhiteMage(caster: WhiteMage, target: IEntity): Int =
+    cast(caster, target)
+
+  /**
+   *
+   * @param caster The caster of the spell
+   * @param target The target of the spell
+   * @return The effect value of the spell, instant damage in most cases, hp healed in some, etc.
+   */
+  override def castByBlackMage(caster: BlackMage, target: IEntity): Int =
+    cast(caster, target)
 }

@@ -13,7 +13,7 @@ import scala.collection.mutable.ArrayBuffer
  *
  * To be changed if needed later on (unlikely).
  */
-trait IMagicalCharacter {
+trait IMagicalCharacter extends ICharacter {
   /**
    *
    * @return The mana the magical character has left
@@ -58,4 +58,15 @@ trait IMagicalCharacter {
    * @param spellID What spell to cast
    */
   def castSpell(target: IEntity, spellID: Int): Unit
+
+  /**
+   *
+   * Following the fact that entities don't have innate
+   * attack and yet it can be gotten, so happens with
+   * magical attack, should the weapon equipped not have
+   * magic attack, an invalid action exception will be thrown.
+   *
+   * @return The magic attack value of the entity, however it may be gotten
+   */
+  def getMagicAttack: Int
 }

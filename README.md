@@ -18,10 +18,15 @@ serve as an educational tool, teaching foundational programming concepts.
     - [Teams](#teams)
     - [Turn Scheduler](#turn-scheduler)
     - [Spells](#spells)
+- [Disclaimer](#disclaimer)
+    - [Constructor requirements](#constructor-requirements)
+    - [Cure](#cure)
+    - [Coverage](#coverage)
 
 # Classes and constructors
 
 Constructors within the project were made in such a way that certain specific elements are not required and can be later given
+in order to overcome certain errors. For example, [weapons](#weapons).
 
 ## Entities
 
@@ -41,8 +46,9 @@ Out of these stats, they are required to have:
 
 For the purpose of this game implementation, entities can both attack and defend, with the methods returning
 final damage dealt for if later needed.
+
 >For this, even though some subclasses don't have an innate attack value, they can deal damage, meaning their
-attack value is gotten from somewhere else, and it can be gotten thus a getAttack method is only reasonable.
+attack value is gotten from somewhere else, and it can be gotten, thus a getAttack method is only reasonable.
 
 Entity subclasses cannot attack entities with a common root class, subclass to Entity, for this will throw an
 exception via pseudo double dispatch that just serves as a bypass.
@@ -55,7 +61,7 @@ Characters all share the common root interface ICharacter that extends IEntity, 
 - An amount of life points (HP).
 - A defense stat.
 - A weight value.
-- Ability to equip weapons or other characters.
+- Ability to equip or un-equip weapons.
 
 Additionally, there's magical characters who have an additional stat:
 
@@ -68,6 +74,7 @@ At last, there's traits that define which characters can use specific [weapons](
 - BowBearer
 - WandUser
 - StaffUser
+> This has now become obsolete with the implementation of double dispatch, may remove later on if no use is found.
 
 The characters and their respective weapons are:
 
@@ -78,6 +85,9 @@ The characters and their respective weapons are:
 - Magical Characters:
   - White Mage (WandUser, StaffUser, BowBearer)
   - Black Mage (WandUser, StaffUser, SwordBearer)
+
+> A method for retrieving magic attack was defined in the MagicalCharacter interface, following the example getter
+for attack that is innate only for enemies, this one calls upon the magic attack getter of the equipped weapon.
 
 ## Weapons
 
@@ -113,13 +123,18 @@ some weapon without owner, and they can be unequipped.
 
 Weapons cannot be equipped by characters unable to use them.
 
-When trying to assign a weapon already with an owner, nothing will happen.
-Likely to change no action to an exception raise.
+When trying to assign a weapon with an owner already, an exception will be thrown.
 
 Double dispatch implementation for weapon assignation. All [characters](#characters) call upon
 equip method, which varies depending on the class that called upon it.
 
 > The change of weapon mechanic is under revision, for it may lead to unexpected outcomes in turn taking.
+> Planning on only letting weapons be replaced by certain other weapons that follow certain weight restriction
+> so as not to break the game mechanics (Changing to an OP weapon after using a lighter one to take a turn sooner).
+
+> A method for retrieving magic attack was defined in the Weapon interface, it is meant to throw an error unless
+it is a magic weapon. This way we can implement [spells](#spells) that are dependent on the weapon used, giving
+more game mechanics to use.
 
 ## Enemies
 
@@ -150,10 +165,10 @@ The teams are:
 
 ### Adding/Removing Members from Teams
 
-When a new member tries to join a full team, it will just not be allowed and nothing will happen.
+When a new member tries to join a full team, it will throw an exception for a bad handling from the user.
 Changing a member of a team is always possible.
-Removing a character is achieved with the change method, passing Nothing as the newMember parameter.
-If removing the character would leave the team with less than minimum members, nothing happens.
+Removing a character is achieved with the change method, passing None as the newMember parameter.
+If removing the character would leave the team with less than minimum members, an exception for a bad handling from the user will be thrown.
 
 ### Knowledge of defeat
 
@@ -173,7 +188,7 @@ Throughout the gameplay, a main feature to expect is the assignation of turns, f
 - Entities ready to move should do so in order, depending on surplus (desc).
 - Only one entity at a time can be taking action, it should be known which.
 
-> Requirements not fully described, so all methods remain public for now.
+> Requirements not fully described, so most methods remain public for now.
 
 ### Turn Taking
 
@@ -206,7 +221,7 @@ Spells can be learned by any Magical Character, although only certain Mages will
 following the fact that useless stuff can be leaned and still be useless. :)
 
 Spells can so far attack every entity, but will leave it as is for scalability reasons.
-Spells only count half of a character's and enemy's defense.
+Spells only count half of a character's and enemy's defense (rounded up).
 
 ### Considerations
 Casting method may later be changed to a format in which a spell implements a function, and the cast method receives
@@ -215,6 +230,11 @@ On the other hand, the spell itself could become the spell handler, so the cast 
 the caster and target, which could open the possibilities for pattern design implementations.
 
 I like the second idea better.
+
+Second one implemented with certain modifications.
+
+It's been made so that the Magical Character is still the caster, passing down information to the spell,
+all effects handled within spell, taking into consideration both caster and target.
 
 # Disclaimer
 
@@ -234,8 +254,9 @@ will be an HP modifier method defined in IEntities.
 ## Coverage
 
 For the version of Scala I'm using, it now has a branch coverage that I cannot go around.
+Also, I'd like to know what tests are missing for Require in exceptions, it's quite annoying.
 
-## License
+# License
 
 This project is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).

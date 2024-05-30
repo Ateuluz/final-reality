@@ -17,7 +17,8 @@ abstract class ACharacter(
                            defense: Int,
                            weight: Int
                          ) extends AEntity(name, hp, defense, weight)
-                            with ICharacter {
+                           with ICharacter {
+
   private var _weapon: Option[IWeapon] = None
 
   /**
