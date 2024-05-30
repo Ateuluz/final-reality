@@ -48,10 +48,8 @@ abstract class AMagicalCharacter(
    * @return The final valid mana value
    */
   private def constrainMana(mana: Int): Int = {
-    mana match {
-      case n if n < 0 => 0
-      case _ => mana
-    }
+    if (mana < 0) 0
+    else mana
   }
 
   /** Ateuluz

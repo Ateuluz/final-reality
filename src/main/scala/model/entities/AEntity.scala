@@ -72,10 +72,8 @@ abstract class AEntity(
    * @return The final valid hp value
    */
   private def constrainHp(hp: Int): Int = {
-    hp match {
-      case n if n < 0 => 0
-      case _ => hp
-    }
+    if (hp < 0) 0
+    else hp
   }
 
   /** Ateuluz
@@ -84,10 +82,8 @@ abstract class AEntity(
    * @return The final valid defense value
    */
   private def constrainDefense(defense: Int): Int = {
-    defense match {
-      case n if n < 0 => 0
-      case _ => defense
-    }
+    if (defense < 0) 0
+    else defense
   }
 
   /** Ateuluz
@@ -96,10 +92,8 @@ abstract class AEntity(
    * @return The final valid weight value
    */
   private def constrainWeight(weight: Int): Int = {
-    weight match {
-      case n if n < 1 => 1
-      case _ => weight
-    }
+    if (weight < 1) 1
+    else weight
   }
 
   /** Ateuluz
@@ -108,11 +102,12 @@ abstract class AEntity(
    * @return The real damage to be dealt
    */
   private def constrainDamage(damage: Int): Int =
-    damage match {
-      case dmg if dmg > _hp => _hp
-      case dmg if dmg > 0 => dmg
-      case _ => 0
-    }
+    if (damage > _hp)
+      _hp
+    else if (damage > 0)
+      damage
+    else
+      0
 
   /** Ateuluz
    *
@@ -152,11 +147,13 @@ abstract class AEntity(
    */
   override def beHealed(hpHealValue: Int): Int = {
     var dif = 0
-    _hp + hpHealValue match {
-      case _ if _hp == 0 => dif = 0
-      case newHp if newHp > _hpMax => dif = _hpMax - _hp
-      case newHp => dif = newHp - _hp
-    }
+    val tHP = _hp + hpHealValue
+    if (_hp == 0)
+      dif = 0
+    else if (tHP > _hpMax)
+      dif = _hpMax - _hp
+    else
+      dif = tHP - _hp
     _hp += dif
     dif
   }

@@ -42,10 +42,8 @@ abstract class AEnemy(
    * @return The final valid attack value
    */
   private def constrainAttack(attack: Int): Int = {
-    attack match {
-      case n if n < 1 => 1
-      case _ => attack
-    }
+    if (attack < 1) 1
+    else attack
   }
 
   /** Ateuluz

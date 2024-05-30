@@ -57,11 +57,8 @@ abstract class ATeam(
    * @param member The member to add
    */
   override def addMember(member: IEntity): Unit = {
-    member match {
-      case member if _members.length < _maximumMembers =>
-        _members.addOne(member)
-      case _ => throw new InvalidHandleException("Cannot add member, maximum amount reached.")
-    }
+    if (_members.length < _maximumMembers) _members.addOne(member)
+    else throw new InvalidHandleException("Cannot add member, maximum amount reached.")
   }
 
   /** Ateuluz
@@ -73,14 +70,14 @@ abstract class ATeam(
                              oldMember: IEntity,
                              newMember: Option[IEntity]
                            ): Unit = {
-    newMember match {
-      case Some(member) =>
-        _members -= oldMember
-        this.addMember(member)
-      case _ =>
-        if (_members.length <= _minimumMembers)
-          throw new InvalidHandleException("Cannot remove member, minimum amount reached.")
-        _members -= oldMember
+    if (newMember.isDefined) {
+      _members -= oldMember
+      this.addMember(newMember.get)
+    }
+    else {
+      if (_members.length <= _minimumMembers)
+        throw new InvalidHandleException("Cannot remove member, minimum amount reached.")
+      _members -= oldMember
     }
   }
 }

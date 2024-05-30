@@ -68,22 +68,20 @@ abstract class AWeapon (
    * @param attack The intended attack value
    * @return The final valid attack value
    */
-  private def constrainAttack(attack: Int): Int =
-    attack match {
-      case n if n < 1 => 1
-      case _ => attack
-    }
+  private def constrainAttack(attack: Int): Int = {
+    if (attack < 1) 1
+    else attack
+  }
 
   /** Ateuluz
    *
    * @param weight The intended weight value
    * @return The final valid weight value
    */
-  private def constrainWeight(weight: Int): Int =
-    weight match {
-      case n if n < 0 => 0
-      case _ => weight
-    }
+  private def constrainWeight(weight: Int): Int = {
+    if (weight < 0) 0
+    else weight
+  }
 
   /** Ateuluz
    *

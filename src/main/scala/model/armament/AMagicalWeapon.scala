@@ -30,15 +30,4 @@ abstract class AMagicalWeapon(
    *  @return The magical attack
    */
   override def getMagicAttack: Int = _magicAttack
-
-  /*/** Ateuluz
-   *
-   * @param magicAttack The intended magic attack
-   * @return The final valid magick attack
-   */
-  private def constrainMagicAttack(magicAttack: Int): Int =
-    magicAttack match {
-      case n if n < 1 => 1
-      case _ => magicAttack
-    }*/
 }
