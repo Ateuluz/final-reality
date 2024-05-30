@@ -11,7 +11,7 @@ package exceptions
  * @example To throw the exception with specific details:
  * {{{
  * throw new InvalidHandleException("Cannot remove member, minimum amount reached.")
- * // => InvalidHandleException: An invalid user action was found -- Character cannot attack this entity.
+ * // => InvalidHandleException: An invalid user action was found -- Cannot remove member, minimum amount reached.
  * }}}
  *
  * @param details A descriptive message detailing the nature of the invalid action of the user.

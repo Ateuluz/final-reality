@@ -6,7 +6,7 @@ import model.entities.playablecharacters.blackmage.BlackMage
 import model.entities.playablecharacters.whitemage.WhiteMage
 
 /** Ateuluz
- * A Trait defining methods for a spell
+ * An interface defining methods for a spell
  */
 trait ISpell {
 

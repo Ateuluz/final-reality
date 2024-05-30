@@ -4,6 +4,9 @@ import model.entities.IEntity
 import model.entities.playablecharacters.blackmage.BlackMage
 import model.entities.playablecharacters.whitemage.WhiteMage
 
+/** Ateuluz
+ * An abstract class for all spells
+ */
 abstract class ASpell extends ISpell {
 
   /** Ateuluz
