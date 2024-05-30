@@ -92,18 +92,8 @@ class TurnScheduler extends ITurnScheduler {
    * @param character Who's max action bar value we want
    * @return character's max action bar value
    */
-  override def getActionBarMax(character: IEntity): Int = {
-    character match {
-      case char: ICharacter =>
-        char.getWeapon match {
-          case Some(weapon) => char.getWeight + (weapon.getWeight.toFloat / 2).ceil.toInt
-          case _ => 0
-        }
-      // Now we know it can only be an enemy
-      // Would have specified, but intellij complains about coverage otherwise
-      case char => char.getWeight
-    }
-  }
+  override def getActionBarMax(character: IEntity): Int =
+    character.getRelevantWeight
 
   /** Ateuluz
    * Public while no game implementation is

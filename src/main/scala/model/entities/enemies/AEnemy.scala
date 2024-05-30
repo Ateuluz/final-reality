@@ -18,7 +18,7 @@ abstract class AEnemy(
                        attack: Int,
                        weight: Int
                      ) extends AEntity(name, hp, defense, weight)
-                        with IEnemy {
+  with IEnemy {
   private val _attack: Int = constrainAttack(attack)
   Require.Stat(attack, "Attack") atLeast 1
 
@@ -58,7 +58,13 @@ abstract class AEnemy(
   /** Ateuluz
    *
    * @param attack The incoming damage of a spell
-   *  @return The damage that got past the defense
+   * @return The damage that got past the defense
    */
-  override def defendFromSpell(attack: Int): Int = defend(attack + getDefense/2)
+  override def defendFromSpell(attack: Int): Int = defend(attack + getDefense / 2)
+
+  /** Ateuluz
+   *
+   * @return the weight relevant for turn taking
+   */
+  override def getRelevantWeight: Int = getWeight
 }

@@ -39,7 +39,7 @@ abstract class AEntity(
 
   /** Ateuluz
    *
-   *  @return The max possible hp of the entity
+   * @return The max possible hp of the entity
    */
   override def getHpMax: Int = _hpMax
 
@@ -148,14 +148,14 @@ abstract class AEntity(
   /** Ateuluz
    *
    * @param hpHealValue The hp to recover by the entity
-   *  @return Final heal amount
+   * @return Final heal amount
    */
   override def beHealed(hpHealValue: Int): Int = {
     var dif = 0
     _hp + hpHealValue match {
-      case _ if _hp == 0 =>             dif = 0
-      case newHp if newHp > _hpMax =>   dif = _hpMax - _hp
-      case newHp =>                     dif = newHp - _hp
+      case _ if _hp == 0 => dif = 0
+      case newHp if newHp > _hpMax => dif = _hpMax - _hp
+      case newHp => dif = newHp - _hp
     }
     _hp += dif
     dif

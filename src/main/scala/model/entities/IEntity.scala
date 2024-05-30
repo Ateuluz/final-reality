@@ -82,4 +82,10 @@ trait IEntity {
    * @return Final heal amount
    */
   def beHealed(hpHealValue: Int): Int
+
+  /** Ateuluz
+   *
+   * @return the weight relevant for turn taking
+   */
+  def getRelevantWeight: Int
 }

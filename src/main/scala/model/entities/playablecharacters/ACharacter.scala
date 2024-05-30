@@ -17,7 +17,7 @@ abstract class ACharacter(
                            defense: Int,
                            weight: Int
                          ) extends AEntity(name, hp, defense, weight)
-                           with ICharacter {
+  with ICharacter {
 
   private var _weapon: Option[IWeapon] = None
 
@@ -70,7 +70,13 @@ abstract class ACharacter(
   /** Ateuluz
    *
    * @param attack The incoming damage of a spell
-   *  @return The damage that got past the defense
+   * @return The damage that got past the defense
    */
-  override def defendFromSpell(attack: Int): Int = defend(attack + getDefense/2)
+  override def defendFromSpell(attack: Int): Int = defend(attack + getDefense / 2)
+
+  /** Ateuluz
+   *
+   * @return the weight relevant for turn taking
+   */
+  override def getRelevantWeight: Int = getWeight + getWeapon.get.getWeight / 2
 }
