@@ -163,6 +163,9 @@ The teams are:
 - Party (Exactly 3 ICharacter instances)
 - Enemies (Up to 5 IEnemy instances, at least 1)
 
+> Yes, there's a team for enemies, this is solely for game mechanics purposes, like limiting the amount
+of enemies a Party has to fight.
+
 ### Adding/Removing Members from Teams
 
 When a new member tries to join a full team, it will throw an exception for a bad handling from the user.
@@ -215,13 +218,17 @@ This means characters without mana will not be able to cast them, let alone enem
 Attack spells will be dealt with as normal attacks, but they will have the requirement for the caster to consume mana.
 
 The spells will only be cast if the mage casting it has enough mana, if not, exception will be raised and the spell
-won't be cast at all. Thus, cast method within spell does not need information about caster.
+won't be cast at all.
 
 Spells can be learned by any Magical Character, although only certain Mages will be able to cast certain Spells,
 following the fact that useless stuff can be leaned and still be useless. :)
 
 Spells can so far attack every entity, but will leave it as is for scalability reasons.
 Spells only count half of a character's and enemy's defense (rounded up).
+
+> Spells will be cast by some magical character, is the character the one that decides whom to cast a
+spell on and which spell to cast, so restriction on targets will be handled there.
+> Should the need for refactor ever arise, it will be done.
 
 ### Considerations
 Casting method may later be changed to a format in which a spell implements a function, and the cast method receives
