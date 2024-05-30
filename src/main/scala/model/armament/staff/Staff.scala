@@ -1,8 +1,8 @@
 package model.armament.staff
 
 import model.armament.AMagicalWeapon
-import model.entities.characters.blackMage.BlackMage
-import model.entities.characters.whiteMage.WhiteMage
+import model.entities.characters.blackmage.BlackMage
+import model.entities.characters.whitemage.WhiteMage
 import model.entities.characters.{ICharacter, IStaffUser}
 
 /** Ateuluz

@@ -1,9 +1,9 @@
 package model.armament.wand
 
 import model.armament.AMagicalWeapon
-import model.entities.characters.blackMage.BlackMage
+import model.entities.characters.blackmage.BlackMage
 import model.entities.characters.ninja.Ninja
-import model.entities.characters.whiteMage.WhiteMage
+import model.entities.characters.whitemage.WhiteMage
 import model.entities.characters.{ICharacter, IWandUser}
 
 /** Ateuluz

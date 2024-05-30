@@ -2,11 +2,11 @@ package model.armament
 
 import exceptions.{InvalidActionException, InvalidHolderException, Require}
 import model.entities.characters.ICharacter
-import model.entities.characters.blackMage.BlackMage
+import model.entities.characters.blackmage.BlackMage
 import model.entities.characters.ninja.Ninja
 import model.entities.characters.paladin.Paladin
 import model.entities.characters.warrior.Warrior
-import model.entities.characters.whiteMage.WhiteMage
+import model.entities.characters.whitemage.WhiteMage
 
 /** Ateuluz
  *

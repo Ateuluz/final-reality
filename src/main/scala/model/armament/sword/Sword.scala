@@ -1,7 +1,7 @@
 package model.armament.sword
 
 import model.armament.AWeapon
-import model.entities.characters.blackMage.BlackMage
+import model.entities.characters.blackmage.BlackMage
 import model.entities.characters.ninja.Ninja
 import model.entities.characters.paladin.Paladin
 import model.entities.characters.warrior.Warrior
