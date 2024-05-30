@@ -4,10 +4,10 @@ import model.armament.bow.Bow
 import model.armament.sword.Sword
 import model.armament.wand.Wand
 import model.entities.IEntity
-import model.entities.characters.ninja.Ninja
-import model.entities.characters.paladin.Paladin
-import model.entities.characters.warrior.Warrior
-import model.entities.characters.whitemage.WhiteMage
+import model.entities.playablecharacters.ninja.Ninja
+import model.entities.playablecharacters.paladin.Paladin
+import model.entities.playablecharacters.warrior.Warrior
+import model.entities.playablecharacters.whitemage.WhiteMage
 import model.entities.enemies.enemy.Enemy
 import model.turnscheduler.TurnScheduler
 

@@ -3,8 +3,8 @@ package modeltest.entitiestest.characterstest.ninjatest
 import exceptions.InvalidActionException
 import model.armament.{AWeapon, IWeapon}
 import model.armament.sword.Sword
-import model.entities.characters.{IAxeBearer, IBowBearer, IStaffUser, ISwordBearer, IWandUser}
-import model.entities.characters.ninja.Ninja
+import model.entities.playablecharacters.{IAxeBearer, IBowBearer, IStaffUser, ISwordBearer, IWandUser}
+import model.entities.playablecharacters.ninja.Ninja
 
 class NinjaTest extends munit.FunSuite{
   var ch1: Ninja   = _

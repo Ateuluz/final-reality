@@ -1,9 +1,9 @@
 package model.armament.axe
 
 import model.armament.AWeapon
-import model.entities.characters.paladin.Paladin
-import model.entities.characters.warrior.Warrior
-import model.entities.characters.{IAxeBearer, ICharacter}
+import model.entities.playablecharacters.paladin.Paladin
+import model.entities.playablecharacters.warrior.Warrior
+import model.entities.playablecharacters.{IAxeBearer, ICharacter}
 
 /** Ateuluz
  *

@@ -1,4 +1,4 @@
-package model.entities.characters
+package model.entities.playablecharacters
 
 import model.armament.IWeapon
 import model.entities.IEntity

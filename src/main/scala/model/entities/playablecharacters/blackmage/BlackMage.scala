@@ -1,9 +1,9 @@
-package model.entities.characters.blackmage
+package model.entities.playablecharacters.blackmage
 
 import exceptions.InvalidActionException
 import model.armament.IWeapon
 import model.entities.IEntity
-import model.entities.characters.{AMagicalCharacter, IStaffUser, ISwordBearer, IWandUser}
+import model.entities.playablecharacters.{AMagicalCharacter, IStaffUser, ISwordBearer, IWandUser}
 
 /** Ateuluz Creating instance of BlackMage
  *

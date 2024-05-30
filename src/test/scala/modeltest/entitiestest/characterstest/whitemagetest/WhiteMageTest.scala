@@ -3,8 +3,8 @@ package modeltest.entitiestest.characterstest.whitemagetest
 import exceptions.InvalidActionException
 import model.armament.IWeapon
 import model.armament.wand.Wand
-import model.entities.characters.{IAxeBearer, IBowBearer, IStaffUser, ISwordBearer, IWandUser}
-import model.entities.characters.whitemage.WhiteMage
+import model.entities.playablecharacters.{IAxeBearer, IBowBearer, IStaffUser, ISwordBearer, IWandUser}
+import model.entities.playablecharacters.whitemage.WhiteMage
 
 class WhiteMageTest extends munit.FunSuite{
   var ch1: WhiteMage = _

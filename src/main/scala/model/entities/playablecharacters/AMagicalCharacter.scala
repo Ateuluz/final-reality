@@ -1,4 +1,4 @@
-package model.entities.characters
+package model.entities.playablecharacters
 
 import exceptions.{InvalidActionException, Require}
 import model.entities.IEntity

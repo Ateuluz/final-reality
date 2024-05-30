@@ -1,7 +1,7 @@
 package modeltest.entitiestest.enemiestest
 
 import exceptions.{InvalidActionException, InvalidStatException}
-import model.entities.characters.ninja.Ninja
+import model.entities.playablecharacters.ninja.Ninja
 import model.entities.enemies.enemy.Enemy
 
 class EnemyTest extends munit.FunSuite {

@@ -4,8 +4,8 @@ import exceptions.InvalidActionException
 import model.armament.IWeapon
 import model.armament.staff.Staff
 import model.armament.sword.Sword
-import model.entities.characters.{IAxeBearer, IBowBearer, IStaffUser, ISwordBearer, IWandUser}
-import model.entities.characters.blackmage.BlackMage
+import model.entities.playablecharacters.{IAxeBearer, IBowBearer, IStaffUser, ISwordBearer, IWandUser}
+import model.entities.playablecharacters.blackmage.BlackMage
 import model.entities.enemies.enemy.Enemy
 import model.spells.darkmagic.exspell2.ExSpell2
 

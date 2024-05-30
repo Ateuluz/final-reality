@@ -1,8 +1,8 @@
-package model.entities.characters.ninja
+package model.entities.playablecharacters.ninja
 
 import exceptions.InvalidActionException
 import model.armament.IWeapon
-import model.entities.characters.{ACharacter, IBowBearer, ISwordBearer, IWandUser}
+import model.entities.playablecharacters.{ACharacter, IBowBearer, ISwordBearer, IWandUser}
 
 /** Ateuluz Creating instance of Ninja
  *

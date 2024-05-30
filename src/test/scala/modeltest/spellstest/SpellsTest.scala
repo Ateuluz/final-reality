@@ -2,8 +2,8 @@ package modeltest.spellstest
 
 import exceptions.InvalidCasterException
 import model.armament.wand.Wand
-import model.entities.characters.blackmage.BlackMage
-import model.entities.characters.whitemage.WhiteMage
+import model.entities.playablecharacters.blackmage.BlackMage
+import model.entities.playablecharacters.whitemage.WhiteMage
 import model.entities.enemies.enemy.Enemy
 import model.spells.basicmagic.exspell1.ExSpell1
 import model.spells.darkmagic.exspell2.ExSpell2

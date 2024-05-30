@@ -2,7 +2,7 @@ package model.spells.basicmagic.exspell1
 
 import exceptions.Require
 import model.entities.IEntity
-import model.entities.characters.IMagicalCharacter
+import model.entities.playablecharacters.IMagicalCharacter
 import model.spells.basicmagic.ABasicMagic
 
 /** Ateuluz

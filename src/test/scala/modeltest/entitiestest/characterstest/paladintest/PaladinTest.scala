@@ -3,8 +3,8 @@ package modeltest.entitiestest.characterstest.paladintest
 import exceptions.InvalidActionException
 import model.armament.IWeapon
 import model.armament.sword.Sword
-import model.entities.characters.{IAxeBearer, IBowBearer, IStaffUser, ISwordBearer, IWandUser}
-import model.entities.characters.paladin.Paladin
+import model.entities.playablecharacters.{IAxeBearer, IBowBearer, IStaffUser, ISwordBearer, IWandUser}
+import model.entities.playablecharacters.paladin.Paladin
 
 class PaladinTest extends munit.FunSuite{
   var ch1: Paladin = _

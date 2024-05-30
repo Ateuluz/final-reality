@@ -1,8 +1,8 @@
 package model.spells
 import exceptions.InvalidCasterException
 import model.entities.IEntity
-import model.entities.characters.blackmage.BlackMage
-import model.entities.characters.whitemage.WhiteMage
+import model.entities.playablecharacters.blackmage.BlackMage
+import model.entities.playablecharacters.whitemage.WhiteMage
 
 abstract class ASpell extends ISpell {
 

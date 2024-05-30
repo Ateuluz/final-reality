@@ -1,7 +1,7 @@
 package model.spells.lightmagic
 
 import model.entities.IEntity
-import model.entities.characters.whitemage.WhiteMage
+import model.entities.playablecharacters.whitemage.WhiteMage
 import model.spells.ASpell
 
 abstract class ALightMagic extends ASpell with ILightMagic {

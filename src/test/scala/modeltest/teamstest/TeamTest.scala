@@ -1,6 +1,6 @@
 package modeltest.teamstest
 
-import model.entities.characters.paladin.Paladin
+import model.entities.playablecharacters.paladin.Paladin
 import model.teams.party.Party
 import exceptions.{InvalidHandleException, InvalidStatException}
 import model.armament.sword.Sword

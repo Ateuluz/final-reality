@@ -3,7 +3,7 @@ package modeltest.entitiestest.characterstest
 import exceptions.InvalidActionException
 import model.armament.bow.Bow
 import model.armament.staff.Staff
-import model.entities.characters.whitemage.WhiteMage
+import model.entities.playablecharacters.whitemage.WhiteMage
 import model.entities.enemies.enemy.Enemy
 import model.spells.ISpell
 import model.spells.lightmagic.heal.Heal

@@ -2,7 +2,7 @@ package modeltest.entitiestest
 
 import exceptions.InvalidStatException
 import model.armament.sword.Sword
-import model.entities.characters.paladin.Paladin
+import model.entities.playablecharacters.paladin.Paladin
 import model.entities.enemies.enemy.Enemy
 
 class EntityTest extends munit.FunSuite {

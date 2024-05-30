@@ -1,8 +1,8 @@
 package model.spells.basicmagic
 
 import model.entities.IEntity
-import model.entities.characters.blackmage.BlackMage
-import model.entities.characters.whitemage.WhiteMage
+import model.entities.playablecharacters.blackmage.BlackMage
+import model.entities.playablecharacters.whitemage.WhiteMage
 import model.spells.ASpell
 
 abstract class ABasicMagic extends ASpell with IBasicMagic {

@@ -3,8 +3,8 @@ package modeltest.entitiestest.characterstest.warriortest
 import exceptions.InvalidActionException
 import model.armament.{AWeapon, IWeapon}
 import model.armament.sword.Sword
-import model.entities.characters.{IAxeBearer, IBowBearer, IStaffUser, ISwordBearer, IWandUser}
-import model.entities.characters.warrior.Warrior
+import model.entities.playablecharacters.{IAxeBearer, IBowBearer, IStaffUser, ISwordBearer, IWandUser}
+import model.entities.playablecharacters.warrior.Warrior
 
 class WarriorTest extends munit.FunSuite{
   var ch1: Warrior = _

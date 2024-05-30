@@ -1,6 +1,6 @@
 package model.teams.party
 
-import model.entities.characters.ICharacter
+import model.entities.playablecharacters.ICharacter
 import model.teams.ATeam
 
 /** Ateuluz

@@ -1,9 +1,9 @@
 package model.spells
 
 import model.entities.IEntity
-import model.entities.characters.IMagicalCharacter
-import model.entities.characters.blackmage.BlackMage
-import model.entities.characters.whitemage.WhiteMage
+import model.entities.playablecharacters.IMagicalCharacter
+import model.entities.playablecharacters.blackmage.BlackMage
+import model.entities.playablecharacters.whitemage.WhiteMage
 
 /** Ateuluz
  * A Trait defining methods for a spell

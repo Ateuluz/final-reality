@@ -1,4 +1,4 @@
-package model.entities.characters
+package model.entities.playablecharacters
 
 import exceptions.InvalidActionException
 import model.armament.IWeapon

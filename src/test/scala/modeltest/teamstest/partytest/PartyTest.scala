@@ -1,7 +1,7 @@
 package modeltest.teamstest.partytest
 
 import exceptions.InvalidHandleException
-import model.entities.characters.paladin.Paladin
+import model.entities.playablecharacters.paladin.Paladin
 import model.teams.party.Party
 
 class PartyTest extends munit.FunSuite {

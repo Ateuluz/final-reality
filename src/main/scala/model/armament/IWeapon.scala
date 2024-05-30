@@ -1,11 +1,11 @@
 package model.armament
 
-import model.entities.characters.ICharacter
-import model.entities.characters.blackmage.BlackMage
-import model.entities.characters.ninja.Ninja
-import model.entities.characters.paladin.Paladin
-import model.entities.characters.warrior.Warrior
-import model.entities.characters.whitemage.WhiteMage
+import model.entities.playablecharacters.ICharacter
+import model.entities.playablecharacters.blackmage.BlackMage
+import model.entities.playablecharacters.ninja.Ninja
+import model.entities.playablecharacters.paladin.Paladin
+import model.entities.playablecharacters.warrior.Warrior
+import model.entities.playablecharacters.whitemage.WhiteMage
 
 /** Ateuluz
  * Trait defining a weapons methods

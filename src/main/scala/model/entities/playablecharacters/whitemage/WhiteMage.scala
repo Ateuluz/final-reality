@@ -1,9 +1,9 @@
-package model.entities.characters.whitemage
+package model.entities.playablecharacters.whitemage
 
 import exceptions.InvalidActionException
 import model.armament.IWeapon
 import model.entities.IEntity
-import model.entities.characters.{AMagicalCharacter, IBowBearer, IStaffUser, IWandUser}
+import model.entities.playablecharacters.{AMagicalCharacter, IBowBearer, IStaffUser, IWandUser}
 
 /** Ateuluz Creating instance of WhiteMage
  *
