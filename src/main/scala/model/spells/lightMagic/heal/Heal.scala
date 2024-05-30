@@ -5,7 +5,7 @@ import model.entities.IEntity
 import model.entities.characters.IMagicalCharacter
 import model.spells.lightMagic.ALightMagic
 
-/**
+/** Ateuluz
  * Just a spell for testing
  *
  * Serves as heal
@@ -18,7 +18,7 @@ class Heal (
   private val _hpHealValue: Int =
     Require.Stat(hpHealValue, "Heal Value") atLeast 1
 
-  /**
+  /** Ateuluz
    *
    *  @return The mana points required and to be consumed
    *         by the spell
@@ -26,7 +26,7 @@ class Heal (
   override def getConsumption: Int =
     Require.Stat(manaCost, "Mana Cost") atLeast 0
 
-  /**
+  /** Ateuluz
    *
    * Heal the target by a constant amount
    *

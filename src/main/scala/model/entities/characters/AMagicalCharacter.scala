@@ -6,7 +6,7 @@ import model.spells.ISpell
 
 import scala.collection.mutable.ArrayBuffer
 
-/**
+/** Ateuluz
  *
  * @param name    The name of the character
  * @param hp      The health points
@@ -27,13 +27,13 @@ abstract class AMagicalCharacter(
   private val _preparedSpells = ArrayBuffer[ISpell]()
   Require.Stat(mana, "Mana") atLeast 0
 
-  /**
+  /** Ateuluz
    *
    * @return The mana the magical character has left
    */
   override def getMana: Int = _mana
 
-  /**
+  /** Ateuluz
    * Public while mana mechanics not disclosed.
    *
    * @param mana The mana we want the character to have
@@ -42,7 +42,7 @@ abstract class AMagicalCharacter(
     _mana = constrainMana(mana)
   }
 
-  /**
+  /** Ateuluz
    *
    * @param mana The original mana value
    * @return The final valid mana value
@@ -54,20 +54,20 @@ abstract class AMagicalCharacter(
     }
   }
 
-  /**
+  /** Ateuluz
    *
    * @return Known (prepared) spells
    */
   override def getSpells: ArrayBuffer[ISpell] = _preparedSpells
 
-  /**
+  /** Ateuluz
    *
    * @param spell The spell to add to prepared spells
    */
   override def addSpell(spell: ISpell): Unit =
     _preparedSpells += spell
 
-  /**
+  /** Ateuluz
    *
    * @param ID Index of spell to remove
    */
@@ -75,7 +75,7 @@ abstract class AMagicalCharacter(
     if (_preparedSpells.indices.contains(ID))
       _preparedSpells -= _preparedSpells(ID)
 
-  /**
+  /** Ateuluz
    *
    * Might make protected
    *

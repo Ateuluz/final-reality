@@ -3,7 +3,7 @@ package model.entities
 import exceptions.Require.Stat
 import exceptions.InvalidActionException
 
-/**
+/** Ateuluz
  *
  * @param name    The name of the entity
  * @param hp      The health points
@@ -25,37 +25,37 @@ abstract class AEntity(
   Stat(defense, "Defense") atLeast 0
   Stat(weight, "Weight") atLeast 1
 
-  /**
+  /** Ateuluz
    *
    * @return The name of the entity
    */
   override def getName: String = _name
 
-  /**
+  /** Ateuluz
    *
    * @return The hp of the entity
    */
   override def getHp: Int = _hp
 
-  /**
+  /** Ateuluz
    *
    *  @return The max possible hp of the entity
    */
   override def getHpMax: Int = _hpMax
 
-  /**
+  /** Ateuluz
    *
    * @return The defense of the entity
    */
   override def getDefense: Int = _defense
 
-  /**
+  /** Ateuluz
    *
    * @return The weight of the entity
    */
   override def getWeight: Int = _weight
 
-  /**
+  /** Ateuluz
    *
    * @param attack The incoming attack value
    * @return The damage that got past the defenders defense
@@ -66,7 +66,7 @@ abstract class AEntity(
     dmg
   }
 
-  /**
+  /** Ateuluz
    *
    * @param hp The original hp value
    * @return The final valid hp value
@@ -78,7 +78,7 @@ abstract class AEntity(
     }
   }
 
-  /**
+  /** Ateuluz
    *
    * @param defense The original defense value
    * @return The final valid defense value
@@ -90,7 +90,7 @@ abstract class AEntity(
     }
   }
 
-  /**
+  /** Ateuluz
    *
    * @param weight The original weight value
    * @return The final valid weight value
@@ -102,7 +102,7 @@ abstract class AEntity(
     }
   }
 
-  /**
+  /** Ateuluz
    *
    * @param damage The intended attack damage
    * @return The real damage to be dealt
@@ -114,7 +114,7 @@ abstract class AEntity(
       case _ => 0
     }
 
-  /**
+  /** Ateuluz
    *
    * @param attack The incoming attack value of a character
    * @return The damage that got past the defenders defense
@@ -123,7 +123,7 @@ abstract class AEntity(
     throw new InvalidActionException("Character cannot attack this entity.")
   }
 
-  /**
+  /** Ateuluz
    *
    * @param attack The incoming attack value of an enemy
    * @return The damage that got past the defenders defense
@@ -134,7 +134,7 @@ abstract class AEntity(
 
   //region To add if any other classes are needed
   /*
-  /**
+  /** Ateuluz
    *
    * @param attack The incoming damage of a spell
    *  @return The damage that got past the defense
@@ -145,7 +145,7 @@ abstract class AEntity(
   */
   //endregion
 
-  /**
+  /** Ateuluz
    *
    * @param hpHealValue The hp to recover by the entity
    *  @return Final heal amount

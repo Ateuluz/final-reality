@@ -5,7 +5,7 @@ import model.armament.IWeapon
 import model.entities.IEntity
 import model.entities.characters.{AMagicalCharacter, IStaffUser, ISwordBearer, IWandUser}
 
-/** Creating instance of BlackMage
+/** Ateuluz Creating instance of BlackMage
  *
  * @param name    Name given to the mage
  * @param hp      Health points
@@ -32,7 +32,7 @@ class BlackMage (
     }
   }
 
-  /**
+  /** Ateuluz
    *
    * If all conditions for throwing are met, the spell will be cast.
    * If the casting throws no exceptions, mana will be discounted.

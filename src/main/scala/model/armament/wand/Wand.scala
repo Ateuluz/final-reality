@@ -6,7 +6,7 @@ import model.entities.characters.ninja.Ninja
 import model.entities.characters.whiteMage.WhiteMage
 import model.entities.characters.{ICharacter, IWandUser}
 
-/**
+/** Ateuluz
  *
  * @param name        The name of the Sword
  * @param attack      The attack value
@@ -19,7 +19,7 @@ class Wand (
              weight: Int,
              magicAttack: Int,
            ) extends AMagicalWeapon(name,attack,weight,magicAttack) {
-//  /**
+//  /** Ateuluz
 //   *
 //   * @param character the character we intend to equip the weapon to
 //   *  @return Boolean representing if the character can equip it

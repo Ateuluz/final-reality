@@ -4,7 +4,7 @@ import exceptions.InvalidActionException
 import model.armament.IWeapon
 import model.entities.{AEntity, IEntity}
 
-/** Define the basic traits of a character
+/** Ateuluz Define the basic traits of a character
  *
  * @param name    The name of the character
  * @param hp      The health points
@@ -21,19 +21,19 @@ abstract class ACharacter(
 
   private var _weapon: Option[IWeapon] = None
 
-  /**
+  /** Ateuluz
    *
    * @return The weapon the character holds, if any
    */
   override def getWeapon: Option[IWeapon] = _weapon
 
-  /**
+  /** Ateuluz
    *
    * @param weapon The weapon to equip
    */
   override protected def setWeapon(weapon: IWeapon): Unit = _weapon = Some(weapon)
 
-  /**
+  /** Ateuluz
    * We un equip the weapon off the character should it hold one
    */
   override def unEquip(): Unit = {
@@ -43,7 +43,7 @@ abstract class ACharacter(
     }
   }
 
-  /**
+  /** Ateuluz
    *
    * @param objective is the one to attack
    * @return the damage dealt, should we want to use it
@@ -51,7 +51,7 @@ abstract class ACharacter(
   override def attack(objective: IEntity): Int =
     objective.defendFromCharacter(getAttack)
 
-  /**
+  /** Ateuluz
    *
    * @return The attack value of the entity, however it may be gotten
    */
@@ -60,14 +60,14 @@ abstract class ACharacter(
     else throw new InvalidActionException("Cannot get attack of Character without Weapon.")
   }
 
-  /**
+  /** Ateuluz
    *
    * @param attack The incoming attack value of an enemy
    * @return The damage that got past the defenders defense
    */
   override def defendFromEnemy(attack: Int): Int = defend(attack)
 
-  /**
+  /** Ateuluz
    *
    * @param attack The incoming damage of a spell
    *  @return The damage that got past the defense

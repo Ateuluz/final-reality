@@ -6,7 +6,7 @@ import model.entities.characters.warrior.Warrior
 import model.entities.characters.whiteMage.WhiteMage
 import model.entities.characters.{IBowBearer, ICharacter}
 
-/**
+/** Ateuluz
  *
  * @param name   The name of the Sword
  * @param attack The attack value

@@ -5,7 +5,7 @@ import model.entities.IEntity
 import model.entities.characters.IMagicalCharacter
 import model.spells.basicMagic.ABasicMagic
 
-/**
+/** Ateuluz
  * Just a spell for testing
  *
  * Serves as fireball
@@ -18,7 +18,7 @@ class ExSpell1(
   private val _spellAttack: Int =
     Require.Stat(spellAttack, "Spell Attack") atLeast 1
 
-  /**
+  /** Ateuluz
    *
    * @return The mana points required and to be consumed
    *         by the spell
@@ -26,7 +26,7 @@ class ExSpell1(
   override def getConsumption: Int =
     Require.Stat(manaCost, "Mana Cost") atLeast 0
 
-  /**
+  /** Ateuluz
    *
    * @param caster The caster of the spell
    * @param target The target of the spell

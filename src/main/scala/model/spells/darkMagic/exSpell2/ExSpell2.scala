@@ -5,7 +5,7 @@ import model.entities.IEntity
 import model.entities.characters.IMagicalCharacter
 import model.spells.darkMagic.ADarkMagic
 
-/**
+/** Ateuluz
  * Just a spell for testing
  *
  * Serves as black magic
@@ -18,7 +18,7 @@ class ExSpell2(
   private val _spellAttack: Int =
     Require.Stat(spellAttack, "Spell Attack") atLeast 1
 
-  /**
+  /** Ateuluz
    *
    * @return The mana points required and to be consumed
    *         by the spell
@@ -26,7 +26,7 @@ class ExSpell2(
   override def getConsumption: Int =
     Require.Stat(manaCost, "Mana Cost") atLeast 0
 
-  /**
+  /** Ateuluz
    *
    * Damage the target by a constant amount
    * The caster loses a third of the attack

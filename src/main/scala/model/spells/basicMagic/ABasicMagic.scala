@@ -7,7 +7,7 @@ import model.spells.ASpell
 
 abstract class ABasicMagic extends ASpell with IBasicMagic {
 
-  /**
+  /** Ateuluz
    *
    * @param caster The caster of the spell
    * @param target The target of the spell
@@ -16,7 +16,7 @@ abstract class ABasicMagic extends ASpell with IBasicMagic {
   override def castByWhiteMage(caster: WhiteMage, target: IEntity): Int =
     cast(caster, target)
 
-  /**
+  /** Ateuluz
    *
    * @param caster The caster of the spell
    * @param target The target of the spell

@@ -6,20 +6,20 @@ import model.entities.enemies.enemy.Enemy
 
 import scala.collection.mutable.ArrayBuffer
 
-/**
+/** Ateuluz
  * Class in charge of managing turns
  */
 class TurnScheduler extends ITurnScheduler {
-  /**
+  /** Ateuluz
    * Store characters
    */
   private val _characters: ArrayBuffer[IEntity] = new ArrayBuffer[IEntity]()
-  /**
+  /** Ateuluz
    * Store action bars
    */
   private val _actionBars: ArrayBuffer[Int] = new ArrayBuffer[Int]()
 
-  /**
+  /** Ateuluz
    * Get all stored characters
    *
    * @return listed characters
@@ -28,7 +28,7 @@ class TurnScheduler extends ITurnScheduler {
     _characters
   }
 
-  /**
+  /** Ateuluz
    * Get all stored action bars
    *
    * @return listed action bars
@@ -37,7 +37,7 @@ class TurnScheduler extends ITurnScheduler {
     _actionBars
   }
 
-  /**
+  /** Ateuluz
    * Defined public, since we might want to use a certain
    * game mode in which we raise the action bar in such
    * a way all characters attack once for every time the
@@ -58,7 +58,7 @@ class TurnScheduler extends ITurnScheduler {
     }
   }
 
-  /**
+  /** Ateuluz
    * Add a character and assign it an actionbar
    *
    * @param character New character to store
@@ -68,7 +68,7 @@ class TurnScheduler extends ITurnScheduler {
     _actionBars.addOne(0)
   }
 
-  /**
+  /** Ateuluz
    * Removes a character and its action bar
    *
    * @param character Character to be removed along with action bar
@@ -79,7 +79,7 @@ class TurnScheduler extends ITurnScheduler {
     _actionBars.remove(idx)
   }
 
-  /**
+  /** Ateuluz
    * Defined public, since we might want to use a certain
    * game mode in which we raise the action bar in such
    * a way all characters attack once for every time the
@@ -105,7 +105,7 @@ class TurnScheduler extends ITurnScheduler {
     }
   }
 
-  /**
+  /** Ateuluz
    * Public while no game implementation is
    * specified.
    *
@@ -119,7 +119,7 @@ class TurnScheduler extends ITurnScheduler {
     }
   }
 
-  /**
+  /** Ateuluz
    * Public while no game implementation is
    * specified.
    *
@@ -136,7 +136,7 @@ class TurnScheduler extends ITurnScheduler {
     }
   }
 
-  /**
+  /** Ateuluz
    * Return if a character is ready to take action
    *
    * @param character The character to evaluate
@@ -148,7 +148,7 @@ class TurnScheduler extends ITurnScheduler {
     _actionBars(characterIndex) >= this.getActionBarMax(character)
   }
 
-  /**
+  /** Ateuluz
    * Get descending array of all characters with action bar at/over max
    *
    * @return characters ready to take action
@@ -170,7 +170,7 @@ class TurnScheduler extends ITurnScheduler {
   }
 
 
-  /**
+  /** Ateuluz
    * Get character to whom the current turn belongs to
    *
    * @return character to take current turn

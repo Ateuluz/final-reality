@@ -3,7 +3,7 @@ package model.entities.enemies.enemy
 import model.entities.AEntity
 import model.entities.enemies.AEnemy
 
-/** Define the basic traits of an enemy
+/** Ateuluz Define the basic traits of an enemy
  *
  * @param name    The name of the enemy
  * @param hp      The health points

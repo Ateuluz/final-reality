@@ -1,6 +1,6 @@
 package exceptions
 
-/**
+/** Ateuluz
  * Custom exception to signal an invalid weapon assignation encountered.
  *
  * This exception is designed to provide more specific feedback about

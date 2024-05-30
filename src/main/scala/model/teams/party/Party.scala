@@ -3,7 +3,7 @@ package model.teams.party
 import model.entities.characters.ICharacter
 import model.teams.ATeam
 
-/**
+/** Ateuluz
  *
  * @param members The members of the character team
  */

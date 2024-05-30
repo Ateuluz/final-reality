@@ -7,7 +7,7 @@ import model.entities.characters.paladin.Paladin
 import model.entities.characters.warrior.Warrior
 import model.entities.characters.{ICharacter, ISwordBearer}
 
-/**
+/** Ateuluz
  *
  * @param name   The name of the Sword
  * @param attack The attack value

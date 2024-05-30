@@ -5,7 +5,7 @@ import model.entities.IEntity
 
 import scala.collection.mutable.ArrayBuffer
 
-/**
+/** Ateuluz
  *
  * @param min The minimum amount of members
  * @param max The maximum amount of members
@@ -26,7 +26,9 @@ abstract class ATeam(
     _minimumMembers
       to _maximumMembers
     )
-  /** A method to know if a team is defeated
+  /** Ateuluz
+   *
+   * A method to know if a team is defeated
    *
    * A team is considered defeated if all
    * members are dead. If there's at least
@@ -43,14 +45,14 @@ abstract class ATeam(
     defeated
   }
 
-  /**
+  /** Ateuluz
    *
    *  @return All listed members
    */
   override def getMembers: ArrayBuffer[IEntity] =
     _members
 
-  /**
+  /** Ateuluz
    *
    * @param member The member to add
    */
@@ -62,7 +64,7 @@ abstract class ATeam(
     }
   }
 
-  /**
+  /** Ateuluz
    *
    * @param oldMember The member to be replaced
    * @param newMember The member to replace

@@ -5,7 +5,7 @@ import model.armament.IWeapon
 import model.entities.IEntity
 import model.entities.characters.{AMagicalCharacter, IBowBearer, IStaffUser, IWandUser}
 
-/** Creating instance of WhiteMage
+/** Ateuluz Creating instance of WhiteMage
  *
  * @param name    Name given to the mage
  * @param hp      Health points
@@ -32,7 +32,7 @@ class WhiteMage (
     }
   }
 
-  /**
+  /** Ateuluz
    *
    * If all conditions for throwing are met, the spell will be cast.
    * If the casting throws no exceptions, mana will be discounted.

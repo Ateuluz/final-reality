@@ -1,6 +1,6 @@
 package exceptions
 
-/**
+/** Ateuluz
  * Custom exception to signal an invalid spell casting within game has been made.
  *
  * This exception is designed to provide more specific feedback about

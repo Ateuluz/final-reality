@@ -6,7 +6,7 @@ import model.entities.characters.whiteMage.WhiteMage
 
 abstract class ASpell extends ISpell {
 
-  /**
+  /** Ateuluz
    *
    * @param caster The caster of the spell
    * @param target The target of the spell
@@ -16,7 +16,7 @@ abstract class ASpell extends ISpell {
     throw new InvalidCasterException("Spell cannot be cast by a black mage")
   }
 
-  /**
+  /** Ateuluz
    *
    * @param caster The caster of the spell
    * @param target The target of the spell

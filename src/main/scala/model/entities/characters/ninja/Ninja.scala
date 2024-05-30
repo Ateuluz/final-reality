@@ -4,7 +4,7 @@ import exceptions.InvalidActionException
 import model.armament.IWeapon
 import model.entities.characters.{ACharacter, IBowBearer, ISwordBearer, IWandUser}
 
-/** Creating instance of Ninja
+/** Ateuluz Creating instance of Ninja
  *
  * @param name    Name given to the mage
  * @param hp      Health points

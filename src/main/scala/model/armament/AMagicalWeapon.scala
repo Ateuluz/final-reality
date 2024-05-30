@@ -2,7 +2,7 @@ package model.armament
 
 import exceptions.Require
 
-/**
+/** Ateuluz
  *
  * @param name The name for the weapon
  * @param attack The attack for the weapon
@@ -19,19 +19,19 @@ abstract class AMagicalWeapon(
   //private val _magicAttack: Int = constrainMagicAttack(magicAttack)// Constrain rendered useless
   private val _magicAttack: Int = Require.Stat(magicAttack, "MagicAttack") atLeast 1
 
-  /**
+  /** Ateuluz
    *
    *  @return Boolean representing if the weapon allows for casting
    */
   override def getCastCapable: Boolean = true
 
-  /**
+  /** Ateuluz
    *
    *  @return The magical attack
    */
   override def getMagicAttack: Int = _magicAttack
 
-  /*/**
+  /*/** Ateuluz
    *
    * @param magicAttack The intended magic attack
    * @return The final valid magick attack

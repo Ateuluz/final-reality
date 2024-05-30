@@ -3,7 +3,7 @@ package model.teams.enemies
 import model.entities.enemies.IEnemy
 import model.teams.ATeam
 
-/**
+/** Ateuluz
  *
  * @param members The members of the enemy team
  */

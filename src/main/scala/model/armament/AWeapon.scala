@@ -8,7 +8,7 @@ import model.entities.characters.paladin.Paladin
 import model.entities.characters.warrior.Warrior
 import model.entities.characters.whiteMage.WhiteMage
 
-/**
+/** Ateuluz
  *
  * @param name The name for the weapon
  * @param attack The attack for the weapon
@@ -26,44 +26,44 @@ abstract class AWeapon (
   Require.Stat(attack, "Attack") atLeast 1
   Require.Stat(weight, "Weight") atLeast 0
 
-  /**
+  /** Ateuluz
    *
    *  @return weapons name
    */
   override def getName: String = _name
 
-  /**
+  /** Ateuluz
    *
    *  @return weapons attack
    */
   override def getAttack: Int = _attack
 
-  /**
+  /** Ateuluz
    *
    *  @return The magical attack
    */
   override def getMagicAttack: Int =
     throw new InvalidActionException("Cannot get magic attack of this weapon.")
 
-  /**
+  /** Ateuluz
    *
    *  @return weapons weight
    */
   override def getWeight: Int = _weight
 
-  /**
+  /** Ateuluz
    *
    *  @return weapons owner if any else None
    */
   override def getOwner: Option[ICharacter] = _owner
 
-  /**
+  /** Ateuluz
    *
    *  @return Boolean representing if the weapon allows for casting
    */
   override def getCastCapable: Boolean = false
 
-  /**
+  /** Ateuluz
    *
    * @param attack The intended attack value
    * @return The final valid attack value
@@ -74,7 +74,7 @@ abstract class AWeapon (
       case _ => attack
     }
 
-  /**
+  /** Ateuluz
    *
    * @param weight The intended weight value
    * @return The final valid weight value
@@ -85,7 +85,7 @@ abstract class AWeapon (
       case _ => weight
     }
 
-  /**
+  /** Ateuluz
    *
    * @param owner The character to which the weapon will be equipped
    */
@@ -98,14 +98,14 @@ abstract class AWeapon (
     /*owner.setWeapon(this)*/ // Already handled in characters
   }
 
-  /**
+  /** Ateuluz
    * Set the owner of the weapon back to NoneSet the owner of the weapon back to None
    */
   override protected[model] def unsetOwner(): Unit = {
     _owner = None
   }
 
-  /**
+  /** Ateuluz
    *
    * @param paladin The character to equip the weapon with
    */
@@ -113,7 +113,7 @@ abstract class AWeapon (
     throw new InvalidHolderException("Paladin character cannot equip this type of weapon.")
   }
 
-  /**
+  /** Ateuluz
    *
    * @param warrior The character to equip the weapon with
    */
@@ -121,7 +121,7 @@ abstract class AWeapon (
     throw new InvalidHolderException("Warrior character cannot equip this type of weapon.")
   }
 
-  /**
+  /** Ateuluz
    *
    * @param ninja The character to equip the weapon with
    */
@@ -129,7 +129,7 @@ abstract class AWeapon (
     throw new InvalidHolderException("Ninja character cannot equip this type of weapon.")
   }
 
-  /**
+  /** Ateuluz
    *
    * @param whiteMage The character to equip the weapon with
    */
@@ -137,7 +137,7 @@ abstract class AWeapon (
     throw new InvalidHolderException("WhiteMage character cannot equip this type of weapon.")
   }
 
-  /**
+  /** Ateuluz
    *
    * @param blackMage The character to equip the weapon with
    */

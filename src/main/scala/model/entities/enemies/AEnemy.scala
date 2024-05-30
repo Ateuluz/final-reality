@@ -3,7 +3,7 @@ package model.entities.enemies
 import exceptions.Require
 import model.entities.{AEntity, IEntity}
 
-/**
+/** Ateuluz
  *
  * @param name    The name of the entity
  * @param hp      The health points
@@ -22,13 +22,13 @@ abstract class AEnemy(
   private val _attack: Int = constrainAttack(attack)
   Require.Stat(attack, "Attack") atLeast 1
 
-  /**
+  /** Ateuluz
    *
    * @return The attack stat of this entity
    */
   override def getAttack: Int = _attack
 
-  /**
+  /** Ateuluz
    *
    * @param objective is the one to attack
    * @return the damage dealt, should we want to use it
@@ -36,7 +36,7 @@ abstract class AEnemy(
   override def attack(objective: IEntity): Int =
     objective.defendFromEnemy(getAttack)
 
-  /**
+  /** Ateuluz
    *
    * @param attack The original attack value
    * @return The final valid attack value
@@ -48,14 +48,14 @@ abstract class AEnemy(
     }
   }
 
-  /**
+  /** Ateuluz
    *
    * @param attack The incoming attack value of a character
    * @return The damage that got past the defenders defense
    */
   override def defendFromCharacter(attack: Int): Int = defend(attack)
 
-  /**
+  /** Ateuluz
    *
    * @param attack The incoming damage of a spell
    *  @return The damage that got past the defense

@@ -4,7 +4,7 @@ import exceptions.InvalidActionException
 import model.armament.IWeapon
 import model.entities.characters.{ACharacter, IAxeBearer, IBowBearer, ISwordBearer}
 
-/** Creating instance of Warrior
+/** Ateuluz Creating instance of Warrior
  *
  * @param name    Name given to the mage
  * @param hp      Health points
