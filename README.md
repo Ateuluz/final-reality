@@ -193,6 +193,8 @@ Throughout the gameplay, a main feature to expect is the assignation of turns, f
 
 > Requirements not fully described, so most methods remain public for now.
 
+> A turn scheduler will only be used for a single battle or game instance.
+
 ### Turn Taking
 
 All entities have an action bar, and it's their time to move when it is full.
@@ -243,6 +245,55 @@ Second one implemented with certain modifications.
 It's been made so that the Magical Character is still the caster, passing down information to the spell,
 all effects handled within spell, taking into consideration both caster and target.
 
+
+# Game States
+
+## Game State Flow Diagram
+
+![State_Diagram](docs/diagrama-estados.png)
+
+## Flow Mechanics
+
+For this implementation of the game, there will be many States in which the Player will have no decision power, and flow
+will be automatic.
+
+### Stand By State
+
+There are States that require the Player to decide many things, including when to leave the State and transition to the
+next.
+
+### Automatic State
+
+There are some States that will make decisions automatically and may notify the player of the events happening. The
+Player can do nothing but wait for a Game State that allows for Player Interactions.
+
+### Automatic Flow
+
+These are transitions between States that are triggered automatically if conditions are met.
+
+### Decision States
+
+These are States that will require the Player to make decisions regarding game flow.
+
+### Decision Flow
+
+These are transitions that require interactions of the Player to be made.
+
+### Interaction States
+
+These are States that will trigger interactions between game components, such as Character equipping a Weapon, An entity
+attacking a foe or a Character healing an ally. Some may be automatic, others may require a certain level of Player
+interactions.
+
+> Normal Attack may be subdivided into Enemy Attack and (Character) Normal Attack.
+
+### End Phase State
+
+These are a kind of [Automatic State](#automatic-state) that marks the end of a particular branch of the game flow,
+such as end of a level, end of a turn and others to add should there be a necessity.
+These States may potentially be able to modify the [Game Controller](#game-controller) elements (Besides
+[State](#game-states)), such as eliminating entities from the [Turn Scheduler](#turn-scheduler).
+
 # Disclaimer
 
 ## Constructor requirements
@@ -262,6 +313,13 @@ will be an HP modifier method defined in IEntities.
 
 For the version of Scala I'm using, it now has a branch coverage that I cannot go around.
 Also, I'd like to know what tests are missing for Require in exceptions, it's quite annoying.
+
+## States
+
+Game States so far are a simplified version of the diagram, many are yet to be implemented.
+Thinking on adding a game menu State (like Pause) as a special State, capable of saving previous State
+and having the option of going back to the previous state or exiting.
+
 
 # License
 
