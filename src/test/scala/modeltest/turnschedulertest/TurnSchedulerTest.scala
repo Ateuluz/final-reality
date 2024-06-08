@@ -10,6 +10,7 @@ import model.entities.playablecharacters.paladin.Paladin
 import model.entities.playablecharacters.warrior.Warrior
 import model.entities.playablecharacters.whitemage.WhiteMage
 import model.entities.enemies.enemy.Enemy
+import model.teams.party.Party
 import model.turnscheduler.TurnScheduler
 
 import scala.collection.mutable.ArrayBuffer
@@ -44,49 +45,51 @@ class TurnSchedulerTest extends munit.FunSuite {
 
   test("Has Characters") {
     val expected = ArrayBuffer[IEntity]() // define expected value
-    val actual = TrSch.getCharacters // define actual value
+    val actual = TrSch.entities // define actual value
     assertEquals(expected, actual, "Characters Not Defined - Explanation")
   }
 
   test("Has ActionBars") {
     val expected = ArrayBuffer[Int]() // define expected value
-    val actual = TrSch.getActionBars // define actual value
+    val actual = TrSch.actionBars // define actual value
     assertEquals(expected, actual, "Characters Not Defined - Explanation")
   }
 
   test("Add and Remove Characters") {
-    TrSch.addCharacter(ch1)
-    TrSch.addCharacter(ch2)
-    TrSch.removeCharacter(ch1)
+    val Party1: Party = new Party(ch1,ch2,ch3)
+    TrSch.party = Party1
+    TrSch.remove(ch1)
+    TrSch.remove(ch3)
     val expected = ArrayBuffer[IEntity](ch2) // define expected value
-    val actual = TrSch.getCharacters // define actual value
+    val actual = TrSch.entities // define actual value
     assertEquals(expected, actual, "Character Not Added - Explanation")
   }
 
   test("Cannot Remove Characters Not Listed") {
     intercept[IndexOutOfBoundsException] {
-      TrSch.addCharacter(ch2)
-      TrSch.removeCharacter(ch1)
+      TrSch.remove(ch1)
     }
   }
 
   test("Get Single Action Bar") {
-    TrSch.addCharacter(ch1)
+    val Party1: Party = new Party(ch1,ch2,ch3)
+    TrSch.party = Party1
     val expected1 = 0 // define expected value
-    val actual1 = TrSch.getActionBar(ch1) // define actual value
+    val actual1 = TrSch.actionBarOf(ch1) // define actual value
     assertEquals(expected1, actual1, "Character Not Added - Explanation")
 
+    TrSch.remove(ch2)
     val expected2 = -1 // define expected value
-    val actual2 = TrSch.getActionBar(ch2) // define actual value
+    val actual2 = TrSch.actionBarOf(ch2) // define actual value
     assertEquals(expected2, actual2, "Character Not Added - Explanation")
   }
 
   test("Calculate Max Action Bar") {
     val expected1 = 150 // define expected value
-    val actual1 = TrSch.getActionBarMax(ch1) // define actual value
+    val actual1 = TrSch.actionBarMaxOf(ch1) // define actual value
     assertEquals(expected1, actual1, "Max Action Bar Calculation Incorrect - Explanation")
     val expected2 = 10 // define expected value
-    val actual2 = TrSch.getActionBarMax(en1) // define actual value
+    val actual2 = TrSch.actionBarMaxOf(en1) // define actual value
     assertEquals(expected2, actual2, "Max Action Bar Calculation Incorrect - Explanation")
 
     //val exception = intercept[IllegalArgumentException] {
@@ -98,29 +101,35 @@ class TurnSchedulerTest extends munit.FunSuite {
   }
 
   test("Track Action Bars") {
-    TrSch.addCharacter(ch1)
-    val expected = ArrayBuffer[Int](0) // define expected value
-    val actual = TrSch.getActionBars // define actual value
+    val Party1: Party = new Party(ch1,ch2,ch3)
+    TrSch.party = Party1
+    val expected = ArrayBuffer[Int](0,0,0) // define expected value
+    val actual = TrSch.actionBars // define actual value
     assertEquals(expected, actual, "Action Bars Tracking Incorrect - Explanation")
   }
 
   test("Raise All Action Bars") {
-    TrSch.addCharacter(ch1)
-    TrSch.addCharacter(ch2)
+    val Party1: Party = new Party(ch1,ch2,ch3)
+    TrSch.party = Party1
+    TrSch.remove(ch3)
     TrSch.raiseActionBars(10)
     val expected = ArrayBuffer[Int](10, 10) // define expected value
-    val actual = TrSch.getActionBars // define actual value
+    val actual = TrSch.actionBars // define actual value
     assertEquals(expected, actual, "Action Bars Not Raised Successfully - Explanation")
   }
 
   test("Reset Action Bar") {
-    TrSch.addCharacter(ch1)
+    val Party1: Party = new Party(ch1,ch2,ch3)
+    TrSch.party = Party1
     TrSch.raiseActionBars(999)
-    TrSch.reset(TrSch.getCharacters(0))
-    TrSch.reset(ch2)
+    TrSch.reset(TrSch.entities(0))
     val expected = 0 // define expected value
-    val actual = TrSch.getActionBars(0) // define actual value
+    val actual = TrSch.actionBars(0) // define actual value
     assertEquals(expected, actual, "Action Bar Reset Failed - Explanation")
+
+    TrSch.remove(ch2)
+    TrSch.reset(ch2)
+    // TODO: exception perhaps, so far nothing
   }
 
   //test("Check Action Bar Full") {
@@ -139,30 +148,41 @@ class TurnSchedulerTest extends munit.FunSuite {
   //}
 
   test("Return Characters with Full Bars, Ordered Descending by Surplus") {
-    TrSch.addCharacter(ch1)
-    TrSch.addCharacter(ch2)
-    TrSch.addCharacter(ch3)
-    TrSch.raiseActionBars(TrSch.getActionBarMax(ch1) - 1)
+    val Party1: Party = new Party(ch1,ch2,ch3)
+    TrSch.party = Party1
+    TrSch.raiseActionBars(TrSch.actionBarMaxOf(ch1) - 1)
     val expected = ArrayBuffer[IEntity](ch3, ch2) // define expected value
-    val actual = TrSch.getCharactersFull // define actual value
+    val actual = TrSch.charactersFull // define actual value
     assertEquals(expected, actual, "Incorrect Characters Returned - Explanation")
   }
 
   test("Designate Turn") {
-    TrSch.addCharacter(ch1)
-    TrSch.addCharacter(ch2)
-    TrSch.raiseActionBars(TrSch.getActionBarMax(ch1))
+    val Party1: Party = new Party(ch1,ch2,ch3)
+    TrSch.party = Party1
+    TrSch.remove(ch3)
+    TrSch.raiseActionBars(TrSch.actionBarMaxOf(ch1))
     val expected: Any = ch2 // define expected value
-    val actual: Any = TrSch.getAtTurn // define actual value
+    val actual: Any = TrSch.atTurn // define actual value
     assertEquals(expected, actual, "Turn Not Designated - Explanation")
   }
 
-  test("Max Bar 0 for Empty Weapon") {
+  test("Empty Weapon Exception") {
     interceptMessage[InvalidActionException](
       "An invalid action was found -- Character has no weapon, thus weight cannot be assigned"
     ) {
-      TrSch.addCharacter(ch4)
-      TrSch.getActionBarMax(ch4)
+//      val Party1: Party = new Party(ch1,ch2,ch4)
+//      TrSch.party = Party1
+//      TrSch.remove(ch1)
+//      TrSch.remove(ch2)
+      TrSch.actionBarMaxOf(ch4)
     }
+  }
+
+  test("Bind Party") {
+    val Party1: Party = new Party(ch1,ch2,ch3)
+    TrSch.party = Party1
+    val expected = ArrayBuffer[IEntity](ch1, ch2, ch3) // define expected value
+    val actual = TrSch.entities // define actual value
+    assertEquals(expected, actual, "Incorrect Characters Returned - Explanation")
   }
 }
