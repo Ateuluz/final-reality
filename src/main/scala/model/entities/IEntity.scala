@@ -110,11 +110,11 @@ trait IEntity {
    */
   def effectsAdd(effect: IEffect): Unit
 
-//  /** Ateuluz
-//   *
-//   * @param effect Effect to remove
-//   */
-//  def effectsRemove(effect: IEffect): Unit
+  /** Ateuluz
+   *
+   * @param effect Effect to remove
+   */
+  def effectsRemove(effect: IEffect): Unit
 
   /** Ateuluz
    *

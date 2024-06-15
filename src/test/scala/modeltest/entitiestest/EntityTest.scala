@@ -101,4 +101,20 @@ class EntityTest extends munit.FunSuite {
     ch1.actionAble = true
     assert(!ch1.actionAble)
   }
+
+  test("Unaffected by Random Effect") {
+    interceptMessage[InvalidHandleException](
+      "An invalid user action was found -- Effect Not Found"
+    ) {
+      ch1.defendFromEffect(new Poisoned(999))
+    }
+  }
+
+  test("Cannot Remove Random Effect") {
+    interceptMessage[InvalidHandleException](
+      "An invalid user action was found -- Effect Not Found"
+    ) {
+      ch1.effectsRemove(new Poisoned(999))
+    }
+  }
 }

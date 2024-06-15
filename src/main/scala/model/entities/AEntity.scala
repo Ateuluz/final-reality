@@ -1,7 +1,10 @@
 package model.entities
 
 import exceptions.Require.Stat
-import exceptions.InvalidActionException
+import exceptions.{InvalidActionException, InvalidHandleException}
+import model.effects.IEffect
+
+import scala.collection.mutable.ArrayBuffer
 
 /** Ateuluz
  *
@@ -18,12 +21,14 @@ abstract class AEntity(
                       ) extends IEntity {
   private val _name: String = name
   private var _hp: Int = constrainHp(hp)
-  private var _hpMax: Int = _hp
+  private val _hpMax: Int = _hp
   private val _defense: Int = constrainDefense(defense)
   private val _weight: Int = constrainWeight(weight)
   Stat(hp, "HP") atLeast 0
   Stat(defense, "Defense") atLeast 0
   Stat(weight, "Weight") atLeast 1
+  private val _effects = ArrayBuffer[IEffect]()
+  private var _actionAble = false
 
   /** Ateuluz
    *
@@ -128,16 +133,18 @@ abstract class AEntity(
   }
 
   //region To add if any other classes are needed
-  /*
+  // All implementations are the same so far
+
   /** Ateuluz
    *
    * @param attack The incoming damage of a spell
-   *  @return The damage that got past the defense
+   * @return The damage that got past the defense
    */
   override def defendFromSpell(attack: Int): Int = {
-    throw new InvalidActionException("Spell cannot attack this entity.")
+    defend(attack + getDefense / 2)
+    // throw new InvalidActionException("Spell cannot attack this entity.")
   }
-  */
+
   //endregion
 
   /** Ateuluz
@@ -158,4 +165,68 @@ abstract class AEntity(
     dif
   }
 
+  // TODO implement when needed
+//  /** Ateuluz
+//   *
+//   * @return All effects the entity is under
+//   */
+//  override protected def effects: ArrayBuffer[IEffect] = _effects
+
+  /** Ateuluz
+   *
+   * @param effect Effect to add
+   */
+  override def effectsAdd(effect: IEffect): Unit =
+    _effects.addOne(effect)
+
+  // TODO Will implement when needing to remove an effect before duration ends
+  /** Ateuluz
+   *
+   * @param effect Effect to remove
+   */
+  override def effectsRemove(effect: IEffect): Unit = {
+    if (!_effects.contains(effect)) throw new InvalidHandleException("Effect Not Found")
+    _effects -= effect
+  }
+
+  /** Ateuluz
+   *
+   * @param effect Effect from where to get the true damage intended
+   * @return The final damage
+   */
+  override def defendFromEffect(effect: IEffect): Int = {
+    if (!_effects.contains(effect)) throw new InvalidHandleException("Effect Not Found")
+    defend(effect.power + getDefense)
+  }
+
+  /** Ateuluz
+   *
+   * Apply all effects the entity is under
+   */
+  override def effectsApply(): Unit = {
+    for (effect <- _effects.clone()) effect.applyTo(this)
+//    val toRemove = ArrayBuffer[IEffect]()
+//    for (effect <- _effects) if (effect.duration == 0) toRemove += effect
+//    _effects --= toRemove
+  }
+
+  /** Ateuluz
+   *
+   * The check for hp may seem redundant, but becomes necessary
+   * for when effects deal damage before each turn.
+   *
+   *  @return whether the entity can perform any action
+   */
+  override def actionAble: Boolean = _actionAble && (_hp != 0)
+
+  /** Ateuluz
+   *
+   * Setter for _actionAble.
+   * Won't matter if the entity is dead anyway.
+   *
+   * @param state Boolean for new actionAble state
+   */
+  override def actionAble_=(state: Boolean): Unit = {
+    _actionAble = state
+  }
 }
