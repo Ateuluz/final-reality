@@ -47,6 +47,13 @@ Out of these stats, they are required to have:
 For the purpose of this game implementation, entities can both attack and defend, with the methods returning
 final damage dealt for if later needed.
 
+To increase game complexity, a state variable is added to entities. It will take on the job of handling whether the
+entity can perform any sort of action.
+
+- actionAble state variable
+
+To prevent unwanted situations, an alive clause will be added, mainly to support on the transition between states.
+
 >For this, even though some subclasses don't have an innate attack value, they can deal damage, meaning their
 attack value is gotten from somewhere else, and it can be gotten, thus a getAttack method is only reasonable.
 
@@ -231,6 +238,19 @@ Spells only count half of a character's and enemy's defense (rounded up).
 > Spells will be cast by some magical character, is the character the one that decides whom to cast a
 spell on and which spell to cast, so restriction on targets will be handled there.
 > Should the need for refactor ever arise, it will be done.
+
+## Effects
+
+So far, effects may only be required to be implemented on [enemies](#enemies), but for scalability they will be designed
+and adapted for all [IEntity](#entities) instances.
+
+Effects have damage and duration values associated.
+Damage will be considered true damage for it will ignore all defense, said damage will be set upon casting the
+[spell](#spells) that triggers it, and will be dependent on the initial damage dealt by the casting for most instances,
+certain spells may have different rules, such as heal or other possible special spells.
+
+Some spells (required) will have a dmg value relative only to casters Magic Attack (equipped [weapon's](#weapons) Magic
+Attack). All of this handled in [Spell](#spells) definition.
 
 ### Considerations
 Casting method may later be changed to a format in which a spell implements a function, and the cast method receives
