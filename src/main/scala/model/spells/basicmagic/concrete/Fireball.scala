@@ -1,19 +1,20 @@
-package model.spells.darkmagic.exspell2
+package model.spells.basicmagic.concrete
 
 import exceptions.Require
 import model.entities.IEntity
 import model.entities.playablecharacters.IMagicalCharacter
-import model.spells.darkmagic.ADarkMagic
+import model.spells.basicmagic.ABasicMagic
+import model.effects.concrete.Burned
 
 /** Ateuluz
  * Just a spell for testing
  *
- * Serves as black magic
+ * Serves as fireball
  */
-class ExSpell2(
+class Fireball(
                 spellAttack: Int,
                 manaCost: Int
-              ) extends ADarkMagic {
+              ) extends ABasicMagic {
 
   private val _spellAttack: Int =
     Require.Stat(spellAttack, "Spell Attack") atLeast 1
@@ -28,24 +29,13 @@ class ExSpell2(
 
   /** Ateuluz
    *
-   * Damage the target by a constant amount
-   * The caster loses a third of the attack
-   * as hp and recovers half of the damage
-   *
-   * If the caster dies in the process,
-   * the spell gets canceled
-   *
    * @param caster The caster of the spell
    * @param target The target of the spell
    * @return The effect value of the spell, instant damage in most cases, hp healed in some, etc.
    */
   override protected def cast(caster: IMagicalCharacter, target: IEntity): Int = {
-    caster.defendFromSpell(_spellAttack / 3 + caster.getDefense)
-    var damage = 0
-    if (caster.getHp > 0) damage = {
-      target.defendFromSpell(_spellAttack)
-      caster.beHealed(damage / 2)
-    }
-    damage
+    val dmg = target.defendFromSpell(_spellAttack + caster.getWeapon.get.getMagicAttack)
+    target.effectsAdd(new Burned(caster.getMagicAttack/2))
+    dmg
   }
 }
