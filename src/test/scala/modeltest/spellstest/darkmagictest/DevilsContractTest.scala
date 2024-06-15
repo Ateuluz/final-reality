@@ -1,22 +1,21 @@
-package modeltest.spellstest.darkmagictest.exspell2test
+package modeltest.spellstest.darkmagictest
 
 import model.armament.wand.Wand
-import model.entities.playablecharacters.blackmage.BlackMage
-import model.entities.playablecharacters.whitemage.WhiteMage
 import model.entities.enemies.enemy.Enemy
-import model.spells.darkmagic.exspell2.ExSpell2
+import model.entities.playablecharacters.blackmage.BlackMage
+import model.spells.darkmagic.concrete.DevilsContract
 
-class ExSpell2Test extends munit.FunSuite {
+class DevilsContractTest extends munit.FunSuite {
   var ch1: BlackMage = _
   var wp1: Wand      = _
   var en1: Enemy     = _
-  var sp1: ExSpell2  = _
+  var sp1: DevilsContract  = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     ch1 = new BlackMage("X", 10, 10, 10, 10)
     wp1 = new Wand("Y", 15, 10, 15)
     en1 = new Enemy("Z", 20,  2, 19, 10)
-    sp1 = new ExSpell2(100, 5)
+    sp1 = new DevilsContract(100, 5)
     ch1.equip(wp1)
     ch1.addSpell(sp1)
   }

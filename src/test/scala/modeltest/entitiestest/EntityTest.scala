@@ -1,7 +1,8 @@
 package modeltest.entitiestest
 
-import exceptions.InvalidStatException
+import exceptions.{InvalidHandleException, InvalidStatException}
 import model.armament.sword.Sword
+import model.effects.concrete.Poisoned
 import model.entities.playablecharacters.paladin.Paladin
 import model.entities.enemies.enemy.Enemy
 
@@ -83,5 +84,21 @@ class EntityTest extends munit.FunSuite {
     assertEquals(ch1.getHp,0)
     ch1.beHealed(1)
     assertEquals(ch1.getHp,0)
+  }
+
+  test("Action Able Getter works") {
+    ch1.actionAble = false
+    assert(!ch1.actionAble)
+
+    ch1.actionAble = true
+    assert(ch1.actionAble)
+
+    en1.attack(ch1)
+
+    ch1.actionAble = false
+    assert(!ch1.actionAble)
+
+    ch1.actionAble = true
+    assert(!ch1.actionAble)
   }
 }

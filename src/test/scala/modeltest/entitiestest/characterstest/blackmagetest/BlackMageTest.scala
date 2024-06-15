@@ -7,7 +7,7 @@ import model.armament.sword.Sword
 import model.entities.playablecharacters.{IAxeBearer, IBowBearer, IStaffUser, ISwordBearer, IWandUser}
 import model.entities.playablecharacters.blackmage.BlackMage
 import model.entities.enemies.enemy.Enemy
-import model.spells.darkmagic.exspell2.ExSpell2
+import model.spells.darkmagic.concrete.DevilsContract
 
 class BlackMageTest extends munit.FunSuite{
   var wp1: Sword     = _
@@ -49,7 +49,7 @@ class BlackMageTest extends munit.FunSuite{
   }
 
   test("Can Cast") {
-    val darkSpell = new ExSpell2(10,10)
+    val darkSpell = new DevilsContract(10,10)
     ch1.addSpell(darkSpell)
     ch1.equip(wp2)
     assertEquals(ch1.getMana,100)

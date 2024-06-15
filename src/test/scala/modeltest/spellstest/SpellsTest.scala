@@ -5,8 +5,8 @@ import model.armament.wand.Wand
 import model.entities.playablecharacters.blackmage.BlackMage
 import model.entities.playablecharacters.whitemage.WhiteMage
 import model.entities.enemies.enemy.Enemy
-import model.spells.basicmagic.exspell1.ExSpell1
-import model.spells.darkmagic.exspell2.ExSpell2
+import model.spells.basicmagic.concrete.Fireball
+import model.spells.darkmagic.concrete.DevilsContract
 import model.spells.lightmagic.heal.Heal
 
 class SpellsTest extends munit.FunSuite {
@@ -17,8 +17,8 @@ class SpellsTest extends munit.FunSuite {
   var ch3: WhiteMage = _
   var en1: Enemy     = _
   var sp1: Heal      = _
-  var sp2: ExSpell2  = _
-  var sp3: ExSpell1  = _
+  var sp2: DevilsContract  = _
+  var sp3: Fireball  = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     ch1 = new WhiteMage("X", 10, 10, 10, 10)
@@ -28,8 +28,8 @@ class SpellsTest extends munit.FunSuite {
     ch3 = new WhiteMage("Z", 20,  2, 10, 10)
     en1 = new Enemy("Z", 20,  2, 10, 10)
     sp1 = new Heal(5, 5)
-    sp2 = new ExSpell2(5, 5)
-    sp3 = new ExSpell1(5, 5)
+    sp2 = new DevilsContract(5, 5)
+    sp3 = new Fireball(5, 5)
     ch1.equip(wp1)
     ch2.equip(wp2)
   }

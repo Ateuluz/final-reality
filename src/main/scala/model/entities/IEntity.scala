@@ -1,5 +1,9 @@
 package model.entities
 
+import model.effects.IEffect
+
+import scala.collection.mutable.ArrayBuffer
+
 /** Ateuluz
  * Trait representing an entity and its methods
  */
@@ -88,4 +92,56 @@ trait IEntity {
    * @return the weight relevant for turn taking
    */
   def getRelevantWeight: Int
+
+  //region Effect related
+//  /** Ateuluz
+//   *
+//   * It isn't really a need to have this public,
+//   * plus, this way we can restrict whom can call
+//   * this method.
+//   *
+//   * @return All effects the entity is under
+//   */
+//  protected def effects: ArrayBuffer[IEffect]
+
+  /** Ateuluz
+   *
+   * @param effect Effect to add
+   */
+  def effectsAdd(effect: IEffect): Unit
+
+//  /** Ateuluz
+//   *
+//   * @param effect Effect to remove
+//   */
+//  def effectsRemove(effect: IEffect): Unit
+
+  /** Ateuluz
+   *
+   * Special defense method.
+   * Effects will ignore defense.
+   *
+   * @param effect Effect from where to get the true damage intended
+   * @return The final damage
+   */
+  def defendFromEffect(effect: IEffect): Int
+
+  /** Ateuluz
+   *
+   * Apply all effects the entity is under
+   */
+  def effectsApply(): Unit
+
+  /** Ateuluz
+   *
+   * @return whether the entity can perform any action
+   */
+  def actionAble: Boolean
+
+  /** Ateuluz
+   *
+   * @param state Boolean for new actionAble state
+   */
+  def actionAble_=(state: Boolean): Unit
+  //endregion
 }
