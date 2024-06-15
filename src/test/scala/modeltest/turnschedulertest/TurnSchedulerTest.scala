@@ -1,6 +1,6 @@
 package modeltest.turnschedulertest
 
-import exceptions.InvalidActionException
+import exceptions.{InvalidActionException, InvalidHandleException}
 import model.armament.bow.Bow
 import model.armament.sword.Sword
 import model.armament.wand.Wand
@@ -10,6 +10,7 @@ import model.entities.playablecharacters.paladin.Paladin
 import model.entities.playablecharacters.warrior.Warrior
 import model.entities.playablecharacters.whitemage.WhiteMage
 import model.entities.enemies.enemy.Enemy
+import model.teams.enemies.Enemies
 import model.teams.party.Party
 import model.turnscheduler.TurnScheduler
 
@@ -26,6 +27,7 @@ class TurnSchedulerTest extends munit.FunSuite {
   var wp3: Bow = _
   var en1: Enemy = _
   var en2: Enemy = _
+  var en3: Enemy = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     TrSch = new TurnScheduler
@@ -38,6 +40,7 @@ class TurnSchedulerTest extends munit.FunSuite {
     wp3 = new Bow("X", 20, 20)
     en1 = new Enemy("E1", 10, 10, 10, 10)
     en2 = new Enemy("E2", 5, 5, 5, 5)
+    en3 = new Enemy("E2", 5, 5, 1000, 5)
     ch1.equip(wp1)
     ch2.equip(wp2)
     ch3.equip(wp3)
@@ -184,5 +187,94 @@ class TurnSchedulerTest extends munit.FunSuite {
     val expected = ArrayBuffer[IEntity](ch1, ch2, ch3) // define expected value
     val actual = TrSch.entities // define actual value
     assertEquals(expected, actual, "Incorrect Characters Returned - Explanation")
+  }
+
+  test("Teams Assign") {
+    val Party1: Party = new Party(ch1,ch2,ch3)
+    TrSch.party = Party1
+    val Enemies1: Enemies = new Enemies(en1)
+    TrSch.enemyTeam = Enemies1
+    assertEquals(TrSch.party.get, Party1)
+    assertEquals(TrSch.enemyTeam.get, Enemies1)
+
+    interceptMessage[InvalidHandleException](
+      "An invalid user action was found -- A Party is set already"
+    ) {
+      TrSch.party = Party1
+    }
+
+    interceptMessage[InvalidHandleException](
+      "An invalid user action was found -- An Enemy Team is set already"
+    ) {
+      TrSch.enemyTeam = Enemies1
+    }
+  }
+
+  test("Teams Unbind") {
+    val Party1: Party = new Party(ch1,ch2,ch3)
+    val Enemies1: Enemies = new Enemies(en1)
+
+    interceptMessage[InvalidHandleException](
+      "An invalid user action was found -- There is no linked Party"
+    ) {
+      TrSch.unbindParty()
+    }
+    interceptMessage[InvalidHandleException](
+      "An invalid user action was found -- There is no linked Enemy Team"
+    ) {
+      TrSch.unbindEnemies()
+    }
+
+    TrSch.party = Party1
+    TrSch.enemyTeam = Enemies1
+
+    ch1.attack(en1)
+    en3.attack(ch1)
+
+    TrSch.removeDead()
+
+    TrSch.unbindParty()
+    TrSch.unbindEnemies()
+
+    assert(TrSch.party.isEmpty)
+    assert(TrSch.enemyTeam.isEmpty)
+  }
+
+  test("End Game Conditions") {
+
+    assert(!TrSch.endgame)
+
+    val Party1: Party = new Party(ch1,ch2,ch3)
+    TrSch.party = Party1
+    assert(!TrSch.endgame)
+
+    TrSch.unbindParty()
+    val Enemies1: Enemies = new Enemies(en1)
+    TrSch.enemyTeam = Enemies1
+    assert(!TrSch.endgame)
+
+    TrSch.party = Party1
+    assert(!TrSch.endgame)
+
+    ch1.attack(en1)
+    assert(TrSch.endgame)
+
+    // Both dead will never happen in a real situation, but whatever
+    en3.attack(ch1)
+    en3.attack(ch2)
+    en3.attack(ch3)
+    assert(TrSch.endgame)
+  }
+
+  test("Other Endgame Branches") {
+    val Party1: Party = new Party(ch1,ch2,ch3)
+    val Enemies1: Enemies = new Enemies(en1)
+    TrSch.party = Party1
+    TrSch.enemyTeam = Enemies1
+
+    en3.attack(ch1)
+    en3.attack(ch2)
+    en3.attack(ch3)
+    assert(TrSch.endgame)
   }
 }

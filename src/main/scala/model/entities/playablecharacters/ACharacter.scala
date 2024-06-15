@@ -67,12 +67,12 @@ abstract class ACharacter(
    */
   override def defendFromEnemy(attack: Int): Int = defend(attack)
 
-  /** Ateuluz
-   *
-   * @param attack The incoming damage of a spell
-   * @return The damage that got past the defense
-   */
-  override def defendFromSpell(attack: Int): Int = defend(attack + getDefense / 2)
+//  /** Ateuluz
+//   *
+//   * @param attack The incoming damage of a spell
+//   * @return The damage that got past the defense
+//   */
+//  override def defendFromSpell(attack: Int): Int = defend(attack + getDefense / 2)
 
   /** Ateuluz
    *

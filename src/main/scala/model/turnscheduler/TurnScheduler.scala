@@ -2,6 +2,7 @@ package model.turnscheduler
 
 import exceptions.InvalidHandleException
 import model.entities.IEntity
+import model.entities.enemies.IEnemy
 import model.teams.enemies.Enemies
 import model.teams.party.Party
 
@@ -12,8 +13,8 @@ import scala.collection.mutable.ArrayBuffer
  */
 class TurnScheduler extends ITurnScheduler {
 
-  private val _party: Option[Party] = None
-  private val _enemyTeam: Option[Enemies] = None
+  private var _party: Option[Party] = None
+  private var _enemyTeam: Option[Enemies] = None
 
   /** Ateuluz
    *
@@ -34,9 +35,11 @@ class TurnScheduler extends ITurnScheduler {
   override def party_=(party: Party): Unit =
     if (_party.isDefined)
       throw new InvalidHandleException("A Party is set already")
-    else
+    else {
+      _party = Some(party)
       for (member <- party.getMembers)
         add(member)
+    }
 
   /** Ateuluz
    *
@@ -44,10 +47,12 @@ class TurnScheduler extends ITurnScheduler {
    */
   override def enemyTeam_=(enemyTeam: Enemies): Unit =
     if (_enemyTeam.isDefined)
-      throw new InvalidHandleException("A Party is set already")
-    else
+      throw new InvalidHandleException("An Enemy Team is set already")
+    else {
+      _enemyTeam = Some(enemyTeam)
       for (member <- enemyTeam.getMembers)
         add(member)
+    }
 
   /** Ateuluz
    *
@@ -56,13 +61,16 @@ class TurnScheduler extends ITurnScheduler {
   override def unbindParty(): Unit =
     if (_party.isEmpty)
       throw new InvalidHandleException("There is no linked Party")
-    else
-      for (member <- _party.get.getMembers)
+    else {
+      //val clone = ArrayBuffer() ++= _party.get.getMembers
+      for (member <- _party.get.getMembers.clone())
         try remove(member)
         catch {
           // Perhaps the character was already eliminated if hp got to zero
           case _: IndexOutOfBoundsException => println("Character already removed")
         }
+      _party = None
+    }
 
   /** Ateuluz
    *
@@ -71,13 +79,16 @@ class TurnScheduler extends ITurnScheduler {
    override def unbindEnemies(): Unit =
      if (_enemyTeam.isEmpty)
        throw new InvalidHandleException("There is no linked Enemy Team")
-     else
-       for (member <- _enemyTeam.get.getMembers)
+     else {
+       //val clone = ArrayBuffer() ++= _enemyTeam.get.getMembers
+       for (member <- _enemyTeam.get.getMembers.clone())
          try remove(member)
          catch {
            // Perhaps the enemy was already eliminated if hp got to zero
            case _: IndexOutOfBoundsException => println("Enemy already removed")
          }
+       _enemyTeam = None
+     }
 
   /** Ateuluz
    * Store characters
@@ -154,7 +165,7 @@ class TurnScheduler extends ITurnScheduler {
    * Remove all dead linked entities
    */
   override def removeDead(): Unit =
-    for (ent <- _entities) if (ent.getHp == 0) remove(ent)
+    for (ent <- _entities.clone()) if (ent.getHp == 0) remove(ent)
 
   /** Ateuluz
    * Defined public, since we might want to use a certain

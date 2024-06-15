@@ -1,0 +1,5 @@
+package controllertest
+
+class GameStateTest {
+
+}
