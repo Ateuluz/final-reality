@@ -1,6 +1,6 @@
 package modeltest.entitiestest.characterstest
 
-import exceptions.{InvalidActionException, InvalidHolderException, InvalidStatException}
+import exceptions.{InvalidActionException, InvalidHandleException, InvalidHolderException, InvalidStatException}
 import model.armament.IWeapon
 import model.armament.sword.Sword
 import model.entities.playablecharacters.paladin.Paladin
@@ -8,7 +8,7 @@ import model.entities.playablecharacters.warrior.Warrior
 import model.entities.playablecharacters.whitemage.WhiteMage
 import model.entities.enemies.enemy.Enemy
 
-class CharacterTest extends munit.FunSuite{
+class CharacterTest extends munit.FunSuite {
   var ch1: Paladin   = _
   var ch2: WhiteMage = _
   var ch3: Warrior   = _
@@ -112,6 +112,18 @@ class CharacterTest extends munit.FunSuite{
           1,
           "Incorrect damage assignation"
         )
+    }
+  }
+
+  test("Turn Bifurcation") {
+    assertEquals(ch1.getTurnPhaseBifurcation, "Regular Turn")
+    assertEquals(ch2.getTurnPhaseBifurcation, "Magical Turn")
+  }
+
+  test("Magical Exception|Valid") {
+    assertEquals(ch2.asMagical, ch2)
+    interceptMessage[InvalidHandleException]("An invalid user action was found -- This Character is not Magical") {
+      ch1.asMagical
     }
   }
 }

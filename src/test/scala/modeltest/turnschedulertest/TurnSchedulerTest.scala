@@ -40,7 +40,7 @@ class TurnSchedulerTest extends munit.FunSuite {
     wp3 = new Bow("X", 20, 20)
     en1 = new Enemy("E1", 10, 10, 10, 10)
     en2 = new Enemy("E2", 5, 5, 5, 5)
-    en3 = new Enemy("E2", 5, 5, 1000, 5)
+    en3 = new Enemy("E3", 5, 5, 1000, 6)
     ch1.equip(wp1)
     ch2.equip(wp2)
     ch3.equip(wp3)
@@ -167,6 +167,17 @@ class TurnSchedulerTest extends munit.FunSuite {
     val expected: Any = ch2 // define expected value
     val actual: Any = TrSch.atTurn // define actual value
     assertEquals(expected, actual, "Turn Not Designated - Explanation")
+    assertEquals(actual, TrSch.atTurnCharacter)
+  }
+
+  test("Designate Turn | Enemy") {
+    val Enemies1: Enemies = new Enemies(en1,en2,en3)
+    TrSch.enemyTeam = Enemies1
+    TrSch.raiseActionBars(TrSch.actionBarMaxOf(en1))
+    val expected: Any = en2 // define expected value
+    val actual: Any = TrSch.atTurn // define actual value
+    assertEquals(expected, actual, "Turn Not Designated - Explanation")
+    assertEquals(actual, TrSch.atTurnEnemy)
   }
 
   test("Empty Weapon Exception") {

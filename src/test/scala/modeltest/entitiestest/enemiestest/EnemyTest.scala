@@ -102,4 +102,8 @@ class EnemyTest extends munit.FunSuite {
         )
     }
   }
+
+  test("Turn Bifurcation") {
+    assertEquals(en1.getTurnPhaseBifurcation, "Enemy Turn")
+  }
 }

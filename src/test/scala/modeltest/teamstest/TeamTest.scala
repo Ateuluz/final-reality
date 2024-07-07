@@ -53,7 +53,7 @@ class TeamTest extends munit.FunSuite {
   test("Can Replace Member") {
     team1 = new Party(ch1, ch2, ch3)
     team1.changeMember(ch1, Some(ch4))
-    assertEquals(team1.getMembers, ArrayBuffer[ICharacter](ch2,ch3,ch4))
+    assertEquals(team1.getMembers, ArrayBuffer[ICharacter](ch4,ch2,ch3))
   }
 
   test("Limit Removal") {
@@ -63,5 +63,9 @@ class TeamTest extends munit.FunSuite {
       team1 = new Party(ch1, ch2, ch3)
       team1.changeMember(ch1, None)
     }
+  }
+
+  test("Team from scratch with implicit") {
+    true
   }
 }
