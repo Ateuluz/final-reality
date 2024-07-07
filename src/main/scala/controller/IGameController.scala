@@ -1,19 +1,46 @@
 package controller
 
 import model.armament.IWeapon
-import model.entities.IEntity
-import model.entities.enemies.IEnemy
-import model.entities.playablecharacters.{ICharacter, IMagicalCharacter}
-import model.spells.ISpell
+import model.entities.playablecharacters.ICharacter
 import model.turnscheduler.ITurnScheduler
 
-import javax.print.attribute.standard.MediaSize.Other
+import scala.collection.mutable.ArrayBuffer
 
 /** Ateuluz
  *
  * An interface for controlling game states
  */
-trait IGameController extends ASubject {
+trait IGameController {
+
+  /** Ateuluz
+   *
+   * Handle Game Flow
+   */
+  def step(): Unit
+
+  /** Ateuluz
+   *
+   * Handle in-test Game Flow
+   */
+  def testStep(): Unit
+
+  /** Ateuluz
+   *
+   * @return The action bar raise constant
+   */
+  def raiseConstant: Int
+
+  /** Ateuluz
+   *
+   * @return Stored weapons available
+   */
+  def weaponInventory: ArrayBuffer[IWeapon]
+
+  /** Ateuluz
+   *
+   * @return Stored characters available
+   */
+  def characterInventory: ArrayBuffer[ICharacter]
 
   /** Ateuluz
    *
@@ -39,54 +66,11 @@ trait IGameController extends ASubject {
    */
   def turnScheduler: ITurnScheduler
 
-  //<editor-fold desc="Required Methods">
   /** Ateuluz
    *
-   * Begin the game
+   * @param prompt Instructions
+   * @return Player input
    */
-  def gameBegin(): Unit
-
-  /** Ateuluz
-   *
-   * @param unit The attacker
-   * @param other The defender
-   */
-  def unitAttackOther(unit: IEntity, other: IEntity): Unit
-
-  /** Ateuluz
-   *
-   * @param mage Mage attacking
-   * @param target Enemy defending
-   * @param spell Spell cast
-   */
-  def mageCast(mage: IMagicalCharacter, target: IEnemy, spell: ISpell): Unit
-
-  /** Ateuluz
-   *
-   * @param char Character equipping
-   * @param weapon Weapon equipped
-   */
-  def characterEquip(char: ICharacter, weapon: IWeapon): Unit
-  //</editor-fold>
-
-  //<editor-fold desc="Controlling States">
-  /** Ateuluz
-   *
-   * A method that that loops over transition state
-   */
-  def loop(): Unit
-
-  /** Ateuluz
-   *
-   * A method that will begin the turn taking process
-   */
-  def takeTurns(): Unit
-
-  /** Ateuluz
-   *
-   * A method to end the game
-   */
-  def end(): Unit
-  //</editor-fold>
+  def getInput(prompt: String): String
 
 }
