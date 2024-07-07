@@ -1,6 +1,6 @@
 package model.entities.playablecharacters
 
-import exceptions.InvalidActionException
+import exceptions.{InvalidActionException, InvalidHandleException}
 import model.armament.IWeapon
 import model.entities.{AEntity, IEntity}
 
@@ -82,5 +82,19 @@ abstract class ACharacter(
     if (getWeapon.isEmpty)
       throw new InvalidActionException("Character has no weapon, thus weight cannot be assigned")
     getWeight + getWeapon.get.getWeight / 2
+  }
+
+  /** Ateuluz
+   * TODO
+   * @return Follow up state in turn phase
+   */
+  override def getTurnPhaseBifurcation: String = "Regular Turn"
+
+  /** Ateuluz
+   *
+   *  @return The character as magical if is magical
+   */
+  override def asMagical: IMagicalCharacter = {
+    throw new InvalidHandleException("This Character is not Magical")
   }
 }

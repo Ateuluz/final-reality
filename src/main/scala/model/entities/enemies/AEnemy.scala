@@ -65,4 +65,10 @@ abstract class AEnemy(
    * @return the weight relevant for turn taking
    */
   override def getRelevantWeight: Int = getWeight
+
+  /** Ateuluz
+   *
+   * @return Follow up state in turn phase
+   */
+  override def getTurnPhaseBifurcation: String = "Enemy Turn"
 }

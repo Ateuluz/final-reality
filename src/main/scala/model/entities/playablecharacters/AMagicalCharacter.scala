@@ -92,7 +92,25 @@ abstract class AMagicalCharacter(
     true
   }
 
+  /** Ateuluz
+   *
+   * @return The magic attack value of the entity, however it may be gotten
+   */
   override def getMagicAttack: Int = {
     getWeapon.get.getMagicAttack
+  }
+
+  /** Ateuluz
+   *
+   *  @return Follow up state in turn phase
+   */
+  override def getTurnPhaseBifurcation: String = "Magical Turn"
+
+  /** Ateuluz
+   *
+   *  @return The character as magical if is magical
+   */
+  override def asMagical: IMagicalCharacter = {
+    this
   }
 }

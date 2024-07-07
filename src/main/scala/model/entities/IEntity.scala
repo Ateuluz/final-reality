@@ -93,6 +93,12 @@ trait IEntity {
    */
   def getRelevantWeight: Int
 
+  /** Ateuluz
+   *
+   * @return Follow up state in turn phase
+   */
+  def getTurnPhaseBifurcation: String
+
   //region Effect related
 //  /** Ateuluz
 //   *
