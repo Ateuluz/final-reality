@@ -1,6 +1,8 @@
 package model.turnscheduler
 
 import model.entities.IEntity
+import model.entities.enemies.IEnemy
+import model.entities.playablecharacters.ICharacter
 import model.teams.enemies.Enemies
 import model.teams.party.Party
 
@@ -80,6 +82,18 @@ trait ITurnScheduler {
 
   /** Ateuluz
    *
+   * @return The character with best priority
+   */
+  def atTurnCharacter: ICharacter
+
+  /** Ateuluz
+   *
+   * @return The enemy with best priority
+   */
+  def atTurnEnemy: IEnemy
+
+  /** Ateuluz
+   *
    * A method implemented to handle game requirements
    *
    * @return Linked party
@@ -133,4 +147,10 @@ trait ITurnScheduler {
    * @return Boolean for if end game conditions are met
    */
   def endgame: Boolean
+
+  /** Ateuluz
+   *
+   * A method to make sure all entities are well assigned
+   */
+  def forceMembersUpdate(): Unit
 }
