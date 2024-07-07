@@ -56,9 +56,13 @@ abstract class ATeam[T<:IEntity](
    *
    * @param member The member to add
    */
-  override def addMember(member: T): Unit = {
-    if (_members.length < _maximumMembers) _members.addOne(member)
-    else throw new InvalidHandleException("Cannot add member, maximum amount reached.")
+  override def addMember(member: T, idx: Int = -1): Unit = {
+    var i = idx
+    while (i < 0) i += _members.length
+    if (idx < 0) i += 1
+    if (_members.length >= _maximumMembers) throw new InvalidHandleException("Cannot add member, maximum amount reached.")
+    else if (_members.contains(member)) throw new InvalidHandleException("Cannot add member, already in the team.")
+    else _members.insert(i,member)
   }
 
   /** Ateuluz
@@ -71,8 +75,13 @@ abstract class ATeam[T<:IEntity](
                              newMember: Option[T]
                            ): Unit = {
     if (newMember.isDefined) {
+      val idx = _members.indexOf(oldMember)
       _members -= oldMember
-      this.addMember(newMember.get)
+      try {
+        this.addMember(newMember.get, idx)
+      } catch {
+        case _: InvalidHandleException => _members.insert(idx,oldMember)
+      }
     }
     else {
       if (_members.length <= _minimumMembers)

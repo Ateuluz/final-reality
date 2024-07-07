@@ -12,7 +12,7 @@ trait ITeam[T<:IEntity] {
    *
    * @param member The member to add
    */
-  def addMember(member: T): Unit
+  def addMember(member: T, idx: Int): Unit// = -1): Unit
 
   /** Ateuluz
    *
