@@ -270,7 +270,7 @@ all effects handled within spell, taking into consideration both caster and targ
 
 ## Game State Flow Diagram
 
-![State_Diagram](docs/diagrama-estados.png)
+![State_Diagram](docs/diagrama-estados-re.png)
 
 ## Flow Mechanics
 
