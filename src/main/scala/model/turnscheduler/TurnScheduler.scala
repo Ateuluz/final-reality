@@ -3,6 +3,7 @@ package model.turnscheduler
 import exceptions.InvalidHandleException
 import model.entities.IEntity
 import model.entities.enemies.IEnemy
+import model.entities.playablecharacters.ICharacter
 import model.teams.enemies.Enemies
 import model.teams.party.Party
 
@@ -233,11 +234,7 @@ class TurnScheduler extends ITurnScheduler {
    */
   override def charactersFull: ArrayBuffer[IEntity] = {
     val auxArr: ArrayBuffer[IEntity] = ArrayBuffer[IEntity]()
-    for (char <- _entities)
-      // if (this.getActionBarMax(char) <= this.getActionBar(char)) {
-      //   auxArr.addOne(char)
-      // }
-      if (isFull(char)) auxArr.addOne(char)
+    for (char <- _entities) if (isFull(char)) auxArr.addOne(char)
 
     def auxFun(char: IEntity): Int =
       this.actionBarMaxOf(char) - this.actionBarOf(char)
@@ -254,6 +251,36 @@ class TurnScheduler extends ITurnScheduler {
 
   /** Ateuluz
    *
+   *  @return The character with best priority
+   */
+  override def atTurnCharacter: ICharacter = {
+    val auxArr: ArrayBuffer[ICharacter] = ArrayBuffer[ICharacter]()
+    for (char <- _party.get.getMembers) if (_entities.contains(char)) if (isFull(char)) auxArr.addOne(char)
+
+    def auxFun(char: ICharacter): Int =
+      this.actionBarMaxOf(char) - this.actionBarOf(char)
+
+    val lst = auxArr.sortBy(auxFun)
+    lst(0)
+  }
+
+  /** Ateuluz
+   *
+   *  @return The enemy with best priority
+   */
+  override def atTurnEnemy: IEnemy = {
+    val auxArr: ArrayBuffer[IEnemy] = ArrayBuffer[IEnemy]()
+    for (char <- _enemyTeam.get.getMembers) if (_entities.contains(char)) if (isFull(char)) auxArr.addOne(char)
+
+    def auxFun(char: IEnemy): Int =
+      this.actionBarMaxOf(char) - this.actionBarOf(char)
+
+    val lst = auxArr.sortBy(auxFun)
+    lst(0)
+  }
+
+  /** Ateuluz
+   *
    *  @return Boolean for if end game conditions are met
    */
   override def endgame: Boolean =
@@ -263,4 +290,21 @@ class TurnScheduler extends ITurnScheduler {
       true
     else
       false
+
+  /** Ateuluz
+   *
+   * A method to reset members
+   */
+  override def forceMembersUpdate(): Unit = {
+    val thisParty   = _party    .get
+    val thisEnemies = _enemyTeam.get
+    unbindParty  ()
+    unbindEnemies()
+    for (_ <- _entities.clone().indices) {
+      _actionBars.remove(index = 0)
+      _entities  .remove(index = 0)
+    }
+    party     = thisParty
+    enemyTeam = thisEnemies
+  }
 }
