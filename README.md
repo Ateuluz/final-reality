@@ -18,6 +18,8 @@ serve as an educational tool, teaching foundational programming concepts.
     - [Teams](#teams)
     - [Turn Scheduler](#turn-scheduler)
     - [Spells](#spells)
+    - [Effects](#effects)
+    - [Game States](#game-states)
 - [Disclaimer](#disclaimer)
     - [Constructor requirements](#constructor-requirements)
     - [Cure](#cure)
@@ -266,11 +268,26 @@ It's been made so that the Magical Character is still the caster, passing down i
 all effects handled within spell, taking into consideration both caster and target.
 
 
+# Game controller
+
+A game controller was implemented, its main function is to hold and provide an [input handler](#input-handler) and turn scheduler to its
+[game state](#game-states) to ensure proper functioning.
+
+# Input Handler
+
+A class to handle certain types of input, from console or a forced input for example.
+
 # Game States
 
 ## Game State Flow Diagram
 
 ![State_Diagram](docs/diagrama-estados-re.png)
+
+### Disclaimers
+
+- [Equip](#equip-within-turn-loop)
+- [Enemy Turn](#single-state-enemy-turn)
+- [Apply Effects](#apply-effects-to-turn-end)
 
 ## Flow Mechanics
 
@@ -305,14 +322,34 @@ These are States that will trigger interactions between game components, such as
 attacking a foe or a Character healing an ally. Some may be automatic, others may require a certain level of Player
 interactions.
 
-> Normal Attack may be subdivided into Enemy Attack and (Character) Normal Attack.
-
 ### End Phase State
 
 These are a kind of [Automatic State](#automatic-state) that marks the end of a particular branch of the game flow,
 such as end of a level, end of a turn and others to add should there be a necessity.
 These States may potentially be able to modify the [Game Controller](#game-controller) elements (Besides
 [State](#game-states)), such as eliminating entities from the [Turn Scheduler](#turn-scheduler).
+
+## Specifics
+
+There's two states that do not loop over, true beginning and true end.
+
+As for the other states, they all can be reached from another game state and will eventually modify the game state to
+maintain game flow.
+
+While the game flow is pretty straightforward, there may be some un-intuitive things mentioned bellow.
+
+### Equip within Turn Loop
+
+This state is able to end a turn when the equipped weapon is heavier than the old one in order to not break game flow
+or generate weird behaviors.
+
+### Single State Enemy Turn
+
+Enemy turn state handles everything an enemy does within a single state, for it is all automatic anyway.
+
+### Apply Effects to Turn End
+
+This is pretty obvious, if an entity dies when applying its effects, then nothing can be done.
 
 # Disclaimer
 
@@ -339,6 +376,8 @@ Also, I'd like to know what tests are missing for Require in exceptions, it's qu
 Game States so far are a simplified version of the diagram, many are yet to be implemented.
 Thinking on adding a game menu State (like Pause) as a special State, capable of saving previous State
 and having the option of going back to the previous state or exiting.
+
+Main loop may be changed to a loop instead of recursion.
 
 
 # License
