@@ -37,7 +37,11 @@ abstract class AGameState (
    */
   protected def mapEntitiesToIndexedString(entities: ArrayBuffer[_ <: IEntity]): String = {
     entities.zipWithIndex.map { case (entity, index) =>
-      s"${index + 1}: ${entity.getName}"
+      if (entity.getHp == 0)
+        s"${index + 1}: ${entity.getName} [Dead]"
+      else
+        s"${index + 1}: ${entity.getName}"
+
     }.mkString("\n")
   }
 
