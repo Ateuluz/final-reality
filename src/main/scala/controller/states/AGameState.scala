@@ -40,7 +40,7 @@ abstract class AGameState (
       if (entity.getHp == 0)
         s"${index + 1}: ${entity.getName} [Dead]"
       else
-        s"${index + 1}: ${entity.getName}"
+        s"${index + 1}: ${entity.getName} [HP: ${entity.getHp}/${entity.getHpMax}]"
 
     }.mkString("\n")
   }

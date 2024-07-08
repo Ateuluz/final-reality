@@ -53,7 +53,7 @@ class DevilsContract(
       damage = target.defendFromSpell(_spellAttack)
       target.effectsAdd(new Paralysed())
       target.effectsAdd(new Poisoned(caster.getMagicAttack / 3))
-      caster.beHealed(damage / 2)
+      caster.beHealed(2 * damage / 3)
     }
     damage
   }

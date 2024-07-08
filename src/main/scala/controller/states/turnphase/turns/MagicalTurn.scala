@@ -2,6 +2,7 @@ package controller.states.turnphase.turns
 
 import controller.IGameController
 import controller.states.{AGameState, GameStateFactory}
+import exceptions.InvalidActionException
 import model.entities.enemies.enemy.Enemy
 
 /** Ateuluz
@@ -33,12 +34,18 @@ class MagicalTurn (
       controller.state = GameStateFactory.createState("Attack", controller)
     }
     else if (opt == "2") {
-      if (canSwitchToCastState) {
-        controller.state = GameStateFactory.createState("Cast", controller)
+      try {
+        if (canSwitchToCastState) {
+          controller.state = GameStateFactory.createState("Cast", controller)
+        }
+        else {
+          println("Mage Cast Conditions not met")
+        }
+      } catch {
+        case _: InvalidActionException =>
+          println("Mage Cast Conditions not met")
       }
-      else {
-        println("Mage Cast Conditions not met")
-      }
+
     }
     controller.step()
   }

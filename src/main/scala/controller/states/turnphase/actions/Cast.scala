@@ -2,6 +2,7 @@ package controller.states.turnphase.actions
 
 import controller.IGameController
 import controller.states.{AGameState, GameStateFactory}
+import exceptions.InvalidActionException
 
 /** Ateuluz
  *
@@ -19,15 +20,20 @@ class Cast (
     val targetTm = strategy.getTargets(controller.turnScheduler)
     val target   = chooseTargetGeneric(targetTm.getMembers)
 
-    if (controller.turnScheduler.atTurnCharacter.asMagical.canCastSpell(target, spellID)) {
+    try {
+      controller.turnScheduler.atTurnCharacter.asMagical.canCastSpell(target, spellID)
       controller.turnScheduler.atTurnCharacter.asMagical.castSpell(target, spellID)
 
-      controller.state = GameStateFactory.createState("Turn End", controller)
-    }
-    else {
-      println("Cannot Complete the Casting")
-    }
+      println(s"> ${target.getName} [HP: ${target.getHp}/${target.getHpMax}]\n")
+      val ent = controller.turnScheduler.atTurn
+      println(s"[Status Update] ${ent.getName} [HP: ${ent.getHp}/${ent.getHpMax}]\n")
 
+      controller.state = GameStateFactory.createState("Turn End", controller)
+    } catch {
+      case _: InvalidActionException =>
+        println("Cannot Complete the Casting")
+        controller.state = GameStateFactory.createState("Turn Bifurcation", controller)
+    }
     controller.step()
   }
 

@@ -97,8 +97,9 @@ class StartPhase(
   }
 
   override def step(): Unit = {
+    val CH = controller.turnScheduler.party.get.getMembers
     var opt = controller.getInput(
-      "Choose from the following: \n0: Begin \n1: Set Character 1 \n2: Set Character 2 \n3: Set Character 3"
+      s"Choose from the following: \n0: Begin \n1: Set Character 1 [${CH(1-1).getName}] \n2: Set Character 2 [${CH(2-1).getName}] \n3: Set Character 3 [${CH(3-1).getName}]"
     )
     if (opt == "0")
       controller.state = GameStateFactory.createState("Transition", controller)

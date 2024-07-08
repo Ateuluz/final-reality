@@ -30,6 +30,8 @@ abstract class AEntity(
   private val _effects = ArrayBuffer[IEffect]()
   private var _actionAble = false
 
+  override def effects: ArrayBuffer[IEffect] = _effects.clone()
+
   /** Ateuluz
    *
    * @return The name of the entity
@@ -229,4 +231,6 @@ abstract class AEntity(
   override def actionAble_=(state: Boolean): Unit = {
     _actionAble = state
   }
+
+
 }

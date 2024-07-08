@@ -10,6 +10,12 @@ import scala.collection.mutable.ArrayBuffer
 trait IEntity {
   /** Ateuluz
    *
+   * @return A copy of the effects applied
+   */
+  def effects: ArrayBuffer[IEffect]
+
+  /** Ateuluz
+   *
    * @return The name of the entity
    */
   def getName: String

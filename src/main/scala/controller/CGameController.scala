@@ -62,7 +62,7 @@ class CGameController(
   _characters(4).equip(new Wand("Old Wand", 10, 10, 10))
   _characters(3).asMagical.addSpell(new Heal            (10, 20))
   _characters(3).asMagical.addSpell(new Fireball        (30, 40))
-  _characters(4).asMagical.addSpell(new DevilsContract  (10, 30))
+  _characters(4).asMagical.addSpell(new DevilsContract  (20, 10))
   _characters(4).asMagical.addSpell(new Fireball        (40, 55))
 
   /** Ateuluz

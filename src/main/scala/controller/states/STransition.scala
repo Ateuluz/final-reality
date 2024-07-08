@@ -20,7 +20,8 @@ class STransition(
       controller.turnScheduler.raiseActionBars(controller.raiseConstant)
     }
     else {
-      println(s"Turn Phase for ${controller.turnScheduler.atTurn.getName}!")
+      val ent = controller.turnScheduler.atTurn
+      println(s"\n>>> Turn Phase for ${ent.getName}! [HP: ${ent.getHp}/${ent.getHpMax}]")
       controller.turnScheduler.atTurn.actionAble = true
       controller.state = GameStateFactory.createState("Apply Effects", controller)
     }

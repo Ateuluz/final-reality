@@ -4,6 +4,7 @@ import exceptions.Require
 import model.entities.IEntity
 import model.entities.playablecharacters.IMagicalCharacter
 import model.spells.lightmagic.ALightMagic
+import model.spells.lightmagic.selectionstrategy.{AllyTargetSelectionStrategy, ITargetSelectionStrategy}
 
 /** Ateuluz
  * Just a spell for testing
@@ -36,4 +37,10 @@ class Heal (
    */
   override protected def cast(caster: IMagicalCharacter, target: IEntity): Int =
     target.beHealed(_hpHealValue)
+
+  /** Ateuluz
+   *
+   *  @return A class that has a getTargets method
+   */
+  override def targetStrategy: ITargetSelectionStrategy = new AllyTargetSelectionStrategy
 }

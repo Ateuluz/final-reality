@@ -152,6 +152,23 @@ class GameStateTest extends munit.FunSuite {
     }
   }
 
+  test("Effects Applied"){
+    inh.inputSeq = ArrayBuffer("", "1", "2", "4", "0", "2", "2", "1", "1", "1", "1", "2")
+    for (i <- 0 until 50) {
+      con.testStep()
+    }
+  }
+
+  test("Effects Applied 2"){
+    inh.inputSeq = ArrayBuffer("", "1", "2", "4", "2", "2", "5", "2", "1", "5", "0", "2", "2", "1", "2", "1", "2", "2",
+      "1", "2",
+      "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1",
+    )
+    for (i <- 0 until 80) {
+      con.testStep()
+    }
+  }
+
   test("Can Create Real Game") {
     val controller1 = new CGameController(new ConsoleInputHandler, true)
     val controller2 = new CGameController(new ConsoleInputHandler, false)
