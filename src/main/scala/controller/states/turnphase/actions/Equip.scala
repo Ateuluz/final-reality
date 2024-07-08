@@ -2,7 +2,7 @@ package controller.states.turnphase.actions
 
 import controller.IGameController
 import controller.states.{AGameState, GameStateFactory}
-import exceptions.InvalidActionException
+import exceptions.{InvalidActionException, InvalidHolderException}
 
 /** Ateuluz
  *
@@ -21,19 +21,29 @@ class Equip (
         s"\n4: ${controller.weaponInventory(4-1).getName} ${controller.weaponInventory(4-1).getClass.getSimpleName}" +
         s"\n5: ${controller.weaponInventory(5-1).getName} ${controller.weaponInventory(5-1).getClass.getSimpleName}"
     )
-    val wp = controller.turnScheduler.atTurnCharacter.getWeapon
+    val char = controller.turnScheduler.atTurnCharacter
+    val wp = char.getWeapon.get
     try {
       if (opt == "1" || opt == "2" || opt == "3" || opt == "4" || opt == "5") {
         controller.turnScheduler.atTurnCharacter.equip(controller.weaponInventory(opt.toInt-1))
       }
     } catch {
-      case _: InvalidActionException =>
+      case e: InvalidActionException =>
+        println(s"${e.getMessage}")
+        if (char.getWeapon.isEmpty) char.equip(wp)
+        controller.state = GameStateFactory.createState("Turn Bifurcation", controller)
+      case e: InvalidHolderException =>
+        println(s"${e.getMessage}")
+        if (char.getWeapon.isEmpty) char.equip(wp)
+        controller.state = GameStateFactory.createState("Turn Bifurcation", controller)
     }
-    if (wp != controller.turnScheduler.atTurnCharacter.getWeapon) {
-      if (wp.get.getWeight < controller.turnScheduler.atTurnCharacter.getWeapon.get.getWeight) {
+    if (wp != controller.turnScheduler.atTurnCharacter.getWeapon.get) {
+      if (wp.getWeight < controller.turnScheduler.atTurnCharacter.getWeapon.get.getWeight) {
+        println("The weapon is too heavy! Skipping turn")
         controller.state = GameStateFactory.createState("Turn End", controller)
       }
       else {
+        println("This weapon is not too heavy! You can still take action!")
         controller.state = GameStateFactory.createState("Turn Bifurcation", controller)
       }
     }

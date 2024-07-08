@@ -31,9 +31,11 @@ class ApplyEffects (
    */
   override def step(): Unit = {
     val ent = controller.turnScheduler.atTurn
-    println(s"[Effects] ${ent.getName} is under:\n${getEffectsList(ent.effects)}")
-    ent.effectsApply()
-    println(s"[Status Update] ${ent.getName} [HP: ${ent.getHp}/${ent.getHpMax}]")
+    if (ent.effects.nonEmpty) {
+      println(s"[Effects] ${ent.getName} is under:\n${getEffectsList(ent.effects)}")
+      ent.effectsApply()
+      println(s"[Status Update] ${ent.getName} [HP: ${ent.getHp}/${ent.getHpMax}]")
+    } else println("Under no effects!\n")
     if (ent.actionAble) {
       println("Moving to turn!")
       controller.state = GameStateFactory.createState("Turn Bifurcation",controller)

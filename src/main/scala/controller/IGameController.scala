@@ -14,6 +14,12 @@ trait IGameController {
 
   /** Ateuluz
    *
+   * Reset defaults
+   */
+  def reset(): Unit
+
+  /** Ateuluz
+   *
    * Handle Game Flow
    */
   def step(): Unit
@@ -23,6 +29,12 @@ trait IGameController {
    * Handle in-test Game Flow
    */
   def testStep(): Unit
+
+  /** Ateuluz
+   *
+   * @return Bool representing testing state
+   */
+  def isTesting: Boolean
 
   /** Ateuluz
    *

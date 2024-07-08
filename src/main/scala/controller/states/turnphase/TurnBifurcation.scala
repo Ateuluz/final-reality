@@ -12,7 +12,7 @@ class TurnBifurcation (
                       ) extends AGameState(controller) {
 
   override def step(): Unit = {
-    println("Directing...")
+    println("")
     val ent = controller.turnScheduler.atTurn
     val state = ent.getTurnPhaseBifurcation
     controller.state = GameStateFactory.createState(state,controller)

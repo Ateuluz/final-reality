@@ -5,7 +5,11 @@ import controller.states.{AGameState, GameStateFactory}
 import exceptions.{InvalidActionException, InvalidHolderException}
 import model.armament.sword.Sword
 import model.armament.wand.Wand
+import model.entities.enemies.enemy.Enemy
 import model.entities.playablecharacters.ICharacter
+import model.teams.enemies.Enemies
+
+import scala.collection.mutable.ArrayBuffer
 
 /** Ateuluz
  *
@@ -96,14 +100,42 @@ class StartPhase(
     }
   }
 
+  /** Ateuluz
+   *
+   * Delegate difficulty changing
+   */
+  private def handleDiffChange(): Unit = {
+    val opt = controller.getInput(
+      "Choose from the following: \n1 \n2 "
+    )
+    if (opt == "1") {
+      controller.turnScheduler.unbindEnemies()
+      controller.turnScheduler.enemyTeam = new Enemies(
+        new Enemy("Lower Demon 1", 50, 5, 15, 30),
+        new Enemy("Lower Demon 2", 60, 4, 18, 40)
+      )
+    } else if (opt == "2") {
+      controller.turnScheduler.unbindEnemies()
+      controller.turnScheduler.enemyTeam = new Enemies(
+        new Enemy("Lower Demon 1",  50,  5,  15,  30),
+        new Enemy("Lower Demon 2",  60,  4,  18,  40),
+        new Enemy("High Demon 1",  120, 10,  35, 120),
+        new Enemy("High Demon 2",  100, 12,  40, 140),
+        new Enemy("Demon King",    999, 15, 100, 300)
+      )
+    } else println("> Invalid option")
+  }
+
   override def step(): Unit = {
     val CH = controller.turnScheduler.party.get.getMembers
     var opt = controller.getInput(
-      s"Choose from the following: \n0: Begin \n1: Set Character 1 [${CH(1-1).getName}] \n2: Set Character 2 [${CH(2-1).getName}] \n3: Set Character 3 [${CH(3-1).getName}]"
+      s"Choose from the following: \n0: Begin \n1: Set Character 1 [${CH(1-1).getName}] \n2: Set Character 2 [${CH(2-1).getName}] \n3: Set Character 3 [${CH(3-1).getName}] \n4: Change Difficulty "
     )
     if (opt == "0")
       controller.state = GameStateFactory.createState("Transition", controller)
-    else {
+    else if (opt == "4") {
+      handleDiffChange()
+    } else {
 
       def logic(n: Int): Unit = {
         opt = controller.getInput(

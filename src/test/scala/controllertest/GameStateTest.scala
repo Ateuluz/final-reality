@@ -24,42 +24,16 @@ import model.spells.darkmagic.concrete.DevilsContract
 import model.spells.lightmagic.heal.Heal
 import model.teams.enemies.Enemies
 import model.teams.party.Party
-import model.turnscheduler.TurnScheduler
 
 import scala.collection.mutable.ArrayBuffer
 
 class GameStateTest extends munit.FunSuite {
   var inh: ForcedInputHandler = _
   var con: CGameController    = _
-  var trn: TurnScheduler     = _
-  var pty: Party              = _
-  var enm: Enemies            = _
-  var ch1: Warrior            = _
-  var ch2: WhiteMage          = _
-  var ch3: BlackMage          = _
-  var en1: Enemy              = _
-  var en2: Enemy              = _
-  var wp1: Sword              = _
-  var wp2: Wand               = _
-  var wp3: Staff              = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     inh = new ForcedInputHandler(new ArrayBuffer[String]())
     con = new CGameController (inh, true)
-    trn = new TurnScheduler  ()
-    pty = new Party           (ch1,ch2,ch3)
-    enm = new Enemies         (en1,en2)
-    ch1 = new Warrior         ("A", 1, 1, 1)
-    ch2 = new WhiteMage       ("B", 1, 1, 1, 10)
-    ch3 = new BlackMage       ("C", 1, 1, 1, 10)
-    en1 = new Enemy           ("X", 1, 1, 1, 1)
-    en2 = new Enemy           ("Y", 1, 1, 1, 1)
-    wp1 = new Sword           ("U", 1, 1)
-    wp2 = new Wand            ("V", 1, 1, 1)
-    wp3 = new Staff           ("W", 1, 1, 1)
-    ch1.equip(wp1)
-    ch2.equip(wp2)
-    ch3.equip(wp3)
   }
 
   test("Game Begin") {
@@ -174,6 +148,7 @@ class GameStateTest extends munit.FunSuite {
     val controller2 = new CGameController(new ConsoleInputHandler, false)
     val controller3 = new CGameController(new ConsoleInputHandler)
     class TController(handler: IInputHandler) extends AGameController(handler) {
+      override def reset(): Unit = {}
       override def raiseConstant: Int = 1
       //region Set Defaults
       private val _inventory: ArrayBuffer[IWeapon] = ArrayBuffer[IWeapon](
@@ -232,10 +207,30 @@ class GameStateTest extends munit.FunSuite {
   }
 
   test("Game Flow Long") {
-    inh.inputSeq = ArrayBuffer("", "0", "0", "2",
-      "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1",
-      "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1",
-      "0", "2")
+    inh.inputSeq = ArrayBuffer("",
+      "1", "2", "4", "1", "1", "4", "0",
+      "2", "2", "1",
+      "1", "1",
+      "0", "1",
+      "0", "5",
+      "0", "3", "1", "1", "2",
+      "1", "2",
+      "1", "2",
+      "0", "4", "1", "2",
+      "1", "2",
+      "",
+      /*Rematch*/
+      "1", "2", "4", "1", "1", "4", "0",
+      "2", "2", "1",
+      "1", "1",
+      "0", "1",
+      "0", "5",
+      "0", "3", "1", "1", "2",
+      "1", "2",
+      "1", "2",
+      "0", "4", "1", "2",
+      "1", "2",
+      "0", "", "", "", "", "", "", "", "", "", "", "", "", "", "")
     for (i <- 0 until 400)
       con.testStep()
     true
@@ -249,5 +244,11 @@ class GameStateTest extends munit.FunSuite {
       val invalidState = new InvalidState
       invalidState.step()
     }
+  }
+
+  test("Switch Difficulty") {
+    inh.inputSeq = ArrayBuffer("","4","1","4","2","4","3","0","1","1","1","1","1")
+    for (i <- 0 until 9)
+      con.testStep()
   }
 }

@@ -65,7 +65,11 @@ class TeamTest extends munit.FunSuite {
     }
   }
 
-  test("Team from scratch with implicit") {
-    true
+  test("Cannot have duplicates") {
+    val p = new Party(ch1, ch2, ch3)
+    println(s">> ${p.getMembers.contains(ch2)}")
+    p.changeMember(ch1, Some(ch2))
+
+    assertEquals(p.getMembers(0), ch1)
   }
 }

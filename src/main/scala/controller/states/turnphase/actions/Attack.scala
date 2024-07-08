@@ -19,13 +19,14 @@ class Attack (
 
     try {
       println(s"Attack attempt from ${controller.turnScheduler.atTurnCharacter.getName} to ${target.getName} [HP: ${target.getHp}/${target.getHpMax}]")
+      if (target.getHp == 0) throw new InvalidActionException("Dead Enemy, attack another.")
       controller.turnScheduler.atTurnCharacter.attack(target)
 
       println(s"Success! ${target.getName} [HP: ${target.getHp}/${target.getHpMax}]")
 
       controller.state = GameStateFactory.createState("Turn End", controller)
     } catch {
-      case _: InvalidActionException => println("Cannot attack this entity")
+      case e: InvalidActionException => println(e.getMessage)
     }
 
     controller.step()

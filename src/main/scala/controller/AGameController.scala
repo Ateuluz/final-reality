@@ -11,7 +11,7 @@ import controller.inputhandler.IInputHandler
  */
 abstract class AGameController (
                                  val inputHandler: IInputHandler,
-                                 private var isTesting: Boolean = false
+                                 private var _isTesting: Boolean = false
                                ) extends IGameController {
 
   private var _state: IGameState = new STrueBeginning(this)
@@ -29,6 +29,12 @@ abstract class AGameController (
    * Handle in-test Game Flow
    */
   override def testStep(): Unit = _state.step()
+
+  /** Ateuluz
+   *
+   *  @return Bool representing testing state
+   */
+  override def isTesting: Boolean = _isTesting
 
   /** Ateuluz
    *

@@ -40,7 +40,7 @@ class CGameController(
   override def raiseConstant: Int = 20
 
   //region Set Defaults
-  private val _inventory: ArrayBuffer[IWeapon] = ArrayBuffer[IWeapon](
+  private var _inventory: ArrayBuffer[IWeapon] = ArrayBuffer[IWeapon](
     new Sword ("Excalibur", 27, 18),
     new Axe   ("Tomahawk" , 22, 14),
     new Bow   ("Olive"    , 10,  6),
@@ -48,12 +48,12 @@ class CGameController(
     new Staff ("Cosmo"    ,  8, 12, 18)
   )
 
-  private val _characters: ArrayBuffer[ICharacter] = ArrayBuffer[ICharacter](
+  private var _characters: ArrayBuffer[ICharacter] = ArrayBuffer[ICharacter](
     new Paladin   ("Mark"     , 220,22,110),
     new Warrior   ("Bob"      , 270,18,120),
     new Ninja     ("Garu"     , 150,10, 60),
-    new WhiteMage ("Gandalf"  , 120,12, 80,100),
-    new BlackMage ("Voldemort", 140,10, 90,100),
+    new WhiteMage ("Gandalf"  , 120,12, 80,300),
+    new BlackMage ("Voldemort", 140,10, 90,500),
   )
   _characters(0).equip(new Sword("Rusty Sword", 10, 10))
   _characters(1).equip(new Sword("Rusty Sword", 10, 10))
@@ -91,6 +91,53 @@ class CGameController(
     new Enemy("Lower Demon 2", 60, 4, 18, 40)
   )
   //endregion
+
+  /** Ateuluz
+   *
+   * Reset Defaults
+   */
+  override def reset(): Unit = {
+    _inventory = ArrayBuffer[IWeapon](
+      new Sword ("Excalibur", 27, 18),
+      new Axe   ("Tomahawk" , 22, 14),
+      new Bow   ("Olive"    , 10,  6),
+      new Wand  ("Wanda"    ,  2,  4, 10),
+      new Staff ("Cosmo"    ,  8, 12, 18)
+    )
+
+    _characters = ArrayBuffer[ICharacter](
+      new Paladin   ("Mark"     , 220,22,110),
+      new Warrior   ("Bob"      , 270,18,120),
+      new Ninja     ("Garu"     , 150,10, 60),
+      new WhiteMage ("Gandalf"  , 120,12, 80,100),
+      new BlackMage ("Voldemort", 140,10, 90,100),
+    )
+    _characters(0).equip(new Sword("Rusty Sword", 10, 10))
+    _characters(1).equip(new Sword("Rusty Sword", 10, 10))
+    _characters(2).equip(new Sword("Rusty Sword", 10, 10))
+    _characters(3).equip(new Wand("Old Wand", 10, 10, 10))
+    _characters(4).equip(new Wand("Old Wand", 10, 10, 10))
+    _characters(3).asMagical.addSpell(new Heal            (10, 20))
+    _characters(3).asMagical.addSpell(new Fireball        (30, 40))
+    _characters(4).asMagical.addSpell(new DevilsContract  (20, 10))
+    _characters(4).asMagical.addSpell(new Fireball        (40, 55))
+
+    turnScheduler.unbindParty()
+    turnScheduler.party = new Party(
+      new Warrior("Nameless 1",100,6,80),
+      new Warrior("Nameless 2",105,5,85),
+      new Warrior("Nameless 3",110,5,90)
+    )
+    turnScheduler.party.get.getMembers(0).equip(new Sword("Rusty Sword", 10, 10))
+    turnScheduler.party.get.getMembers(1).equip(new Sword("Rusty Sword", 10, 10))
+    turnScheduler.party.get.getMembers(2).equip(new Sword("Rusty Sword", 10, 10))
+
+    turnScheduler.unbindEnemies()
+    turnScheduler.enemyTeam = new Enemies(
+      new Enemy("Lower Demon 1", 50, 5, 15, 30),
+      new Enemy("Lower Demon 2", 60, 4, 18, 40)
+    )
+  }
 
 
 }

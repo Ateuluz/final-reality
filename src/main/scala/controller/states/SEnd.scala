@@ -13,6 +13,7 @@ class SEnd(
     }
     else {
       println("Re-match begin! Good luck.")
+      controller.reset()
       controller.state = GameStateFactory.createState("Start",controller)
     }
     controller.step()
