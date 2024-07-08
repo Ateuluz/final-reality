@@ -379,6 +379,12 @@ and having the option of going back to the previous state or exiting.
 
 Main loop may be changed to a loop instead of recursion.
 
+# Old Origin
+
+origin  https://github.com/dcc-cc3002/final-reality-Ateuluz.git (fetch)
+
+origin  https://github.com/dcc-cc3002/final-reality-Ateuluz.git (push)
+
 
 # License
 
