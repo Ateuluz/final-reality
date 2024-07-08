@@ -6,13 +6,6 @@ class STransition(
                    controller: IGameController
                  ) extends AGameState(controller) {
 
-  private def waitForResponse(): Unit =
-    if (!controller.isTesting) {
-      controller.getInput("[ENTER TO CONTINUE]")
-      println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-      println("==============================================")
-    }
-
   override def step(): Unit = {
     println("")
     if (controller.turnScheduler.party.get.isDefeated) {

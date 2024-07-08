@@ -12,4 +12,10 @@ trait IGameState {
    */
   def step(): Unit
 
+  /** Ateuluz
+   *
+   * Await user interaction
+   */
+  protected def waitForResponse(): Unit
+
 }

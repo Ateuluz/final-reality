@@ -32,6 +32,17 @@ abstract class AGameState (
 
   /** Ateuluz
    *
+   * Await user interaction
+   */
+  override protected def waitForResponse(): Unit =
+    if (!controller.isTesting) {
+      controller.getInput("[ENTER TO CONTINUE]")
+      println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+      println("==============================================")
+    }
+
+  /** Ateuluz
+   *
    * @param entities Potential targets
    * @return A string to pass as prompt
    */

@@ -13,6 +13,9 @@ class TurnEnd (
     )
     controller.turnScheduler.removeDead()
     controller.state = GameStateFactory.createState("Transition", controller)
+
+    waitForResponse()
+
     controller.step()
   }
 
