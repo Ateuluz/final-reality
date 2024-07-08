@@ -4,7 +4,7 @@ import controller.IGameController
 import controller.states.{AGameState, GameStateFactory}
 
 /** Ateuluz
- * TODO spells
+ *
  * @param controller The associated controller for the state
  */
 class Cast (
