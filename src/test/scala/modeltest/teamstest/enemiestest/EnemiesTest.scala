@@ -1,9 +1,8 @@
 package modeltest.teamstest.enemiestest
 
 import model.entities.IEntity
-import model.entities.enemies.IEnemy
-import model.entities.enemies.enemy.Enemy
-import model.teams.enemies.Enemies
+import model.entities.enemies.{Enemy, IEnemy}
+import model.teams.concrete.Enemies
 
 import scala.collection.mutable.ArrayBuffer
 

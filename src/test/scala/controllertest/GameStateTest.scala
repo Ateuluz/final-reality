@@ -2,28 +2,18 @@ package controllertest
 
 import controller.{AGameController, CGameController}
 import controller.inputhandler.{ConsoleInputHandler, ForcedInputHandler, IInputHandler}
-import controller.states.{AGameState, STransition}
-import controller.states.start.StartPhase
+import controller.states.{AGameState, STransition, StartPhase}
 import controller.states.turnphase.ApplyEffects
 import exceptions.InvalidStateException
 import model.armament.IWeapon
-import model.armament.axe.Axe
-import model.armament.bow.Bow
-import model.armament.staff.Staff
-import model.armament.sword.Sword
-import model.armament.wand.Wand
-import model.entities.enemies.enemy.Enemy
+import model.armament.concrete.{Axe, Bow, Staff, Sword, Wand}
+import model.entities.enemies.Enemy
 import model.entities.playablecharacters.ICharacter
-import model.entities.playablecharacters.blackmage.BlackMage
-import model.entities.playablecharacters.ninja.Ninja
-import model.entities.playablecharacters.paladin.Paladin
-import model.entities.playablecharacters.warrior.Warrior
-import model.entities.playablecharacters.whitemage.WhiteMage
+import model.entities.playablecharacters.concrete.{BlackMage, Ninja, Paladin, Warrior, WhiteMage}
 import model.spells.basicmagic.concrete.Fireball
 import model.spells.darkmagic.concrete.DevilsContract
 import model.spells.lightmagic.heal.Heal
-import model.teams.enemies.Enemies
-import model.teams.party.Party
+import model.teams.concrete.{Enemies, Party}
 
 import scala.collection.mutable.ArrayBuffer
 

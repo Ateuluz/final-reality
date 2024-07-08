@@ -1,8 +1,8 @@
 package modeltest.spellstest.darkmagictest
 
-import model.armament.wand.Wand
-import model.entities.enemies.enemy.Enemy
-import model.entities.playablecharacters.blackmage.BlackMage
+import model.armament.concrete.Wand
+import model.entities.enemies.Enemy
+import model.entities.playablecharacters.concrete.BlackMage
 import model.spells.darkmagic.concrete.DevilsContract
 
 class DevilsContractTest extends munit.FunSuite {

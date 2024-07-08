@@ -2,11 +2,9 @@ package modeltest.entitiestest.characterstest
 
 import exceptions.{InvalidActionException, InvalidHandleException, InvalidHolderException, InvalidStatException}
 import model.armament.IWeapon
-import model.armament.sword.Sword
-import model.entities.playablecharacters.paladin.Paladin
-import model.entities.playablecharacters.warrior.Warrior
-import model.entities.playablecharacters.whitemage.WhiteMage
-import model.entities.enemies.enemy.Enemy
+import model.armament.concrete.Sword
+import model.entities.enemies.Enemy
+import model.entities.playablecharacters.concrete.{Paladin, Warrior, WhiteMage}
 
 class CharacterTest extends munit.FunSuite {
   var ch1: Paladin   = _

@@ -1,8 +1,7 @@
 package model.spells
 import exceptions.InvalidCasterException
 import model.entities.IEntity
-import model.entities.playablecharacters.blackmage.BlackMage
-import model.entities.playablecharacters.whitemage.WhiteMage
+import model.entities.playablecharacters.concrete.{BlackMage, WhiteMage}
 import model.spells.lightmagic.selectionstrategy.{EnemyTargetSelectionStrategy, ITargetSelectionStrategy}
 
 /** Ateuluz

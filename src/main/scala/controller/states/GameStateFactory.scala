@@ -1,7 +1,6 @@
 package controller.states
 
-import controller.{IGameController, IGameState}
-import controller.states.start.StartPhase
+import controller.IGameController
 import controller.states.turnphase.actions.{Attack, Cast, Equip}
 import controller.states.turnphase.turns.{EnemyTurn, MagicalTurn, RegularTurn}
 import controller.states.turnphase.{ApplyEffects, TurnBifurcation, TurnEnd}

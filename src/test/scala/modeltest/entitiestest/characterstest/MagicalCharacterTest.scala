@@ -1,10 +1,9 @@
 package modeltest.entitiestest.characterstest
 
 import exceptions.InvalidActionException
-import model.armament.bow.Bow
-import model.armament.staff.Staff
-import model.entities.playablecharacters.whitemage.WhiteMage
-import model.entities.enemies.enemy.Enemy
+import model.armament.concrete.{Bow, Staff}
+import model.entities.enemies.Enemy
+import model.entities.playablecharacters.concrete.WhiteMage
 import model.spells.ISpell
 import model.spells.lightmagic.heal.Heal
 

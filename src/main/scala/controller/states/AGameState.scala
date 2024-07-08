@@ -1,6 +1,6 @@
 package controller.states
 
-import controller.{IGameController, IGameState}
+import controller.IGameController
 import exceptions.InvalidStateException
 import model.entities.IEntity
 import model.entities.enemies.IEnemy

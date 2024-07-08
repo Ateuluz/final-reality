@@ -1,13 +1,10 @@
 package modeltest.armamenttest.swordtest
 
 import exceptions.InvalidHolderException
-import model.armament.sword.Sword
-import model.entities.playablecharacters.blackmage.BlackMage
-import model.entities.playablecharacters.ninja.Ninja
-import model.entities.playablecharacters.paladin.Paladin
-import model.entities.playablecharacters.{ICharacter, ISwordBearer}
-import model.entities.playablecharacters.warrior.Warrior
-import model.entities.playablecharacters.whitemage.WhiteMage
+import model.armament.concrete.Sword
+import model.entities.playablecharacters.concrete.{BlackMage, Ninja, Paladin, Warrior, WhiteMage}
+import model.entities.playablecharacters.ICharacter
+import model.entities.playablecharacters.typetraits.ISwordBearer
 
 class SwordTest extends munit.FunSuite() {
   var ch1: ISwordBearer = _

@@ -1,10 +1,10 @@
 package modeltest.entitiestest
 
 import exceptions.{InvalidHandleException, InvalidStatException}
-import model.armament.sword.Sword
+import model.armament.concrete.Sword
 import model.effects.concrete.Poisoned
-import model.entities.playablecharacters.paladin.Paladin
-import model.entities.enemies.enemy.Enemy
+import model.entities.enemies.Enemy
+import model.entities.playablecharacters.concrete.Paladin
 
 class EntityTest extends munit.FunSuite {
   var ch1: Paladin = _

@@ -1,11 +1,10 @@
 package modeltest.armamenttest.axetest
 
 import exceptions.InvalidHolderException
-import model.armament.axe.Axe
-import model.entities.playablecharacters.{IAxeBearer, ICharacter}
-import model.entities.playablecharacters.paladin.Paladin
-import model.entities.playablecharacters.warrior.Warrior
-import model.entities.playablecharacters.whitemage.WhiteMage
+import model.armament.concrete.Axe
+import model.entities.playablecharacters.concrete.{Paladin, Warrior, WhiteMage}
+import model.entities.playablecharacters.ICharacter
+import model.entities.playablecharacters.typetraits.IAxeBearer
 
 class AxeTest extends munit.FunSuite() {
   var ch1: IAxeBearer = _

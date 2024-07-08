@@ -1,12 +1,10 @@
 package modeltest.armamenttest.wandtest
 
 import exceptions.InvalidHolderException
-import model.armament.wand.Wand
-import model.entities.playablecharacters.blackmage.BlackMage
-import model.entities.playablecharacters.ninja.Ninja
-import model.entities.playablecharacters.warrior.Warrior
-import model.entities.playablecharacters.{ACharacter, IWandUser}
-import model.entities.playablecharacters.whitemage.WhiteMage
+import model.armament.concrete.Wand
+import model.entities.playablecharacters.concrete.{BlackMage, Ninja, Warrior, WhiteMage}
+import model.entities.playablecharacters.ACharacter
+import model.entities.playablecharacters.typetraits.IWandUser
 
 class WandTest extends munit.FunSuite() {
   var ch1: IWandUser = _

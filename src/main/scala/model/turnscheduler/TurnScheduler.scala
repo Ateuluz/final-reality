@@ -4,8 +4,7 @@ import exceptions.InvalidHandleException
 import model.entities.IEntity
 import model.entities.enemies.IEnemy
 import model.entities.playablecharacters.ICharacter
-import model.teams.enemies.Enemies
-import model.teams.party.Party
+import model.teams.concrete.{Enemies, Party}
 
 import scala.collection.mutable.ArrayBuffer
 

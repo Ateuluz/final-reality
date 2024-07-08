@@ -1,8 +1,8 @@
 package modeltest.entitiestest.enemiestest
 
 import exceptions.{InvalidActionException, InvalidStatException}
-import model.entities.playablecharacters.ninja.Ninja
-import model.entities.enemies.enemy.Enemy
+import model.entities.enemies.Enemy
+import model.entities.playablecharacters.concrete.Ninja
 
 class EnemyTest extends munit.FunSuite {
   var en1: Enemy = _

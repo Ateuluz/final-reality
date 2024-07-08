@@ -1,11 +1,9 @@
 package modeltest.effectstest
 
-import model.armament.staff.Staff
-import model.armament.wand.Wand
+import model.armament.concrete.{Staff, Wand}
 import model.effects.AEffect
-import model.entities.enemies.enemy.Enemy
-import model.entities.playablecharacters.blackmage.BlackMage
-import model.entities.playablecharacters.whitemage.WhiteMage
+import model.entities.enemies.Enemy
+import model.entities.playablecharacters.concrete.{BlackMage, WhiteMage}
 import model.spells.basicmagic.concrete.Fireball
 import model.spells.darkmagic.concrete.DevilsContract
 

@@ -1,11 +1,10 @@
 package modeltest.armamenttest.stafftest
 
 import exceptions.InvalidHolderException
-import model.armament.staff.Staff
-import model.entities.playablecharacters.{ICharacter, IStaffUser}
-import model.entities.playablecharacters.blackmage.BlackMage
-import model.entities.playablecharacters.warrior.Warrior
-import model.entities.playablecharacters.whitemage.WhiteMage
+import model.armament.concrete.Staff
+import model.entities.playablecharacters.concrete.{BlackMage, Warrior, WhiteMage}
+import model.entities.playablecharacters.ICharacter
+import model.entities.playablecharacters.typetraits.IStaffUser
 
 class StaffTest extends munit.FunSuite() {
   var ch1: IStaffUser = _

@@ -1,5 +1,6 @@
 package controller
 
+import controller.states.IGameState
 import model.armament.IWeapon
 import model.entities.playablecharacters.ICharacter
 import model.turnscheduler.ITurnScheduler

@@ -1,16 +1,8 @@
 package modeltest.armamenttest
 
 import exceptions.{InvalidActionException, InvalidHolderException, InvalidStatException}
-import model.armament.axe.Axe
-import model.armament.bow.Bow
-import model.armament.staff.Staff
-import model.armament.sword.Sword
-import model.armament.wand.Wand
-import model.entities.playablecharacters.blackmage.BlackMage
-import model.entities.playablecharacters.ninja.Ninja
-import model.entities.playablecharacters.paladin.Paladin
-import model.entities.playablecharacters.warrior.Warrior
-import model.entities.playablecharacters.whitemage.WhiteMage
+import model.armament.concrete.{Axe, Bow, Staff, Sword, Wand}
+import model.entities.playablecharacters.concrete.{BlackMage, Ninja, Paladin, Warrior, WhiteMage}
 
 class WeaponTest extends munit.FunSuite{
   var wp1: Sword = _

@@ -1,10 +1,9 @@
 package modeltest.spellstest
 
 import exceptions.InvalidCasterException
-import model.armament.wand.Wand
-import model.entities.playablecharacters.blackmage.BlackMage
-import model.entities.playablecharacters.whitemage.WhiteMage
-import model.entities.enemies.enemy.Enemy
+import model.armament.concrete.Wand
+import model.entities.enemies.Enemy
+import model.entities.playablecharacters.concrete.{BlackMage, WhiteMage}
 import model.spells.basicmagic.concrete.Fireball
 import model.spells.darkmagic.concrete.DevilsContract
 import model.spells.lightmagic.heal.Heal

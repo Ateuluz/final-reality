@@ -1,12 +1,10 @@
 package modeltest.armamenttest.bowtest
 
 import exceptions.InvalidHolderException
-import model.armament.bow.Bow
-import model.entities.playablecharacters.{IBowBearer, ICharacter}
-import model.entities.playablecharacters.ninja.Ninja
-import model.entities.playablecharacters.paladin.Paladin
-import model.entities.playablecharacters.warrior.Warrior
-import model.entities.playablecharacters.whitemage.WhiteMage
+import model.armament.concrete.Bow
+import model.entities.playablecharacters.concrete.{Ninja, Paladin, Warrior, WhiteMage}
+import model.entities.playablecharacters.ICharacter
+import model.entities.playablecharacters.typetraits.IBowBearer
 
 class BowTest extends munit.FunSuite() {
   var ch1: IBowBearer = _

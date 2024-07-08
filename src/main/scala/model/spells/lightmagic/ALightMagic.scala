@@ -1,7 +1,7 @@
 package model.spells.lightmagic
 
 import model.entities.IEntity
-import model.entities.playablecharacters.whitemage.WhiteMage
+import model.entities.playablecharacters.concrete.WhiteMage
 import model.spells.ASpell
 
 /** Ateuluz

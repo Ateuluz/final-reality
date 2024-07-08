@@ -1,12 +1,12 @@
 package modeltest.teamstest
 
-import model.entities.playablecharacters.paladin.Paladin
-import model.teams.party.Party
 import exceptions.{InvalidHandleException, InvalidStatException}
-import model.armament.sword.Sword
+import model.armament.concrete.Sword
 import model.entities.IEntity
-import model.entities.enemies.enemy.Enemy
+import model.entities.enemies.Enemy
 import model.entities.playablecharacters.ICharacter
+import model.entities.playablecharacters.concrete.Paladin
+import model.teams.concrete.Party
 
 import scala.collection.mutable.ArrayBuffer
 

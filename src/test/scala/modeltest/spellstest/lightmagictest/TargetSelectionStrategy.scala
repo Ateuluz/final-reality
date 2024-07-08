@@ -1,10 +1,9 @@
 package modeltest.spellstest.lightmagictest
 
-import model.entities.enemies.enemy.Enemy
-import model.entities.playablecharacters.warrior.Warrior
+import model.entities.enemies.Enemy
+import model.entities.playablecharacters.concrete.Warrior
 import model.spells.lightmagic.selectionstrategy.{AllyTargetSelectionStrategy, EnemyTargetSelectionStrategy}
-import model.teams.enemies.Enemies
-import model.teams.party.Party
+import model.teams.concrete.{Enemies, Party}
 import model.turnscheduler.TurnScheduler
 
 class TargetSelectionStrategy extends munit.FunSuite {

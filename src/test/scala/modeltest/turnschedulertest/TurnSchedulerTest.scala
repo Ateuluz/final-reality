@@ -1,17 +1,11 @@
 package modeltest.turnschedulertest
 
 import exceptions.{InvalidActionException, InvalidHandleException}
-import model.armament.bow.Bow
-import model.armament.sword.Sword
-import model.armament.wand.Wand
+import model.armament.concrete.{Bow, Sword, Wand}
 import model.entities.IEntity
-import model.entities.playablecharacters.ninja.Ninja
-import model.entities.playablecharacters.paladin.Paladin
-import model.entities.playablecharacters.warrior.Warrior
-import model.entities.playablecharacters.whitemage.WhiteMage
-import model.entities.enemies.enemy.Enemy
-import model.teams.enemies.Enemies
-import model.teams.party.Party
+import model.entities.enemies.Enemy
+import model.entities.playablecharacters.concrete.{Ninja, Paladin, Warrior, WhiteMage}
+import model.teams.concrete.{Enemies, Party}
 import model.turnscheduler.TurnScheduler
 
 import scala.collection.mutable.ArrayBuffer

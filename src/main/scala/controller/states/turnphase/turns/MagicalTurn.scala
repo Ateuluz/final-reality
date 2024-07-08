@@ -3,7 +3,7 @@ package controller.states.turnphase.turns
 import controller.IGameController
 import controller.states.{AGameState, GameStateFactory}
 import exceptions.InvalidActionException
-import model.entities.enemies.enemy.Enemy
+import model.entities.enemies.Enemy
 
 /** Ateuluz
  *

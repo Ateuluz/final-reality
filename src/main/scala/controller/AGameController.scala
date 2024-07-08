@@ -1,6 +1,6 @@
 package controller
 
-import controller.states.STrueBeginning
+import controller.states.{IGameState, STrueBeginning}
 import model.turnscheduler.{ITurnScheduler, TurnScheduler}
 import controller.inputhandler.IInputHandler
 
