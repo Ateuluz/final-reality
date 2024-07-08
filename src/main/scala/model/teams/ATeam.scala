@@ -61,7 +61,7 @@ abstract class ATeam[T<:IEntity](
     while (i < 0) i += _members.length
     if (idx < 0) i += 1
     if (_members.length >= _maximumMembers) throw new InvalidHandleException("Cannot add member, maximum amount reached.")
-    else if (_members.contains(member)) throw new InvalidHandleException("Cannot add member, already in the team.")
+    else if (getMembers.contains(member)) throw new InvalidHandleException("Cannot add member, already in the team.")
     else _members.insert(i,member)
   }
 
