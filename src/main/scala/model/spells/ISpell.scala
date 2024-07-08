@@ -4,6 +4,7 @@ import model.entities.IEntity
 import model.entities.playablecharacters.IMagicalCharacter
 import model.entities.playablecharacters.blackmage.BlackMage
 import model.entities.playablecharacters.whitemage.WhiteMage
+import model.spells.lightmagic.selectionstrategy.ITargetSelectionStrategy
 
 /** Ateuluz
  * An interface defining methods for a spell
@@ -42,4 +43,13 @@ trait ISpell {
    * @return The effect value of the spell, instant damage in most cases, hp healed in some, etc.
    */
   protected def cast(caster: IMagicalCharacter, target: IEntity): Int
+
+  /** Ateuluz
+   *
+   * Simplification for target getter
+   * This is needed for spells that may target companions
+   *
+   * @return A class that has a getTargets method
+   */
+  def targetStrategy: ITargetSelectionStrategy
 }

@@ -3,6 +3,7 @@ import exceptions.InvalidCasterException
 import model.entities.IEntity
 import model.entities.playablecharacters.blackmage.BlackMage
 import model.entities.playablecharacters.whitemage.WhiteMage
+import model.spells.lightmagic.selectionstrategy.{EnemyTargetSelectionStrategy, ITargetSelectionStrategy}
 
 /** Ateuluz
  * An abstract class for all spells
@@ -29,4 +30,9 @@ abstract class ASpell extends ISpell {
     throw new InvalidCasterException("Spell cannot be cast by a white mage")
   }
 
+  /** Ateuluz
+   *
+   *  @return A class that has a getTargets method
+   */
+  override def targetStrategy: ITargetSelectionStrategy = new EnemyTargetSelectionStrategy
 }
