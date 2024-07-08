@@ -29,4 +29,10 @@ trait ICharacter extends IEntity {
    * @param weapon The weapon to equip
    */
   protected def setWeapon(weapon: IWeapon): Unit
+
+  /** Ateuluz
+   *
+   * @return The character as magical if is magical
+   */
+  def asMagical: IMagicalCharacter
 }

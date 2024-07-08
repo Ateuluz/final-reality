@@ -85,7 +85,7 @@ abstract class ACharacter(
   }
 
   /** Ateuluz
-   * TODO
+   *
    * @return Follow up state in turn phase
    */
   override def getTurnPhaseBifurcation: String = "Regular Turn"
