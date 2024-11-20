@@ -42,4 +42,24 @@ class StatTest extends munit.FunSuite {
       statBelowThreshold atLeast threshold
     }
   }
+
+  // Had to do some investigation, but finally I can get coverage up to 100
+  // I currently have no idea of what this does or how it works, but it does
+  // Update: I'm a genius, I got it all, will try in future assignments
+  test(
+    "Other init ways"
+  ) {
+    /*Require.Stat.tupled((5,"Alex"))*/           // This fixes everything,
+                                                  // another way of initializing
+//    val init = Require.Stat.tupled((5,"Alex"))
+//    Require.Stat.unapply(init)
+    val varCond = Require.Stat.tupled((5,"Alex"))
+    val AlexAge = varCond in (1 to 5)
+    assertEquals(AlexAge,5,"It doesn't seem to behave as expected")
+    interceptMessage[InvalidStatException](
+      "An invalid stat was found -- Alex should be at least 21 but was 5"
+    ) {
+      varCond atLeast 21
+    }
+  }
 }
